@@ -1,0 +1,66 @@
+.practices-admin-h1 {
+    text-align: center;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.practices-list-admin {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.admin-practices-actions {
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 10% 90%;
+    margin-right: 5%;
+}
+
+.admin-practices-buttons {
+    margin: auto;
+}
+
+.admin-practices-form {
+    text-align: center;
+}
+
+.admin-practices-form>h2 {
+    text-transform: capitalize;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+#editPracticeId {
+    text-transform: capitalize;
+    margin-right: 125px;
+}
+
+#editPracticeType {
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-right: 165px;
+}
+
+#editPracticeLocation {
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-right: 140px;
+}
+
+#editPracticeDescription {
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-right: 120px;
+}
+
+#editPracticeDuration {
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-right: 140px;
+}
+
+.form-instructions{
+    margin-bottom: 20px;
+}

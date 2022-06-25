@@ -1,0 +1,9 @@
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+    outline: 1px solid green;
+    word-break: break-word;
+    padding: 5px 1px 0px 10px;
+    margin: 5px 0px 20px 0px;
+    width: 80%; 
+    height: 300px;
+    box-shadow: -10px 10px lightgray !important;
+}

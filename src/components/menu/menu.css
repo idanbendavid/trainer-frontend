@@ -1,0 +1,28 @@
+.menu {
+    position: fixed;
+    left: 0;
+    width: 210px;
+    height: 100vh;
+    background-color: white;
+    border: 1px solid black;
+    padding-top: 60px;
+    padding-left: 15px;
+    z-index: 4;
+    text-transform: capitalize;
+}
+
+.hello-span {
+    margin-right: 5px;
+}
+
+.home-span {
+    margin-left: 10px;
+}
+
+ul > li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+    color: #1976d2;
+}
+
+h4{
+    margin: 10px 0px 10px 0px;
+}

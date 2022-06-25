@@ -1,0 +1,50 @@
+.users-list-admin {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.MuiDataGrid-root.css-1xy1myn-MuiDataGrid-root {
+    height: 631px;
+    overflow-x: hidden;
+}
+
+.users-admin-actions {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    margin-right: 5%;
+}
+
+.users-admin-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.users-admin-heading, .users-admin-h1 {
+    text-align: center;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.delete-user-form, .delete-coach-form {
+    text-align: center;
+}
+
+.delete-user-form, .delete-coach-form>h4 {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+#userId {
+    margin-right: 150px;
+}
+
+#coachId {
+    margin-right: 288px;
+}
+
+#coachIdInput {
+    width: 350px;
+}
