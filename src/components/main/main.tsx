@@ -20,8 +20,8 @@ export default function Main() {
     useEffect(() => {
         axios.get('https://exercisedb.p.rapidapi.com/exercises', {
             headers: {
-                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
-                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+                'X-RapidAPI-Key': 'hidden',
+                'X-RapidAPI-Host': 'hidden'
             },
         }).then((response) => {
             console.log(response)
