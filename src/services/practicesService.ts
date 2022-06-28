@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IPractice } from "../../models/IPractice";
+import { IPractice } from "../models/IPractice";
 
 async function getAllPractices() {
     try {

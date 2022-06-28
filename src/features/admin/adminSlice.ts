@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import adminService from './adminService'
+import adminService from '../../services/adminService'
 
 const initialState = {
     message: "",

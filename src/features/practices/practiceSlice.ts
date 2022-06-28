@@ -4,13 +4,7 @@ import { IPractice } from '../../models/IPractice';
 
 const initialState = {
     practices: [] as any,
-    practice: {
-        id: 0,
-        type: "",
-        location: "",
-        description: "",
-        duration: 0
-    } as IPractice
+    practice: {} as IPractice
 }
 
 

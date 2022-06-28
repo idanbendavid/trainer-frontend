@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { ILogin } from '../../models/ILogin'
 import { IUser } from '../../models/IUser'
 import { UserRole } from '../../models/role'
-import authService from './authService'
+import authService from '../../services/authService'
 
 
 

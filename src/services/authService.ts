@@ -1,7 +1,7 @@
 import axios from "axios";
-import { ILogin } from "../../models/ILogin";
-import { IUser } from "../../models/IUser";
-import { UserRole } from "../../models/role";
+import { ILogin } from "../models/ILogin";
+import { IUser } from "../models/IUser";
+import { UserRole } from "../models/role";
 
 
 async function register(registerUser: IUser): Promise<IUser> {
