@@ -1,3 +1,9 @@
+import './layout.css';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
@@ -7,17 +13,10 @@ import Register from '../auth/register/register';
 import Main from '../main/main';
 import UserProfile from '../users/userProfile/userProfile';
 import { remainConnceted } from '../../features/auth/authSlice';
-import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '../menu/menu';
-import { Button } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import './layout.css';
 import PracticeCard from '../practiceCard/practiceCard';
 import ContactUs from '../contactUs/contactUs';
 import UsersListAdmin from '../admin/usersListAdmin/userListAdmin';
-import PracticesListAdmin from '../admin/practicesListAdmin/practicesListAdmin';
 
 
 function Layout() {
@@ -64,12 +63,11 @@ function Layout() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/practiceCard" element={<PracticeCard id={0} type={''} location={''} description={''} duration={0} />} />
+          <Route path="/practiceCard" element={<PracticeCard id={0} name={''} bodyPart={''} equipment={''} target={''} gifUrl={''} />} />
           <Route path="/*" element={<ContactUs />} />
 
           {/* private admin routes */}
           <Route path="/admin/users" element={<UsersListAdmin />} />
-          <Route path="/admin/practices" element={<PracticesListAdmin />} />
 
           {/* private athelte and coach routes */}
           <Route path="/profile" element={<UserProfile />} />
