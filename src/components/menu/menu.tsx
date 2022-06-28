@@ -22,33 +22,13 @@ export default function Menu() {
     navigate("/main")
   }
 
-  function moveToLoginPage() {
-    navigate("/login");
-  }
-
-  function showUsersTables() {
-    navigate("admin/users")
-  }
-
-  function showUserProfile() {
-    navigate("/profile");
-  }
-
-  function moveToHomePage() {
-    navigate("/main")
-  }
-
-  function showPracticesTable() {
-    navigate("admin/practices")
-  }
-
   return (
     <div className='menu' >
       <div className='user-actions-in-menu'>
         <p>
           <span className='hello-span'>hello {user.firstName}</span>
           {!isLoggedIn &&
-            <Button onClick={moveToLoginPage}>
+            <Button onClick={() => navigate("/login")}>
               Login<LoginIcon fontSize='large' />
             </Button>
           }
@@ -58,7 +38,7 @@ export default function Menu() {
             </Button>
           }
         </p>
-        <MenuItem onClick={moveToHomePage}>
+        <MenuItem onClick={() => navigate("/main")}>
           <Home fontSize='large' />
           <span className='home-span'>home</span>
         </MenuItem>
@@ -68,11 +48,11 @@ export default function Menu() {
           <div className='admin-menu-options'>
             <h4>users data</h4>
             <ul>
-              <MenuItem onClick={showUsersTables}>signed users</MenuItem>
+              <MenuItem onClick={() => navigate("admin/users")}>signed users</MenuItem>
             </ul>
             <h4>practices data</h4>
             <ul>
-              <MenuItem onClick={showPracticesTable}>offered practices</MenuItem>
+              <MenuItem onClick={() => navigate("admin/practices")}>offered practices</MenuItem>
             </ul>
           </div>
         }
@@ -81,7 +61,7 @@ export default function Menu() {
           <>
             <h4>user</h4>
             <ul>
-              <MenuItem onClick={showUserProfile}>{user.firstName}'s profile</MenuItem>
+              <MenuItem onClick={() => navigate("/profile")}>{user.firstName}'s profile</MenuItem>
               <MenuItem>{user.firstName}'s practices</MenuItem>
             </ul>
           </>
@@ -100,7 +80,7 @@ export default function Menu() {
           </>
         }
       </div>
-    </div>
+    </div >
   );
 }
 
