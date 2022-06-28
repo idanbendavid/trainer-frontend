@@ -20,8 +20,8 @@ export default function Main() {
     useEffect(() => {
         axios.get('https://exercisedb.p.rapidapi.com/exercises', {
             headers: {
-                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
-                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+                'X-RapidAPI-Key': process.env.REACT_TRAINER_RAPID_API_KEY
             },
         }).then((response) => {
             console.log(response)
@@ -60,8 +60,8 @@ export default function Main() {
                 <CssBaseline />
                 <Box sx={{ overflowY: 'auto', marginTop: 8, display: 'grid', gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gridTemplateRows: '1fr', justifyItems: "center", border: '2px solid blue', paddingTop: '20px' }} >
                     {practices.current.map((practice: IPractice, index: number) => (
-                        <PracticeCard key={index} id={practice.id} type={practice.type} location={practice.location}
-                            description={practice.description} duration={practice.duration} />
+                        <PracticeCard key={index} id={practice.id} name={practice.name} bodyPart={practice.bodyPart} 
+                        equipment={practice.equipment} target={practice.target} gifUrl={practice.gifUrl}/>
                     ))}
                 </Box>
             </Container>
