@@ -5,28 +5,28 @@ import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getPractices } from "../../features/practices/practiceSlice";
-import { IPractice } from "../../models/IPractice";
+import { getExercises } from "../../features/exercises/exerciseSlice";
+import { IExercise } from "../../models/IExercise";
 import { useAppSelector } from "../../store";
-import PracticeCard from "../practiceCard/practiceCard";
+import ExerciseCard from "../exerciseCard/exerciseCard";
 import "./main.css";
 
 export default function Main() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const practices = useRef(useAppSelector((state) => state.practices.practices))
+    const exercises = useRef(useAppSelector((state) => state.exercises.exercises))
 
     useEffect(() => {
         axios.get('https://exercisedb.p.rapidapi.com/exercises', {
             headers: {
-                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
-                'X-RapidAPI-Key': process.env.REACT_TRAINER_RAPID_API_KEY
+                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
+                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
             },
         }).then((response) => {
             console.log(response)
-            practices.current = response.data
-            dispatch(getPractices(practices.current))
+            exercises.current = response.data
+            dispatch(getExercises(exercises.current))
         }).catch(error => {
             toast.error(error)
         })
@@ -59,9 +59,9 @@ export default function Main() {
             <Container maxWidth="xl" >
                 <CssBaseline />
                 <Box sx={{ overflowY: 'auto', marginTop: 8, display: 'grid', gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gridTemplateRows: '1fr', justifyItems: "center", border: '2px solid blue', paddingTop: '20px' }} >
-                    {practices.current.map((practice: IPractice, index: number) => (
-                        <PracticeCard key={index} id={practice.id} name={practice.name} bodyPart={practice.bodyPart} 
-                        equipment={practice.equipment} target={practice.target} gifUrl={practice.gifUrl}/>
+                    {exercises.current.map((exercise: IExercise, index: number) => (
+                        <ExerciseCard key={index} id={exercise.id} name={exercise.name} bodyPart={exercise.bodyPart} 
+                        equipment={exercise.equipment} target={exercise.target} gifUrl={exercise.gifUrl}/>
                     ))}
                 </Box>
             </Container>

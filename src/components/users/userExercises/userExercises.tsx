@@ -2,14 +2,14 @@
 // import { Link } from 'react-router-dom';
 // import { useAppSelector } from '../../../store'
 
-function UserPractices() {
+function UserExercise() {
 
   // let user = useAppSelector((state) => state.auth.connectedUser);
 
   return (
-    <div className='user-practices'>
+    <div className='user-exercise'>
     </div>
   )
 }
 
-export default UserPractices
+export default UserExercise

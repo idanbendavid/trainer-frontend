@@ -1,8 +1,8 @@
 import { Card } from '@mui/material';
-import { IPractice } from '../../models/IPractice'
-import "./practiceCard.css";
+import { IExercise } from '../../models/IExercise'
+import "./exerciseCard.css";
 
-function PracticeCard(props: IPractice) {
+function ExerciseCard(props: IExercise) {
     return (
         <Card>
             <h3 hidden>{props.id}</h3>
@@ -15,4 +15,4 @@ function PracticeCard(props: IPractice) {
     )
 }
 
-export default PracticeCard
+export default ExerciseCard

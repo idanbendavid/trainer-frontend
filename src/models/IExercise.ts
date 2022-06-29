@@ -1,4 +1,4 @@
-export interface IPractice {
+export interface IExercise {
     id: number
     name: string
     bodyPart: string

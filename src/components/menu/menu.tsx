@@ -50,10 +50,6 @@ export default function Menu() {
             <ul>
               <MenuItem onClick={() => navigate("admin/users")}>signed users</MenuItem>
             </ul>
-            <h4>practices data</h4>
-            <ul>
-              <MenuItem onClick={() => navigate("admin/practices")}>offered practices</MenuItem>
-            </ul>
           </div>
         }
         {
@@ -62,13 +58,13 @@ export default function Menu() {
             <h4>user</h4>
             <ul>
               <MenuItem onClick={() => navigate("/profile")}>{user.firstName}'s profile</MenuItem>
-              <MenuItem>{user.firstName}'s practices</MenuItem>
+              <MenuItem>{user.firstName}'s exercises</MenuItem>
             </ul>
           </>
         }
         {isLoggedIn && user.userRole === UserRole.Coach &&
           <ul>
-            <MenuItem>athletes practices</MenuItem>
+            <MenuItem>athletes exercises</MenuItem>
           </ul>
         }
         {isLoggedIn &&

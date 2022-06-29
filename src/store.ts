@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import authReducer from "./features/auth/authSlice";
-import practiceReducer from "./features/practices/practiceSlice";
+import exerciseReducer from "./features/exercises/exerciseSlice";
 import userDataReducer from "./features/userData/userDataSlice";
 import adminReducer from "./features/admin/adminSlice";
 import coachReducer from "./features/coach/coachSlice";
@@ -12,7 +12,7 @@ export const store = configureStore({
         admin: adminReducer,
         user: userDataReducer,
         coach: coachReducer,
-        practices: practiceReducer
+        exercises: exerciseReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

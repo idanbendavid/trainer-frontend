@@ -14,9 +14,9 @@ import Main from '../main/main';
 import UserProfile from '../users/userProfile/userProfile';
 import { remainConnceted } from '../../features/auth/authSlice';
 import Menu from '../menu/menu';
-import PracticeCard from '../practiceCard/practiceCard';
 import ContactUs from '../contactUs/contactUs';
 import UsersListAdmin from '../admin/usersListAdmin/userListAdmin';
+import ExerciseCard from '../exerciseCard/exerciseCard';
 
 
 function Layout() {
@@ -63,7 +63,7 @@ function Layout() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/practiceCard" element={<PracticeCard id={0} name={''} bodyPart={''} equipment={''} target={''} gifUrl={''} />} />
+          <Route path="/exerciseCard" element={<ExerciseCard id={0} name={''} bodyPart={''} equipment={''} target={''} gifUrl={''} />} />
           <Route path="/*" element={<ContactUs />} />
 
           {/* private admin routes */}

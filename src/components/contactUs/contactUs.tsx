@@ -70,7 +70,7 @@ function ContactUs() {
               <option>articles</option>
               <option>chat</option>
               <option>coach</option>
-              <option>practice</option>
+              <option>exercise</option>
               <option>profile</option>
               <option>Other</option>
             </select>
