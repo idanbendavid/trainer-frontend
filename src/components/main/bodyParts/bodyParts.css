@@ -1,0 +1,12 @@
+.bodyParts>.css-bhp9pd-MuiPaper-root-MuiCard-root {
+    margin: 20px;
+    height: 250px;
+    width: 250px;
+    text-transform: capitalize;
+    text-align: center;
+    border-radius: 10px
+}
+
+.bodyParts>.css-bhp9pd-MuiPaper-root-MuiCard-root:hover {
+    box-shadow: -1px 10px 29px 0px rgba(0,0,0,0.8);
+}

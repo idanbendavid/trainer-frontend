@@ -19,3 +19,12 @@
 .user-enrichness-navbar>li {
     list-style-type: none;
 }
+
+.main-heading{
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration: underline;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 30px;
+}
