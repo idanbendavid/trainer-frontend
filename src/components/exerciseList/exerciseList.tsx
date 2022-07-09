@@ -1,4 +1,4 @@
-import { Card, Pagination, Stack } from '@mui/material';
+import { Button, Card, Pagination, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -31,7 +31,9 @@ function ExerciseList() {
     }, [dispatch, bodyPart]);
 
 
-
+    function addPracticeToSchedule(exercise: IExercise) {
+        console.log(exercise)
+    }
 
     return (
         <div className="exercise-list">
@@ -41,11 +43,19 @@ function ExerciseList() {
             <div className="exercise-card-div">
                 {exercises.map((exercise: IExercise, index: number) => {
                     return <Card key={index} >
-                        <img id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
-                        <h4>name: {exercise.name}</h4>
-                        <p>body part: {exercise.bodyPart}</p>
-                        <p>target: {exercise.target}</p>
-                        <p>equipment: {exercise.equipment}</p>
+                        <div className="exercise-name">
+                            <p>{exercise.name}</p>
+                        </div>
+                        <div>
+                            <img id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
+                        </div>
+                        <div >
+                            <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>
+                            <Button sx={{ ml: '5px', color: '#fff', background: '#FF8C31', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.target}</Button>
+                        </div>
+                        <div className='add-practice-button'>
+                            <Button variant='contained' color='success' onClick={() => addPracticeToSchedule(exercise)}>Add to schedule</Button>
+                        </div>
                     </Card>
                 })}
             </div>

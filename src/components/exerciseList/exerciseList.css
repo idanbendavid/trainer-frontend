@@ -6,12 +6,12 @@
 
 .exercise-card-div>.css-bhp9pd-MuiPaper-root-MuiCard-root {
     outline: 1px solid green;
-    word-break: break-word;
     padding: 5px 1px 0px 10px;
     margin: 5px 0px 20px 0px;
-    width: 250px;
+    width: 260px;
     height: 300px;
     box-shadow: -10px 10px lightgray !important;
+    text-transform: capitalize;
 }
 
 #gifUrl {
@@ -20,10 +20,25 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
 }
 
 .exercise-card-div-heading {
     text-transform: capitalize;
     text-align: center;
     font-size: 30px;
+}
+
+.add-practice-button {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.exercise-name>p {
+    margin-top: 5px;
+}
+
+.exercise-name {
+    max-height: 42px;
 }
