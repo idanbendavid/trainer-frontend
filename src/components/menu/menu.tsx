@@ -58,7 +58,7 @@ export default function Menu() {
             <h4>user</h4>
             <ul>
               <MenuItem onClick={() => navigate("/profile")}>{user.firstName}'s profile</MenuItem>
-              <MenuItem>{user.firstName}'s exercises</MenuItem>
+              <MenuItem onClick={() => navigate("/userExercises")}>{user.firstName}'s exercises</MenuItem>
             </ul>
           </>
         }
