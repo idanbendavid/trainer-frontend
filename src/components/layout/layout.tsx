@@ -17,6 +17,7 @@ import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
 import UsersListAdmin from '../admin/usersListAdmin/userListAdmin';
 import ExerciseList from '../exerciseList/exerciseList';
+import UserExercise from '../users/userExercises/userExercises';
 
 
 function Layout() {
@@ -70,6 +71,7 @@ function Layout() {
 
           {/* private athelte and coach routes */}
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/userExercises" element={<UserExercise />} />
         </Routes>
       </section>
       <ToastContainer />
