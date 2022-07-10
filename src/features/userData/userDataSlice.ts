@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import userDataService from './userDataService';
+import userDataService from '../../services/userDataService';
 
 const initialState = {
 
