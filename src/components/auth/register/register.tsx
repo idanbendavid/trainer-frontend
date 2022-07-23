@@ -37,11 +37,6 @@ export default function Register() {
       navigate("/admin/users")
     }
 
-    if (connectedUser.userRole === UserRole.Coach && isSuccess) {
-      navigate("/coaches")
-    }
-
-
   }, [connectedUser, message, isError, isLoggedIn, isSuccess, dispatch, navigate])
 
   return (
@@ -63,8 +58,7 @@ export default function Register() {
             <br /><br />
             <label className='role-label' htmlFor="select">Role</label>
             <select {...register("userRole")}>
-              <option value={UserRole.Athlete}>{UserRole.Athlete}</option>
-              <option value={UserRole.Coach}>{UserRole.Coach}</option>
+              <option value={UserRole.Athlete} defaultChecked>{UserRole.Athlete}</option>
             </select>
             <br /><br />
             <InputLabel>Email</InputLabel>

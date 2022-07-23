@@ -12,5 +12,4 @@ export interface IUser{
     birthDate?: Date
     userRole: UserRole
     token: string
-    coachId?: string
 }

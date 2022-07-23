@@ -19,15 +19,6 @@ export const deleteUser = createAsyncThunk("users/delete", async (userToDelete: 
     }
 })
 
-export const deleteCoach = function (userToDelete: number, coachId: string) {
-    try {
-        return adminService.deleteCoach(userToDelete, coachId)
-    }
-    catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-        return message
-    }
-}
 
 
 export const adminSlice = createSlice({
@@ -36,12 +27,6 @@ export const adminSlice = createSlice({
     reducers: {
         reset: (state) => state = initialState,
         // ---------------------------------------------------------------
-        deleteCoach(state, action: PayloadAction<any>): void {
-            console.log(action.payload)
-            state.isAdminLoggedIn = true;
-            state.isSuccess = true;
-            state.message = "coach deleted"
-        }
     },
     extraReducers: (builder) => {
         builder

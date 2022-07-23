@@ -19,7 +19,6 @@ const initialState = {
         password: "" || undefined,
         birthDate: new Date() || undefined,
         userRole: UserRole.Visitor,
-        coachId: "" || undefined
     } as IUser,
     token: ""
 }
@@ -83,7 +82,6 @@ export const authSlice = createSlice({
                     password: undefined,
                     birthDate: action.payload.newUser.birthDate,
                     userRole: action.payload.newUser.userRole,
-                    coachId: action.payload.coachId || undefined,
                     registerUser: {},
                     newUser: {},
                     loginDetails: {},
@@ -104,8 +102,7 @@ export const authSlice = createSlice({
                     password: "" || undefined,
                     birthDate: undefined,
                     userRole: UserRole.Visitor,
-                    coachId: "" || undefined
-                } as IUser;
+                            } as IUser;
                 state.message = action.payload;
                 state.token = "";
             })
@@ -127,8 +124,7 @@ export const authSlice = createSlice({
                     password: "" || undefined,
                     birthDate: undefined,
                     userRole: UserRole.Visitor,
-                    coachId: "" || undefined
-                } as IUser;
+                            } as IUser;
                 state.message = action.payload;
                 state.isError = true;
                 state.isLoggedIn = false;
@@ -149,18 +145,27 @@ export const authSlice = createSlice({
                     password: "" || undefined,
                     birthDate: undefined,
                     userRole: UserRole.Visitor,
-                    coachId: "" || undefined
-                } as IUser;
+                            } as IUser;
                 state.token = "";
             })
             // ----------------------------------------------------------------------
             .addCase(remainConnceted.fulfilled, (state, action: PayloadAction<any>) => {
+                console.log(action.payload)
                 state.isLoggedIn = true;
                 state.connectedUser = action.payload.data
                 state.isError = false
                 state.isSuccess = true
                 state.message = "connected"
-                state.token = action.payload.config.headers.Authorization
+                // state.token = action.payload.config.headers.Authorization
+            })
+            .addCase(remainConnceted.rejected, (state, action: PayloadAction<any>) => {
+                console.log(action.payload)
+                state.isLoggedIn = false;
+                state.connectedUser = {} as IUser
+                state.isError = true
+                state.isSuccess = false
+                state.message = "not connected"
+                state.token = ""
             })
             
     }

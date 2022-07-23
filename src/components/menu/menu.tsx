@@ -62,11 +62,6 @@ export default function Menu() {
             </ul>
           </>
         }
-        {isLoggedIn && user.userRole === UserRole.Coach &&
-          <ul>
-            <MenuItem>athletes exercises</MenuItem>
-          </ul>
-        }
         {isLoggedIn &&
           <>
             <h4>gallery</h4>

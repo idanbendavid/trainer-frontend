@@ -28,23 +28,12 @@
     text-transform: capitalize;
 }
 
-.delete-user-form, .delete-coach-form {
+.delete-user-form {
     text-align: center;
-}
-
-.delete-user-form, .delete-coach-form>h4 {
     text-transform: capitalize;
     margin-bottom: 20px;
 }
 
 #userId {
     margin-right: 150px;
-}
-
-#coachId {
-    margin-right: 288px;
-}
-
-#coachIdInput {
-    width: 350px;
 }

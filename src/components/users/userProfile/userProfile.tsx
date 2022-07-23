@@ -79,10 +79,6 @@ function UserProfile() {
                                     <Input type="datetime" disabled={true} value={user.birthDate} />
                                 </div>
                                 <br />
-                                <div className='user-profile-coach-id'>
-                                    <InputLabel>coach Id</InputLabel>
-                                    <Input type="text" disabled={true} value={user.coachId} />
-                                </div>
                             </div>
                         </div>
                         <br />

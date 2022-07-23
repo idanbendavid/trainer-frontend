@@ -1,7 +1,6 @@
 import axios from "axios";
 import { ILogin } from "../models/ILogin";
 import { IUser } from "../models/IUser";
-import { UserRole } from "../models/role";
 
 
 async function register(registerUser: IUser): Promise<IUser> {
@@ -12,9 +11,7 @@ async function register(registerUser: IUser): Promise<IUser> {
         localStorage.setItem("email", response.data.newUser.email);
         localStorage.setItem("name", response.data.newUser.firstName + " " + response.data.newUser.lastName);
         localStorage.setItem("role", response.data.newUser.userRole);
-        if (response.data.newUser.userRole === UserRole.Coach) {
-            localStorage.setItem("coachId", response.data.newCoach);
-        }
+        
         axios.defaults.headers.common['Authorization'] = response.data.token;
     }
     console.log(response, "register response")
@@ -29,9 +26,7 @@ async function login(loggedInDetails: ILogin): Promise<IUser> {
         localStorage.setItem("email", response.data.loginDetails.email);
         localStorage.setItem("name", response.data.loginDetails.firstName + " " + response.data.loginDetails.lastName);
         localStorage.setItem("role", response.data.loginDetails.userRole);
-        if (response.data.loginDetails.userRole === UserRole.Coach) {
-            localStorage.setItem("coachId", response.data.loginDetails.coachId);
-        }
+
         axios.defaults.headers.common['Authorization'] = response.data.token;
     }
     return response.data;
@@ -42,7 +37,6 @@ function logout() {
     localStorage.removeItem("email");
     localStorage.removeItem("name");
     localStorage.removeItem("role");
-    localStorage.removeItem("coachId");
 }
 
 

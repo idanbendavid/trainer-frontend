@@ -1,6 +1,6 @@
-import { Button, Card, Pagination, Stack, Typography } from '@mui/material';
+import { Button, Card } from '@mui/material';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { displayExercisesByBodyPartName } from '../../features/exercises/exerciseSlice';

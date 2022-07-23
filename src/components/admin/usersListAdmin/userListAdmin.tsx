@@ -25,7 +25,6 @@ function UsersListAdmin() {
         { field: 'birth_date', headerName: 'Birth Date', width: 230 },
         { field: 'email', headerName: 'Email', width: 230 },
         { field: 'user_role', headerName: 'User Role', width: 170 },
-        { field: 'coach_id', headerName: 'Coach Id', width: 300 }
     ]
 
     if (isLoggedIn && userRole === UserRole.Admin) {
@@ -57,9 +56,6 @@ function UsersListAdmin() {
                 </Container>
                 <div className="users-admin-actions">
                     <div className="users-admin-buttons">
-                        {viewDeleteForm &&
-                            <Button variant="contained" color="info" onClick={() => setViewDeleteForm(!viewDeleteForm)}>delete coach</Button>
-                        }
                         {!viewDeleteForm &&
                             <Button variant="contained" color="info" onClick={() => setViewDeleteForm(!viewDeleteForm)}>delete user</Button>
                         }
@@ -71,21 +67,6 @@ function UsersListAdmin() {
                                 <h4>choose which user to delete</h4>
                                 <InputLabel id="userId">User Id</InputLabel>
                                 <Input type="number" />
-                                <br /><br />
-                                <Button type="submit" variant="contained" color="error">delete</Button>
-                            </form>
-                        </div>
-                    }
-                    {!viewDeleteForm &&
-                        <div className="delete-coach">
-                            <h2 className="users-admin-heading">delete coach</h2>
-                            <form className="delete-coach-form">
-                                <h4>choose which coach to delete</h4>
-                                <InputLabel id="userId" >User Id</InputLabel>
-                                <Input type="number" />
-                                <br /><br />
-                                <InputLabel id="coachId">Coach Id</InputLabel>
-                                <Input type="text" id="coachIdInput" />
                                 <br /><br />
                                 <Button type="submit" variant="contained" color="error">delete</Button>
                             </form>

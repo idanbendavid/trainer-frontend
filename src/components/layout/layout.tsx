@@ -69,7 +69,7 @@ function Layout() {
           {/* private admin routes */}
           <Route path="/admin/users" element={<UsersListAdmin />} />
 
-          {/* private athelte and coach routes */}
+          {/* private athelte routes */}
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/userExercises" element={<UserExercise />} />
         </Routes>

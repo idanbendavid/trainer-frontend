@@ -69,7 +69,6 @@ function ContactUs() {
             <select className="contact-us-select">
               <option>articles</option>
               <option>chat</option>
-              <option>coach</option>
               <option>exercise</option>
               <option>profile</option>
               <option>Other</option>
