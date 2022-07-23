@@ -17,7 +17,7 @@
 
 .user-profile-first-name, .user-profile-email,
 .user-profile-status, .user-profile-last-name, .user-profile-birth-date,
-.user-profile-coach-id > label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
+.user-profile-coach-id>label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
     text-align: initial;
     margin-left: 30px;
 }
@@ -31,4 +31,21 @@
     text-decoration: underline;
     margin-bottom: 30px;
     text-align: center;
+}
+
+.css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.css-1z10yd4-MuiFormControl-root-MuiTextField-root {
+    text-transform: unset;
+}
+
+.dialog-header > h3 {
+    margin: 0px;
+}
+
+#closeModalButton{
+    display: flex;
 }
