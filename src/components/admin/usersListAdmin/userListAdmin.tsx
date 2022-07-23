@@ -58,10 +58,10 @@ function UsersListAdmin() {
                 <div className="users-admin-actions">
                     <div className="users-admin-buttons">
                         {viewDeleteForm &&
-                            <Button variant="contained" color="info" onClick={() => setViewDeleteForm(!viewDeleteForm)}>delete coach form</Button>
+                            <Button variant="contained" color="info" onClick={() => setViewDeleteForm(!viewDeleteForm)}>delete coach</Button>
                         }
                         {!viewDeleteForm &&
-                            <Button variant="contained" color="info" onClick={() => setViewDeleteForm(!viewDeleteForm)}>delete user form</Button>
+                            <Button variant="contained" color="info" onClick={() => setViewDeleteForm(!viewDeleteForm)}>delete user</Button>
                         }
                     </div>
                     {viewDeleteForm &&
