@@ -155,12 +155,11 @@ export const authSlice = createSlice({
             })
             // ----------------------------------------------------------------------
             .addCase(remainConnceted.fulfilled, (state, action: PayloadAction<any>) => {
-                console.log(action, "remain connected fulfilled line 158")
                 state.isLoggedIn = true;
                 state.connectedUser = action.payload.data
                 state.isError = false
                 state.isSuccess = true
-                state.message = "yeah"
+                state.message = "connected"
                 state.token = action.payload.config.headers.Authorization
             })
             
