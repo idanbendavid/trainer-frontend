@@ -8,7 +8,7 @@ async function getUserDetails(){
 }
 
 async function changeEmail(newUserEmail: string) {
-    const response = await axios.patch('http://localhost:3001/users/changeEmail', newUserEmail);
+    const response = await axios.patch('http://localhost:3001/users/changeEmail', { newUserEmail });
     console.log(response.data);
     return response.data;
 }
