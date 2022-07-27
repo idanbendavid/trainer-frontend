@@ -1,18 +1,21 @@
 .users-list-admin {
     margin-top: 50px;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 3fr;
+}
+
+.users-admin-h1{
+    font-size: 30px;
 }
 
 .MuiDataGrid-root.css-1xy1myn-MuiDataGrid-root {
     height: 631px;
     overflow-x: hidden;
+    padding: 0px;
 }
 
 .users-admin-actions {
-    display: grid;
-    grid-template-rows: 10% 90%;
-    margin-right: 5%;
+    margin-right: 100px;
 }
 
 .users-admin-buttons{
@@ -36,4 +39,8 @@
 
 #userId {
     margin-right: 150px;
+}
+
+.user-deletion-selection {
+    justify-content: center !important;
 }
