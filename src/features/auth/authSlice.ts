@@ -156,7 +156,7 @@ export const authSlice = createSlice({
                 state.isError = false
                 state.isSuccess = true
                 state.message = "connected"
-                // state.token = action.payload.config.headers.Authorization
+                state.token = action.payload.config.headers.Authorization
             })
             .addCase(remainConnceted.rejected, (state, action: PayloadAction<any>) => {
                 console.log(action.payload)
