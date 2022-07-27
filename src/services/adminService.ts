@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 async function deleteUser(userToDelete: number) {
-    const response = await axios.delete(`http://localhost:3001/users/:${userToDelete}`)
+    const response = await axios.delete(`http://localhost:3001/users/${userToDelete}`)
 
     console.log(response.data)
 
