@@ -13,8 +13,14 @@ async function changeEmail(newUserEmail: string) {
     return response.data;
 }
 
-async function changePassword(newUserPassword: string) {
-    const response = await axios.patch('http://localhost:3001/users/', newUserPassword);
+async function checkEmail(checkEmail: string) {
+    const response = await axios.get(`http://localhost:3001/users/checkEmail/${checkEmail}`);
+
+    return response.data;
+}
+
+async function changePassword(newPassword: string, email: string) {
+    const response = await axios.put('http://localhost:3001/users/', { newPassword, email });
     console.log(response.data);
     return response.data;
 }
@@ -23,6 +29,7 @@ async function changePassword(newUserPassword: string) {
 const userDataService = {
     getUserDetails,
     changeEmail,
+    checkEmail,
     changePassword
 }
 
