@@ -10,7 +10,7 @@ export const getUserDetails = createAsyncThunk('user/getDetails', async () => {
         return await userDataService.getUserDetails()
     }
     catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return message
     }
 })
@@ -20,7 +20,7 @@ export const changeUserEmail = createAsyncThunk('user/changeEmail', async (newUs
         return await userDataService.changeEmail(newUserEmail)
     }
     catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -30,7 +30,7 @@ export const changeUserPassword = createAsyncThunk('user/changePassword', async 
         return await userDataService.changePassword(newUserPassword)
     }
     catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return thunkAPI.rejectWithValue(message)
     }
 })
