@@ -11,3 +11,10 @@
     text-decoration: underline;
     text-transform: capitalize;
 }
+
+.sign-up-link {
+    text-decoration: none;
+    color: blue;
+    margin-right: 50px;
+}
+
