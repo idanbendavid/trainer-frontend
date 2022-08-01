@@ -42,8 +42,6 @@ function logout() {
 
 async function surviveRefresh() {
     const response = await axios.get('http://localhost:3001/users/verify_token');
-    // let refreshToken: any = axios.defaults.headers.common['Authorization']
-    // localStorage.setItem("token", refreshToken)
     
     return response
 }
