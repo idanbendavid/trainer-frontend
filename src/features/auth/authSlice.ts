@@ -28,7 +28,7 @@ export const register = createAsyncThunk('auth/register', async (registeredUser:
         return await authService.register(registeredUser)
     }
     catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -38,7 +38,7 @@ export const login = createAsyncThunk('auth/login', async (loggedInDetails: ILog
         return await authService.login(loggedInDetails)
     }
     catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -48,7 +48,7 @@ export const logout = createAsyncThunk('auth/logout', () => {
         return authService.logout()
     }
     catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return message;
     }
 })
@@ -58,7 +58,7 @@ export const remainConnceted = createAsyncThunk('auth/surviveRefresh', async (th
         return await authService.surviveRefresh()
     }
     catch (error: any) {
-        const message: any = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message: string = error.response.data.error;
         return message
     }
 })
