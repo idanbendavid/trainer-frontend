@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify'
 import { ILogin } from '../../models/ILogin'
 import { IUser } from '../../models/IUser'
 import { UserRole } from '../../models/role'
@@ -29,6 +30,7 @@ export const register = createAsyncThunk('auth/register', async (registeredUser:
     }
     catch (error: any) {
         const message: string = error.response.data.error;
+        toast.error(message)
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -49,6 +51,7 @@ export const logout = createAsyncThunk('auth/logout', () => {
     }
     catch (error: any) {
         const message: string = error.response.data.error;
+        toast.error(message)
         return message;
     }
 })
@@ -59,6 +62,7 @@ export const remainConnceted = createAsyncThunk('auth/surviveRefresh', async (th
     }
     catch (error: any) {
         const message: string = error.response.data.error;
+        toast.error(message)
         return message
     }
 })
