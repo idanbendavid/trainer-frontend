@@ -11,10 +11,11 @@ const initialState = {
 
 export const deleteUser = createAsyncThunk("users/delete", async (userToDelete: number, thunkAPI) => {
     try {
-        return adminService.deleteUser(userToDelete)
+        const response = adminService.deleteUser(userToDelete);
+        return response;
     }
-    catch (error: any) {
-        const message: string = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    catch (error) {
+        const message: string = error.response.data.error;
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -31,13 +32,11 @@ export const adminSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(deleteUser.fulfilled, (state, action: PayloadAction<any>): void => {
-                console.log(action.payload)
                 state.isAdminLoggedIn = true;
                 state.isSuccess = true;
                 state.message = "user deleted"
             })
-            .addCase(deleteUser.rejected, (state, action: PayloadAction<any>) => {
-                console.log(action.payload)
+            .addCase(deleteUser.rejected, (state, action: PayloadAction<string | {} | undefined>) => {
                 state.isAdminLoggedIn = true
                 state.isError = true;
                 state.isSuccess = false
