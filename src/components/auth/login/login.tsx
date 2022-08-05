@@ -109,7 +109,10 @@ export default function LoginPage() {
       </Container>
       <Dialog open={forgotPasswordModal} onClose={closeForgotPasswordModal} >
         <DialogTitle >
-          Forgot Password
+          <div className="forgot-password-modal-title">
+            <Button color="error" variant='contained' onClick={() => setForgotPasswordModal(false)}>X</Button>
+            Forgot Password
+          </div>
         </DialogTitle>
         <DialogContent>
           {!showNewPasswordSelectionDiv &&

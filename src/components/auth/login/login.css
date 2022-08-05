@@ -18,3 +18,12 @@
     margin-right: 50px;
 }
 
+.css-bdhsul-MuiTypography-root-MuiDialogTitle-root>.forgot-password-modal-title {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center
+}
+
+.forgot-password-modal-title > .css-1sszw6i-MuiButtonBase-root-MuiButton-root{
+    margin-left: 80px;
+}
