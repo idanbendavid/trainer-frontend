@@ -1,7 +1,7 @@
 import { Home } from "@mui/icons-material";
 import { Container, CssBaseline, Box } from "@mui/material";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,7 +14,8 @@ export default function Main() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let bodyParts = useAppSelector((state) => state.exercises.bodyParts)
+
+    let bodyParts = useRef(useAppSelector((state) => state.exercises.bodyParts))
 
     useEffect(() => {
         axios.get('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', {
@@ -23,10 +24,11 @@ export default function Main() {
                 'X-RapidAPI-Host': ''
             },
         }).then((response) => {
-            bodyParts = response.data
-            dispatch(getBodyPartsList(bodyParts))
+            bodyParts.current = response.data
+            dispatch(getBodyPartsList(bodyParts.current))
         }).catch(error => {
-            toast.error(error)
+            console.log(error.response.data.message)
+            toast.error("failed loading data please report this problem and try again later")
         })
     }, [dispatch]);
 
@@ -53,9 +55,9 @@ export default function Main() {
                 <div className="main-heading">
                     <h1>what will we do today?</h1>
                 </div>
-                <Box sx={{ overflowY: 'auto', paddingTop: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', justifyItems: 'center'}} >
-                    {bodyParts.map((bodyPart: string, index: number) => (
-                        <BodyParts key={index} bodyPart={bodyPart}/>
+                <Box sx={{ overflowY: 'auto', paddingTop: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', justifyItems: 'center' }} >
+                    {bodyParts.current.map((bodyPart: string, index: number) => (
+                        <BodyParts key={index} bodyPart={bodyPart} />
                     ))}
                 </Box>
             </Container>
