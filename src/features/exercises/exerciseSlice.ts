@@ -1,14 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify';
 import { IExercise } from '../../models/IExercise';
+import exerciseService from '../../services/exercisesService';
 
 const initialState = {
     exercises: [] as any,
     bodyParts: [] as string[],
     exercise: {} as IExercise,
-    bodyPart: ""
+    bodyPart: "",
+    exerciseDate: Date()
 }
 
 
+export const addExerciseToUserSchedule = createAsyncThunk('exercise/addToSchedule', async (data: {}, thunkAPI) => {
+    try {
+        const response = await exerciseService.addExerciseToUserSchedule(data)
+        console.log(response)
+        return response
+    }
+    catch (error: any) {
+        const message: string = error.response.data.error;
+        toast.error(message)
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 export const exerciseSlice = createSlice({
     name: "exercise",
@@ -20,6 +35,14 @@ export const exerciseSlice = createSlice({
         displayExercisesByBodyPartName: (state, action) => { state.exercises = action.payload }
     },
     extraReducers: (builder) => {
+        builder
+            .addCase(addExerciseToUserSchedule.fulfilled, (state, action) => {
+                console.log(action)
+            })
+            .addCase(addExerciseToUserSchedule.rejected, (state, action) => {
+                console.log(action)
+            })
+            // -------------------------------------------------------------------------
     }
 })
 
