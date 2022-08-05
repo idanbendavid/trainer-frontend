@@ -1,16 +1,24 @@
-import { Button, Card } from '@mui/material';
+import { Button, Card, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { displayExercisesByBodyPartName } from '../../features/exercises/exerciseSlice';
+import { addExerciseToUserSchedule, displayExercisesByBodyPartName } from '../../features/exercises/exerciseSlice';
 import { IExercise } from '../../models/IExercise';
 import { useAppSelector } from '../../store';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
+import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
+import moment from 'moment';
 
 function ExerciseList() {
 
     const dispatch = useDispatch();
+    const [openDatePicker, setOpenDatePicker] = useState(Boolean);
+    let [dateValue, setDateValue] = useState<Date | null | string>(null);
+    const [newExercise, setNewExercise] = useState<IExercise>();
+
+    const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
     let bodyPart = useAppSelector((state) => state.exercises.bodyPart);
     const exercises = useAppSelector((state) => state.exercises.exercises);
@@ -25,14 +33,28 @@ function ExerciseList() {
             }).then((response) => {
                 dispatch(displayExercisesByBodyPartName(response.data))
             }).catch(error => {
-                toast.error(error)
+                console.log(error.response.data.message)
+                toast.error("failed loading data please report this problem and try again later")
             })
         }
     }, [dispatch, bodyPart]);
 
 
-    function addPracticeToSchedule(exercise: IExercise) {
-        console.log(exercise)
+    if (newExercise && dateValue) {
+        dateValue = moment().format('YYYY/MM/DD')
+        const data = {
+            newExercise,
+            dateValue
+        }
+
+        dispatch(addExerciseToUserSchedule(data))
+
+        setNewExercise(undefined)
+
+        setTimeout(() => {
+            setDateValue(null);
+            setOpenDatePicker(false)
+        }, 2000);
     }
 
     return (
@@ -49,16 +71,42 @@ function ExerciseList() {
                         <div>
                             <img id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
                         </div>
-                        <div >
+                        <div className='body-part-and-target'>
                             <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>
                             <Button sx={{ ml: '5px', color: '#fff', background: '#FF8C31', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.target}</Button>
                         </div>
-                        <div className='add-practice-button'>
-                            <Button variant='contained' color='success' onClick={() => addPracticeToSchedule(exercise)}>Add to schedule</Button>
+                        {isLoggedIn && <div className='add-practice-button'>
+                            <Button variant='contained' color='success' onClick={() => {
+                                setNewExercise(exercise);
+                                setOpenDatePicker(true)
+                            }}>
+                                Add to schedule</Button>
                         </div>
+                        }
                     </Card>
                 })}
             </div>
+            {openDatePicker &&
+                <div className='date-picker-div'>
+                    <Dialog open={openDatePicker} onClose={(reason: "backdropClick" | "escapeKeyDown") => setOpenDatePicker(false)}>
+                        <DialogTitle className='close-date-picker-button'>
+                            <Button color="error" variant='contained' onClick={() => setOpenDatePicker(false)}>X</Button>
+                        </DialogTitle>
+                        <DialogContent>
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <DatePicker
+                                    label="Exercise Date"
+                                    value={dateValue}
+                                    onChange={(newDateValue) => {
+                                        setDateValue(newDateValue);
+                                    }}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </LocalizationProvider>
+                        </DialogContent>
+                    </Dialog>
+                </div>
+            }
         </div >
     )
 }

@@ -30,7 +30,7 @@
 }
 
 .add-practice-button {
-    margin-top: 25px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
@@ -40,5 +40,20 @@
 }
 
 .exercise-name {
-    max-height: 42px;
+    height: 45px;
+}
+
+.body-part-and-target{
+    height: 40px;
+}
+.date-picker-div{
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.close-date-picker-button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
