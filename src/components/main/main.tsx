@@ -20,8 +20,8 @@ export default function Main() {
     useEffect(() => {
         axios.get('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', {
             headers: {
-                'X-RapidAPI-Key': '',
-                'X-RapidAPI-Host': ''
+                'X-RapidAPI-Key': process.env.REACT_APP_TRAINER_RAPID_API_KEY,
+                'X-RapidAPI-Host': process.env.REACT_APP_TRAINER_RAPID_API_HOST
             },
         }).then((response) => {
             bodyParts.current = response.data
