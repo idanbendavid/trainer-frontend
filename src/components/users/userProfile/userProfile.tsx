@@ -76,7 +76,7 @@ function UserProfile() {
                                 <br />
                                 <div className='user-profile-birth-date'>
                                     <InputLabel>Birth Date</InputLabel>
-                                    <Input type="datetime" disabled={true} value={user.birthDate} />
+                                    <Input type="date" disabled={true} value={user.birthDate} />
                                 </div>
                                 <br />
                             </div>
