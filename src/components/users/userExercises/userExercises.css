@@ -1,0 +1,34 @@
+.user-exercise {
+    border: 4px solid purple;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    overflow-y: hidden;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.user-exercise-grid-split {
+    display: grid;
+    grid-template-rows: 40% 60%;
+    margin-right: 15px;
+}
+
+.inspire-quets {
+    border: 3px solid cornflowerblue;
+    text-transform: capitalize;
+    font-size: 50px;
+    word-break: break-word;
+    margin: 15px 20px;
+    padding: 0px 5px;
+}
+
+.user-exercises-list {
+    border: 2px solid orange;
+    margin-top: 15px;
+}
+
+.single-exercise-detailed {
+    border: 2px solid deeppink;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
