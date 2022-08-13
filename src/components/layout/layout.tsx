@@ -18,9 +18,13 @@ import ContactUs from '../contactUs/contactUs';
 import UsersListAdmin from '../admin/usersListAdmin/userListAdmin';
 import ExerciseList from '../exerciseList/exerciseList';
 import UserExercise from '../users/userExercises/userExercises';
+import { useAppSelector } from '../../store';
 
 
 function Layout() {
+
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
+  const userRole = useAppSelector((state) => state.auth.connectedUser.userRole)
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -66,12 +70,17 @@ function Layout() {
           <Route path="/main" element={<Main />} />
           <Route path="/exercisesList" element={<ExerciseList />} />
           <Route path="/*" element={<ContactUs />} />
-          {/* private admin routes */}
-          <Route path="/admin/users" element={<UsersListAdmin />} />
 
-          {/* private athelte routes */}
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/userExercises" element={<UserExercise />} />
+          {isLoggedIn && userRole.toLowerCase() === 'admin' &&
+            < Route path="/admin/users" element={<UsersListAdmin />} />
+          }
+
+          {isLoggedIn && userRole.toLowerCase() !== 'admin' &&
+            <>
+              <Route path="/profile" element={<UserProfile />} />
+              <Route path="/userExercises" element={<UserExercise />} />
+            </>
+          }
         </Routes>
       </section>
       <ToastContainer />
