@@ -9,7 +9,7 @@ export interface IUser{
     lastName: string
     email: string
     password?: string
-    birthDate?: Date
+    birthDate?: string
     userRole: UserRole
     token: string
 }
