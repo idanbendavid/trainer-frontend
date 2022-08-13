@@ -18,7 +18,7 @@ const initialState = {
         lastName: "",
         email: "",
         password: "" || undefined,
-        birthDate: new Date() || undefined,
+        birthDate: "",
         userRole: UserRole.Visitor,
     } as IUser,
     token: ""
