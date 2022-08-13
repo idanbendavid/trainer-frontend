@@ -9,13 +9,13 @@ import { useAppSelector } from '../../store';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
-import moment from 'moment';
-
+import { dateHepler } from "../../helpers/dateHelper";
 function ExerciseList() {
 
     const dispatch = useDispatch();
     const [openDatePicker, setOpenDatePicker] = useState(Boolean);
-    let [dateValue, setDateValue] = useState<Date | null | string>(null);
+    let [dateValue, setDateValue] = useState<Date | null>(null);
+    let [newDateValue, setNewDateValue] = useState<Date | null>(null);
     const [newExercise, setNewExercise] = useState<IExercise>();
 
     const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
@@ -27,8 +27,8 @@ function ExerciseList() {
         if (bodyPart) {
             axios.get(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, {
                 headers: {
-                    'X-RapidAPI-Key': '',
-                    'X-RapidAPI-Host': ''
+                    'X-RapidAPI-Key': process.env.REACT_APP_TRAINER_RAPID_API_KEY,
+                    'X-RapidAPI-Host': process.env.REACT_APP_TRAINER_RAPID_API_HOST
                 },
             }).then((response) => {
                 dispatch(displayExercisesByBodyPartName(response.data))
@@ -40,21 +40,27 @@ function ExerciseList() {
     }, [dispatch, bodyPart]);
 
 
-    if (newExercise && dateValue) {
-        dateValue = moment().format('YYYY/MM/DD')
+    if (newExercise && newDateValue) {
+
+        let changedDate = dateHepler(newDateValue);
+
         const data = {
             newExercise,
-            dateValue
+            changedDate
         }
 
-        dispatch(addExerciseToUserSchedule(data))
+        setTimeout(() => {
+            dispatch(addExerciseToUserSchedule(data))
+        }, 2000);
+
 
         setNewExercise(undefined)
 
         setTimeout(() => {
             setDateValue(null);
+            setNewDateValue(null)
             setOpenDatePicker(false)
-        }, 2000);
+        }, 3000);
     }
 
     return (
@@ -75,7 +81,7 @@ function ExerciseList() {
                             <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>
                             <Button sx={{ ml: '5px', color: '#fff', background: '#FF8C31', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.target}</Button>
                         </div>
-                        {isLoggedIn && <div className='add-practice-button'>
+                        {isLoggedIn && <div className='add-exercise-button'>
                             <Button variant='contained' color='success' onClick={() => {
                                 setNewExercise(exercise);
                                 setOpenDatePicker(true)
@@ -98,7 +104,7 @@ function ExerciseList() {
                                     label="Exercise Date"
                                     value={dateValue}
                                     onChange={(newDateValue) => {
-                                        setDateValue(newDateValue);
+                                        setNewDateValue(newDateValue);
                                     }}
                                     renderInput={(params) => <TextField {...params} />}
                                 />
