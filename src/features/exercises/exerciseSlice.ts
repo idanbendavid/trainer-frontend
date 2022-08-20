@@ -8,7 +8,7 @@ const initialState = {
     bodyParts: [] as string[],
     exercise: {} as IExercise,
     bodyPart: "",
-    userExercises: [] 
+    userExercises: []
 }
 
 
@@ -27,6 +27,19 @@ export const addExerciseToUserSchedule = createAsyncThunk('exercise/addToSchedul
 export const getExercisesOfUser = createAsyncThunk('exercise/getUserExercises', async () => {
     try {
         const response = await exerciseService.getExercisesOfUser()
+        return response
+    }
+    catch (error: any) {
+        const message: string = error.response.data.error;
+        toast.error(message)
+        return message
+    }
+})
+
+export const deleteExerciseOfUser = createAsyncThunk('exercise/deleteExerciseOfUser', async (exerciseId: number) => {
+    try {
+        const response = await exerciseService.deleteExerciseOfUser(exerciseId)
+
         return response
     }
     catch (error: any) {
@@ -55,7 +68,23 @@ export const exerciseSlice = createSlice({
             })
             // -------------------------------------------------------------------------
             .addCase(getExercisesOfUser.fulfilled, (state, action) => {
-                state.userExercises = action.payload
+                state.userExercises = action.payload;
+
+                for (let index = 0; index < state.userExercises.length; index++) {
+                    if (state.userExercises[index].exercise_status === 0) {
+                        state.userExercises[index].exercise_status = false
+                    }
+                    else {
+                        state.userExercises[index].exercise_status = true
+                    }
+                }
+
+                // sorting the array by exercise date that his type is string
+                state.userExercises.sort(function (a, b) {
+                    a = a.exerciseDate.split('-').reverse().join('');
+                    b = b.exerciseDate.split('-').reverse().join('');
+                    return a > b ? 1 : a < b ? -1 : 0
+                })
             })
     }
 })
