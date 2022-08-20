@@ -154,7 +154,6 @@ export const authSlice = createSlice({
             })
             // ----------------------------------------------------------------------
             .addCase(remainConnceted.fulfilled, (state, action: PayloadAction<any>) => {
-                console.log(action.payload)
                 state.isLoggedIn = true;
                 state.connectedUser = action.payload.data
                 state.isError = false
@@ -163,7 +162,6 @@ export const authSlice = createSlice({
                 state.token = action.payload.config.headers.Authorization
             })
             .addCase(remainConnceted.rejected, (state, action: PayloadAction<any>) => {
-                console.log(action.payload)
                 state.isLoggedIn = false;
                 state.connectedUser = {} as IUser
                 state.isError = true
