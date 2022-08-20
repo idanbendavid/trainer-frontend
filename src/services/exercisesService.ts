@@ -9,13 +9,20 @@ async function addExerciseToUserSchedule(data: {}) {
 
 async function getExercisesOfUser() {
     const response = await axios.get('http://localhost:3001/userExercises/exercisesOfUser');
+    
+    return response.data
+}
+
+async function deleteExerciseOfUser(exerciseId: number){
+    const response = await axios.delete(`http://localhost:3001/userExercises/deleteExercise/${exerciseId}`);
 
     return response.data
 }
 
 const exerciseService = {
     addExerciseToUserSchedule,
-    getExercisesOfUser
+    getExercisesOfUser,
+    deleteExerciseOfUser
 }
 
 export default exerciseService
