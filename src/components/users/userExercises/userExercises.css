@@ -2,14 +2,11 @@
     border: 4px solid purple;
     display: grid;
     grid-template-columns: 30% 70%;
-    overflow-y: hidden;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .user-exercise-grid-split {
-    display: grid;
-    grid-template-rows: 40% 60%;
     margin-right: 15px;
 }
 
@@ -22,13 +19,46 @@
     padding: 0px 5px;
 }
 
-.user-exercises-list {
-    border: 2px solid orange;
-    margin-top: 15px;
-}
-
 .single-exercise-detailed {
     border: 2px solid deeppink;
     margin-top: 15px;
     margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100%;
+}
+
+.user-exercise-display {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    word-break: break-word;
+    margin: 10px;
+    height: 150px;
+}
+
+.user-exercise-display>img {
+    display: block;
+    height: 150px;
+    width: 100px;
+}
+
+.actions-new-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.user-exercises-exercise-name {
+    width: 160px;
+}
+
+.check-exercise-status-dialog {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: baseline;
 }
