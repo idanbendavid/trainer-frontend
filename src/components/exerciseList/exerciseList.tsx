@@ -43,10 +43,12 @@ function ExerciseList() {
     if (newExercise && newDateValue) {
 
         let changedDate = dateHepler(newDateValue);
+        let completed = false;
 
         const data = {
             newExercise,
-            changedDate
+            changedDate,
+            completed
         }
 
         setTimeout(() => {
@@ -96,6 +98,7 @@ function ExerciseList() {
                 <div className='date-picker-div'>
                     <Dialog open={openDatePicker} onClose={(reason: "backdropClick" | "escapeKeyDown") => setOpenDatePicker(false)}>
                         <DialogTitle className='close-date-picker-button'>
+                            choose the date you want to train
                             <Button color="error" variant='contained' onClick={() => setOpenDatePicker(false)}>X</Button>
                         </DialogTitle>
                         <DialogContent>
