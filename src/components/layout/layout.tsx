@@ -44,12 +44,16 @@ function Layout() {
     }
   }, [dispatch]);
 
+  function closeMenu(){
+    setIsOpen(false)
+  }
+
   return (
     <div className="layout container-fluid">
       <>
         {
-          <nav style={{ display: isOpen ? 'initial' : 'none' }}>
-            <Menu />
+          <nav style={{ display: isOpen ? 'block' : 'none' }} >
+            <Menu closeMenu={closeMenu}/>
           </nav>
         }
       </>

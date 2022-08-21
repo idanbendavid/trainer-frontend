@@ -9,7 +9,7 @@ import { Home } from '@mui/icons-material';
 import './menu.css';
 import { UserRole } from '../../models/role';
 
-export default function Menu() {
+export default function Menu(props) {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ export default function Menu() {
 
   function logout() {
     dispatch(logoutFromServer());
+    props.closeMenu();
     navigate("/main")
   }
 
@@ -28,7 +29,7 @@ export default function Menu() {
         <p>
           <span className='hello-span'>hello {user.firstName}</span>
           {!isLoggedIn &&
-            <Button onClick={() => navigate("/login")}>
+            <Button onClick={() => {navigate("/login"); props.closeMenu()}}>
               Login<LoginIcon fontSize='large' />
             </Button>
           }
@@ -38,7 +39,7 @@ export default function Menu() {
             </Button>
           }
         </p>
-        <MenuItem onClick={() => navigate("/main")}>
+        <MenuItem onClick={() => {navigate("/main"); props.closeMenu()}}>
           <Home fontSize='large' />
           <span className='home-span'>home</span>
         </MenuItem>
@@ -48,7 +49,7 @@ export default function Menu() {
           <div className='admin-menu-options'>
             <h4>users data</h4>
             <ul>
-              <MenuItem onClick={() => navigate("admin/users")}>signed users</MenuItem>
+              <MenuItem onClick={() => {navigate("admin/users"); props.closeMenu()}}>signed users</MenuItem>
             </ul>
           </div>
         }
@@ -57,8 +58,8 @@ export default function Menu() {
           <>
             <h4>user</h4>
             <ul>
-              <MenuItem onClick={() => navigate("/profile")}>{user.firstName}'s profile</MenuItem>
-              <MenuItem onClick={() => navigate("/userExercises")}>{user.firstName}'s exercises</MenuItem>
+              <MenuItem onClick={() => {navigate("/profile"); props.closeMenu()}}>{user.firstName}'s profile</MenuItem>
+              <MenuItem onClick={() => {navigate("/userExercises"); props.closeMenu()}}>{user.firstName}'s exercises</MenuItem>
             </ul>
           </>
         }
