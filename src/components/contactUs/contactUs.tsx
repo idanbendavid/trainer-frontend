@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import InputUnstyled from '@mui/base/InputUnstyled';
 import "./contactUs.css";
 import { useAppSelector } from "../../store";
+import publicComplatinsService from "../../services/publicComplaints";
 
 
 function ContactUs() {
@@ -13,11 +14,10 @@ function ContactUs() {
 
   const { register, handleSubmit } = useForm<any>();
 
-  const onProblemFormSubmit: SubmitHandler<any> = async (problem) => {
-    console.log(problem)
-    // need to add server request
-    // and clear input after server response
-    // and toastify client about the recieving of the complaint
+  const onProblemFormSubmit: SubmitHandler<any> = async (userComplaint) => {
+    const response = await publicComplatinsService.newComplaint(userComplaint)
+    console.log(response)
+    return response
   };
 
   return (
@@ -65,17 +65,16 @@ function ContactUs() {
           }
           <br />
           <div className="contact-us-select-and-option-div">
-            <InputLabel htmlFor="select" id="select-label">problem</InputLabel>
-            <select className="contact-us-select">
+            <InputLabel htmlFor="select" id="select-label">category</InputLabel>
+            <select className="contact-us-select" {...register("complaintCategory")}>
               <option>articles</option>
-              <option>chat</option>
-              <option>exercise</option>
+              <option>exercises</option>
               <option>profile</option>
               <option>Other</option>
             </select>
           </div>
           <br />
-          <textarea className="problem-text-area" placeholder="please describe your problem" {...register("problem")} ></textarea>
+          <textarea className="problem-text-area" placeholder="please describe your problem" {...register("description")} ></textarea>
           <br />
           <Button variant="contained" onClick={handleSubmit(onProblemFormSubmit)}>submit</Button>
         </Box>
