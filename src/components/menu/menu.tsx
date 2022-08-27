@@ -29,7 +29,7 @@ export default function Menu(props) {
         <p>
           <span className='hello-span'>hello {user.firstName}</span>
           {!isLoggedIn &&
-            <Button onClick={() => {navigate("/login"); props.closeMenu()}}>
+            <Button onClick={() => { navigate("/login"); props.closeMenu() }}>
               Login<LoginIcon fontSize='large' />
             </Button>
           }
@@ -39,7 +39,7 @@ export default function Menu(props) {
             </Button>
           }
         </p>
-        <MenuItem onClick={() => {navigate("/main"); props.closeMenu()}}>
+        <MenuItem onClick={() => { navigate("/main"); props.closeMenu() }}>
           <Home fontSize='large' />
           <span className='home-span'>home</span>
         </MenuItem>
@@ -49,7 +49,7 @@ export default function Menu(props) {
           <div className='admin-menu-options'>
             <h4>users data</h4>
             <ul>
-              <MenuItem onClick={() => {navigate("admin/users"); props.closeMenu()}}>signed users</MenuItem>
+              <MenuItem onClick={() => { navigate("admin/users"); props.closeMenu() }}>signed users</MenuItem>
             </ul>
           </div>
         }
@@ -58,8 +58,8 @@ export default function Menu(props) {
           <>
             <h4>user</h4>
             <ul>
-              <MenuItem onClick={() => {navigate("/profile"); props.closeMenu()}}>{user.firstName}'s profile</MenuItem>
-              <MenuItem onClick={() => {navigate("/userExercises"); props.closeMenu()}}>{user.firstName}'s exercises</MenuItem>
+              <MenuItem onClick={() => { navigate("/profile"); props.closeMenu() }}>{user.firstName}'s profile</MenuItem>
+              <MenuItem onClick={() => { navigate("/userExercises"); props.closeMenu() }}>{user.firstName}'s exercises</MenuItem>
             </ul>
           </>
         }
@@ -70,6 +70,14 @@ export default function Menu(props) {
               <MenuItem>gallery</MenuItem>
             </ul>
           </>
+        }
+        {isLoggedIn && user.userRole === UserRole.Admin &&
+          <div>
+            <h4>complaints</h4>
+            <ul>
+              <MenuItem onClick={() => { navigate("admin/complaints"); props.closeMenu() }}>complaints</MenuItem>
+            </ul>
+          </div>
         }
       </div>
     </div >

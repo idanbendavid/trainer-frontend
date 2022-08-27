@@ -19,6 +19,7 @@ import UsersListAdmin from '../admin/usersListAdmin/userListAdmin';
 import ExerciseList from '../exerciseList/exerciseList';
 import UserExercise from '../users/userExercises/userExercises';
 import { useAppSelector } from '../../store';
+import PublicComplaints from '../admin/publicComplaints/publicComplaints';
 
 
 function Layout() {
@@ -44,7 +45,7 @@ function Layout() {
     }
   }, [dispatch]);
 
-  function closeMenu(){
+  function closeMenu() {
     setIsOpen(false)
   }
 
@@ -53,7 +54,7 @@ function Layout() {
       <>
         {
           <nav style={{ display: isOpen ? 'block' : 'none' }} >
-            <Menu closeMenu={closeMenu}/>
+            <Menu closeMenu={closeMenu} />
           </nav>
         }
       </>
@@ -76,7 +77,10 @@ function Layout() {
           <Route path="/*" element={<ContactUs />} />
 
           {isLoggedIn && userRole.toLowerCase() === 'admin' &&
-            < Route path="/admin/users" element={<UsersListAdmin />} />
+            <>
+              <Route path="/admin/users" element={<UsersListAdmin />} />
+              <Route path="/admin/complaints" element={<PublicComplaints />} />
+            </>
           }
 
           {isLoggedIn && userRole.toLowerCase() !== 'admin' &&
