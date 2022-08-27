@@ -4,6 +4,7 @@ import InputUnstyled from '@mui/base/InputUnstyled';
 import "./contactUs.css";
 import { useAppSelector } from "../../store";
 import publicComplatinsService from "../../services/publicComplaints";
+import { toast } from "react-toastify";
 
 
 function ContactUs() {
@@ -16,8 +17,9 @@ function ContactUs() {
 
   const onProblemFormSubmit: SubmitHandler<any> = async (userComplaint) => {
     const response = await publicComplatinsService.newComplaint(userComplaint)
-    console.log(response)
-    return response
+    if(response){
+      toast.info("your complaint has been recieved")
+    }
   };
 
   return (
