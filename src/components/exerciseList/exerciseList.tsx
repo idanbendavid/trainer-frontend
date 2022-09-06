@@ -10,6 +10,8 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { dateHepler } from "../../helpers/dateHelper";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 function ExerciseList() {
 
     const dispatch = useDispatch();
@@ -77,7 +79,7 @@ function ExerciseList() {
                             <p>{exercise.name}</p>
                         </div>
                         <div>
-                            <img id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
+                            <LazyLoadImage id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
                         </div>
                         <div className='body-part-and-target'>
                             <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>

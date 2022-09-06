@@ -2,7 +2,9 @@ import { Button, Card, Dialog, DialogContent, DialogTitle } from '@mui/material'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getExercisesOfUser, deleteExerciseOfUser } from '../../../features/exercises/exerciseSlice';
-import { AppDispatch, useAppSelector } from '../../../store'
+import { AppDispatch, useAppSelector } from '../../../store';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import "./userExercises.css"
 
 function UserExercise() {
@@ -39,7 +41,7 @@ function UserExercise() {
         <div className='single-exercise-detailed'>
           {userExercises.map((exerciseOfUser: any, index: number) => {
             return <Card className="user-exercise-display" key={index}>
-              <img src={exerciseOfUser.gifUrl} alt="exercise" />
+              <LazyLoadImage src={exerciseOfUser.gifUrl} alt="exercise" />
               <div>
                 <p className='user-exercises-exercise-name'>{exerciseOfUser.name}</p>
                 <p>{exerciseOfUser.target}</p>
