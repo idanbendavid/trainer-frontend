@@ -15,11 +15,10 @@ import UserProfile from '../users/userProfile/userProfile';
 import { remainConnceted } from '../../features/auth/authSlice';
 import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
-import UsersListAdmin from '../admin/usersListAdmin/userListAdmin';
 import ExerciseList from '../exerciseList/exerciseList';
 import UserExercise from '../users/userExercises/userExercises';
 import { useAppSelector } from '../../store';
-import PublicComplaints from '../admin/publicComplaints/publicComplaints';
+import AdminDashbord from '../admin/adminDashbord';
 
 
 function Layout() {
@@ -69,7 +68,7 @@ function Layout() {
         </Button>
         <Routes>
           <Route path="/" element={<Navigate to="/main" replace={true} />} />
-          {/* public routes */}
+
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
@@ -78,8 +77,7 @@ function Layout() {
 
           {isLoggedIn && userRole.toLowerCase() === 'admin' &&
             <>
-              <Route path="/admin/users" element={<UsersListAdmin />} />
-              <Route path="/admin/complaints" element={<PublicComplaints />} />
+              <Route path="/admin" element={<AdminDashbord />} /> 
             </>
           }
 

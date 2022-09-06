@@ -47,9 +47,9 @@ export default function Menu(props) {
         {
           isLoggedIn && user.userRole === UserRole.Admin &&
           <div className='admin-menu-options'>
-            <h4>users data</h4>
+            <h4>Admin Dashbord</h4>
             <ul>
-              <MenuItem onClick={() => { navigate("admin/users"); props.closeMenu() }}>signed users</MenuItem>
+              <MenuItem onClick={() => { navigate("/admin"); props.closeMenu() }}>dashbord</MenuItem>
             </ul>
           </div>
         }
@@ -70,14 +70,6 @@ export default function Menu(props) {
               <MenuItem>gallery</MenuItem>
             </ul>
           </>
-        }
-        {isLoggedIn && user.userRole === UserRole.Admin &&
-          <div>
-            <h4>complaints</h4>
-            <ul>
-              <MenuItem onClick={() => { navigate("admin/complaints"); props.closeMenu() }}>complaints</MenuItem>
-            </ul>
-          </div>
         }
       </div>
     </div >
