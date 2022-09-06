@@ -1,17 +1,11 @@
-.users-list-admin {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-}
-
 .users-admin-h1{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .MuiDataGrid-root.css-1xy1myn-MuiDataGrid-root {
-    height: 631px;
     overflow-x: hidden;
     padding: 0px;
+    margin-bottom: 15px;
 }
 
 .users-admin-actions {
@@ -29,12 +23,6 @@
     text-align: center;
     text-decoration: underline;
     text-transform: capitalize;
-}
-
-.delete-user-form {
-    text-align: center;
-    text-transform: capitalize;
-    margin-bottom: 20px;
 }
 
 #userId {
