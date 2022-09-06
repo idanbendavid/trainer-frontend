@@ -1,12 +1,12 @@
 import { Button, Container, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { UserRole } from "../../../models/role";
-import { useAppSelector } from "../../../store";
 import { deleteUser as deleteUserFromServer } from "../../../features/admin/adminSlice";
+import { UserRole } from "../../../models/role";
+import adminService from "../../../services/adminService";
+import { useAppSelector } from "../../../store";
 import "./userListAdmin.css";
 
 function UsersListAdmin() {
@@ -25,24 +25,18 @@ function UsersListAdmin() {
         { field: 'id', headerName: 'User Id', width: 100 },
         { field: 'first_name', headerName: 'First Name', width: 150 },
         { field: 'last_name', headerName: 'Last Name', width: 150 },
-        { field: 'birth_date', headerName: 'Birth Date', width: 250 },
+        { field: 'birth_date', headerName: 'Birth Date', width: 150 },
         { field: 'email', headerName: 'Email', width: 250 },
-        { field: 'user_role', headerName: 'User Role', width: 170 },
     ]
+
+    async function getAllUsers() {
+        const response = await adminService.getAllUserForAdmin();   
+        setTableData(response)
+    }
 
     useEffect(() => {
         if (isLoggedIn && userRole === UserRole.Admin) {
-            axios.get("http://localhost:3001/users/allUsers", {
-                headers: {
-                    Authorization: token
-                }
-            })
-                .then(response => {
-                    setTableData(response.data)
-                })
-                .catch(error => {
-                    toast.error(error);
-                })
+            getAllUsers();
         }
     }, [isLoggedIn, userRole, token])
 
@@ -64,17 +58,12 @@ function UsersListAdmin() {
 
 
     return (
-        <>
+        <div className="user-list-admin-component">
             <h1 className="users-admin-h1">signed users</h1>
             <div className="users-list-admin">
-                <div className="users-admin-actions">
-                    <div className="delete-user">
-                        <h2 className="users-admin-heading">delete user</h2>
-                        <h3>In order to delete a specific user please mark the row that presents the user details</h3>
-                    </div>
-                </div>
-                <Container component="main" maxWidth="lg">
+                <Container component="main" maxWidth="md">
                     <DataGrid
+                        autoHeight
                         rows={tableData}
                         columns={columns}
                         pageSize={10}
@@ -101,7 +90,7 @@ function UsersListAdmin() {
                     </DialogActions>
                 </Dialog>
             }
-        </>
+        </div>
     );
 }
 
