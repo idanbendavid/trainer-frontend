@@ -40,12 +40,7 @@ function PublicComplaints() {
 
     return (
         <div className="public-complaints">
-            <div className="complaint-notes-review">
-                <h1>Complaint Explanation</h1>
-                <ul>
-                    <p>the complaints are ordered by category:</p>
-                </ul>
-            </div>
+            <h1>Public Complaints</h1>
             <div className="complaints-grid-split-note-side">
                 {publicComplaints.map((complaint: IComplaint, index: number) => {
                     return <Card key={index} className="complaint-notes" style={{ backgroundColor: changeBanckgroundColor(complaint.complaint_category) }}>
