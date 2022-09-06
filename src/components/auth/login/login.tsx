@@ -42,7 +42,7 @@ export default function LoginPage() {
     }
 
     if (isLoggedIn && connectedUser.userRole === UserRole.Admin) {
-      navigate("/admin/users")
+      navigate("/admin")
     }
 
     else if (isLoggedIn) {
@@ -91,10 +91,10 @@ export default function LoginPage() {
           <Typography component="h1" variant="h5">Sign in</Typography>
           <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             <label>Email</label>
-            <Controller name="email" control={control} render={({ field }) => <Input type="email" fullWidth required {...field} />} />
+            <Controller name="email" control={control} defaultValue="" rules={{ required: true }} render={({ field }) => <Input name='email' type="email" fullWidth required {...field} />} />
             <br /><br />
             <label>Password</label>
-            <Controller name="password" control={control} render={({ field }) => <Input type="password" fullWidth required {...field} />} />
+            <Controller name="password" control={control} rules={{ required: true }} defaultValue=""  render={({ field }) => <Input name="password" type="password" fullWidth required {...field} />} />
             <br /><br />
             <div className="button">
               <Button type="submit" variant="contained">Login</Button>
