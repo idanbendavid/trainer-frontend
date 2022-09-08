@@ -1,4 +1,4 @@
-import { Button, Card, Dialog, DialogContent, DialogTitle, TextField, Pagination } from '@mui/material';
+import { Button, Card, Dialog, DialogContent, DialogTitle, Pagination, Stack, TextField } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -68,14 +68,28 @@ function ExerciseList() {
         }, 3000);
     }
 
+    // pagination with material ui pagination component lines 137-147 inside the Stack
+    // currentExercises (line 80) replaces the exercises array in order to conrol the pagiantion
+    const [currentPage, setCurrentPage] = useState(1);
+    const exercisesPerPage: number = 10;
+
+    const indexOfLastExercise: number = currentPage * exercisesPerPage;
+
+    const indexOfFirstExercise: number = indexOfLastExercise - exercisesPerPage;
+
+    const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise)
+
+    const paginate = (event, value) => {
+        setCurrentPage(value);
+    }
 
     return (
         <div className="exercise-list">
             <div className="exercise-card-div-heading">
-                <h1>choose the exercise you want to perform</h1>
+                <h1>choose the {bodyPart} exercise you want to perform</h1>
             </div>
             <div className="exercise-card-div">
-                {exercises.map((exercise: IExercise, index: number) => {
+                {currentExercises.map((exercise: IExercise, index: number) => {
                     return <Card key={index} >
                         <div className="exercise-name">
                             <p>{exercise.name}</p>
@@ -120,7 +134,17 @@ function ExerciseList() {
                     </Dialog>
                 </div>
             }
-            <Pagination/>
+            <Stack display={"flex"} justifyContent={"center"} alignItems={"center"} mt={2}>
+                {exercises.length > exercisesPerPage &&
+                    < Pagination color='primary'
+                        shape='circular'
+                        count={Math.ceil(exercises.length / exercisesPerPage)}
+                        page={currentPage}
+                        onChange={paginate}
+                        size="large"
+                    />
+                }
+            </Stack>
         </div >
     )
 }
