@@ -8,13 +8,13 @@ import { toast } from "react-toastify"
 import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { register as serverRegistration } from '../../../features/auth/authSlice';
-import { useAppSelector } from '../../../store';
+import { AppDispatch, useAppSelector } from '../../../store';
 
 
 
 export default function Register() {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   // line 21 register is from the use form hook and means connecting to the inputs

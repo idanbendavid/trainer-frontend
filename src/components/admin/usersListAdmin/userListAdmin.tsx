@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import { deleteUser as deleteUserFromServer } from "../../../features/admin/adminSlice";
 import { UserRole } from "../../../models/role";
 import adminService from "../../../services/adminService";
-import { useAppSelector } from "../../../store";
+import { AppDispatch, useAppSelector } from "../../../store";
 import "./userListAdmin.css";
 
 function UsersListAdmin() {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     let token = useAppSelector((state) => state.auth.token);
     let isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);

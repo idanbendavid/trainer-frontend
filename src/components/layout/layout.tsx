@@ -17,7 +17,7 @@ import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
 import ExerciseList from '../exerciseList/exerciseList';
 import UserExercise from '../users/userExercises/userExercises';
-import { useAppSelector } from '../../store';
+import { AppDispatch, useAppSelector } from '../../store';
 import AdminDashbord from '../admin/adminDashbord';
 
 
@@ -28,7 +28,7 @@ function Layout() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   let token = localStorage.getItem("token")
 

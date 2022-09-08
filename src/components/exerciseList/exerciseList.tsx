@@ -1,11 +1,11 @@
-import { Button, Card, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { Button, Card, Dialog, DialogContent, DialogTitle, TextField, Pagination } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addExerciseToUserSchedule, displayExercisesByBodyPartName } from '../../features/exercises/exerciseSlice';
 import { IExercise } from '../../models/IExercise';
-import { useAppSelector } from '../../store';
+import { AppDispatch, useAppSelector } from '../../store';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
@@ -14,7 +14,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function ExerciseList() {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+
     const [openDatePicker, setOpenDatePicker] = useState(Boolean);
     let [dateValue, setDateValue] = useState<Date | null>(null);
     let [newDateValue, setNewDateValue] = useState<Date | null>(null);
@@ -67,6 +68,7 @@ function ExerciseList() {
         }, 3000);
     }
 
+
     return (
         <div className="exercise-list">
             <div className="exercise-card-div-heading">
@@ -118,6 +120,7 @@ function ExerciseList() {
                     </Dialog>
                 </div>
             }
+            <Pagination/>
         </div >
     )
 }

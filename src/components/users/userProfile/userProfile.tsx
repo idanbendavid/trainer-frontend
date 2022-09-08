@@ -1,7 +1,7 @@
 import { Container, CssBaseline, Box, InputLabel, Input, Button } from '@mui/material'
 import { ChangeEvent, useState } from 'react';
 import { changeUserEmail as updateUserEmail } from '../../../features/userData/userDataSlice';
-import { useAppSelector } from '../../../store'
+import { AppDispatch, useAppSelector } from '../../../store'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 
 function UserProfile() {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const [isChangeEmailModalOpen, setIsChangeEmailModalOpen] = useState(Boolean);
     const [oldEmail, setOldEmail] = useState("");
     const [newEmail, setNewEmail] = useState("");

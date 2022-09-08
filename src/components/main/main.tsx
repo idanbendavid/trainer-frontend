@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getBodyPartsList } from "../../features/exercises/exerciseSlice";
-import { useAppSelector } from "../../store";
+import { AppDispatch, useAppSelector } from "../../store";
 import BodyParts from "./bodyParts/bodyParts";
 import "./main.css";
 
 export default function Main() {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
 
     let bodyParts = useRef(useAppSelector((state) => state.exercises.bodyParts))

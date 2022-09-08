@@ -14,12 +14,13 @@ import upperLegsImage from "../../../assets/icons/upperLegs.png";
 import waistImage from "../../../assets/icons/waist.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./bodyParts.css"
+import { AppDispatch } from "../../../store";
 
 function BodyParts(props) {
 
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     function getBodyPart() {
         let bodyPart = props.bodyPart;

@@ -10,14 +10,14 @@ import { toast } from "react-toastify"
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../../features/auth/authSlice";
-import { useAppSelector } from "../../../store";
+import { AppDispatch, useAppSelector } from "../../../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { UserRole } from "../../../models/role";
 import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../features/userData/userDataSlice";
 
 export default function LoginPage() {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [forgotPasswordModal, setForgotPasswordModal] = useState(Boolean);
   const [showNewPasswordSelectionDiv, setShowNewPasswordSelectionDiv] = useState(Boolean);
@@ -74,9 +74,9 @@ export default function LoginPage() {
     setCheckNewPassword(event.target.value)
   }
 
-  function updatePassword() {
+  async function updatePassword() {
     if (newPassword === checkNewPassword) {
-      dispatch(changeUserPassword(newPassword, checkEmailResult))
+      dispatch(await changeUserPassword(newPassword, checkEmailResult))
     }
     toast.error('values do not match')
   }
