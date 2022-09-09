@@ -1,4 +1,4 @@
-import { Button, Card, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Button, Card, Dialog, DialogContent, DialogTitle, Pagination, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getExercisesOfUser, deleteExerciseOfUser } from '../../../features/exercises/exerciseSlice';
@@ -31,6 +31,18 @@ function UserExercise() {
     dispatch(deleteExerciseOfUser(exerciseId))
   }
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const exercisesOfUserPerPage: number = 8;
+
+  const indexOfLastUserExercise: number = currentPage * exercisesOfUserPerPage;
+
+  const indexOfFirstUserExercise: number = indexOfLastUserExercise - exercisesOfUserPerPage;
+
+  const currentUserExercises = userExercises.slice(indexOfFirstUserExercise, indexOfLastUserExercise)
+
+  const paginate = (event, value) => {
+    setCurrentPage(value);
+  }
 
   return (
     <div className='user-exercise'>
@@ -39,7 +51,7 @@ function UserExercise() {
       </div>
       <div className='user-exercise-grid-split'>
         <div className='single-exercise-detailed'>
-          {userExercises.map((exerciseOfUser: any, index: number) => {
+          {currentUserExercises.map((exerciseOfUser: any, index: number) => {
             return <Card className="user-exercise-display" key={index}>
               <LazyLoadImage src={exerciseOfUser.gifUrl} alt="exercise" />
               <div>
@@ -57,6 +69,17 @@ function UserExercise() {
             </Card>
           })}
         </div>
+        <Stack display={'flex'} alignItems={'center'} >
+          {userExercises.length > exercisesOfUserPerPage &&
+            < Pagination color='primary'
+              shape='circular'
+              count={Math.ceil(userExercises.length / exercisesOfUserPerPage)}
+              page={currentPage}
+              onChange={paginate}
+              size="large"
+            />
+          }
+        </Stack>
       </div>
       {checkStatusModal &&
         <div >
