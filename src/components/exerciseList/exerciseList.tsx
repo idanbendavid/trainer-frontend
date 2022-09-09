@@ -11,6 +11,7 @@ import "./exerciseList.css";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { dateHepler } from "../../helpers/dateHelper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import rapidApiService from '../../services/rapidApiService';
 
 function ExerciseList() {
 
@@ -28,13 +29,9 @@ function ExerciseList() {
 
     useEffect(() => {
         if (bodyPart) {
-            axios.get(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, {
-                headers: {
-                    'X-RapidAPI-Key': process.env.REACT_APP_TRAINER_RAPID_API_KEY,
-                    'X-RapidAPI-Host': process.env.REACT_APP_TRAINER_RAPID_API_HOST
-                },
-            }).then((response) => {
-                dispatch(displayExercisesByBodyPartName(response.data))
+            let getExercisesOfBodyPart = rapidApiService.getExercisesByBodyPart(bodyPart);
+            getExercisesOfBodyPart.then((getExercisesOfBodyPart) => {
+                dispatch(displayExercisesByBodyPartName(getExercisesOfBodyPart));
             }).catch(error => {
                 console.log(error.response.data.message)
                 toast.error("failed loading data please report this problem and try again later")

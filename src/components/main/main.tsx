@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getBodyPartsList } from "../../features/exercises/exerciseSlice";
+import rapidApiService from "../../services/rapidApiService";
 import { AppDispatch, useAppSelector } from "../../store";
 import BodyParts from "./bodyParts/bodyParts";
 import "./main.css";
@@ -18,13 +19,9 @@ export default function Main() {
     let bodyParts = useRef(useAppSelector((state) => state.exercises.bodyParts))
 
     useEffect(() => {
-        axios.get('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', {
-            headers: {
-                'X-RapidAPI-Key': process.env.REACT_APP_TRAINER_RAPID_API_KEY,
-                'X-RapidAPI-Host': process.env.REACT_APP_TRAINER_RAPID_API_HOST
-            },
-        }).then((response) => {
-            bodyParts.current = response.data
+        let getBodyPartResopnse = rapidApiService.getListOfBodyParts();
+        getBodyPartResopnse.then((getBodyPartResopnse) => {
+            bodyParts.current = getBodyPartResopnse
             dispatch(getBodyPartsList(bodyParts.current))
         }).catch(error => {
             console.log(error.response.data.message)
