@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getBodyPartsList } from "../../features/exercises/exerciseSlice";
-import rapidApiService from "../../services/rapidApiService";
+import mediaApiService from "../../services/mediaApiService";
 import { AppDispatch, useAppSelector } from "../../store";
 import BodyParts from "./bodyParts/bodyParts";
 import "./main.css";
@@ -19,7 +19,7 @@ export default function Main() {
     let bodyParts = useRef(useAppSelector((state) => state.exercises.bodyParts))
 
     useEffect(() => {
-        let getBodyPartResopnse = rapidApiService.getListOfBodyParts();
+        let getBodyPartResopnse = mediaApiService.getListOfBodyParts();
         getBodyPartResopnse.then((getBodyPartResopnse) => {
             bodyParts.current = getBodyPartResopnse
             dispatch(getBodyPartsList(bodyParts.current))

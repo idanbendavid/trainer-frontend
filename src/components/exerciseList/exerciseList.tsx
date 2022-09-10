@@ -11,7 +11,7 @@ import "./exerciseList.css";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { dateHepler } from "../../helpers/dateHelper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import rapidApiService from '../../services/rapidApiService';
+import mediaApiService from '../../services/mediaApiService';
 
 function ExerciseList() {
 
@@ -29,7 +29,7 @@ function ExerciseList() {
 
     useEffect(() => {
         if (bodyPart) {
-            let getExercisesOfBodyPart = rapidApiService.getExercisesByBodyPart(bodyPart);
+            let getExercisesOfBodyPart = mediaApiService.getExercisesByBodyPart(bodyPart);
             getExercisesOfBodyPart.then((getExercisesOfBodyPart) => {
                 dispatch(displayExercisesByBodyPartName(getExercisesOfBodyPart));
             }).catch(error => {

@@ -25,9 +25,9 @@ async function getExercisesByBodyPart(bodyPart: string) {
 }
 
 
-const rapidApiService = {
+const mediaApiService = {
     getListOfBodyParts,
     getExercisesByBodyPart
 }
 
-export default rapidApiService
+export default mediaApiService
