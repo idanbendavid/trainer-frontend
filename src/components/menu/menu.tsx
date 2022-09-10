@@ -67,7 +67,7 @@ export default function Menu(props) {
           <>
             <h4>gallery</h4>
             <ul className='gallery'>
-              <MenuItem>gallery</MenuItem>
+              <MenuItem onClick={() => { navigate("/gallery"); props.closeMenu() }}>gallery</MenuItem>
             </ul>
           </>
         }
