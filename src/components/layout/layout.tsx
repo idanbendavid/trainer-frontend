@@ -19,6 +19,8 @@ import ExerciseList from '../exerciseList/exerciseList';
 import UserExercise from '../users/userExercises/userExercises';
 import { AppDispatch, useAppSelector } from '../../store';
 import AdminDashbord from '../admin/adminDashbord';
+import FileUpload from '../fileUpload/fileUpload';
+import Gallery from '../gallery/gallery';
 
 
 function Layout() {
@@ -74,6 +76,8 @@ function Layout() {
           <Route path="/main" element={<Main />} />
           <Route path="/exercisesList" element={<ExerciseList />} />
           <Route path="/*" element={<ContactUs />} />
+          <Route path="/uploadImages" element={<FileUpload />} />
+          <Route path="/gallery" element={<Gallery />} />
 
           {isLoggedIn && userRole.toLowerCase() === 'admin' &&
             <>
