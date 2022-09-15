@@ -1,5 +1,6 @@
 .users-admin-h1{
     font-size: 25px;
+    margin: 10px auto;
 }
 
 .MuiDataGrid-root.css-1xy1myn-MuiDataGrid-root {
@@ -31,4 +32,11 @@
 
 .user-deletion-selection {
     justify-content: center !important;
+}
+
+.delete-user-button{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+    margin-right: 35px;
 }

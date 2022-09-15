@@ -18,8 +18,9 @@ function UsersListAdmin() {
     let userRole = useAppSelector((state) => state.auth.connectedUser.userRole);
 
     const [tableData, setTableData] = useState([])
-    const [deleteConfarmation, setDeleteConfarmation] = useState(Boolean);
     const [deleteUserData, setDeleteUserData] = useState([]);
+    const [deleteConfarmation, setDeleteConfarmation] = useState(false);
+    const [showSelectionModel, setShowSelectionModel] = useState(false);
 
     const columns = [
         { field: 'id', headerName: 'User Id', width: 100 },
@@ -30,7 +31,7 @@ function UsersListAdmin() {
     ]
 
     async function getAllUsers() {
-        const response = await adminService.getAllUserForAdmin();   
+        const response = await adminService.getAllUserForAdmin();
         setTableData(response)
     }
 
@@ -41,6 +42,11 @@ function UsersListAdmin() {
     }, [isLoggedIn, userRole, token])
 
 
+    function startOfDeleteUserProcess() {
+        setShowSelectionModel(true);
+        toast.info("please select the user you want to delete");
+    }
+
     function completeUserDeletion() {
         if (deleteUserData) {
             dispatch(deleteUserFromServer(deleteUserData[0].id))
@@ -48,6 +54,7 @@ function UsersListAdmin() {
         }
         setDeleteConfarmation(false);
         deleteUserData.splice(0, deleteUserData.length)
+        setShowSelectionModel(false)
     }
 
     function cancelUserDeletion() {
@@ -61,6 +68,9 @@ function UsersListAdmin() {
         <div className="user-list-admin-component">
             <h1 className="users-admin-h1">signed users</h1>
             <div className="users-list-admin">
+                <div className="delete-user-button">
+                    <Button variant="contained" color="error" onClick={startOfDeleteUserProcess}>Delete User</Button>
+                </div>
                 <Container component="main" maxWidth="md">
                     <DataGrid
                         autoHeight
@@ -68,7 +78,7 @@ function UsersListAdmin() {
                         columns={columns}
                         pageSize={10}
                         rowsPerPageOptions={[10]}
-                        checkboxSelection
+                        checkboxSelection={showSelectionModel}
                         onSelectionModelChange={(ids) => {
                             const selectedIDs = new Set(ids);
                             const selectedRowData = tableData.filter((tableData) =>
@@ -76,7 +86,8 @@ function UsersListAdmin() {
                             );
                             setDeleteConfarmation(true);
                             setDeleteUserData(selectedRowData);
-                        }} />
+                        }}
+                    />
                 </Container>
             </div>
             {deleteConfarmation &&

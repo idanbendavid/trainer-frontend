@@ -23,7 +23,7 @@ const initialState = {
 
 export const deleteUser = createAsyncThunk("users/delete", async (userToDelete: number, thunkAPI) => {
     try {
-        const response = adminService.deleteUser(userToDelete);
+        const response = await adminService.deleteUser(userToDelete);
         return response;
     }
     catch (error) {
@@ -34,7 +34,7 @@ export const deleteUser = createAsyncThunk("users/delete", async (userToDelete: 
 
 export const getAllComplaints = createAsyncThunk("admin/getComplaints", async () => {
     try {
-        const response = publicComplatinsService.getAllComplaints();
+        const response = await publicComplatinsService.getAllComplaints();
         return response;
     }
     catch (error) {
@@ -45,7 +45,7 @@ export const getAllComplaints = createAsyncThunk("admin/getComplaints", async ()
 
 export const deleteUserComplaint = createAsyncThunk("admin/deleteComplaint", async (complaintId: number, thunkAPI) => {
     try {
-        const response = publicComplatinsService.deleteComplaint(complaintId);
+        const response = await publicComplatinsService.deleteComplaint(complaintId);
         return response;
     }
     catch (error) {
