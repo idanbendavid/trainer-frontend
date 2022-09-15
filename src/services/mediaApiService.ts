@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 async function getListOfBodyParts() {
 
@@ -24,10 +25,31 @@ async function getExercisesByBodyPart(bodyPart: string) {
     return response.data
 }
 
+async function uploadFilesToServer(formData) {
+    try {
+        let response = await axios.post(`http://localhost:3001/files/`, formData);
+        if (response) {
+            toast.info("file uploaded successfully")
+        }
+        return response;
+    }
+    catch (error) {
+        toast.error("no file was selected");
+        console.log(error);
+    }
+}
+
+async function getFilesFromServer(){
+    let response = await axios.get(`http://localhost:3001/files/`);
+
+    return response.data;
+}
 
 const mediaApiService = {
     getListOfBodyParts,
-    getExercisesByBodyPart
+    getExercisesByBodyPart,
+    uploadFilesToServer,
+    getFilesFromServer
 }
 
 export default mediaApiService
