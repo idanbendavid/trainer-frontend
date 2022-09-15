@@ -25,3 +25,5 @@ yarn-error.log*
 
 /history
 /assets
+src/assets/icons
+src/assets/images
