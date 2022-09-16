@@ -30,6 +30,10 @@ function PublicComplaints() {
         if (category.toLocaleLowerCase() === 'exercises') {
             return '#ff4747'
         }
+        if (category.toLocaleLowerCase() === 'gallery') {
+            return '#970afc'
+        }
+        return '#f4dc72'
     }
 
 

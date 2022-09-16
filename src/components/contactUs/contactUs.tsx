@@ -72,6 +72,7 @@ function ContactUs() {
               <option>articles</option>
               <option>exercises</option>
               <option>profile</option>
+              <option>Gallery</option>
               <option>Other</option>
             </select>
           </div>
