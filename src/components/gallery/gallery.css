@@ -1,0 +1,64 @@
+@import "react-slideshow-image/dist/styles.css";
+
+.gallery-heading{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.gallery-main-container{
+    display: grid;
+    text-align: center;
+    grid-template-columns: 20% 60% 20%;
+    overflow-x: auto;
+    margin-top: 50px;
+}
+
+.react-slideshow-container {
+    width: 100%;
+    margin: auto;
+}
+
+.image-in-gallery {
+    max-height: 630px;
+    width: 100%;
+}
+
+.slide-image-span{
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.problem-with-image{
+    width: 250px;
+    height: 150px;
+    word-break: break-word;
+    resize: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.gallery-select{
+    width: 250px;
+    height: 30px;
+    font-size: 16px;
+}
+.image-problem-first-name,.image-problem-last-name, .image-problem-email{
+    margin-bottom: 10px;
+}
+
+#imageFirstName{
+    margin-right: 170px;
+}
+
+#imageLastName{
+    margin-right: 170px;
+}
+
+#imageEmail{
+    margin-right: 210px;
+}
+
+#imageCategory{
+    margin-right: 185px;
+}
