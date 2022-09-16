@@ -1,5 +1,4 @@
 import { Button, Card, Dialog, DialogContent, DialogTitle, Pagination, Stack, TextField } from '@mui/material';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
