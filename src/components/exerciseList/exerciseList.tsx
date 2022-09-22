@@ -2,12 +2,12 @@ import { Button, Card, Dialog, DialogContent, DialogTitle, Pagination, Stack, Te
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addExerciseToUserSchedule, displayExercisesByBodyPartName } from '../../features/exercises/exerciseSlice';
+import { addExerciseToUserSchedule, displayExercisesByBodyPartName, getAmountOfExercises } from '../../features/exercises/exerciseSlice';
 import { IExercise } from '../../models/IExercise';
 import { AppDispatch, useAppSelector } from '../../store';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
-import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
+import { LocalizationProvider, DatePicker, PickersDay, PickersDayProps, pickersDayClasses } from '@mui/x-date-pickers';
 import { dateHepler } from "../../helpers/dateHelper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import mediaApiService from '../../services/mediaApiService';
@@ -25,6 +25,7 @@ function ExerciseList() {
 
     let bodyPart = useAppSelector((state) => state.exercises.bodyPart);
     const exercises = useAppSelector((state) => state.exercises.exercises);
+    let amountOfExercises = useAppSelector((state) => state.exercises.amountOfExercises);
 
     useEffect(() => {
         if (bodyPart) {
@@ -36,23 +37,25 @@ function ExerciseList() {
                 toast.error("failed loading data please report this problem and try again later")
             })
         }
+
+        dispatch(getAmountOfExercises());
+
     }, [dispatch, bodyPart]);
 
 
     if (newExercise && newDateValue) {
 
         let changedDate = dateHepler(newDateValue);
-        let completed = false;
 
         const data = {
             newExercise,
             changedDate,
-            completed
+            completed: false
         }
 
         setTimeout(() => {
             dispatch(addExerciseToUserSchedule(data))
-        }, 2000);
+        }, 1500);
 
 
         setNewExercise(undefined)
@@ -61,8 +64,25 @@ function ExerciseList() {
             setDateValue(null);
             setNewDateValue(null)
             setOpenDatePicker(false)
-        }, 3000);
+        }, 2500);
     }
+
+    const customDayRenderer = (
+        date: Date,
+        selectedDates: Array<Date | null>,
+        pickersDayProps: PickersDayProps<Date>
+    ) => {
+        amountOfExercises.forEach(day => {
+            selectedDates.push(new Date(day.exerciseDate))
+        });
+
+        return <PickersDay {...pickersDayProps}  sx={{
+            [`&&.${pickersDayClasses.selected}`]: {
+              backgroundColor: "#EBEBE4",
+              cursor: 'not-allowed'
+            }
+          }} />;
+    };
 
     // pagination with material ui pagination component lines 137-147 inside the Stack
     // currentExercises (line 80) replaces the exercises array in order to conrol the pagiantion
@@ -118,7 +138,9 @@ function ExerciseList() {
                         <DialogContent>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
                                 <DatePicker
+                                    disablePast={true}
                                     label="Exercise Date"
+                                    renderDay={customDayRenderer}
                                     value={dateValue}
                                     onChange={(newDateValue) => {
                                         setNewDateValue(newDateValue);

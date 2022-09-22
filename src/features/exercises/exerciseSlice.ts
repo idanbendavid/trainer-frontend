@@ -8,7 +8,8 @@ const initialState = {
     bodyParts: [] as string[],
     exercise: {} as IExercise,
     bodyPart: "",
-    userExercises: []
+    userExercises: [],
+    amountOfExercises: []
 }
 
 
@@ -49,6 +50,19 @@ export const deleteExerciseOfUser = createAsyncThunk('exercise/deleteExerciseOfU
     }
 })
 
+export const getAmountOfExercises = createAsyncThunk('exercise/amountOfExercises', async () => {
+    try {
+        const response = await exerciseService.getAmountOfExercisesPerDateForUser()
+
+        return response
+    }
+    catch (error: any) {
+        const message: string = error.response.data.error;
+        toast.error(message)
+        return message
+    }
+})
+
 export const exerciseSlice = createSlice({
     name: "exercise",
     initialState,
@@ -61,10 +75,10 @@ export const exerciseSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(addExerciseToUserSchedule.fulfilled, (state, action) => {
-                console.log(action)
+                // console.log(action)
             })
             .addCase(addExerciseToUserSchedule.rejected, (state, action) => {
-                console.log(action)
+                // console.log(action)
             })
             // -------------------------------------------------------------------------
             .addCase(getExercisesOfUser.fulfilled, (state, action) => {
@@ -85,6 +99,10 @@ export const exerciseSlice = createSlice({
                     b = b.exerciseDate.split('-').reverse().join('');
                     return a > b ? 1 : a < b ? -1 : 0
                 })
+            })
+            // ------------------------------------------------------
+            .addCase(getAmountOfExercises.fulfilled, (state,action)=>{
+                state.amountOfExercises = action.payload;
             })
     }
 })
