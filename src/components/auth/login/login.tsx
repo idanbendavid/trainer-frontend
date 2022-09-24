@@ -14,6 +14,7 @@ import { AppDispatch, useAppSelector } from "../../../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { UserRole } from "../../../models/role";
 import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../features/userData/userDataSlice";
+import regexes from "../../../helpers/regex";
 
 export default function LoginPage() {
 
@@ -30,9 +31,42 @@ export default function LoginPage() {
   let { connectedUser, message, isLoggedIn, isError, isSuccess } = useAppSelector((state) => state.auth)
   let checkEmailResult: string = useAppSelector((state) => state.user.user.email);
 
-  const { control, handleSubmit } = useForm<ILogin>();
+  const { control, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<ILogin>({
+    defaultValues: {
+      email: "",
+      password: ""
+    }
+  });
 
   const onSubmit: SubmitHandler<ILogin> = (loginData: ILogin) => {
+    if (!loginData.email) {
+      setError("email", { type: "required", message: "Field Is Required" })
+      setTimeout(() => {
+        clearErrors("email")
+      }, 2000);
+      return;
+    }
+    if (!loginData.password) {
+      setError("password", { type: "required", message: "Field Is Required" })
+      setTimeout(() => {
+        clearErrors("password")
+      }, 2000);
+      return;
+    }
+    if (!loginData.email.match(regexes.emailReg)) {
+      setError("email", { type: "pattern", message: "Invalid Email Address" })
+      setTimeout(() => {
+        clearErrors("email")
+      }, 2000);
+      return;
+    }
+    if (!loginData.password.match(regexes.passwordReg)) {
+      setError("password", { type: "pattern", message: "password must include al least 8 characters, must contain 1 uppercase letter 1 lowercase letter and 1 number" })
+      setTimeout(() => {
+        clearErrors("password")
+      }, 2000);
+      return;
+    }
     dispatch(login(loginData))
   };
 
@@ -59,7 +93,6 @@ export default function LoginPage() {
     setCheckEmail(event.target.value);
   }
 
-
   function closeForgotPasswordModal() {
     setForgotPasswordModal(false)
     dispatch(resetUserData())
@@ -75,10 +108,15 @@ export default function LoginPage() {
   }
 
   async function updatePassword() {
-    if (newPassword === checkNewPassword) {
-      dispatch(await changeUserPassword(newPassword, checkEmailResult))
+    if (!newPassword.match(regexes.passwordReg)) {
+      toast.error("at least 8 characters long, 1 uppercase letter 1 lowercase letter and 1 number are required");
+      return;
     }
-    toast.error('values do not match')
+    if (newPassword !== checkNewPassword) {
+      toast.error('values do not match');
+      return;
+    }
+    dispatch(await changeUserPassword(newPassword, checkEmailResult))
   }
 
 
@@ -88,16 +126,18 @@ export default function LoginPage() {
       <Container fixed>
         <Box sx={{ marginTop: 15, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
-          <Typography component="h1" variant="h5">Sign in</Typography>
+          <Typography component="h1" variant="h5">Sign In</Typography>
           <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             <label>Email</label>
-            <Controller name="email" control={control} defaultValue="" rules={{ required: true }} render={({ field }) => <Input name='email' type="email" fullWidth required {...field} />} />
+            <Controller name="email" control={control} defaultValue="" render={({ field }) => <Input name='email' type="email" fullWidth {...field} />} />
+            {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.email.message}</p>}
             <br /><br />
             <label>Password</label>
-            <Controller name="password" control={control} rules={{ required: true }} defaultValue=""  render={({ field }) => <Input name="password" type="password" fullWidth required {...field} />} />
+            <Controller name="password" control={control} defaultValue="" render={({ field }) => <Input name="password" type="password" fullWidth {...field} />} />
+            {errors.password && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.password.message}</p>}
             <br /><br />
             <div className="button">
-              <Button type="submit" variant="contained">Login</Button>
+              <Button type="submit" variant="contained">Sign In</Button>
             </div>
           </form>
           <br />

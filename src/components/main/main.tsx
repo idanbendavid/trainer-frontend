@@ -38,9 +38,8 @@ export default function Main() {
                             <Home fontSize='large' />
                         </li>
                         <li>articles</li>
-                        <li>gallery</li>
+                        <li onClick={() => navigate("/gallery")}>gallery</li>
                         <li>guidance</li>
-                        {/* in a drop down list for guidance there will be a nutriotion component */}
                         <li>connect with athletes</li>
                         <li onClick={() => navigate("/*")}>need help? contact us</li>
                     </ul>

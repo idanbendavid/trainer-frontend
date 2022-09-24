@@ -9,6 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import "./userProfile.css";
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import regexes from '../../../helpers/regex';
 
 
 function UserProfile() {
@@ -32,6 +33,11 @@ function UserProfile() {
     function updateEmailAddressOfUser() {
         if (oldEmail !== user.email) {
             toast.error("old email address does not match");
+            return;
+        }
+
+        if(!newEmail.match(regexes.emailReg)){
+            toast.error("Invalid Email Address");
             return;
         }
 
@@ -85,9 +91,6 @@ function UserProfile() {
                         <div className='user-profile-buttons'>
                             <div className='change-email-button'>
                                 <Button type="submit" variant="contained" color='success' sx={{ mt: 2, mb: 2 }} onClick={() => setIsChangeEmailModalOpen(true)}>change email</Button>
-                            </div>
-                            <div className='update-profile-button'>
-                                <Button type="submit" variant="contained" color='info' sx={{ mt: 2, mb: 2 }} >update profile</Button>
                             </div>
                         </div>
                     </Box>

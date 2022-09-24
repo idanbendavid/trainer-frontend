@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@hookform/error-message": "^2.0.0",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.6.4",
     "@mui/x-data-grid": "^5.10.0",
