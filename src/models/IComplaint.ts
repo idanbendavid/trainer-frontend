@@ -1,8 +1,9 @@
 export interface IComplaint {
-    complaintId: number,
-    first_name: string,
-    last_name: string,
+    complaintId?: number,
+    firstName: string,
+    lastName: string,
     email: string,
-    complaint_category: string,
-    description: string
+    complaintCategory: string,
+    description: string,
+    complaintDate?: Date | string 
 }

@@ -11,6 +11,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import publicComplatinsService from '../../services/publicComplaints';
 import regexes from '../../helpers/regex';
+import { IComplaint } from '../../models/IComplaint';
 
 
 function Gallery() {
@@ -23,7 +24,7 @@ function Gallery() {
         dispatch(getFilesFromServer())
     }, [dispatch])
 
-    const { register, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<any>({
+    const { register, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<IComplaint>({
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -33,58 +34,64 @@ function Gallery() {
         }
     });
 
-    const onGalleryProblemFormSubmit: SubmitHandler<any> = async (userComplaint) => {
-        if (!userComplaint.firstName) {
-            setError("firstName", {type: 'required', message: "field is required"})
-            setTimeout(() => {
-                clearErrors("firstName")
-            }, 1500);
-            return;
-        }
-        if (!userComplaint.lastName) {
-            setError("lastName", {type: 'required', message: "field is required"})
-            setTimeout(() => {
-                clearErrors("lastName")
-            }, 1500);
-            return;
-        }
-        if (!userComplaint.email) {
-            setError("email", {type: 'required', message: "field is required"})
-            setTimeout(() => {
-                clearErrors("email")
-            }, 1500);
-            return;
-        }
-        if (!userComplaint.email.match(regexes.emailReg)) {
-            setError("email", {type: 'pattern', message: "Invalid Email Address"})
-            setTimeout(() => {
-                clearErrors("email")
-            }, 1500);
-            return;
-        }
-        if (!userComplaint.complaintCategory) {
-            setError("complaintCategory", {type: 'required', message: "field is required"})
-            setTimeout(() => {
-                clearErrors("complaintCategory")
-            }, 1500);
-            return;
-        }
-        if (!userComplaint.description) {
-            setError("description", {type: 'required', message: "field is required"})
-            setTimeout(() => {
-                clearErrors("description")
-            }, 1500);
-            return;
-        }
+    const onGalleryProblemFormSubmit: SubmitHandler<IComplaint> = async (userComplaint) => {
 
-        else {
+        let formValidation = complaintFormValidation(userComplaint);
+
+        if (formValidation) {
             const response = await publicComplatinsService.newComplaint(userComplaint)
             if (response) {
                 toast.info("your complaint has been recieved")
             }
         }
-
     };
+
+
+    function complaintFormValidation(userComplaint: IComplaint): boolean {
+        if (!userComplaint.firstName) {
+            setError("firstName", { type: 'required', message: "field is required" })
+            setTimeout(() => {
+                clearErrors("firstName")
+            }, 1500);
+            return false;
+        }
+        if (!userComplaint.lastName) {
+            setError("lastName", { type: 'required', message: "field is required" })
+            setTimeout(() => {
+                clearErrors("lastName")
+            }, 1500);
+            return false;
+        }
+        if (!userComplaint.email) {
+            setError("email", { type: 'required', message: "field is required" })
+            setTimeout(() => {
+                clearErrors("email")
+            }, 1500);
+            return false;
+        }
+        if (!userComplaint.email.match(regexes.emailReg)) {
+            setError("email", { type: 'pattern', message: "Invalid Email Address" })
+            setTimeout(() => {
+                clearErrors("email")
+            }, 1500);
+            return false;
+        }
+        if (!userComplaint.complaintCategory) {
+            setError("complaintCategory", { type: 'required', message: "field is required" })
+            setTimeout(() => {
+                clearErrors("complaintCategory")
+            }, 1500);
+            return false;
+        }
+        if (!userComplaint.description) {
+            setError("description", { type: 'required', message: "field is required" })
+            setTimeout(() => {
+                clearErrors("description")
+            }, 1500);
+            return false;
+        }
+        return true;
+    }
 
     return (
         <>

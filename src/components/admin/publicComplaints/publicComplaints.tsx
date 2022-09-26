@@ -6,6 +6,7 @@ import { deleteUserComplaint, getAllComplaints } from "../../../features/admin/a
 import { Card } from "@mui/material";
 import { IComplaint } from "../../../models/IComplaint";
 import ClearIcon from '@mui/icons-material/Clear';
+import { dateHepler } from "../../../helpers/dateHelper";
 
 function PublicComplaints() {
 
@@ -47,15 +48,16 @@ function PublicComplaints() {
             <h1>Public Complaints</h1>
             <div className="complaints-grid-split-note-side">
                 {publicComplaints.map((complaint: IComplaint, index: number) => {
-                    return <Card key={index} className="complaint-notes" style={{ backgroundColor: changeBanckgroundColor(complaint.complaint_category) }}>
+                    return <Card key={index} className="complaint-notes" style={{ backgroundColor: changeBanckgroundColor(complaint.complaintCategory) }}>
                         <div className="clear-icon-div-in-notes" onClick={() => deleteComplaintAfterTreatment(complaint.complaintId)} title={'Delete Complaint'}>
                             <ClearIcon />
                         </div>
-                        <h3>Category: {complaint.complaint_category}</h3>
+                        <h3>Category: {complaint.complaintCategory}</h3>
+                        <span className="complaint-date-span">Recieved In: {complaint.complaintDate || "-"}</span>
                         <div className="complaint-description">
                             <p><b>Description:</b> {complaint.description}</p>
                         </div>
-                        <h4>Name: {complaint.first_name} {complaint.last_name}</h4>
+                        <h4>Name: {complaint.firstName} {complaint.lastName}</h4>
                         <h4>Email: {complaint.email}</h4>
                     </Card>
                 })

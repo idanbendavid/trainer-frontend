@@ -32,68 +32,80 @@ export default function Register() {
   let { connectedUser, message, isLoggedIn, isError, isSuccess } = useAppSelector((state) => state.auth)
 
   const onSubmit: SubmitHandler<IUser> = async (registeredUser: IUser) => {
+
+    let formValidation = registerFormValidation(registeredUser);
+    console.log(formValidation)
+
+    if (formValidation) {
+
+      await dispatch(serverRegistration(registeredUser));
+
+      if (connectedUser) {
+        navigate("/profile");
+      }
+    }
+
+  };
+
+  function registerFormValidation(registeredUser: IUser): boolean {
     if (!registeredUser.firstName) {
       setError("firstName", { type: "required", message: "Field Is Required" });
       setTimeout(() => {
         clearErrors("firstName");
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.lastName) {
       setError("lastName", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("lastName")
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.birthDate) {
       setError("birthDate", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("birthDate");
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.userRole) {
       setError("userRole", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("userRole");
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.email) {
       setError("email", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("email");
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.email.match(regexes.emailReg)) {
       setError("email", { type: 'pattern', message: "Invalid Email Address" });
       setTimeout(() => {
         clearErrors("email");
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.password) {
       setError("password", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("password");
       }, 2000);
-      return;
+      return false;
     }
     if (!registeredUser.password.match(regexes.passwordReg)) {
       setError("password", { type: 'pattern', message: "at least 8 characters long\n1 uppercase letter\n1 lowercase letter\n1 number are required" })
       setTimeout(() => {
         clearErrors("password");
       }, 2000);
-      return;
+      return false;
     }
-    dispatch(serverRegistration(registeredUser));
-
-    if(connectedUser){
-      navigate("/profile");
-    }
-  };
+    return true;
+  }
 
   useEffect(() => {
     if (isError) {

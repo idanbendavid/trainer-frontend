@@ -39,36 +39,45 @@ export default function LoginPage() {
   });
 
   const onSubmit: SubmitHandler<ILogin> = (loginData: ILogin) => {
+
+    let loginValidation = loginFormValidation(loginData);
+
+    if (loginValidation) {
+      dispatch(login(loginData))
+    }
+  };
+
+  function loginFormValidation(loginData: ILogin): boolean {
     if (!loginData.email) {
       setError("email", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("email")
       }, 2000);
-      return;
+      return false;
     }
     if (!loginData.password) {
       setError("password", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
         clearErrors("password")
       }, 2000);
-      return;
+      return false;
     }
     if (!loginData.email.match(regexes.emailReg)) {
       setError("email", { type: "pattern", message: "Invalid Email Address" })
       setTimeout(() => {
         clearErrors("email")
       }, 2000);
-      return;
+      return false;
     }
     if (!loginData.password.match(regexes.passwordReg)) {
       setError("password", { type: "pattern", message: "password must include al least 8 characters, must contain 1 uppercase letter 1 lowercase letter and 1 number" })
       setTimeout(() => {
         clearErrors("password")
       }, 2000);
-      return;
+      return false;
     }
-    dispatch(login(loginData))
-  };
+    return true
+  }
 
   useEffect(() => {
     if (isError) {

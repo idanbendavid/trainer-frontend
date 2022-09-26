@@ -76,8 +76,8 @@ function UsersListAdmin() {
                         autoHeight
                         rows={tableData}
                         columns={columns}
-                        pageSize={10}
-                        rowsPerPageOptions={[10]}
+                        pageSize={3}
+                        rowsPerPageOptions={[3]}
                         checkboxSelection={showSelectionModel}
                         onSelectionModelChange={(ids) => {
                             const selectedIDs = new Set(ids);

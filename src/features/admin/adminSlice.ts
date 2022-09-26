@@ -11,11 +11,12 @@ const initialState = {
     isSuccess: false,
     complaint: {
         complaintId: 0,
-        first_name: "",
-        last_name: "",
+        firstName: "",
+        lastName: "",
         email: "",
-        complaint_category: "",
-        description: ""
+        complaintCategory: "",
+        description: "",
+        complaintDate: ""
     } as IComplaint,
     publicComplaints: [] as IComplaint[]
 }
@@ -79,9 +80,9 @@ export const adminSlice = createSlice({
             .addCase(getAllComplaints.fulfilled, (state, action: PayloadAction<IComplaint[]>) => {
                 state.publicComplaints = action.payload
 
-                state.publicComplaints.sort(function (a,b){
-                    return a.complaint_category.toLocaleLowerCase() > b.complaint_category.toLocaleLowerCase() 
-                    ? 1 : a.complaint_category.toLocaleLowerCase() < b.complaint_category.toLocaleLowerCase() ? -1 : 0
+                state.publicComplaints.sort(function (a, b) {
+                    return a.complaintCategory.toLocaleLowerCase() > b.complaintCategory.toLocaleLowerCase()
+                        ? 1 : a.complaintCategory.toLocaleLowerCase() < b.complaintCategory.toLocaleLowerCase() ? -1 : 0
                 })
             })
             .addCase(getAllComplaints.rejected, (state, action: PayloadAction<{}>) => {
