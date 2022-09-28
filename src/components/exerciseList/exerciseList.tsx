@@ -29,6 +29,7 @@ function ExerciseList() {
 
     useEffect(() => {
         if (bodyPart) {
+            sessionStorage.setItem("bodyPart", bodyPart);
             let getExercisesOfBodyPart = mediaApiService.getExercisesByBodyPart(bodyPart);
             getExercisesOfBodyPart.then((getExercisesOfBodyPart) => {
                 dispatch(displayExercisesByBodyPartName(getExercisesOfBodyPart));
@@ -37,7 +38,16 @@ function ExerciseList() {
                 toast.error("failed loading data please report this problem and try again later")
             })
         }
-
+        if(!bodyPart){
+            let savedBodyPart = sessionStorage.getItem("bodyPart");
+            let getExercisesOfBodyPart = mediaApiService.getExercisesByBodyPart(savedBodyPart);
+            getExercisesOfBodyPart.then((getExercisesOfBodyPart) => {
+                dispatch(displayExercisesByBodyPartName(getExercisesOfBodyPart));
+            }).catch(error => {
+                console.log(error.response.data.message)
+                toast.error("failed loading data please report this problem and try again later")
+            })
+        }
         dispatch(getAmountOfExercises());
 
     }, [dispatch, bodyPart]);
