@@ -1,8 +1,6 @@
-import { Home } from "@mui/icons-material";
 import { Container, CssBaseline, Box } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getBodyPartsList } from "../../features/exercises/exerciseSlice";
 import mediaApiService from "../../services/mediaApiService";
@@ -13,7 +11,6 @@ import "./main.css";
 export default function Main() {
 
     const dispatch = useDispatch<AppDispatch>();
-    const navigate = useNavigate();
 
     let bodyParts = useRef(useAppSelector((state) => state.exercises.bodyParts))
 
@@ -31,20 +28,6 @@ export default function Main() {
 
     return (
         <div className="main">
-            <div>
-                <nav >
-                    <ul className="user-enrichness-navbar">
-                        <li>
-                            <Home fontSize='large' />
-                        </li>
-                        <li>articles</li>
-                        <li onClick={() => navigate("/gallery")}>gallery</li>
-                        <li>guidance</li>
-                        <li>connect with athletes</li>
-                        <li onClick={() => navigate("/*")}>need help? contact us</li>
-                    </ul>
-                </nav>
-            </div>
             <Container maxWidth="xl" >
                 <CssBaseline />
                 <div className="main-heading">

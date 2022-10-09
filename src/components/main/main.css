@@ -2,24 +2,6 @@
     overflow-y: auto;
 }
 
-.user-enrichness-navbar {
-    border: 2px solid purple;
-    width: 100%;
-    margin-top: 50px;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    text-transform: capitalize;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.user-enrichness-navbar>li {
-    list-style-type: none;
-}
-
 .main-heading{
     text-align: center;
     text-transform: capitalize;

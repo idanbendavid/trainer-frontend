@@ -11,16 +11,15 @@ import axios from 'axios';
 import LoginPage from '../auth/login/login';
 import Register from '../auth/register/register';
 import Main from '../main/main';
-import UserProfile from '../users/userProfile/userProfile';
 import { remainConnceted } from '../../features/auth/authSlice';
 import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
 import ExerciseList from '../exerciseList/exerciseList';
-import UserExercise from '../users/userExercises/userExercises';
 import { AppDispatch, useAppSelector } from '../../store';
 import AdminDashbord from '../admin/adminDashbord';
 import FileUpload from '../fileUpload/fileUpload';
 import Gallery from '../gallery/gallery';
+import UserPage from '../users/userPage';
 
 
 function Layout() {
@@ -44,7 +43,7 @@ function Layout() {
       console.log("no token")
       navigate("/main")
     }
-  }, [dispatch]);
+  }, [dispatch,token]);
 
   function closeMenu() {
     setIsOpen(false)
@@ -81,14 +80,13 @@ function Layout() {
 
           {isLoggedIn && userRole.toLowerCase() === 'admin' &&
             <>
-              <Route path="/admin" element={<AdminDashbord />} /> 
+              <Route path="/admin" element={<AdminDashbord />} />
             </>
           }
 
           {isLoggedIn && userRole.toLowerCase() !== 'admin' &&
             <>
-              <Route path="/profile" element={<UserProfile />} />
-              <Route path="/userExercises" element={<UserExercise />} />
+              <Route path="/users" element={<UserPage />} />
             </>
           }
         </Routes>

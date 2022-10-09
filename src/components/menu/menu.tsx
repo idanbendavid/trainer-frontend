@@ -47,7 +47,7 @@ export default function Menu(props) {
         {
           isLoggedIn && user.userRole === UserRole.Admin &&
           <div className='admin-menu-options'>
-            <h4>Admin Dashbord</h4>
+            <h4>Admin</h4>
             <ul>
               <MenuItem onClick={() => { navigate("/admin"); props.closeMenu() }}>dashbord</MenuItem>
             </ul>
@@ -58,19 +58,19 @@ export default function Menu(props) {
           <>
             <h4>user</h4>
             <ul>
-              <MenuItem onClick={() => { navigate("/profile"); props.closeMenu() }}>{user.firstName}'s profile</MenuItem>
-              <MenuItem onClick={() => { navigate("/userExercises"); props.closeMenu() }}>{user.firstName}'s exercises</MenuItem>
+              <MenuItem onClick={() => { navigate("/users"); props.closeMenu() }}>{user.firstName}'s profile</MenuItem>
             </ul>
           </>
         }
-        {isLoggedIn &&
-          <>
-            <h4>gallery</h4>
-            <ul className='gallery'>
-              <MenuItem onClick={() => { navigate("/gallery"); props.closeMenu() }}>gallery</MenuItem>
-            </ul>
-          </>
-        }
+        <h4>gallery</h4>
+        <ul className='gallery'>
+          <MenuItem onClick={() => { navigate("/gallery"); props.closeMenu() }}>gallery</MenuItem>
+        </ul>
+
+        <h4>need help?</h4>
+        <ul className='gallery'>
+          <MenuItem onClick={() => { navigate("/*"); props.closeMenu() }}>contact us</MenuItem>
+        </ul>
       </div>
     </div >
   );

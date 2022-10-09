@@ -41,7 +41,7 @@ export default function Register() {
       await dispatch(serverRegistration(registeredUser));
 
       if (connectedUser) {
-        navigate("/profile");
+        navigate("/users");
       }
     }
 

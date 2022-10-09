@@ -89,7 +89,7 @@ export default function LoginPage() {
     }
 
     else if (isLoggedIn) {
-      navigate("/profile")
+      navigate("/users")
     }
 
     if (checkEmailResult) {

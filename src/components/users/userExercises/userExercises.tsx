@@ -13,7 +13,8 @@ function UserExercise() {
   const [checkStatusModal, setCheckStatusModal] = useState(Boolean);
   const [exerciseToDelete, setExerciseToDelete] = useState(null);
 
-  let userExercises = useAppSelector((state) => state.exercises.userExercises)
+  let userExercises = useAppSelector((state) => state.exercises.userExercises);
+  let firstName = useAppSelector((state) => state.auth.connectedUser.firstName);
 
   useEffect(() => {
 
@@ -28,7 +29,8 @@ function UserExercise() {
   function deleteExerciseFromUserSchedule() {
     let exerciseId = exerciseToDelete.exercise_id
 
-    dispatch(deleteExerciseOfUser(exerciseId))
+    dispatch(deleteExerciseOfUser(exerciseId));
+    setCheckStatusModal(false);
   }
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,10 +48,8 @@ function UserExercise() {
 
   return (
     <div className='user-exercise'>
-      <div className='inspire-quets'>
-        <h1>hard work dedication never quiting and you're looking at a champion</h1>
-      </div>
       <div className='user-exercise-grid-split'>
+        <h1 className='exercise-header'>{firstName}'s exercises</h1>
         <div className='single-exercise-detailed'>
           {currentUserExercises.map((exerciseOfUser: any, index: number) => {
             return <Card className="user-exercise-display" key={index}>
