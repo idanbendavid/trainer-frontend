@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 import { IComplaint } from '../../models/IComplaint';
 import adminService from '../../services/adminService'
-import publicComplatinsService from '../../services/publicComplaints';
+import publicComplatinsService from '../../services/publicComplaintsService';
 
 const initialState = {
     message: "",
@@ -87,6 +87,12 @@ export const adminSlice = createSlice({
             })
             .addCase(getAllComplaints.rejected, (state, action: PayloadAction<{}>) => {
                 state.message = "could not get all user complaints please check passed data"
+            })
+            .addCase(deleteUserComplaint.fulfilled, (state, action: PayloadAction<number>) => {
+                state.publicComplaints = state.publicComplaints.filter((complaint) => complaint.complaintId !== action.payload);
+            })
+            .addCase(deleteUserComplaint.rejected, (state, action: PayloadAction<any>) => {
+                state.message = action.payload;
             })
 
     }
