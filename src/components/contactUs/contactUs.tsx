@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import InputUnstyled from '@mui/base/InputUnstyled';
 import "./contactUs.css";
 import { useAppSelector } from "../../store";
-import publicComplatinsService from "../../services/publicComplaints";
+import publicComplatinsService from "../../services/publicComplaintsService";
 import { toast } from "react-toastify";
 import regexes from "../../helpers/regex";
 import { IComplaint } from "../../models/IComplaint";

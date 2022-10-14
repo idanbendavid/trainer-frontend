@@ -9,7 +9,7 @@ import { Box, Button, Container, CssBaseline, InputLabel } from '@mui/material';
 import { InputUnstyled } from '@mui/base';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import publicComplatinsService from '../../services/publicComplaints';
+import publicComplatinsService from '../../services/publicComplaintsService';
 import regexes from '../../helpers/regex';
 import { IComplaint } from '../../models/IComplaint';
 

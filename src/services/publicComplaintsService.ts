@@ -13,10 +13,11 @@ async function newComplaint(userComplaint: object) {
 }
 
 
-async function deleteComplaint(complaintId: number) {
+async function deleteComplaint(complaintId: number): Promise<number> {
     const response = await axios.delete(`http://localhost:3001/complaint/${complaintId}`)
-
-    return response.data
+    if(response.data){
+        return complaintId;
+    }
 }
 
 const publicComplatinsService = {
