@@ -55,11 +55,11 @@ function ExerciseList() {
 
     if (newExercise && newDateValue) {
 
-        let changedDate = dateHepler(newDateValue);
+        let stringifiedDateValue = dateHepler(newDateValue);
 
         const data = {
             newExercise,
-            changedDate,
+            stringifiedDateValue,
             completed: false
         }
 
