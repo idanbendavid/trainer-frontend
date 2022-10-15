@@ -24,7 +24,7 @@ function Gallery() {
         dispatch(getFilesFromServer())
     }, [dispatch])
 
-    const { register, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<IComplaint>({
+    const { register, handleSubmit, setError, formState: { errors }, clearErrors, reset } = useForm<IComplaint>({
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -42,6 +42,7 @@ function Gallery() {
             const response = await publicComplatinsService.newComplaint(userComplaint)
             if (response) {
                 toast.info("your complaint has been recieved")
+                reset();
             }
         }
     };

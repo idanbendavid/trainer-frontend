@@ -13,7 +13,7 @@ import { login } from "../../../features/auth/authSlice";
 import { AppDispatch, useAppSelector } from "../../../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { UserRole } from "../../../models/role";
-import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../features/userData/userDataSlice";
+import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../features/auth/authSlice";
 import regexes from "../../../helpers/regex";
 
 export default function LoginPage() {
@@ -29,7 +29,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   let { connectedUser, message, isLoggedIn, isError, isSuccess } = useAppSelector((state) => state.auth)
-  let checkEmailResult: string = useAppSelector((state) => state.user.user.email);
+  let checkEmailResult: string = useAppSelector((state) => state.auth.connectedUser.email);
 
   const { control, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<ILogin>({
     defaultValues: {

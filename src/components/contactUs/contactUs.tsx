@@ -15,7 +15,7 @@ function ContactUs() {
 
   let isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
-  const { register, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<IComplaint>({
+  const { register, handleSubmit, setError, formState: { errors }, clearErrors, reset } = useForm<IComplaint>({
     defaultValues: {
       firstName: userDetails.firstName || "",
       lastName: userDetails.lastName || "",
@@ -33,6 +33,7 @@ function ContactUs() {
       const response = await publicComplatinsService.newComplaint(userComplaint)
       if (response) {
         toast.info("your complaint has been recieved")
+        reset();
       }
     }
   };
