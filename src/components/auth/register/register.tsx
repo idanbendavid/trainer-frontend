@@ -34,7 +34,6 @@ export default function Register() {
   const onSubmit: SubmitHandler<IUser> = async (registeredUser: IUser) => {
 
     let formValidation = registerFormValidation(registeredUser);
-    console.log(formValidation)
 
     if (formValidation) {
 

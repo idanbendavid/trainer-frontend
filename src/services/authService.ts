@@ -14,7 +14,6 @@ async function register(registerUser: IUser): Promise<IUser> {
         
         axios.defaults.headers.common['Authorization'] = response.data.token;
     }
-    console.log(response, "register response")
     return response.data;
 }
 

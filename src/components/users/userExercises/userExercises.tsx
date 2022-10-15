@@ -51,6 +51,9 @@ function UserExercise() {
       <div className='user-exercise-grid-split'>
         <h1 className='exercise-header'>{firstName}'s exercises</h1>
         <div className='single-exercise-detailed'>
+          {!currentUserExercises.length && 
+            <h1 className='need-to-workout'>you need to workout!</h1>
+          }
           {currentUserExercises.map((exerciseOfUser: any, index: number) => {
             return <Card className="user-exercise-display" key={index}>
               <LazyLoadImage src={exerciseOfUser.gifUrl} alt="exercise" />
