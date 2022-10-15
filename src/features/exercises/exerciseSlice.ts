@@ -101,8 +101,11 @@ export const exerciseSlice = createSlice({
                 })
             })
             // ------------------------------------------------------
-            .addCase(getAmountOfExercises.fulfilled, (state,action)=>{
+            .addCase(getAmountOfExercises.fulfilled, (state, action) => {
                 state.amountOfExercises = action.payload;
+            })
+            .addCase(deleteExerciseOfUser.fulfilled, (state, action) => {
+                state.userExercises = state.userExercises.filter((userExercise) => userExercise.exercise_id !== action.payload)
             })
     }
 })

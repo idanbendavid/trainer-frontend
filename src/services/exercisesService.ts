@@ -23,8 +23,9 @@ async function getAmountOfExercisesPerDateForUser() {
 
 async function deleteExerciseOfUser(exerciseId: number) {
     const response = await axios.delete(`http://localhost:3001/userExercises/deleteExercise/${exerciseId}`);
-
-    return response.data
+    if(response.data){
+        return exerciseId;
+    }
 }
 
 const exerciseService = {
