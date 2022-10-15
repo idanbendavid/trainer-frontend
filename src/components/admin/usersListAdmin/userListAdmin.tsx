@@ -19,7 +19,7 @@ function UsersListAdmin() {
 
     const [tableData, setTableData] = useState([])
     const [deleteUserData, setDeleteUserData] = useState([]);
-    const [deleteConfarmation, setDeleteConfarmation] = useState(false);
+    const [deleteConfarmation, setDeleteConfirmation] = useState(false);
     const [showSelectionModel, setShowSelectionModel] = useState(false);
 
     const columns = [
@@ -49,17 +49,20 @@ function UsersListAdmin() {
 
     function completeUserDeletion() {
         if (deleteUserData) {
-            dispatch(deleteUserFromServer(deleteUserData[0].id))
-            setDeleteConfarmation(false);
+            dispatch(deleteUserFromServer(deleteUserData[0].id));
+            setDeleteConfirmation(false);
+            setShowSelectionModel(false);
+            setTableData(tableData.filter((user) => user.id !== deleteUserData[0].id));
+            deleteUserData.splice(0, deleteUserData.length)
         }
-        setDeleteConfarmation(false);
         deleteUserData.splice(0, deleteUserData.length)
-        setShowSelectionModel(false)
+        setDeleteConfirmation(false);
+        setShowSelectionModel(false);
     }
 
     function cancelUserDeletion() {
         deleteUserData.splice(0, deleteUserData.length)
-        setDeleteConfarmation(false);
+        setDeleteConfirmation(false);
         toast.info("delete user was cancelled")
     }
 
@@ -82,15 +85,15 @@ function UsersListAdmin() {
                         onSelectionModelChange={(ids) => {
                             const selectedIDs = new Set(ids);
                             const selectedRowData = tableData.filter((tableData) =>
-                                selectedIDs.has(tableData.id),
+                                selectedIDs.has(tableData.id)
                             );
-                            setDeleteConfarmation(true);
+                            setDeleteConfirmation(true);
                             setDeleteUserData(selectedRowData);
                         }}
                     />
                 </Container>
             </div>
-            {deleteConfarmation &&
+            {deleteUserData.length > 0 && deleteConfarmation &&
                 <Dialog open={deleteConfarmation} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
                     <DialogContent>
                         <h3>are you sure you want to delete the selected user?</h3>
