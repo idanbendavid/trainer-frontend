@@ -39,17 +39,26 @@ async function uploadFilesToServer(formData) {
     }
 }
 
-async function getFilesFromServer(){
+async function getFilesFromServer() {
     let response = await axios.get(`http://localhost:3001/files/`);
 
     return response.data;
+}
+
+async function deleteFileFromServer(fileName: string) {
+    let response = await axios.delete(`http://localhost:3001/files/${fileName}`);
+
+    if (response.data) {
+        return fileName;
+    }
 }
 
 const mediaApiService = {
     getListOfBodyParts,
     getExercisesByBodyPart,
     uploadFilesToServer,
-    getFilesFromServer
+    getFilesFromServer,
+    deleteFileFromServer
 }
 
 export default mediaApiService

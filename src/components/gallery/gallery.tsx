@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getFilesFromServer } from '../../features/media/mediaSlice';
+import { deleteFileFromServer, getFilesFromServer } from '../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../store';
 import "./gallery.css";
 import { Slide } from 'react-slideshow-image';
@@ -19,6 +19,10 @@ function Gallery() {
 
     const dispatch = useDispatch<AppDispatch>();
     let gallery = useAppSelector((state) => state.media.gallery);
+    let isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
+    let admin = useAppSelector((state) => state.auth.connectedUser.userRole);
+
+    const [fileToDelete, setFileToDelete] = useState("");
 
     useEffect(() => {
         dispatch(getFilesFromServer())
@@ -94,16 +98,51 @@ function Gallery() {
         return true;
     }
 
+
+    const getNameOfFileToDelete = (event: ChangeEvent<HTMLInputElement>) => {
+        setFileToDelete(event.target.value);
+    }
+
+    function deleteFile() {
+        if (!fileToDelete || fileToDelete === "") {
+            toast.error("file name can't be empty");
+            return;
+        }
+
+        gallery.forEach(file => {
+            if (file.file_name.replace(/\..+$/, '') === fileToDelete) {
+                dispatch(deleteFileFromServer(file.file_name));
+            }
+        });
+    }
+
     return (
         <>
             <div className='gallery-heading'>
                 <h1>Welcome to our gallery</h1>
             </div>
             <div className='gallery-main-container'>
-                <aside className='file-upload-in-gallery'>
-                    <h3>Share your progress with us</h3>
-                    <FileUpload />
-                </aside>
+                {isLoggedIn && admin.toLowerCase() === 'admin' &&
+                    <aside className='file-upload-in-gallery'>
+                        <h3>please enter the name of the image you want to delete</h3>
+                        <br />
+                        <label htmlFor="input">File Name </label>
+                        <input type="text" onChange={getNameOfFileToDelete} />
+                        <br /><br />
+                        <Button variant='contained' color='warning' onClick={deleteFile}>Delete Image</Button>
+                    </aside>
+                }
+                {isLoggedIn && admin.toLowerCase() !== 'admin' &&
+                    <aside className='file-upload-in-gallery'>
+                        <h3>Share your progress with us</h3>
+                        <FileUpload />
+                    </aside>
+                }
+                {!isLoggedIn &&
+                    <aside className='file-upload-in-gallery'>
+                        <h3>Enjoy our training? please log in to share your progress with us</h3>
+                    </aside>
+                }
                 <div className="slide-container">
                     <Slide>
                         {gallery.map((slideImage, index) => (
