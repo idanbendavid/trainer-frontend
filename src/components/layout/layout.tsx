@@ -20,6 +20,7 @@ import AdminDashbord from '../admin/adminDashbord';
 import FileUpload from '../fileUpload/fileUpload';
 import Gallery from '../gallery/gallery';
 import UserPage from '../users/userPage';
+import LandingPage from '../landingPage/landingPage';
 
 
 function Layout() {
@@ -41,9 +42,9 @@ function Layout() {
     }
     else {
       console.log("no token")
-      navigate("/main")
+      navigate("/welcome")
     }
-  }, [dispatch,token]);
+  }, [dispatch, token]);
 
   function closeMenu() {
     setIsOpen(false)
@@ -59,19 +60,23 @@ function Layout() {
         }
       </>
       <section>
-        <Button onClick={() => setIsOpen(!isOpen)} id="menuButton">
-          {!isOpen &&
-            <MenuIcon fontSize='large' id="menuIcon" />
-          }
-          {isOpen &&
-            <CloseIcon fontSize='large' id="closeMenuIcon" />
-          }
-        </Button>
+        {isLoggedIn &&
+          <Button onClick={() => setIsOpen(!isOpen)} id="menuButton">
+            {!isOpen &&
+              <MenuIcon fontSize='large' id="menuIcon" />
+            }
+            {isOpen &&
+              <CloseIcon fontSize='large' id="closeMenuIcon" />
+            }
+          </Button>
+        }
         <Routes>
           <Route path="/" element={<Navigate to="/main" replace={true} />} />
-
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          {!isLoggedIn &&
+            <Route path="/welcome" element={<LandingPage />} />
+          }
           <Route path="/main" element={<Main />} />
           <Route path="/exercisesList" element={<ExerciseList />} />
           <Route path="/*" element={<ContactUs />} />

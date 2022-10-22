@@ -20,7 +20,7 @@ export default function Menu(props) {
   function logout() {
     dispatch(logoutFromServer());
     props.closeMenu();
-    navigate("/main")
+    navigate("/welcome")
   }
 
   return (
@@ -68,9 +68,16 @@ export default function Menu(props) {
         </ul>
 
         <h4>need help?</h4>
-        <ul className='gallery'>
+        <ul>
           <MenuItem onClick={() => { navigate("/*"); props.closeMenu() }}>contact us</MenuItem>
         </ul>
+        {!isLoggedIn &&
+          <>
+            <h4>Sign Up</h4>
+            <ul>
+              <MenuItem onClick={() => { navigate("/register"); props.closeMenu(); }}>register</MenuItem>
+            </ul></>
+        }
       </div>
     </div >
   );

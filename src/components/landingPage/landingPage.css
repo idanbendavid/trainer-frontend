@@ -1,0 +1,98 @@
+.landing-page {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.landing-page-image {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-navigation {
+    position: absolute !important;
+    top: 20px;
+    right: 90px;
+}
+
+.brand {
+    top: 8px;
+    left: 35px;
+    text-transform: capitalize;
+    color: white;
+    font-size: 60px;
+    position: absolute;
+}
+
+.icon-position {
+    position: absolute;
+    top: 57%;
+    left: 25%;
+    transform: rotate(270deg);
+    color: white;
+    font-size: 2.5rem !important;
+    cursor: pointer;
+}
+
+.mind-playing {
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    font-size: 25px;
+    transform: translate(-50%, -50%);
+    color: lightgreen;
+    text-transform: capitalize;
+}
+
+.motivation {
+    position: absolute;
+    top: 105px;
+    right: 235px;
+    text-transform: capitalize;
+}
+
+.bubble {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    width: 300px;
+    background: rgb(229, 229, 229, 0.9);
+    border-radius: 40px;
+    padding: 24px;
+    text-align: center;
+    color: #000;
+}
+
+.bubble-bottom-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 24px solid rgb(229, 229, 229);
+    border-right: 12px solid transparent;
+    border-top: 12px solid rgb(229, 229, 229);
+    border-bottom: 20px solid transparent;
+    left: 32px;
+    bottom: -30px;
+}
+
+
+.join-button {
+    border: none;
+    position: absolute;
+    bottom: 250px;
+    right: 220px;
+    background-color: orangered;
+    color: aliceblue;
+    font-size: 30px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 35px;
+}
