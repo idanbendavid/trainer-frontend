@@ -7,11 +7,6 @@ async function getUserDetails(){
     return response.data
 }
 
-async function changeEmail(newUserEmail: string) {
-    const response = await axios.patch('http://localhost:3001/users/changeEmail', { newUserEmail });
-    console.log(response.data);
-    return response.data;
-}
 
 async function checkEmail(checkEmail: string) {
     const response = await axios.get(`http://localhost:3001/users/checkEmail/${checkEmail}`);
@@ -28,7 +23,6 @@ async function changePassword(newPassword: string, email: string) {
 
 const userDataService = {
     getUserDetails,
-    changeEmail,
     checkEmail,
     changePassword
 }

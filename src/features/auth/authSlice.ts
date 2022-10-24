@@ -80,17 +80,6 @@ export const getUserDetails = createAsyncThunk('user/getDetails', async () => {
     }
 })
 
-export const changeUserEmail = createAsyncThunk('user/changeEmail', async (newUserEmail: string, thunkAPI) => {
-    try {
-        const response = await userDataService.changeEmail(newUserEmail)
-        return response
-    }
-    catch (error: any) {
-        const message: string = error.response.data.error;
-        toast.error(message)
-        return thunkAPI.rejectWithValue(message)
-    }
-})
 
 export const checkEmailBeforePasswordChange = createAsyncThunk('user/checkEmail', async (checkEmail: string, thunkAPI) => {
     try {
@@ -220,13 +209,6 @@ export const authSlice = createSlice({
                 state.isSuccess = false
                 state.message = "not connected"
                 state.token = ""
-            })
-            .addCase(changeUserEmail.fulfilled, (state, action: PayloadAction<string>) => {
-                // state.connectedUser.email = action.payload;
-                // state.message = "email changed successfully";
-            })
-            .addCase(changeUserEmail.rejected, (state, action: PayloadAction<any>) => {
-                state.message = action.payload
             })
             // -----------------------------------------------------------------------------------
             .addCase(checkEmailBeforePasswordChange.fulfilled, (state, action: PayloadAction<string>) => {

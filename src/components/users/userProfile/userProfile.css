@@ -42,10 +42,6 @@ label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-c
     text-transform: unset;
 }
 
-.dialog-header > h3 {
-    margin: 0px;
-}
-
 #closeModalButton{
     display: flex;
 }

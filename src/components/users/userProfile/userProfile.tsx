@@ -1,6 +1,5 @@
 import { Container, CssBaseline, Box, InputLabel, Input, Button } from '@mui/material'
 import { ChangeEvent, useState } from 'react';
-import { changeUserEmail as updateUserEmail } from '../../../features/userData/userDataSlice';
 import { AppDispatch, useAppSelector } from '../../../store'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -10,43 +9,24 @@ import "./userProfile.css";
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import regexes from '../../../helpers/regex';
+// import { io } from 'socket.io-client';
 
 
 function UserProfile() {
 
     const dispatch = useDispatch<AppDispatch>();
-    const [isChangeEmailModalOpen, setIsChangeEmailModalOpen] = useState(Boolean);
-    const [oldEmail, setOldEmail] = useState("");
-    const [newEmail, setNewEmail] = useState("");
 
     let user = useAppSelector((state) => state.auth.connectedUser);
+    // let token = useAppSelector((state) => state.auth.token);
 
-    const oldEmailVerification = (event: ChangeEvent<HTMLInputElement>) => {
-        setOldEmail(event.target.value);
-    }
+    // function socketConnection(newEmail: string) {
+    //     const socket = io("http://localhost:8000", { query: { token } }).connect();
 
-    const updatedEmail = (event: ChangeEvent<HTMLInputElement>) => {
-        setNewEmail(event.target.value);
-    }
-
-
-    function updateEmailAddressOfUser() {
-        if (oldEmail !== user.email) {
-            toast.error("old email address does not match");
-            return;
-        }
-
-        if(!newEmail.match(regexes.emailReg)){
-            toast.error("Invalid Email Address");
-            return;
-        }
-
-        if (newEmail) {
-            dispatch(updateUserEmail(newEmail))
-        }
-
-        setIsChangeEmailModalOpen(false);
-    }
+    //     socket.on('connection', () => {
+    //         // socket.emit('send_data', newEmail)
+    //     })
+    //     socket.emit("send_data", newEmail)
+    // }
 
     return (
         <div className="user-profile">
@@ -88,35 +68,9 @@ function UserProfile() {
                             </div>
                         </div>
                         <br />
-                        <div className='user-profile-buttons'>
-                            <div className='change-email-button'>
-                                <Button type="submit" variant="contained" color='success' sx={{ mt: 2, mb: 2 }} onClick={() => setIsChangeEmailModalOpen(true)}>change email</Button>
-                            </div>
-                        </div>
                     </Box>
                 </Container>
             }
-
-            <Dialog open={isChangeEmailModalOpen} onClose={updateEmailAddressOfUser} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-                <DialogTitle id="alert-dialog-title" className='dialog-header'>
-                    <Button color="error" variant='contained' id="closeModalButton" onClick={() => setIsChangeEmailModalOpen(false)}>X</Button>
-                    <h3>
-                        updating {user.firstName}'s email
-                    </h3>
-                </DialogTitle>
-                <DialogContent>
-                    <div id="alert-dialog-description">
-                        enter old email address
-                        <Input id="name" placeholder="old Email Address" type="email" fullWidth onChange={oldEmailVerification} />
-                        <br /><br />
-                        enter new email address
-                        <Input id="name" placeholder="new Email Address" type="email" fullWidth onChange={updatedEmail} />
-                    </div>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={updateEmailAddressOfUser}>update</Button>
-                </DialogActions>
-            </Dialog>
         </div>
     )
 }
