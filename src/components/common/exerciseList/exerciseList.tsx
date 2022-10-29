@@ -2,15 +2,15 @@ import { Button, Card, Dialog, DialogContent, DialogTitle, Pagination, Stack, Te
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addExerciseToUserSchedule, displayExercisesByBodyPartName, getAmountOfExercises } from '../../features/exercises/exerciseSlice';
-import { IExercise } from '../../models/IExercise';
-import { AppDispatch, useAppSelector } from '../../store';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
 import { LocalizationProvider, DatePicker, PickersDay, PickersDayProps, pickersDayClasses } from '@mui/x-date-pickers';
-import { dateHepler } from "../../helpers/dateHelper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import mediaApiService from '../../services/mediaApiService';
+import { displayExercisesByBodyPartName, getAmountOfExercises, addExerciseToUserSchedule } from '../../../features/exercises/exerciseSlice';
+import { dateHepler } from '../../../helpers/dateHelper';
+import { IExercise } from '../../../models/IExercise';
+import mediaApiService from '../../../services/mediaApiService';
+import { AppDispatch, useAppSelector } from '../../../store';
 
 function ExerciseList() {
 

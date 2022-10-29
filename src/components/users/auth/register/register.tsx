@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { IUser } from '../../../models/IUser';
-import { UserRole } from '../../../models/role';
+import { IUser } from '../../../../models/IUser';
+import { UserRole } from '../../../../models/role';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './register.css';
 import { toast } from "react-toastify"
 import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { register as serverRegistration } from '../../../features/auth/authSlice';
-import { AppDispatch, useAppSelector } from '../../../store';
-import regexes from '../../../helpers/regex';
+import { register as serverRegistration } from '../../../../features/auth/authSlice';
+import { AppDispatch, useAppSelector } from '../../../../store';
+import regexes from '../../../../helpers/regex';
 
 
 

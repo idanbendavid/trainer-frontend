@@ -1,20 +1,20 @@
 import { Card } from "@mui/material"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { passBodyPartName } from "../../../features/exercises/exerciseSlice";
-import backImage from "../../../assets/icons/back.png";
-import cardioImage from "../../../assets/icons/cardio.png";
-import chestImage from "../../../assets/icons/chest.png";
-import lowerArmsImage from "../../../assets/icons/lowerArms.png";
-import lowerLegsImage from "../../../assets/icons/lowerLegs.png";
-import neckImage from "../../../assets/icons/neck.png";
-import shouldersImage from "../../../assets/icons/shoulders.png";
-import upperArmsImage from "../../../assets/icons/upperArms.png";
-import upperLegsImage from "../../../assets/icons/upperLegs.png";
-import waistImage from "../../../assets/icons/waist.png";
+import backImage from "../../../../assets/icons/back.png";
+import cardioImage from "../../../../assets/icons/cardio.png";
+import chestImage from "../../../../assets/icons/chest.png";
+import lowerArmsImage from "../../../../assets/icons/lowerArms.png";
+import lowerLegsImage from "../../../../assets/icons/lowerLegs.png";
+import neckImage from "../../../../assets/icons/neck.png";
+import shouldersImage from "../../../../assets/icons/shoulders.png";
+import upperArmsImage from "../../../../assets/icons/upperArms.png";
+import upperLegsImage from "../../../../assets/icons/upperLegs.png";
+import waistImage from "../../../../assets/icons/waist.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./bodyParts.css"
-import { AppDispatch } from "../../../store";
+import { passBodyPartName } from "../../../../features/exercises/exerciseSlice";
+import { AppDispatch } from "../../../../store";
 
 function BodyParts(props) {
 

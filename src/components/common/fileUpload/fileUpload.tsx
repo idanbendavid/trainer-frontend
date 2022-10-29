@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import { useState } from 'react'
-import mediaApiService from '../../services/mediaApiService';
+import mediaApiService from '../../../services/mediaApiService';
 
 function FileUpload() {
 

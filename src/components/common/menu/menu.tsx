@@ -1,13 +1,13 @@
 import { Button, MenuItem } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppDispatch, useAppSelector } from '../../store';
-import { logout as logoutFromServer } from '../../features/auth/authSlice';
+import { AppDispatch, useAppSelector } from '../../../store';
+import { logout as logoutFromServer } from '../../../features/auth/authSlice';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import { Home } from '@mui/icons-material';
 import './menu.css';
-import { UserRole } from '../../models/role';
+import { UserRole } from '../../../models/role';
 
 export default function Menu(props) {
 

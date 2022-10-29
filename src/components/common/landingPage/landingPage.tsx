@@ -1,6 +1,5 @@
 import "./landingPage.css";
-import workout from "../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
-import { useState } from "react";
+import workout from "../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
@@ -8,7 +7,6 @@ import { Button } from "@mui/material";
 function LandingPage() {
 
   const navigate = useNavigate();
-  const [showSentence, setShowSentence] = useState(false);
 
 
   return (

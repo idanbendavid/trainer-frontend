@@ -1,10 +1,10 @@
 import './index.css';
-import Layout from './components/layout/layout';
 import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { BrowserRouter } from 'react-router-dom';
+import Layout from './components/common/layout/layout';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);

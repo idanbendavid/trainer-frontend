@@ -1,5 +1,5 @@
 import "./login.css";
-import { ILogin } from "../../../models/ILogin"
+import { ILogin } from "../../../../models/ILogin"
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Avatar, Container, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,12 +9,12 @@ import Button from "@mui/material/Button/Button";
 import { toast } from "react-toastify"
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../../../features/auth/authSlice";
-import { AppDispatch, useAppSelector } from "../../../store";
+import { login } from "../../../../features/auth/authSlice";
+import { AppDispatch, useAppSelector } from "../../../../store";
 import { ChangeEvent, useEffect, useState } from "react";
-import { UserRole } from "../../../models/role";
-import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../features/auth/authSlice";
-import regexes from "../../../helpers/regex";
+import { UserRole } from "../../../../models/role";
+import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../../features/auth/authSlice";
+import regexes from "../../../../helpers/regex";
 
 export default function LoginPage() {
 

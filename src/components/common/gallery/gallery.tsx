@@ -1,13 +1,13 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteFileFromServer, getFilesFromServer } from '../../features/media/mediaSlice';
-import { AppDispatch, useAppSelector } from '../../store';
 import "./gallery.css";
 import { Slide } from 'react-slideshow-image';
 import FileUpload from '../fileUpload/fileUpload';
 import { Box, Button, Container, CssBaseline } from '@mui/material';
 import { toast } from 'react-toastify';
 import FormComponents from '../form/formComponents';
+import { getFilesFromServer, deleteFileFromServer } from '../../../features/media/mediaSlice';
+import { AppDispatch, useAppSelector } from '../../../store';
 
 
 function Gallery() {

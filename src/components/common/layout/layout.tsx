@@ -8,19 +8,19 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import LoginPage from '../auth/login/login';
-import Register from '../auth/register/register';
 import Main from '../main/main';
-import { remainConnceted } from '../../features/auth/authSlice';
 import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
 import ExerciseList from '../exerciseList/exerciseList';
-import { AppDispatch, useAppSelector } from '../../store';
-import AdminDashbord from '../admin/adminDashbord';
 import FileUpload from '../fileUpload/fileUpload';
 import Gallery from '../gallery/gallery';
-import UserPage from '../users/userPage';
 import LandingPage from '../landingPage/landingPage';
+import { remainConnceted } from '../../../features/auth/authSlice';
+import { useAppSelector, AppDispatch } from '../../../store';
+import AdminDashbord from '../../admin/adminDashbord';
+import LoginPage from '../../users/auth/login/login';
+import Register from '../../users/auth/register/register';
+import UserPage from '../../users/userPage';
 
 
 function Layout() {

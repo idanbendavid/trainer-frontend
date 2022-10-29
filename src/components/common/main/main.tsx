@@ -2,9 +2,9 @@ import { Container, CssBaseline, Box } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { getBodyPartsList } from "../../features/exercises/exerciseSlice";
-import mediaApiService from "../../services/mediaApiService";
-import { AppDispatch, useAppSelector } from "../../store";
+import { getBodyPartsList } from "../../../features/exercises/exerciseSlice";
+import mediaApiService from "../../../services/mediaApiService";
+import { AppDispatch, useAppSelector } from "../../../store";
 import BodyParts from "./bodyParts/bodyParts";
 import "./main.css";
 
