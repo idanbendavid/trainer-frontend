@@ -93,10 +93,9 @@ export const exerciseSlice = createSlice({
                     }
                 }
 
-                // sorting the array by exercise date that his type is string
                 state.userExercises.sort(function (a, b) {
-                    a = a.exerciseDate.split('-').reverse().join('');
-                    b = b.exerciseDate.split('-').reverse().join('');
+                    a = new Date(a.exerciseDate);
+                    b = new Date(b.exerciseDate);
                     return a > b ? 1 : a < b ? -1 : 0
                 })
             })
