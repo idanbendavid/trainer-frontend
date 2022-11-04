@@ -13,10 +13,32 @@ async function getAllUserForAdmin() {
     return response.data
 }
 
+async function getAdminTasks() {
+    const response = await axios.get("http://localhost:3001/adminTasks/")
+    return response.data
+}
+
+async function addNewTask(newTask: string) {
+    const response = await axios.post("http://localhost:3001/adminTasks/", { newTask })
+    if (response.data) {
+        return newTask
+    }
+}
+
+async function deleteTask(task: string) {
+    const response = await axios.delete(`http://localhost:3001/adminTasks/${task}`);
+    if (response.data) {
+        return task
+    }
+}
+
 
 const adminService = {
     deleteUser,
-    getAllUserForAdmin
+    getAllUserForAdmin,
+    getAdminTasks,
+    addNewTask,
+    deleteTask
 }
 
 export default adminService

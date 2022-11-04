@@ -1,8 +1,8 @@
-.admin-dashbord-introduction {
+.admin-dashbord-introduction>h1 {
     text-align: center;
 }
 
-.admin-dashbord-introduction > h1 {
+.admin-dashbord-introduction>h1 {
     font-size: 30px;
     text-decoration: underline;
     text-transform: capitalize;
@@ -39,4 +39,41 @@
 .public-complaints>h1 {
     text-align: center;
     margin-bottom: 10px;
+}
+
+.task-list-container{
+    margin-top: 40px;
+}
+
+.admin-tasks {
+    width: 50%;
+    margin: auto;
+    padding: 10px 10px;
+    background-color: #ffd814;
+    font-size: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.task-list-header {
+    font-family: 'El Messiri', sans-serif;
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.task-item{ 
+    list-style-type: none;
+    text-transform: capitalize;
+}
+
+#newTasks{
+    margin-right: 15px;
+}
+
+.delete-task-icon {
+    cursor: pointer;
+    margin-right: 5px;
 }

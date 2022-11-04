@@ -33,7 +33,7 @@ function PublicComplaints() {
         if (category.toLocaleLowerCase() === 'gallery') {
             return '#970afc'
         }
-        return '#f4dc72'
+        return '#bd7100'
     }
 
 
