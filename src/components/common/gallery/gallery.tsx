@@ -22,7 +22,7 @@ function Gallery() {
 
     useEffect(() => {
         dispatch(getFilesFromServer())
-    }, [dispatch])  
+    }, [dispatch])
 
 
     const getNameOfFileToDelete = (event: ChangeEvent<HTMLInputElement>) => {
@@ -48,46 +48,48 @@ function Gallery() {
                 <h1>Welcome to our gallery</h1>
             </div>
             <div className='gallery-main-container'>
-                {isLoggedIn && admin.toLowerCase() === 'admin' &&
-                    <aside className='file-upload-in-gallery'>
-                        <h3>please enter the name of the image you want to delete</h3>
-                        <br />
-                        <label htmlFor="input">File Name </label>
-                        <input type="text" onChange={getNameOfFileToDelete} />
-                        <br /><br />
-                        <Button variant='contained' color='warning' onClick={deleteFile}>Delete Image</Button>
-                    </aside>
-                }
-                {isLoggedIn && admin.toLowerCase() !== 'admin' &&
-                    <aside className='file-upload-in-gallery'>
-                        <h3>Share your progress with us</h3>
-                        <FileUpload />
-                    </aside>
-                }
-                {!isLoggedIn &&
-                    <aside className='file-upload-in-gallery'>
-                        <h3>Enjoy our training? please log in to share your progress with us</h3>
-                    </aside>
-                }
+                <div>
+                    {isLoggedIn && admin.toLowerCase() === 'admin' &&
+                        <aside className='file-upload-in-gallery'>
+                            <h3>please enter the name of the image you want to delete</h3>
+                            <br />
+                            <label htmlFor="input">File Name </label>
+                            <input type="text" onChange={getNameOfFileToDelete} />
+                            <br /><br />
+                            <Button variant='contained' color='warning' onClick={deleteFile}>Delete Image</Button>
+                        </aside>
+                    }
+                    {isLoggedIn && admin.toLowerCase() !== 'admin' &&
+                        <aside className='file-upload-in-gallery'>
+                            <h3>Share your progress with us</h3>
+                            <FileUpload />
+                        </aside>
+                    }
+                    {!isLoggedIn &&
+                        <aside className='file-upload-in-gallery'>
+                            <h3>Enjoy our training? please log in to share your progress with us</h3>
+                        </aside>
+                    }
+                </div>
                 <div className="slide-container">
                     <Slide>
                         {gallery.map((slideImage, index) => (
                             <div className="each-slide" key={index}>
-                                <img key={slideImage.file_path} src={slideImage.file_path} alt={slideImage.file_name.replace(/\..+$/, '')} className='image-in-gallery' />
+                                <img className='image-in-gallery' key={slideImage.file_path} src={slideImage.file_path} alt={slideImage.file_name.replace(/\..+$/, '')} />
                                 <span className='slide-image-span' key={slideImage.file_name}>{slideImage.file_name.replace(/\..+$/, '')}</span>
                             </div>
                         ))}
                     </Slide>
                 </div>
-                <aside>
+                <div className='gallery-aside-form'>
                     <Container>
                         <CssBaseline />
                         <h3>Dissatisfied with an image? write to us and we will solve your problem</h3>
-                        <Box>
-                            <FormComponents/>
-                        </Box>
+                        <div>
+                            <FormComponents />
+                        </div>
                     </Container>
-                </aside>
+                </div>
             </div>
         </>
     )

@@ -1,15 +1,14 @@
 @import "react-slideshow-image/dist/styles.css";
 
-.gallery-heading{
+.gallery-heading {
     text-align: center;
     text-decoration: underline;
 }
 
-.gallery-main-container{
+.gallery-main-container {
     display: grid;
     text-align: center;
     grid-template-columns: 20% 60% 20%;
-    overflow-x: auto;
     margin-top: 50px;
 }
 
@@ -23,13 +22,13 @@
     width: 100%;
 }
 
-.slide-image-span{
+.slide-image-span {
     font-weight: 700;
     font-size: 20px;
     text-transform: capitalize;
 }
 
-.problem-with-image{
+.problem-with-image {
     width: 250px;
     height: 150px;
     word-break: break-word;
@@ -38,27 +37,68 @@
     overflow-x: hidden;
 }
 
-.gallery-select{
+.gallery-select {
     width: 250px;
     height: 30px;
     font-size: 16px;
 }
-.image-problem-first-name,.image-problem-last-name, .image-problem-email{
+
+.image-problem-first-name, .image-problem-last-name, .image-problem-email {
     margin-bottom: 10px;
 }
 
-#imageFirstName{
+#imageFirstName {
     margin-right: 170px;
 }
 
-#imageLastName{
+#imageLastName {
     margin-right: 170px;
 }
 
-#imageEmail{
+#imageEmail {
     margin-right: 210px;
 }
 
-#imageCategory{
+#imageCategory {
     margin-right: 185px;
+}
+
+@media all and (max-width: 1400px) {
+    .gallery-main-container {
+        display: grid;
+        text-align: center;
+        grid-template-rows: 25% 75%;
+        grid-template-columns: 100%;
+        margin-top: 0px;
+    }
+    .react-slideshow-container {
+        display: inline-block;
+        width: 75%;
+    }
+
+    .gallery-aside-form {
+        display: none;
+    }
+}
+
+@media all and (max-width: 900px) {
+    .gallery-aside-form {
+        display: none;
+    }
+
+    .file-upload-in-gallery {
+        display: block;
+    }
+
+    .react-slideshow-container {
+        display: inline-block;
+        margin-top: 100px;
+        width: 75%;
+    }
+
+    .gallery-main-container {
+        display: grid;
+        text-align: center;
+        margin-top: 0px;
+    }
 }
