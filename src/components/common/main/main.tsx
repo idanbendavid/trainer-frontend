@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Box } from "@mui/material";
+import { Container, CssBaseline } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -31,13 +31,17 @@ export default function Main() {
             <Container maxWidth="xl" >
                 <CssBaseline />
                 <div className="main-heading">
+                    <h1>Core2Fitness</h1>
+                    <p>your goals our mission</p>
+                </div>
+                <div className="second-heading">
                     <h1>what will we do today?</h1>
                 </div>
-                <Box sx={{ overflowY: 'auto', paddingTop: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', justifyItems: 'center' }} >
+                <div className="body-parts-main">
                     {bodyParts.current.map((bodyPart: string, index: number) => (
                         <BodyParts key={index} bodyPart={bodyPart} />
                     ))}
-                </Box>
+                </div>
             </Container>
         </div>
     )

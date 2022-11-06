@@ -2,11 +2,85 @@
     overflow-y: auto;
 }
 
-.main-heading{
+.main-heading>h1 {
+    font-size: 45px;
+    margin: 0px;
+    text-transform: capitalize;
+}
+
+.main-heading>p {
+    margin: 0px;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.second-heading {
     text-align: center;
     text-transform: capitalize;
     text-decoration: underline;
     margin-top: 40px;
     margin-bottom: 40px;
     font-size: 30px;
+}
+
+@media all and (min-width: 1500px) {
+    .body-parts-main {
+        overflow-y: auto;
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        justify-items: center;
+    }
+}
+
+@media all and (max-width: 1500px) {
+    .body-parts-main {
+        overflow-y: auto;
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+}
+
+@media all and (max-width: 1210px) {
+    .body-parts-main {
+        overflow-y: auto;
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+
+    .bodyParts>.css-bhp9pd-MuiPaper-root-MuiCard-root {
+        margin: 15px;
+        height: 200px;
+        width: 220px;
+        text-transform: capitalize;
+        text-align: center;
+        border-radius: 10px;
+        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+    }
+}
+
+@media all and (max-width: 900px) {
+    .body-parts-main {
+        overflow-y: auto;
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+    .bodyParts>.css-bhp9pd-MuiPaper-root-MuiCard-root {
+        margin: 15px;
+        height: 200px;
+        width: 200px;
+        text-transform: capitalize;
+        text-align: center;
+        border-radius: 10px;
+        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+    }
 }
