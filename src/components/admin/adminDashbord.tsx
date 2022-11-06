@@ -50,8 +50,9 @@ function AdminDashbord() {
                 {isAdmin === 'admin' &&
                     <div className='admin-dashbord-introduction'>
                         <h1>Welcome {name}</h1>
+                        <p className='note-on-small-device'>view users on bigger size screens</p>
                         <div className='task-list-container'>
-                            <Box className='admin-tasks'>
+                            <div className='admin-tasks'>
                                 <h3 className='task-list-header'>{name}'s Tasks</h3>
                                 {adminTasks.map((task: any, index: number) => (
                                     <li className='task-item' key={task.taskId}>
@@ -63,7 +64,7 @@ function AdminDashbord() {
                                 <label htmlFor="newTasks">New Tasks   </label>
                                 <input type="text" id='newTasks' onChange={getNewTask} />
                                 <Button variant='contained' onClick={addNewTasks}>create new tasks</Button>
-                            </Box>
+                            </div>
                         </div>
                     </div>
                 }

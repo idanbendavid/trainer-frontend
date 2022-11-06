@@ -55,6 +55,10 @@
     overflow-x: hidden;
 }
 
+.admin-tasks > .css-sghohy-MuiButtonBase-root-MuiButton-root{
+    margin-top: 10px;
+}
+
 .task-list-header {
     font-family: 'El Messiri', sans-serif;
     text-transform: capitalize;
@@ -76,4 +80,169 @@
 .delete-task-icon {
     cursor: pointer;
     margin-right: 5px;
+}
+
+.note-on-small-device{
+    display: none;
+}
+
+@media all and (max-width: 1500px){
+    .admin-dashbord {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-tasks{
+        margin-bottom: 35px;
+    }
+
+    .admin-component-diversion {
+        display: inline;
+    }
+
+    .user-list-admin-component {
+        align-items: center;
+        box-shadow: -5px -5px 15px rgba(33, 33, 33, .7);
+        width: 75%;
+        height: max-content;
+        margin: auto;
+    }
+
+    .public-complaints {
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 80%;
+        margin: 35px 115.19px; 
+        box-shadow: -5px 5px 15px rgba(33, 33, 33, .7);
+    }
+}
+
+@media all and (max-width: 1100px){
+    .admin-dashbord {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-tasks{
+        margin-bottom: 25px;
+    }
+
+    .admin-component-diversion {
+        display: inline;
+    }
+
+    .user-list-admin-component {
+        align-items: center;
+        box-shadow: -5px -5px 15px rgba(33, 33, 33, .7);
+        width: 75%;
+        height: max-content;
+        margin: auto;
+    }
+
+    .public-complaints {
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 80%;
+        margin: 25px 115.19px; 
+        height: max-content;
+        box-shadow: -5px 5px 15px rgba(33, 33, 33, .7);
+    }
+
+    .complaints-grid-split-note-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+}
+
+@media all and (max-width: 900px){
+    .admin-dashbord {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-tasks{
+        margin-bottom: 15px;
+    }
+
+    .admin-component-diversion {
+        display: inline;
+    }
+
+    .user-list-admin-component {
+        align-items: center;
+        box-shadow: -5px -5px 15px rgba(33, 33, 33, .7);
+        width: 75%;
+        height: max-content;
+        margin: auto;
+    }
+
+    .public-complaints {
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 80%;
+        margin: auto; 
+        height: max-content;
+        box-shadow: -5px 5px 15px rgba(33, 33, 33, .7);
+    }
+
+    .complaints-grid-split-note-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+}
+
+@media all and (max-width: 700px){
+    .admin-dashbord {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-tasks{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .admin-tasks > .task-item {
+        text-align: initial;
+    }
+
+    .admin-tasks > .css-sghohy-MuiButtonBase-root-MuiButton-root{
+        margin-top: 10px;
+    }
+
+    .admin-component-diversion {
+        display: inline;
+    }
+
+    .user-list-admin-component {
+        display: none;
+    }
+
+    .note-on-small-device{
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        text-transform: capitalize;
+        text-decoration: underline;
+        margin-bottom: 0px;
+        font-size: 20px;
+    }
+
+    .task-list-container{
+        margin-top: 20px;
+    }
+    
+    .public-complaints {
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-shadow: -5px 5px 15px rgba(33, 33, 33, .7);
+    }
+
+    .complaints-grid-split-note-side {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
 }
