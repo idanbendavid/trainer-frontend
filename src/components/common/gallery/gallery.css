@@ -67,7 +67,7 @@
     .gallery-main-container {
         display: grid;
         text-align: center;
-        grid-template-rows: 25% 75%;
+        grid-template-rows: 20% 80%;
         grid-template-columns: 100%;
         margin-top: 0px;
     }

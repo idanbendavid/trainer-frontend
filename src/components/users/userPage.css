@@ -1,4 +1,66 @@
-.user-page-component{
+.user-page-component {
     display: grid;
     grid-template-columns: 40% 60%;
+}
+
+@media all and (max-width: 1500px) {
+    .user-page-component {
+        display: grid;
+        grid-template-rows: 25% 75%;
+        grid-template-columns: 100%;
+    }
+
+    .single-exercise-detailed {
+        margin: 20px;
+        overflow-y: hidden;
+    }
+
+    .user-exercise-grid-split {
+        margin-right: 0px;
+    }
+}
+
+@media all and (max-width: 1200px) {
+    .single-exercise-detailed {
+        display: block;
+    }
+
+    .user-exercise {
+        margin: 0px;
+    }
+
+    .user-exercise-display {
+        margin: 15px;
+    }
+}
+
+@media all and (max-width: 750px) {
+    .user-profile-details {
+        display: grid;
+        grid-template-columns: 100%;
+        justify-items: center;
+        margin-bottom: 30px;
+    }
+
+    .user-profile-details-part2 {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    .MuiBox-root.css-tnqmi {
+        margin-top: 0px;
+    }
+}
+
+@media all and (max-width: 650px) {
+    .user-exercise-display {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        word-break: break-word;
+        flex-wrap: wrap;
+    }
 }
