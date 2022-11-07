@@ -115,9 +115,13 @@ export default function Register() {
 
   return (
     <div className="register">
+      <div className="main-heading main-heading-auth">
+        <h1>Core2Fitness</h1>
+        <p>your goals our mission</p>
+      </div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box sx={{ marginTop: 12, display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
+        <Box sx={{ marginTop: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
           <Typography component="h1" variant="h5" sx={{ marginBottom: 1 }}>Sign up</Typography>
           <form onSubmit={handleSubmit(onSubmit)}>

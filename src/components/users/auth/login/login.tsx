@@ -131,9 +131,13 @@ export default function LoginPage() {
 
   return (
     <div className="login-page">
+      <div className="main-heading main-heading-auth">
+        <h1>Core2Fitness</h1>
+        <p>your goals our mission</p>
+      </div>
       <CssBaseline />
       <Container fixed>
-        <Box sx={{ marginTop: 15, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
           <Typography component="h1" variant="h5">Sign In</Typography>
           <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
