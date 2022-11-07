@@ -13,7 +13,10 @@ function LandingPage() {
     <div className="landing-page">
       <img src={workout} alt="workout" className="landing-page-image" />
       <Button variant="contained" color="primary" className="login-navigation" onClick={() => navigate("/login")}>Sign In</Button >
-      <h1 className="brand">Core2Fitness</h1>
+      <div className="brand">
+        <h1>Core2Fitness</h1>
+        <p>your goals our mission</p>
+      </div>
       <h2 className="mind-playing">
         it's sould have been you
         <br /> join the revolution now!

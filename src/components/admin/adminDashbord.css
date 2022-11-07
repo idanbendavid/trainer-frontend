@@ -9,6 +9,10 @@
     margin: 10px 0px;
 }
 
+.main-heading-admin {
+    margin-bottom: 30px;
+}
+
 .admin-dashbord {
     display: grid;
     grid-template-columns: 1fr 1fr;

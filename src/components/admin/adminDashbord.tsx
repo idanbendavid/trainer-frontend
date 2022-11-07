@@ -49,6 +49,10 @@ function AdminDashbord() {
             <div className='admin-dashbord'>
                 {isAdmin === 'admin' &&
                     <div className='admin-dashbord-introduction'>
+                        <div className="main-heading main-heading-admin">
+                            <h1>Core2Fitness</h1>
+                            <p>your goals our mission</p>
+                        </div>
                         <h1>Welcome {name}</h1>
                         <p className='note-on-small-device'>view users on bigger size screens</p>
                         <div className='task-list-container'>

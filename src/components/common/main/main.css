@@ -2,6 +2,9 @@
     overflow-y: auto;
 }
 
+.main-heading{
+    margin-left: 150px;
+}
 .main-heading>h1 {
     font-size: 45px;
     margin: 0px;

@@ -38,7 +38,7 @@ function ExerciseList() {
                 toast.error("failed loading data please report this problem and try again later")
             })
         }
-        if(!bodyPart){
+        if (!bodyPart) {
             let savedBodyPart = sessionStorage.getItem("bodyPart");
             let getExercisesOfBodyPart = mediaApiService.getExercisesByBodyPart(savedBodyPart);
             getExercisesOfBodyPart.then((getExercisesOfBodyPart) => {
@@ -86,12 +86,12 @@ function ExerciseList() {
             selectedDates.push(new Date(day.exerciseDate))
         });
 
-        return <PickersDay {...pickersDayProps}  sx={{
+        return <PickersDay {...pickersDayProps} sx={{
             [`&&.${pickersDayClasses.selected}`]: {
-              backgroundColor: "#EBEBE4",
-              cursor: 'not-allowed'
+                backgroundColor: "#EBEBE4",
+                cursor: 'not-allowed'
             }
-          }} />;
+        }} />;
     };
 
     // pagination with material ui pagination component lines 137-147 inside the Stack
@@ -110,70 +110,70 @@ function ExerciseList() {
     }
 
     return (
-        <div className="exercise-list">
-            <div className="exercise-card-div-heading">
-                <h1>choose the {bodyPart} exercise you want to perform</h1>
+        <>
+            <div className="main-heading">
+                <h1>Core2Fitness</h1>
+                <p>your goals our mission</p>
             </div>
-            <div className="exercise-card-div">
-                {currentExercises.map((exercise: IExercise, index: number) => {
-                    return <Card key={index} >
-                        <div className="exercise-name">
-                            <p>{exercise.name}</p>
-                        </div>
-                        <div>
-                            <LazyLoadImage id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
-                        </div>
-                        <div className='body-part-and-target'>
-                            <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>
-                            <Button sx={{ ml: '5px', color: '#fff', background: '#FF8C31', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.target}</Button>
-                        </div>
-                        {isLoggedIn && <div className='add-exercise-button'>
-                            <Button variant='contained' color='success' onClick={() => {
-                                setNewExercise(exercise);
-                                setOpenDatePicker(true)
-                            }}>
-                                Add to schedule</Button>
-                        </div>
-                        }
-                    </Card>
-                })}
-            </div>
-            {openDatePicker &&
-                <div className='date-picker-div'>
-                    <Dialog open={openDatePicker} onClose={(reason: "backdropClick" | "escapeKeyDown") => setOpenDatePicker(false)}>
-                        <DialogTitle className='close-date-picker-button'>
-                            choose the date you want to train
-                            <Button color="error" variant='contained' onClick={() => setOpenDatePicker(false)}>X</Button>
-                        </DialogTitle>
-                        <DialogContent>
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                    disablePast={true}
-                                    label="Exercise Date"
-                                    renderDay={customDayRenderer}
-                                    value={dateValue}
-                                    onChange={(newDateValue) => {
-                                        setNewDateValue(newDateValue);
-                                    }}
-                                    renderInput={(params) => <TextField {...params} />}
-                                />
-                            </LocalizationProvider>
-                        </DialogContent>
-                    </Dialog>
+            <div className="exercise-list">
+                <div className="exercise-card-div-heading">
+                    <h1>choose the {bodyPart} exercise you want to perform</h1>
                 </div>
-            }
-            <Stack display={"flex"} justifyContent={"center"} alignItems={"center"} mt={2}>
-                {exercises.length > exercisesPerPage &&
-                    < Pagination color='primary'
-                        shape='circular'
-                        count={Math.ceil(exercises.length / exercisesPerPage)}
-                        page={currentPage}
-                        onChange={paginate}
-                        size="large"
-                    />
-                }
-            </Stack>
-        </div >
+                <div className="exercise-card-div">
+                    {currentExercises.map((exercise: IExercise, index: number) => {
+                        return <Card key={index}>
+                            <div className="exercise-name">
+                                <p>{exercise.name}</p>
+                            </div>
+                            <div>
+                                <LazyLoadImage id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
+                            </div>
+                            <div className='body-part-and-target'>
+                                <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>
+                                <Button sx={{ ml: '5px', color: '#fff', background: '#FF8C31', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.target}</Button>
+                            </div>
+                            {isLoggedIn && <div className='add-exercise-button'>
+                                <Button variant='contained' color='success' onClick={() => {
+                                    setNewExercise(exercise);
+                                    setOpenDatePicker(true);
+                                }}>
+                                    Add to schedule</Button>
+                            </div>}
+                        </Card>;
+                    })}
+                </div>
+                {openDatePicker &&
+                    <div className='date-picker-div'>
+                        <Dialog open={openDatePicker} onClose={(reason: "backdropClick" | "escapeKeyDown") => setOpenDatePicker(false)}>
+                            <DialogTitle className='close-date-picker-button'>
+                                choose the date you want to train
+                                <Button color="error" variant='contained' onClick={() => setOpenDatePicker(false)}>X</Button>
+                            </DialogTitle>
+                            <DialogContent>
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DatePicker
+                                        disablePast={true}
+                                        label="Exercise Date"
+                                        renderDay={customDayRenderer}
+                                        value={dateValue}
+                                        onChange={(newDateValue) => {
+                                            setNewDateValue(newDateValue);
+                                        }}
+                                        renderInput={(params) => <TextField {...params} />} />
+                                </LocalizationProvider>
+                            </DialogContent>
+                        </Dialog>
+                    </div>}
+                <Stack display={"flex"} justifyContent={"center"} alignItems={"center"} mt={2}>
+                    {exercises.length > exercisesPerPage &&
+                        <Pagination color='primary'
+                            shape='circular'
+                            count={Math.ceil(exercises.length / exercisesPerPage)}
+                            page={currentPage}
+                            onChange={paginate}
+                            size="large" />}
+                </Stack>
+            </div></>
     )
 }
 

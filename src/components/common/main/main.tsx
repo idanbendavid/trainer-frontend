@@ -28,12 +28,12 @@ export default function Main() {
 
     return (
         <div className="main">
+            <div className="main-heading">
+                <h1>Core2Fitness</h1>
+                <p>your goals our mission</p>
+            </div>
             <Container maxWidth="xl" >
                 <CssBaseline />
-                <div className="main-heading">
-                    <h1>Core2Fitness</h1>
-                    <p>your goals our mission</p>
-                </div>
                 <div className="second-heading">
                     <h1>what will we do today?</h1>
                 </div>

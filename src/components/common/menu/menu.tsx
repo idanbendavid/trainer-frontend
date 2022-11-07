@@ -25,6 +25,10 @@ export default function Menu(props) {
 
   return (
     <div className='menu' >
+      <div className='main-heading-menu'>
+        <h1>Core2Fitness</h1>
+        <p>your goals our mission</p>
+      </div>
       <div className='user-actions-in-menu'>
         <p>
           <span className='hello-span'>hello {user.firstName}</span>

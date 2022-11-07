@@ -26,3 +26,14 @@ ul > li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.css-kk1bwy-MuiBu
 h4{
     margin: 10px 0px 10px 0px;
 }
+
+.main-heading-menu > h1{
+    margin-bottom: 0px;
+    font-size: 25px;
+}
+
+.main-heading-menu > p{
+    margin-top: 0px;
+    text-decoration: underline;
+    font-size: 13px;
+}

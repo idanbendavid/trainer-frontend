@@ -44,6 +44,10 @@ function Gallery() {
 
     return (
         <>
+            <div className="main-heading">
+                <h1>Core2Fitness</h1>
+                <p>your goals our mission</p>
+            </div>
             <div className='gallery-heading'>
                 <h1>Welcome to our gallery</h1>
             </div>
