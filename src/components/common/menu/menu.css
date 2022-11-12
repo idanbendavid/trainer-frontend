@@ -30,10 +30,12 @@ h4{
 .main-heading-menu > h1{
     margin-bottom: 0px;
     font-size: 25px;
+    color: #cd0000;
 }
 
 .main-heading-menu > p{
     margin-top: 0px;
     text-decoration: underline;
     font-size: 13px;
+    color: #cd0000;
 }

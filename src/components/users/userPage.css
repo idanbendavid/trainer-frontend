@@ -3,6 +3,10 @@
     grid-template-columns: 40% 60%;
 }
 
+.main-heading {
+    color: #cd0000;
+}
+
 @media all and (max-width: 1500px) {
     .user-page-component {
         display: grid;
