@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 async function addExerciseToUserSchedule(data) {
-    const response = await axios.post('http://localhost:3001/userExercises/addExercise', data);
+    const response = await axios.post('http://34.65.141.75:3001/userExercises/addExercise', data);
     if (response.data) {
         toast.info(`an exercise has been added for the selected date`)
     }
@@ -10,19 +10,19 @@ async function addExerciseToUserSchedule(data) {
 }
 
 async function getExercisesOfUser() {
-    const response = await axios.get('http://localhost:3001/userExercises/exercisesOfUser');
+    const response = await axios.get('http://34.65.141.75:3001/userExercises/exercisesOfUser');
 
     return response.data
 }
 
 async function getAmountOfExercisesPerDateForUser() {
-    const response = await axios.get('http://localhost:3001/userExercises/amountOfExercises');
+    const response = await axios.get('http://34.65.141.75:3001/userExercises/amountOfExercises');
 
     return response.data
 }
 
 async function deleteExerciseOfUser(exerciseId: number) {
-    const response = await axios.delete(`http://localhost:3001/userExercises/deleteExercise/${exerciseId}`);
+    const response = await axios.delete(`http://34.65.141.75:3001/userExercises/deleteExercise/${exerciseId}`);
     if(response.data){
         return exerciseId;
     }

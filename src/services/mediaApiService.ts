@@ -27,7 +27,7 @@ async function getExercisesByBodyPart(bodyPart: string) {
 
 async function uploadFilesToServer(formData) {
     try {
-        let response = await axios.post(`http://localhost:3001/files/`, formData);
+        let response = await axios.post(`http://34.65.141.75:3001/files/`, formData);
         if (response) {
             toast.info("file uploaded successfully")
         }
@@ -40,13 +40,13 @@ async function uploadFilesToServer(formData) {
 }
 
 async function getFilesFromServer() {
-    let response = await axios.get(`http://localhost:3001/files/`);
+    let response = await axios.get(`http://34.65.141.75:3001/files/`);
 
     return response.data;
 }
 
 async function deleteFileFromServer(fileName: string) {
-    let response = await axios.delete(`http://localhost:3001/files/${fileName}`);
+    let response = await axios.delete(`http://34.65.141.75:3001/files/${fileName}`);
 
     if (response.data) {
         return fileName;

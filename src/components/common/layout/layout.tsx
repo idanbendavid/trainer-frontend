@@ -74,9 +74,7 @@ function Layout() {
           <Route path="/" element={<Navigate to="/main" replace={true} />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
-          {!isLoggedIn &&
-            <Route path="/welcome" element={<LandingPage />} />
-          }
+          <Route path="/welcome" element={<LandingPage />} />
           <Route path="/main" element={<Main />} />
           <Route path="/exercisesList" element={<ExerciseList />} />
           <Route path="/*" element={<ContactUs />} />

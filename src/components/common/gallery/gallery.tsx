@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import "./gallery.css";
 import { Slide } from 'react-slideshow-image';
 import FileUpload from '../fileUpload/fileUpload';
-import { Box, Button, Container, CssBaseline } from '@mui/material';
+import { Button, Container, CssBaseline } from '@mui/material';
 import { toast } from 'react-toastify';
 import FormComponents from '../form/formComponents';
 import { getFilesFromServer, deleteFileFromServer } from '../../../features/media/mediaSlice';

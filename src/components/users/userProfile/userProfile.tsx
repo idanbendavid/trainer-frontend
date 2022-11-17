@@ -1,14 +1,7 @@
-import { Container, CssBaseline, Box, InputLabel, Input, Button } from '@mui/material'
-import { ChangeEvent, useState } from 'react';
+import { Container, CssBaseline, Box, InputLabel, Input } from '@mui/material'
 import { AppDispatch, useAppSelector } from '../../../store'
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import "./userProfile.css";
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import regexes from '../../../helpers/regex';
 // import { io } from 'socket.io-client';
 
 
@@ -20,7 +13,7 @@ function UserProfile() {
     // let token = useAppSelector((state) => state.auth.token);
 
     // function socketConnection(newEmail: string) {
-    //     const socket = io("http://localhost:8000", { query: { token } }).connect();
+    //     const socket = io("http://34.65.141.75:8000", { query: { token } }).connect();
 
     //     socket.on('connection', () => {
     //         // socket.emit('send_data', newEmail)

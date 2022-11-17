@@ -4,21 +4,25 @@ import { IUser } from "../models/IUser";
 
 
 async function register(registerUser: IUser): Promise<IUser> {
-    const response = await axios.post('http://localhost:3001/users/register', registerUser);
+    const response = await axios.post('http://34.65.141.75:3001/users/register', registerUser);
 
     if (response.data) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("email", response.data.newUser.email);
         localStorage.setItem("name", response.data.newUser.firstName + " " + response.data.newUser.lastName);
         localStorage.setItem("role", response.data.newUser.userRole);
-        
+
         axios.defaults.headers.common['Authorization'] = response.data.token;
     }
     return response.data;
 }
 
 async function login(loggedInDetails: ILogin): Promise<IUser> {
-    const response = await axios.post('http://localhost:3001/users/login', loggedInDetails);
+    const response = await axios.post('http://34.65.141.75:3001/users/login', loggedInDetails, {
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    });
 
     if (response.data) {
         localStorage.setItem("token", response.data.token);
@@ -40,8 +44,8 @@ function logout() {
 
 
 async function surviveRefresh() {
-    const response = await axios.get('http://localhost:3001/users/verify_token');
-    
+    const response = await axios.get('http://34.65.141.75:3001/users/verify_token');
+
     return response
 }
 
