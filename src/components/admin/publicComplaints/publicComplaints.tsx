@@ -21,16 +21,13 @@ function PublicComplaints() {
         if (category.toLocaleLowerCase() === 'other') {
             return 'lightgrey'
         }
-        if (category.toLocaleLowerCase() === 'articles') {
-            return 'lightblue'
-        }
         if (category.toLocaleLowerCase() === 'profile') {
             return 'lightgreen'
         }
         if (category.toLocaleLowerCase() === 'exercises') {
             return '#ff4747'
         }
-        if (category.toLocaleLowerCase() === 'gallery') {
+        if (category.toLocaleLowerCase() === 'image') {
             return '#970afc'
         }
         return '#bd7100'

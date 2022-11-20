@@ -5,8 +5,6 @@
     text-decoration: underline;
 }
 
-
-
 .gallery-main-container {
     display: grid;
     text-align: center;
@@ -102,5 +100,9 @@
         display: grid;
         text-align: center;
         margin-top: 0px;
+    }
+
+    .slide-container {
+        margin-top: 50px;
     }
 }

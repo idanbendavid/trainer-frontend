@@ -5,6 +5,7 @@ section {
 
 #menuButton{
     color: black;
+    position: absolute;
 }
 
 #closeMenuIcon{

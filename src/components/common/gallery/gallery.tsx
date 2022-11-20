@@ -42,6 +42,23 @@ function Gallery() {
         });
     }
 
+    const responsiveSettings = [
+        {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ];
+
     return (
         <>
             <div className="main-heading">
@@ -76,7 +93,7 @@ function Gallery() {
                     }
                 </div>
                 <div className="slide-container">
-                    <Slide>
+                    <Slide responsive={responsiveSettings}>
                         {gallery.map((slideImage, index) => (
                             <div className="each-slide" key={index}>
                                 <img className='image-in-gallery' key={slideImage.file_path} src={slideImage.file_path} alt={slideImage.file_name.replace(/\..+$/, '')} />

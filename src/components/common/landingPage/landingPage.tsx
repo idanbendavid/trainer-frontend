@@ -10,7 +10,7 @@ function LandingPage() {
 
 
   return (
-    <div className="landing-page">
+    <div className="landing-page container-fluid">
       <img src={workout} alt="workout" className="landing-page-image" />
       <Button variant="contained" color="primary" className="login-navigation" onClick={() => navigate("/login")}>Sign In</Button >
       <div className="brand">

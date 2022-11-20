@@ -67,6 +67,7 @@ function AdminDashbord() {
                                 <br />
                                 <label htmlFor="newTasks">New Tasks   </label>
                                 <input type="text" id='newTasks' onChange={getNewTask} />
+                                <br /><br />
                                 <Button variant='contained' onClick={addNewTasks}>create new tasks</Button>
                             </div>
                         </div>

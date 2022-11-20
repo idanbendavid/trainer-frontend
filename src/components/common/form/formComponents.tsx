@@ -100,8 +100,10 @@ function FormComponents() {
                 <div className='image-problem-category'>
                     <InputLabel id='imageCategory'>Category</InputLabel>
                     <select className='gallery-select' {...register("complaintCategory")}>
-                        <option>image</option>
                         <option>gallery</option>
+                        <option>profile</option>
+                        <option>exercises</option>
+                        <option>other</option>
                     </select>
                     {errors.complaintCategory && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.complaintCategory.message}</p>}
                 </div>

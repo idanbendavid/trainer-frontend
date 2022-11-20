@@ -29,10 +29,6 @@
         display: block;
     }
 
-    .user-exercise {
-        margin: 0px;
-    }
-
     .user-exercise-display {
         margin: 15px;
     }
@@ -54,6 +50,11 @@
     .MuiBox-root.css-tnqmi {
         margin-top: 0px;
     }
+
+    .user-page-component {
+        display: grid;
+        grid-template-columns: 100%;
+    }
 }
 
 @media all and (max-width: 650px) {
@@ -66,5 +67,9 @@
         align-items: center;
         word-break: break-word;
         flex-wrap: wrap;
+    }
+
+    .exercise-header{
+        margin-top: 35px;
     }
 }

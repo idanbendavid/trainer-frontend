@@ -2,9 +2,11 @@
     overflow-y: auto;
 }
 
-.main-heading{
-    margin-left: 150px;
+.main-heading {
+    margin-top: 30px;
+    margin-left: 30px;
 }
+
 .main-heading>h1 {
     font-size: 45px;
     margin: 0px;
@@ -36,6 +38,17 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         justify-items: center;
     }
+
+    .bodyParts>.css-s18byi {
+        margin: 15px;
+        height: 200px;
+        width: 220px;
+        text-transform: capitalize;
+        text-align: center;
+        border-radius: 10px;
+        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+    }
+
 }
 
 @media all and (max-width: 1500px) {
@@ -45,7 +58,19 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
+        margin: 15px;
     }
+
+    .bodyParts>.css-s18byi {
+        margin: 15px;
+        height: 200px;
+        width: 220px;
+        text-transform: capitalize;
+        text-align: center;
+        border-radius: 10px;
+        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+    }
+
 }
 
 @media all and (max-width: 1210px) {
@@ -55,9 +80,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
+        margin: 15px;
     }
 
-    .bodyParts>.css-bhp9pd-MuiPaper-root-MuiCard-root {
+    .bodyParts>.css-s18byi {
         margin: 15px;
         height: 200px;
         width: 220px;
@@ -75,12 +101,34 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-items: center;
+        margin: 15px;
     }
 
-    .bodyParts>.css-bhp9pd-MuiPaper-root-MuiCard-root {
+    .bodyParts>.css-s18byi {
         margin: 15px;
+        width: 150px;
         height: 200px;
-        width: 200px;
+        text-transform: capitalize;
+        text-align: center;
+        border-radius: 10px;
+        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+    }
+}
+
+@media all and (max-width: 600px) {
+    .body-parts-main {
+        overflow-y: auto;
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        margin: 15px;
+    }
+
+    .bodyParts>.css-s18byi {
+        margin: 15px;
+        width: 150px;
+        height: 200px;
         text-transform: capitalize;
         text-align: center;
         border-radius: 10px;

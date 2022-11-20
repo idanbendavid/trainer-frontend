@@ -9,6 +9,7 @@
     padding-left: 15px;
     z-index: 4;
     text-transform: capitalize;
+    overflow-y: auto;
 }
 
 .hello-span {

@@ -41,7 +41,7 @@ function Layout() {
       dispatch(remainConnceted())
     }
     else {
-      console.log("no token")
+      console.log("no token");
       navigate("/welcome")
     }
   }, [dispatch, token]);
@@ -60,7 +60,6 @@ function Layout() {
         }
       </>
       <section>
-        {isLoggedIn &&
           <Button onClick={() => setIsOpen(!isOpen)} id="menuButton">
             {!isOpen &&
               <MenuIcon fontSize='large' id="menuIcon" />
@@ -69,7 +68,6 @@ function Layout() {
               <CloseIcon fontSize='large' id="closeMenuIcon" />
             }
           </Button>
-        }
         <Routes>
           <Route path="/" element={<Navigate to="/main" replace={true} />} />
           <Route path="/login" element={<LoginPage />} />

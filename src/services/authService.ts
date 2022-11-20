@@ -18,11 +18,7 @@ async function register(registerUser: IUser): Promise<IUser> {
 }
 
 async function login(loggedInDetails: ILogin): Promise<IUser> {
-    const response = await axios.post('http://34.65.141.75:3001/users/login', loggedInDetails, {
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        }
-    });
+    const response = await axios.post('http://34.65.141.75:3001/users/login', loggedInDetails);
 
     if (response.data) {
         localStorage.setItem("token", response.data.token);
