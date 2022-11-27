@@ -9,10 +9,14 @@ form>select {
     border-top: none;
     border-left: none;
     border-right: none;
+    position: relative;
 }
 
+label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-15dqw82-MuiFormLabel-root-MuiInputLabel-root{
+    font-weight: 700;
+}
 .role-label {
-    color: rgba(0, 0, 0, 0.6);
+    color: whitesmoke;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-size: 1rem;
@@ -26,11 +30,11 @@ form>select {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+
 }
 
 .css-13i4rnv-MuiGrid-root > a {
-    color: blue;
+    color: rgb(0, 225, 255);
     text-decoration: underline;
     text-transform: capitalize;
-
 }

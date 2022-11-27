@@ -11,6 +11,7 @@
     text-transform: capitalize;
     text-align: center;
     text-decoration: underline;
+    color: antiquewhite;
 }
 
 .single-exercise-detailed {
@@ -30,6 +31,7 @@
     word-break: break-word;
     margin: 5px;
     height: 150px;
+    position: relative;
 }
 
 .user-exercise-display>img {

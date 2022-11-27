@@ -60,14 +60,14 @@ function Layout() {
         }
       </>
       <section>
-          <Button onClick={() => setIsOpen(!isOpen)} id="menuButton">
-            {!isOpen &&
-              <MenuIcon fontSize='large' id="menuIcon" />
-            }
-            {isOpen &&
-              <CloseIcon fontSize='large' id="closeMenuIcon" />
-            }
-          </Button>
+        <Button onClick={() => setIsOpen(!isOpen)} id="menuButton">
+          {!isOpen &&
+            <MenuIcon fontSize='large' id="menuIcon" />
+          }
+          {isOpen &&
+            <CloseIcon fontSize='large' id="closeMenuIcon" />
+          }
+        </Button>
         <Routes>
           <Route path="/" element={<Navigate to="/main" replace={true} />} />
           <Route path="/login" element={<LoginPage />} />

@@ -16,11 +16,16 @@
 }
 
 .user-profile-first-name, .user-profile-email,
-.user-profile-status, .user-profile-last-name, .user-profile-birth-date >
-label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
+.user-profile-status, .user-profile-last-name, .user-profile-birth-date>label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
     text-align: initial;
     margin-left: 30px;
 }
+
+#userProfileLabels{
+    color: whitesmoke;
+    font-size: 20px;
+}
+
 
 .user-profile-details-part2 {
     margin-left: 20px;
@@ -31,6 +36,7 @@ label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-c
     text-decoration: underline;
     margin-bottom: 30px;
     text-align: center;
+    color: whitesmoke;
 }
 
 .css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
@@ -42,7 +48,6 @@ label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-c
     text-transform: unset;
 }
 
-#closeModalButton{
+#closeModalButton {
     display: flex;
 }
-

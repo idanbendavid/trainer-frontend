@@ -71,12 +71,12 @@ function UserExercise() {
         </div>
         <Stack display={'flex'} alignItems={'center'} >
           {userExercises.length > exercisesOfUserPerPage &&
-            < Pagination color='primary'
+            < Pagination color='secondary' sx={{bgcolor: 'white'}}
               shape='circular'
               count={Math.ceil(userExercises.length / exercisesOfUserPerPage)}
               page={currentPage}
               onChange={paginate}
-              size="large"
+              size="medium"
             />
           }
         </Stack>

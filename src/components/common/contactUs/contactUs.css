@@ -1,6 +1,7 @@
 .contact-us-page {
     text-align: center;
     text-transform: capitalize;
+    position: relative;
 }
 
 .MuiBox-root.css-1cvgh61>h1 {
@@ -22,6 +23,8 @@ input.MuiInput-input {
     width: 250px;
     height: 30px;
     font-size: 18px;
+    position: relative;
+    color: white;
 }
 
 .contact-us-form-inputs {
@@ -61,4 +64,14 @@ input.MuiInput-input {
 
 textarea {
     font-size: 18px;
+}
+
+#helpHeading{
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+#helpSecondHeading{
+    margin-top: 0px;
+    color: whitesmoke;
 }

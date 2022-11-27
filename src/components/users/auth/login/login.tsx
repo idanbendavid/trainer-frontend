@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Input from "@mui/material/Input/Input";
 import Button from "@mui/material/Button/Button";
 import { toast } from "react-toastify"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../../../features/auth/authSlice";
 import { AppDispatch, useAppSelector } from "../../../../store";
@@ -138,25 +138,25 @@ export default function LoginPage() {
       <CssBaseline />
       <Container fixed>
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
-          <Typography component="h1" variant="h5">Sign In</Typography>
+          <Avatar sx={{ bgcolor: 'secondary.main' }}></Avatar>
+          <Typography component="h1" variant="h5" color={'white'} zIndex={999} >Sign In</Typography>
           <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             <label>Email</label>
             <Controller name="email" control={control} defaultValue="" render={({ field }) => <Input name='email' type="email" fullWidth {...field} />} />
-            {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.email.message}</p>}
+            {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', position:'relative', fontSize:'20px' }}>{errors.email.message}</p>}
             <br /><br />
             <label>Password</label>
             <Controller name="password" control={control} defaultValue="" render={({ field }) => <Input name="password" type="password" fullWidth {...field} />} />
-            {errors.password && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.password.message}</p>}
+            {errors.password && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', position:'relative', fontSize:'20px' }}>{errors.password.message}</p>}
             <br /><br />
             <div className="button">
               <Button type="submit" variant="contained">Sign In</Button>
             </div>
           </form>
           <br />
-          <div>
-            <Link to="/register" className="sign-up-link">Sign up now</Link>
-            <Button variant="text" color="error" onClick={() => setForgotPasswordModal(true)}>Forgot Password</Button>
+          <div className="login-page-bottom-section">
+            <Button variant="contained" color="error" id="forgotPassword" onClick={() => setForgotPasswordModal(true)}>Forgot Password</Button>
+            <Button variant="contained" color="success" id="signUpLink" onClick={()=> navigate("/register")}>Sign up now</Button>
           </div>
         </Box>
       </Container>

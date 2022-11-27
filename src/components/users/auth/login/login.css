@@ -2,6 +2,12 @@
     margin-top: 10px;
 }
 
+.login-form > label {
+    position: relative;
+    color: white;
+    font-size: 20px;
+}
+
 .button {
     text-align: center;
 }
@@ -12,9 +18,17 @@
     text-transform: capitalize;
 }
 
-.sign-up-link {
+#signUpLink {
     text-decoration: none;
-    color: blue;
+    position: relative;
+    z-index: 999;
+}
+
+.login-page-bottom-section{
+    display: flex;
+    justify-content: center;
+}
+#forgotPassword{
     margin-right: 50px;
 }
 
@@ -26,8 +40,4 @@
 
 .forgot-password-modal-title > .css-1sszw6i-MuiButtonBase-root-MuiButton-root{
     margin-left: 80px;
-}
-
-.main-heading-auth{
-    margin-top: 50px;
 }

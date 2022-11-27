@@ -1,5 +1,6 @@
 .admin-dashbord-introduction>h1 {
     text-align: center;
+    position: relative;
 }
 
 .admin-dashbord-introduction>h1 {
@@ -7,6 +8,8 @@
     text-decoration: underline;
     text-transform: capitalize;
     margin: 10px 0px;
+    position: relative;
+    color: whitesmoke;
 }
 
 .main-heading-admin {
@@ -17,6 +20,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: max-content;
+    position: relative;
 }
 
 .admin-component-diversion {
@@ -28,8 +32,11 @@
 .user-list-admin-component {
     align-items: center;
     margin-right: 40px;
+    margin-top: 15px;
+    color: cyan;
     height: 90%;
     box-shadow: -5px -5px 15px rgba(33, 33, 33, .7);
+    position: relative;
 }
 
 .public-complaints {
@@ -38,11 +45,13 @@
     margin-right: 40px;
     margin-top: 0px;
     box-shadow: -5px 5px 15px rgba(33, 33, 33, .7);
+    position: relative;
 }
 
 .public-complaints>h1 {
     text-align: center;
     margin-bottom: 10px;
+    color: cyan;
 }
 
 .task-list-container {
@@ -231,6 +240,7 @@
         text-decoration: underline;
         margin-bottom: 0px;
         font-size: 20px;
+        color: floralwhite;
     }
 
     .task-list-container {

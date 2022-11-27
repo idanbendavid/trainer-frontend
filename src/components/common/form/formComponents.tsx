@@ -82,35 +82,35 @@ function FormComponents() {
         <div>
             <Box>
                 <div className='image-problem-first-name'>
-                    <InputLabel id='imageFirstName'>First Name</InputLabel>
-                    <InputUnstyled type="text" placeholder='First Name'  {...register("firstName")}></InputUnstyled>
-                    {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.firstName.message}</p>}
+                    <InputLabel id='labelFirstName'>First Name</InputLabel>
+                    <InputUnstyled type="text" placeholder='First Name' id="inputUnstyled" {...register("firstName")}></InputUnstyled>
+                    {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold',fontSize:'20px' }}>{errors.firstName.message}</p>}
                 </div>
                 <div className='image-problem-last-name'>
-                    <InputLabel id='imageLastName'>Last Name</InputLabel>
-                    <InputUnstyled type="text" placeholder='Last Name'  {...register("lastName")}></InputUnstyled>
-                    {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.lastName.message}</p>}
+                    <InputLabel id='labelLastName'>Last Name</InputLabel>
+                    <InputUnstyled type="text" placeholder='Last Name' id="inputUnstyled" {...register("lastName")}></InputUnstyled>
+                    {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.lastName.message}</p>}
 
                 </div>
                 <div className='image-problem-email'>
-                    <InputLabel id='imageEmail'>Email</InputLabel>
-                    <InputUnstyled type="email" placeholder='Email' {...register("email")}></InputUnstyled>
-                    {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.email.message}</p>}
+                    <InputLabel id='labelEmail'>Email</InputLabel>
+                    <InputUnstyled type="email" placeholder='Email'id="inputUnstyled" {...register("email")}></InputUnstyled>
+                    {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.email.message}</p>}
                 </div>
                 <div className='image-problem-category'>
-                    <InputLabel id='imageCategory'>Category</InputLabel>
-                    <select className='gallery-select' {...register("complaintCategory")}>
+                    <InputLabel id='labelCategory'>Category</InputLabel>
+                    <select className='gallery-select' id="inputUnstyled" {...register("complaintCategory")}>
                         <option>gallery</option>
                         <option>profile</option>
                         <option>exercises</option>
                         <option>other</option>
                     </select>
-                    {errors.complaintCategory && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.complaintCategory.message}</p>}
+                    {errors.complaintCategory && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.complaintCategory.message}</p>}
                 </div>
                 <br />
                 <div className='image-problem-description'>
-                    <textarea className='problem-with-image' placeholder="Please explain your problem" {...register("description")}></textarea>
-                    {errors.description && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.description.message}</p>}
+                    <textarea className='problem-with-image' id="inputUnstyled" placeholder="Please explain your problem" {...register("description")}></textarea>
+                    {errors.description && <p style={{ color: 'red', textTransform: 'capitalize', fontSize: '20px', fontWeight: 'bold' }}>{errors.description.message}</p>}
                 </div>
                 <div>
                     <Button variant='contained' onClick={handleSubmit(onProblemFormSubmit)}>Send</Button>

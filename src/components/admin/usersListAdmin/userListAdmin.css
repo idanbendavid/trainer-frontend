@@ -7,6 +7,9 @@
     overflow-x: hidden;
     padding: 0px;
     margin-bottom: 15px;
+    position: relative;
+    background-color: white;
+    border: 1px solid black;
 }
 
 .users-admin-actions {

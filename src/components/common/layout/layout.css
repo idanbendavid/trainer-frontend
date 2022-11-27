@@ -1,3 +1,11 @@
+.layout{
+    background-image: url("../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: relative;
+}
+
 section {
     overflow-x: hidden;
 }
@@ -6,6 +14,7 @@ section {
 #menuButton{
     color: black;
     position: absolute;
+    z-index: 999;
 }
 
 #closeMenuIcon{

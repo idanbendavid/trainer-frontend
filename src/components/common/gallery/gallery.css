@@ -3,6 +3,8 @@
 .gallery-heading {
     text-align: center;
     text-decoration: underline;
+    position: relative;
+    color: white;
 }
 
 .gallery-main-container {
@@ -10,6 +12,7 @@
     text-align: center;
     grid-template-columns: 20% 60% 20%;
     margin-top: 50px;
+    position: relative;
 }
 
 .react-slideshow-container {
@@ -26,6 +29,7 @@
     font-weight: 700;
     font-size: 20px;
     text-transform: capitalize;
+    color: whitesmoke;
 }
 
 .problem-with-image {
@@ -35,32 +39,75 @@
     resize: none;
     overflow-y: auto;
     overflow-x: hidden;
+    position: relative;
 }
 
 .gallery-select {
     width: 250px;
     height: 30px;
     font-size: 16px;
+    position: relative;
 }
 
 .image-problem-first-name, .image-problem-last-name, .image-problem-email {
     margin-bottom: 10px;
+    position: relative;
 }
 
-#imageFirstName {
+.image-problem-first-name, .image-problem-last-name, .image-problem-email>input.MuiInput-input {
+    color: black;
+}
+
+#inputUnstyled {
+    color: black;
+}
+
+#labelFirstName {
+    margin-right: 155px;
+    position: relative;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+#labelLastName {
+    margin-right: 155px;
+    position: relative;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+#labelEmail {
+    margin-right: 195px;
+    position: relative;
+    color: whitesmoke;
+    font-size: 20px;
+
+}
+
+#labelCategory {
     margin-right: 170px;
+    position: relative;
+    color: whitesmoke;
+    font-size: 20px;
 }
 
-#imageLastName {
-    margin-right: 170px;
+.file-upload-in-gallery {
+    position: relative;
+    color: whitesmoke;
+    word-break: break-word;
+    margin: 0px 5px;
 }
 
-#imageEmail {
-    margin-right: 210px;
+.file-upload-in-gallery > label {
+    font-weight: 700;
+    font-size: 20px;
 }
 
-#imageCategory {
-    margin-right: 185px;
+.file-upload-in-gallery > input {
+    font-size: 20px;
+}
+.gallery-aside-form {
+    color: whitesmoke;
 }
 
 @media all and (max-width: 1400px) {
@@ -71,6 +118,7 @@
         grid-template-columns: 100%;
         margin-top: 0px;
     }
+
     .react-slideshow-container {
         display: inline-block;
         width: 75%;

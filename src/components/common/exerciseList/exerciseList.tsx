@@ -121,24 +121,23 @@ function ExerciseList() {
                 </div>
                 <div className="exercise-card-div">
                     {currentExercises.map((exercise: IExercise, index: number) => {
-                        return <Card key={index}>
+                        return <Card key={index} className='exercise-card'>
                             <div className="exercise-name">
                                 <p>{exercise.name}</p>
                             </div>
-                            <div>
-                                <LazyLoadImage id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
-                            </div>
+                            <LazyLoadImage id="gifUrl" src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
                             <div className='body-part-and-target'>
                                 <Button sx={{ ml: '5px', color: '#fff', background: '#001BFF', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.bodyPart}</Button>
                                 <Button sx={{ ml: '5px', color: '#fff', background: '#FF8C31', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>{exercise.target}</Button>
                             </div>
-                            {isLoggedIn && <div className='add-exercise-button'>
-                                <Button variant='contained' color='success' onClick={() => {
-                                    setNewExercise(exercise);
-                                    setOpenDatePicker(true);
-                                }}>
-                                    Add to schedule</Button>
-                            </div>}
+                            {isLoggedIn &&
+                                <div className='add-exercise-button'>
+                                    <Button variant='contained' color='success' onClick={() => {
+                                        setNewExercise(exercise);
+                                        setOpenDatePicker(true);
+                                    }}> Add to schedule</Button>
+                                </div>
+                            }
                         </Card>;
                     })}
                 </div>
@@ -166,12 +165,12 @@ function ExerciseList() {
                     </div>}
                 <Stack display={"flex"} justifyContent={"center"} alignItems={"center"} mt={2}>
                     {exercises.length > exercisesPerPage &&
-                        <Pagination color='primary'
+                        <Pagination color='primary' sx={{bgcolor: 'white', marginBottom:'10px' }}
                             shape='circular'
                             count={Math.ceil(exercises.length / exercisesPerPage)}
                             page={currentPage}
                             onChange={paginate}
-                            size="large" />}
+                            size="medium" />}
                 </Stack>
             </div></>
     )

@@ -121,19 +121,19 @@ export default function Register() {
       </div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box sx={{ marginTop: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
+        <Box sx={{ marginTop: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', color: 'white' }} >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
           <Typography component="h1" variant="h5" sx={{ marginBottom: 1 }}>Sign up</Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <InputLabel>First Name</InputLabel>
+            <InputLabel sx={{color: 'white'}}>First Name</InputLabel>
             <Input fullWidth type="text" {...register("firstName")} />
             {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.firstName.message}</p>}
             <br /><br />
-            <InputLabel>Last Name</InputLabel>
+            <InputLabel sx={{color: 'white'}}>Last Name</InputLabel>
             <Input fullWidth type="text" {...register("lastName")} />
             {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.lastName.message}</p>}
             <br /><br />
-            <InputLabel>Birth Date</InputLabel>
+            <InputLabel sx={{color: 'white'}}>Birth Date</InputLabel>
             <Input fullWidth type="date" {...register("birthDate")} />
             {errors.birthDate && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.birthDate.message}</p>}
             <br /><br />
@@ -143,11 +143,11 @@ export default function Register() {
             </select>
             {errors.userRole && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.userRole.message}</p>}
             <br /><br />
-            <InputLabel>Email</InputLabel>
+            <InputLabel sx={{color: 'white'}}>Email</InputLabel>
             <Input fullWidth type="email" {...register("email")} />
             {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.email.message}</p>}
             <br /><br />
-            <InputLabel>Password</InputLabel>
+            <InputLabel sx={{color: 'white'}}>Password</InputLabel>
             <Input fullWidth type="password" {...register("password")} />
             {errors.password && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.password.message}</p>}
             <div className='regsiter-button'>

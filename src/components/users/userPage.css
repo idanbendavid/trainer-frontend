@@ -1,16 +1,22 @@
 .user-page-component {
-    display: grid;
-    grid-template-columns: 40% 60%;
+    position: relative;
 }
 
 .main-heading {
-    color: #cd0000;
+    color: #ff0000;
+}
+
+.switch-components-button {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    position: relative;
+    z-index: 100;
 }
 
 @media all and (max-width: 1500px) {
     .user-page-component {
         display: grid;
-        grid-template-rows: 25% 75%;
         grid-template-columns: 100%;
     }
 
@@ -22,6 +28,14 @@
     .user-exercise-grid-split {
         margin-right: 0px;
     }
+
+    .switch-components-button {
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+        position: relative;
+        z-index: 100;
+    }
 }
 
 @media all and (max-width: 1200px) {
@@ -31,6 +45,13 @@
 
     .user-exercise-display {
         margin: 15px;
+    }
+    .switch-components-button {
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+        position: relative;
+        z-index: 100;
     }
 }
 
@@ -55,21 +76,50 @@
         display: grid;
         grid-template-columns: 100%;
     }
+
+    .switch-components-button {
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+        position: relative;
+        z-index: 100;
+    }
 }
+
 
 @media all and (max-width: 650px) {
     .user-exercise-display {
         height: 200px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-content: center;
+        justify-content: space-evenly;
+        align-content: stretch;
         align-items: center;
         word-break: break-word;
         flex-wrap: wrap;
+        position: relative;
     }
 
-    .exercise-header{
+    .exercise-header {
         margin-top: 35px;
     }
+
+    .switch-components-button {
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+        position: relative;
+        z-index: 100;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .user-exercise-display>img {
+        display: none;
+    }
+
+    .user-exercise-display { 
+        flex-direction: row;
+    }
+
 }
