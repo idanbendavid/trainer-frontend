@@ -6,8 +6,11 @@ import { AppDispatch, useAppSelector } from '../../../store';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import "./userExercises.css"
+import { useNavigate } from 'react-router-dom';
 
 function UserExercise() {
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
   const [checkStatusModal, setCheckStatusModal] = useState(Boolean);
@@ -50,6 +53,12 @@ function UserExercise() {
     <div className='user-exercise'>
       <div className='user-exercise-grid-split'>
         <h1 className='exercise-header'>{firstName}'s exercises</h1>
+          {!currentUserExercises.length &&
+            <div className='no-workout-for-user'>
+              <h1>you need to workout!</h1>
+              <Button variant='contained' color='info' onClick={() => navigate("/main")}>select exercises</Button>
+            </div>
+          }
         <div className='single-exercise-detailed'>
           {currentUserExercises.map((exerciseOfUser: any, index: number) => {
             return <Card className="user-exercise-display" key={index}>
@@ -71,7 +80,7 @@ function UserExercise() {
         </div>
         <Stack display={'flex'} alignItems={'center'} >
           {userExercises.length > exercisesOfUserPerPage &&
-            < Pagination color='secondary' sx={{bgcolor: 'white'}}
+            < Pagination color='secondary' sx={{ bgcolor: 'white' }}
               shape='circular'
               count={Math.ceil(userExercises.length / exercisesOfUserPerPage)}
               page={currentPage}
