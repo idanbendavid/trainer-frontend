@@ -16,14 +16,18 @@ async function getExercisesOfUser() {
 }
 
 async function getAmountOfExercisesPerDateForUser() {
-    const response = await axios.get('http://localhost:3001/userExercises/amountOfExercises');
+    const response = await axios.get('http://localhost:3001/userExercises/amountOfExercises', {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    });
 
     return response.data
 }
 
 async function deleteExerciseOfUser(exerciseId: number) {
     const response = await axios.delete(`http://localhost:3001/userExercises/deleteExercise/${exerciseId}`);
-    if(response.data){
+    if (response.data) {
         return exerciseId;
     }
 }

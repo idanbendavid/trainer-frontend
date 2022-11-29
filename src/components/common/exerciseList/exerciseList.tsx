@@ -6,7 +6,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import "./exerciseList.css";
 import { LocalizationProvider, DatePicker, PickersDay, PickersDayProps, pickersDayClasses } from '@mui/x-date-pickers';
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { displayExercisesByBodyPartName, getAmountOfExercises, addExerciseToUserSchedule } from '../../../features/exercises/exerciseSlice';
+import { displayExercisesByBodyPartName, getAmountOfExercises, addExerciseToUserSchedule, passBodyPartName } from '../../../features/exercises/exerciseSlice';
 import { dateHepler } from '../../../helpers/dateHelper';
 import { IExercise } from '../../../models/IExercise';
 import mediaApiService from '../../../services/mediaApiService';
@@ -40,6 +40,7 @@ function ExerciseList() {
         }
         if (!bodyPart) {
             let savedBodyPart = sessionStorage.getItem("bodyPart");
+            dispatch(passBodyPartName(savedBodyPart));
             let getExercisesOfBodyPart = mediaApiService.getExercisesByBodyPart(savedBodyPart);
             getExercisesOfBodyPart.then((getExercisesOfBodyPart) => {
                 dispatch(displayExercisesByBodyPartName(getExercisesOfBodyPart));
