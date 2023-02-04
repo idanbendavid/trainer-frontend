@@ -1,13 +1,40 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
+import { IApiNinjas } from '../../models/IApiNinjas';
 import mediaApiService from '../../services/mediaApiService';
 
 const initialState = {
     message: "",
     isError: false,
     isSuccess: false,
-    gallery: []
+    gallery: [],
+    exercises: [] as IApiNinjas[],
+    image: "" || null
 }
+
+export const getExercisesFromApi = createAsyncThunk("exercises/apiNinja", async (params: object) => {
+    try {
+        const response = await mediaApiService.getExercises(params);
+        return response;
+    }
+    catch (error) {
+        const message = error;
+        toast.info(message);
+        return message;
+    }
+})
+
+export const getImageOfMuscle = createAsyncThunk("muscleImage/MuscleGroupImageGenerator", async (muscle: string) => {
+    try {
+        const response = await mediaApiService.getMuscleImage(muscle);
+        return response;
+    }
+    catch (error) {
+        const message: string = error.response.data.error;
+        toast.info(message);
+        return message;
+    }
+})
 
 export const getFilesFromServer = createAsyncThunk("files/getFiles", async () => {
     try {
@@ -42,6 +69,16 @@ export const mediaSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(getExercisesFromApi.fulfilled, (state, action) => {
+                state.exercises = action.payload;
+            })
+            .addCase(getExercisesFromApi.rejected, (state, action) => {
+            })
+            .addCase(getImageOfMuscle.fulfilled, (state, action) => {
+                state.image = action.payload;
+            })
+            .addCase(getImageOfMuscle.rejected, (state, action) => {
+            })
             .addCase(getFilesFromServer.fulfilled, (state, action) => {
                 state.gallery = action.payload;
             })
@@ -58,4 +95,5 @@ export const mediaSlice = createSlice({
     }
 })
 
+export const { reset } = mediaSlice.actions
 export default mediaSlice.reducer

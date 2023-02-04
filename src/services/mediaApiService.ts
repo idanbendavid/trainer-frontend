@@ -1,28 +1,48 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { IApiNinjas } from "../models/IApiNinjas";
 
-async function getListOfBodyParts() {
-
-    let response = await axios.get('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', {
-        headers: {
-            'X-RapidAPI-Key': process.env.REACT_APP_TRAINER_RAPID_API_KEY_GOOGLE,
-            'X-RapidAPI-Host': process.env.REACT_APP_TRAINER_RAPID_API_HOST
-        },
-    })
-
-    return response.data
+async function getExercises(params: object) {
+    try {
+        let response = await axios.get<IApiNinjas[]>('https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises', {
+            headers: {
+                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
+                'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com'
+            },
+            params
+        })
+        console.log(response.data)
+        return response.data
+    }
+    catch (error) {
+        console.log(error)
+        toast.error(error);
+    }
 }
 
-async function getExercisesByBodyPart(bodyPart: string) {
 
-    let response = await axios.get(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, {
-        headers: {
-            'X-RapidAPI-Key': process.env.REACT_APP_TRAINER_RAPID_API_KEY_GOOGLE,
-            'X-RapidAPI-Host': process.env.REACT_APP_TRAINER_RAPID_API_HOST
-        }
-    })
+async function getMuscleImage(muscle: string) {
+    try {
+        let response = await axios.get('https://muscle-group-image-generator.p.rapidapi.com/getImage', {
+            params: {
+                muscleGroups: muscle,
+                color: '200,100,80'
+            },
+            headers: {
+                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
+                'X-RapidAPI-Host': 'muscle-group-image-generator.p.rapidapi.com'
+            },
+            responseType: "arraybuffer"
+        })
 
-    return response.data
+        const imageFile = new Blob([response.data]);
+        const imageUrl = URL.createObjectURL(imageFile);
+        return imageUrl;
+    }
+    catch (error) {
+        toast.error("selected muscle image is not available at the moment, try agian later");
+        console.log(error);
+    }
 }
 
 async function uploadFilesToServer(formData) {
@@ -40,22 +60,33 @@ async function uploadFilesToServer(formData) {
 }
 
 async function getFilesFromServer() {
-    let response = await axios.get(`http://localhost:3001/files/`);
-
-    return response.data;
+    try {
+        let response = await axios.get(`http://localhost:3001/files/`);
+        return response.data;
+    }
+    catch (error) {
+        toast.error(error);
+        console.log(error);
+    }
 }
 
 async function deleteFileFromServer(fileName: string) {
-    let response = await axios.delete(`http://localhost:3001/files/${fileName}`);
+    try {
+        let response = await axios.delete(`http://localhost:3001/files/${fileName}`);
 
-    if (response.data) {
-        return fileName;
+        if (response.data) {
+            return fileName;
+        }
+    }
+    catch (error) {
+        toast.error(error);
+        console.log(error);
     }
 }
 
 const mediaApiService = {
-    getListOfBodyParts,
-    getExercisesByBodyPart,
+    getExercises,
+    getMuscleImage,
     uploadFilesToServer,
     getFilesFromServer,
     deleteFileFromServer

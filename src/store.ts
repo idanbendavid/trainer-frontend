@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import authReducer from "./features/auth/authSlice";
-import exerciseReducer from "./features/exercises/exerciseSlice";
 import adminReducer from "./features/admin/adminSlice";
 import mediaReducer from "./features/media/mediaSlice"
 
@@ -9,7 +8,6 @@ export const store = configureStore({
     reducer: {
         auth: authReducer,
         admin: adminReducer,
-        exercises: exerciseReducer,
         media: mediaReducer
     },
     middleware: (getDefaultMiddleware) =>

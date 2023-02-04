@@ -34,8 +34,46 @@
     color: whitesmoke;
 }
 
+.select-lists-options {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+
+.select-lists-options > p{
+    font-size: 22px;
+}
+
+.level-select, .type-select {
+    text-transform: capitalize;
+    width: 210px;
+    background-color: white;
+    height: 35px;
+    font-size: 20px;
+}
+
+.level-select-div > label,  .type-select-div > label {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.exercise-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.exercise-card {
+    width: 300px;
+    height: 320px;
+    margin: 10px;
+}
+
 @media all and (min-width: 1500px) {
-    .body-parts-main {
+    /* .body-parts-main {
         overflow-y: auto;
         padding-top: 20px;
         display: grid;
@@ -51,12 +89,12 @@
         text-align: center;
         border-radius: 10px;
         filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    }
+    } */
 
 }
 
 @media all and (max-width: 1500px) {
-    .body-parts-main {
+    /* .body-parts-main {
         overflow-y: auto;
         padding-top: 20px;
         display: grid;
@@ -73,12 +111,12 @@
         text-align: center;
         border-radius: 10px;
         filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    }
+    } */
 
 }
 
 @media all and (max-width: 1210px) {
-    .body-parts-main {
+    /* .body-parts-main {
         overflow-y: auto;
         padding-top: 20px;
         display: grid;
@@ -95,11 +133,11 @@
         text-align: center;
         border-radius: 10px;
         filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    }
+    } */
 }
 
 @media all and (max-width: 900px) {
-    .body-parts-main {
+    /* .body-parts-main {
         overflow-y: auto;
         padding-top: 20px;
         display: grid;
@@ -116,15 +154,16 @@
         text-align: center;
         border-radius: 10px;
         filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    }
+    } */
 }
 
 @media all and (max-width: 600px) {
 
-    .second-heading > h1{
+    .second-heading>h1 {
         margin-bottom: 0px;
     }
-    .body-parts-main {
+
+    /* .body-parts-main {
         overflow-y: auto;
         display: grid;
         grid-template-columns: 1fr;
@@ -140,5 +179,5 @@
         text-align: center;
         border-radius: 10px;
         filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    }
+    } */
 }
