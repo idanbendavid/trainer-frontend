@@ -1,10 +1,10 @@
 import { Button, Dialog } from '@mui/material'
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch } from 'react-redux';
-import { getImageOfMuscle, reset as resetMediaSliceState } from '../../../features/media/mediaSlice';
+import { getImageOfMuscle, resetImage } from '../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
 import "./dataDialog.css";
 
@@ -16,50 +16,52 @@ function DataDialogs(props) {
 
   let image = useAppSelector((state) => state.media.image);
 
+  let muscle = props.muscle;
   let instructions = props.instructions;
+  let name = props.name;
 
   useEffect(() => {
-    dispatch(getImageOfMuscle(props.muscle));
-
+    if (muscle !== undefined) {
+      dispatch(getImageOfMuscle(muscle));
+    }
+    
     if (image) {
       setOpenImageModal(true);
       setOpenInstructionsModal(false);
-      props.muscle = "";
     }
-
-    if (instructions) {
+    
+    if (instructions !== undefined) {
       setOpenInstructionsModal(true);
       setOpenImageModal(false);
     }
 
-  }, [dispatch, props, image, instructions])
+  }, [dispatch, muscle, image, instructions])
 
   const handleClose = () => {
-    dispatch(resetMediaSliceState());
+    dispatch(resetImage());
+    instructions = undefined;
     setOpenImageModal(false);
     setOpenInstructionsModal(false);
   };
 
   return (
     <div className='data-dialogs'>
-      {openImageModal && 
-        <Dialog open={openImageModal} className='dialog-muscle-image'>
-          <DialogTitle className='dialog-title-muscle-image'>
-            <Button onClick={handleClose} className='close-muscle-dialog'>X</Button>
+      {(openImageModal || openInstructionsModal) &&
+        <Dialog open={openImageModal || openInstructionsModal} className='common-dialog'>
+          <DialogTitle className='common-dialog-titles'>
+            {name}
+            <Button onClick={handleClose} className='close-dialog'>X</Button>
           </DialogTitle>
-          <DialogContent className='dialog-muscle-content'>
-            <LazyLoadImage src={image} alt="muscle" />
-          </DialogContent>
-        </Dialog>
-      }
-      {openInstructionsModal &&
-        <Dialog open={openInstructionsModal} className='instrction-dialog'>
-          <DialogTitle className='instructions-title-dialog'>
-            <Button onClick={handleClose} className='instructions-close-dialog'>X</Button>
-          </DialogTitle>
-          <DialogContent className='instructions-dialog-content'>
-            <p>{instructions}</p>
-          </DialogContent>
+          {openImageModal && !openInstructionsModal &&
+            <DialogContent className='dialog-muscle-content'>
+              <LazyLoadImage src={image} alt="muscle" className='muscle-image' />
+            </DialogContent>
+          }
+          {openInstructionsModal && !openImageModal &&
+            <DialogContent className='instructions-dialog-content'>
+              <p className='dialog-instructions'>{instructions}</p>
+            </DialogContent>
+          }
         </Dialog>
       }
     </div>
