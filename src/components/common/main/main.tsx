@@ -16,6 +16,7 @@ export default function Main() {
     const [type, setType] = useState('');
     const [imageOfMuscle, setImageOfMuscle] = useState('');
     const [instruction, setInstruction] = useState('');
+    const [exerciseName, setExerciseName] = useState('');
 
     let exercises = useAppSelector((state) => state.media.exercises);
 
@@ -48,22 +49,18 @@ export default function Main() {
         dispatch(getExercisesFromApi(params));
     }
 
-    function getImageOfMuscle(muscle: string) {
-        if (!muscle) {
-            console.error("no value")
-            return;
+    function passDataToDialogsComponent(muscle: string | undefined, instructions: string | undefined, name: string):void {
+        if (muscle) {
+            setInstruction(undefined);
+            setImageOfMuscle(muscle);
+            setExerciseName(name);
         }
 
-        setImageOfMuscle(muscle);
-    }
-
-    function viewInstrctions(instructions: string) {
-        if (!instructions) {
-            console.error("no value")
-            return;
+        if (instructions) {
+            setImageOfMuscle(undefined);
+            setInstruction(instructions);
+            setExerciseName(name);
         }
-
-        setInstruction(instructions);
     }
 
     return (
@@ -110,21 +107,16 @@ export default function Main() {
                             <h2>type: {exercise.type}</h2>
                             <p>muscle: {exercise.muscle}</p>
                             <p>equipment: {exercise.equipment}</p>
-                            <Button variant="contained" color="primary" onClick={() => viewInstrctions(exercise.instructions)}>instructions</Button>
-                            <Button variant="contained" color="success" onClick={() => getImageOfMuscle(exercise.muscle)}>view muscle</Button>
+                            <Button variant="contained" color="primary" onClick={() => passDataToDialogsComponent(undefined, exercise.instructions, exercise.name)}>instructions</Button>
+                            <Button variant="contained" color="success" onClick={() => passDataToDialogsComponent(exercise.muscle, undefined, exercise.name)}>view muscle</Button>
                         </Card>
                     })}
                 </div>
-                <div className="main-image-of-muscle">
-                    {imageOfMuscle &&
-                        <DataDialogs muscle={imageOfMuscle} />
-                    }
-                </div>
-                <div className="main-exercise-instruction">
-                    {instruction &&
-                        <DataDialogs instructions={instruction} />
-                    }
-                </div>
+                {(imageOfMuscle || instruction) &&
+                    <div className="main-data-dialogs">
+                        <DataDialogs muscle={imageOfMuscle} instructions={instruction} name={exerciseName} />
+                    </div>
+                }
             </Container>
         </div>
     )
