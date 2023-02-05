@@ -9,7 +9,7 @@ const initialState = {
     isSuccess: false,
     gallery: [],
     exercises: [] as IApiNinjas[],
-    image: "" || null
+    image: "" || undefined
 }
 
 export const getExercisesFromApi = createAsyncThunk("exercises/apiNinja", async (params: object) => {
@@ -65,6 +65,7 @@ export const mediaSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => state = initialState,
+        resetImage: (state) => state.image = initialState.image
         // ---------------------------------------------------------------
     },
     extraReducers: (builder) => {
@@ -95,5 +96,5 @@ export const mediaSlice = createSlice({
     }
 })
 
-export const { reset } = mediaSlice.actions
+export const { reset,resetImage } = mediaSlice.actions
 export default mediaSlice.reducer
