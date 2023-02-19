@@ -11,55 +11,41 @@ import "./dataDialog.css";
 function DataDialogs(props) {
 
   const [openImageModal, setOpenImageModal] = useState(false);
-  const [openInstructionsModal, setOpenInstructionsModal] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
   let image = useAppSelector((state) => state.media.image);
 
   let muscle = props.muscle;
-  let instructions = props.instructions;
-  let name = props.name;
 
   useEffect(() => {
     if (muscle !== undefined) {
       dispatch(getImageOfMuscle(muscle));
     }
-    
+
     if (image) {
       setOpenImageModal(true);
-      setOpenInstructionsModal(false);
-    }
-    
-    if (instructions !== undefined) {
-      setOpenInstructionsModal(true);
-      setOpenImageModal(false);
     }
 
-  }, [dispatch, muscle, image, instructions])
+
+  }, [dispatch, muscle, image])
 
   const handleClose = () => {
     dispatch(resetImage());
-    instructions = undefined;
     setOpenImageModal(false);
-    setOpenInstructionsModal(false);
   };
 
   return (
     <div className='data-dialogs'>
-      {(openImageModal || openInstructionsModal) &&
-        <Dialog open={openImageModal || openInstructionsModal} className='common-dialog'>
+      {openImageModal &&
+        <Dialog open={openImageModal} className='common-dialog'>
           <DialogTitle className='common-dialog-titles'>
-            {name}
-            <Button onClick={handleClose} className='close-dialog'>X</Button>
+            <div className='close-dialog'>
+              <Button onClick={handleClose} className='close-dialog-button' variant='text'>X</Button>
+            </div>
           </DialogTitle>
-          {openImageModal && !openInstructionsModal &&
+          {openImageModal &&
             <DialogContent className='dialog-muscle-content'>
               <LazyLoadImage src={image} alt="muscle" className='muscle-image' />
-            </DialogContent>
-          }
-          {openInstructionsModal && !openImageModal &&
-            <DialogContent className='instructions-dialog-content'>
-              <p className='dialog-instructions'>{instructions}</p>
             </DialogContent>
           }
         </Dialog>

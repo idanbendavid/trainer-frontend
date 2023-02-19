@@ -1,0 +1,11 @@
+.common-dialog-titles{
+    display: grid;
+    grid-template-columns: 11fr 1fr;
+    justify-items: start;
+}
+
+.common-dialog-titles > span{
+    text-transform: capitalize;
+    text-decoration: underline;
+    font-weight: bold;
+}
