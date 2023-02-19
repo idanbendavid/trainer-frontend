@@ -1,0 +1,11 @@
+.video-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.iframe-video{
+    width: 600px;
+    height: 400px;
+}

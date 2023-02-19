@@ -2,16 +2,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { IApiNinjas } from "../models/IApiNinjas";
 
-async function getExercises(params: object) {
+async function getExercises(type: string) {
     try {
         let response = await axios.get<IApiNinjas[]>('https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises', {
             headers: {
                 'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
                 'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com'
             },
-            params
+            params: { type }
         })
-        console.log(response.data)
         return response.data
     }
     catch (error) {
@@ -41,6 +40,25 @@ async function getMuscleImage(muscle: string) {
     }
     catch (error) {
         toast.error("selected muscle image is not available at the moment, try agian later");
+        console.log(error);
+    }
+}
+
+async function getWorkoutVideo(muscleToVideo: string) {
+    try {
+        let response = await axios.get('https://youtube-search-results.p.rapidapi.com/youtube-search/', {
+            params: {
+                q: muscleToVideo
+            },
+            headers: {
+                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
+                'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+            }
+        })
+        return response.data.items[0]
+    }
+    catch (error) {
+        toast.error("selected muscle video is not available at the moment, try agian later");
         console.log(error);
     }
 }
@@ -87,6 +105,7 @@ async function deleteFileFromServer(fileName: string) {
 const mediaApiService = {
     getExercises,
     getMuscleImage,
+    getWorkoutVideo,
     uploadFilesToServer,
     getFilesFromServer,
     deleteFileFromServer

@@ -9,12 +9,30 @@ const initialState = {
     isSuccess: false,
     gallery: [],
     exercises: [] as IApiNinjas[],
-    image: "" || undefined
+    image: "" || undefined,
+    exercisesNameArray: [] as string[],
+    video: {
+        author: {},
+        badges: [],
+        bestThumbnail: {},
+        description: null || "",
+        duration: "",
+        id: "",
+        isLive: false,
+        isUpcoming:false,
+        thumbnails: [],
+        title: "",
+        type: "video",
+        upcoming: "" || null,
+        uploadedAt: "",
+        url: "",
+        views: 0
+    }
 }
 
-export const getExercisesFromApi = createAsyncThunk("exercises/apiNinja", async (params: object) => {
+export const getExercisesFromApi = createAsyncThunk("exercises/apiNinja", async (type: string) => {
     try {
-        const response = await mediaApiService.getExercises(params);
+        const response = await mediaApiService.getExercises(type);
         return response;
     }
     catch (error) {
@@ -27,6 +45,18 @@ export const getExercisesFromApi = createAsyncThunk("exercises/apiNinja", async 
 export const getImageOfMuscle = createAsyncThunk("muscleImage/MuscleGroupImageGenerator", async (muscle: string) => {
     try {
         const response = await mediaApiService.getMuscleImage(muscle);
+        return response;
+    }
+    catch (error) {
+        const message: string = error.response.data.error;
+        toast.info(message);
+        return message;
+    }
+})
+
+export const getWorkoutVideo = createAsyncThunk("muscleVideo/youtubeSearchResults", async (muscleToVideo: string) => {
+    try {
+        const response = await mediaApiService.getWorkoutVideo(muscleToVideo);
         return response;
     }
     catch (error) {
@@ -65,36 +95,49 @@ export const mediaSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => state = initialState,
-        resetImage: (state) => state.image = initialState.image
+        resetImage: (state) => state.image = initialState.image,
+        resetExerciseNamesArray: (state) => { state.exercisesNameArray = initialState.exercisesNameArray }
         // ---------------------------------------------------------------
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getExercisesFromApi.fulfilled, (state, action) => {
+            .addCase(getExercisesFromApi.fulfilled, (state, action: PayloadAction<[]>) => {
                 state.exercises = action.payload;
+                state.exercises.forEach(exercise => {
+                    state.exercisesNameArray.push(exercise.name)
+                });
             })
-            .addCase(getExercisesFromApi.rejected, (state, action) => {
+            .addCase(getExercisesFromApi.rejected, (state, action: PayloadAction<{}>) => {
             })
-            .addCase(getImageOfMuscle.fulfilled, (state, action) => {
+            // -----------------------------------------------------
+            .addCase(getImageOfMuscle.fulfilled, (state, action: PayloadAction<string>) => {
                 state.image = action.payload;
             })
-            .addCase(getImageOfMuscle.rejected, (state, action) => {
+            .addCase(getImageOfMuscle.rejected, (state, action: PayloadAction<{}>) => {
             })
-            .addCase(getFilesFromServer.fulfilled, (state, action) => {
+            // -----------------------------------------------------
+            .addCase(getFilesFromServer.fulfilled, (state, action: PayloadAction<[]>) => {
                 state.gallery = action.payload;
             })
-            .addCase(getFilesFromServer.rejected, (state, action) => {
+            .addCase(getFilesFromServer.rejected, (state, action: PayloadAction<{}>) => {
                 state.message = "failed loading images";
             })
             // -----------------------------------------------------
-            .addCase(deleteFileFromServer.fulfilled, (state, action) => {
+            .addCase(getWorkoutVideo.fulfilled, (state, action) => {
+                state.video = action.payload
+            })
+            .addCase(getWorkoutVideo.rejected, (state, action) => {
+                state.message = "failed getting vidoe";
+            })
+            // -----------------------------------------------------
+            .addCase(deleteFileFromServer.fulfilled, (state, action: PayloadAction<{}>) => {
                 state.gallery = state.gallery.filter((file) => file.file_name !== action.payload);
             })
-            .addCase(deleteFileFromServer.rejected, (state, action: PayloadAction<any>) => {
-                state.message = action.payload;
+            .addCase(deleteFileFromServer.rejected, (state, action: PayloadAction<Object | string>) => {
+                // state.message = action.payload;
             })
     }
 })
 
-export const { reset,resetImage } = mediaSlice.actions
+export const { reset, resetImage, resetExerciseNamesArray } = mediaSlice.actions
 export default mediaSlice.reducer
