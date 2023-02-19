@@ -15,7 +15,7 @@
 }
 
 .brand {
-    top: 70px;
+    top: 40px;
     left: 30px;
     text-transform: capitalize;
     color: red;
@@ -34,16 +34,6 @@
     text-transform: capitalize;
     font-weight: bold;
     text-decoration: underline;
-}
-
-.icon-position {
-    position: absolute;
-    top: 57%;
-    left: 25%;
-    transform: rotate(270deg);
-    color: white;
-    font-size: 2.5rem !important;
-    cursor: pointer;
 }
 
 .mind-playing {
