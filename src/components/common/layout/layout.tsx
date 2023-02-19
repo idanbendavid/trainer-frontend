@@ -11,7 +11,6 @@ import axios from 'axios';
 import Main from '../main/main';
 import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
-import ExerciseList from '../exerciseList/exerciseList';
 import FileUpload from '../fileUpload/fileUpload';
 import Gallery from '../gallery/gallery';
 import LandingPage from '../landingPage/landingPage';
@@ -74,7 +73,6 @@ function Layout() {
           <Route path="/register" element={<Register />} />
           <Route path="/welcome" element={<LandingPage />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/exercisesList" element={<ExerciseList />} />
           <Route path="/*" element={<ContactUs />} />
           <Route path="/uploadImages" element={<FileUpload />} />
           <Route path="/gallery" element={<Gallery />} />
