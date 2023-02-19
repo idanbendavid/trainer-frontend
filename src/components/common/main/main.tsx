@@ -1,67 +1,46 @@
-import { Button, Card, Container, CssBaseline } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Button, Card, CssBaseline, Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { toast } from "react-toastify";
-import { getExercisesFromApi } from "../../../features/media/mediaSlice";
+import { getExercisesFromApi, resetExerciseNamesArray } from "../../../features/media/mediaSlice";
 import { IApiNinjas } from "../../../models/IApiNinjas";
 import { AppDispatch, useAppSelector } from "../../../store";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DataDialogs from "../dataDialogs/dataDialog";
+import Video from "../video/video";
 import "./main.css";
 
 export default function Main() {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    const [level, setLevel] = useState('');
     const [type, setType] = useState('');
     const [imageOfMuscle, setImageOfMuscle] = useState('');
-    const [instruction, setInstruction] = useState('');
-    const [exerciseName, setExerciseName] = useState('');
+    const [exerciseToVideo, setExerciseToVideo] = useState('');
+    const [exerciseToDisplayByName, setExerciseToDisplayByName] = useState('');
 
     let exercises = useAppSelector((state) => state.media.exercises);
-
-    const handleLevelChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setLevel(event.target.value);
-    };
+    let exercisesNameArray = useAppSelector((state) => state.media.exercisesNameArray);
 
     const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setType(event.target.value);
     };
 
-    useEffect(() => {
-        if (exercises.length === 0) {
-            toast.info("nothing found");
-            return;
-        }
-    }, [exercises])
+    // useEffect(() => {
+    // }, [exercisesNameArray, exercises])
 
     function getExercies(): void {
-        if (!level || !type) {
-            toast.error("select both level and type");
+        if (!type) {
+            toast.error("select the type of your next workout");
             return;
         }
 
-        let params = {
-            level,
-            type
-        }
-
-        dispatch(getExercisesFromApi(params));
+        dispatch(resetExerciseNamesArray());
+        dispatch(getExercisesFromApi(type));
+        setExerciseToDisplayByName("");
     }
 
-    function passDataToDialogsComponent(muscle: string | undefined, instructions: string | undefined, name: string):void {
-        if (muscle) {
-            setInstruction(undefined);
-            setImageOfMuscle(muscle);
-            setExerciseName(name);
-        }
 
-        if (instructions) {
-            setImageOfMuscle(undefined);
-            setInstruction(instructions);
-            setExerciseName(name);
-        }
-    }
 
     return (
         <div className="main">
@@ -70,18 +49,8 @@ export default function Main() {
                 <p>your goals our mission</p>
             </div>
             <div className="select-lists-options">
-                <p>Select level and type of training</p>
-                <div className="level-select-div">
-                    <label>level</label>
-                    <select className="level-select" defaultValue="default" onChange={handleLevelChange}>
-                        <option disabled value="default" defaultChecked>select level</option>
-                        <option value="beginner"> beginner</option>
-                        <option value="intermediate"> intermediate</option>
-                        <option value="expert"> expert</option>
-                    </select>
-                </div>
+                <p>Select type of training</p>
                 <div className="type-select-div">
-                    <label>type</label>
                     <select className="type-select" defaultValue="default" onChange={handleTypeChange}>
                         <option disabled value="default" defaultChecked>select type</option>
                         <option value="cardio">cardio</option>
@@ -97,27 +66,62 @@ export default function Main() {
                     <Button variant="contained" color="primary" onClick={getExercies}>get exercises</Button>
                 </div>
             </div>
-            <Container maxWidth="xl" >
-                <CssBaseline />
-                <div className="exercise-main">
-                    {exercises.map((exercise: IApiNinjas, index: number) => {
-                        return <Card key={index} className="exercise-card">
-                            <h1>name: {exercise.name}</h1>
-                            <h3>level: {exercise.difficulty}</h3>
-                            <h2>type: {exercise.type}</h2>
-                            <p>muscle: {exercise.muscle}</p>
-                            <p>equipment: {exercise.equipment}</p>
-                            <Button variant="contained" color="primary" onClick={() => passDataToDialogsComponent(undefined, exercise.instructions, exercise.name)}>instructions</Button>
-                            <Button variant="contained" color="success" onClick={() => passDataToDialogsComponent(exercise.muscle, undefined, exercise.name)}>view muscle</Button>
-                        </Card>
-                    })}
-                </div>
-                {(imageOfMuscle || instruction) &&
-                    <div className="main-data-dialogs">
-                        <DataDialogs muscle={imageOfMuscle} instructions={instruction} name={exerciseName} />
+            <CssBaseline />
+            {exercises.length < 1 &&
+                <h1 className="notify-exercises">to enter the contest choose the type of exercise you want to perform</h1>
+            }
+            <div className="exercise-main">
+                {exercises.length > 1 &&
+                    <div className="exercise-name-list">
+                        <h1>Exercises</h1>
+                        {exercisesNameArray.filter((name, index) => {
+                            return exercisesNameArray.indexOf(name) === index
+                        }).map((exerciseName: string, index: number) => {
+                            return <ul key={index} className="name-list-item">
+                                <li key={exerciseName} onClick={() => { setExerciseToDisplayByName(exerciseName); setExerciseToVideo(exerciseName) }}>{exerciseName}</li>
+                            </ul>
+                        })}
                     </div>
                 }
-            </Container>
-        </div>
+                <div>
+                    {exercises.filter((obj, index) => exercises.findIndex((item) => item.name === obj.name) === index)
+                        .map((exercise: IApiNinjas, index: number) => {
+                            if (exercise.name === exerciseToDisplayByName) {
+                                return <Card key={index} className="exercise-details">
+                                    <div className="exercise-details-main">
+                                        <h1 key={exercise.name}>{exercise.name.replace(/_/g, " ")} - {exercise.type.replace(/_/g, " ")} workout</h1>
+                                        <h3 key={exercise.muscle}>designated muscle: {exercise.muscle.replace(/_/g, " ")}
+                                            <Button color="primary" variant="contained" title="View Muscle" className="muscle-button" onClick={() => { setImageOfMuscle(exercise.muscle) }}>
+                                                View Muscle</Button>
+                                        </h3>
+                                        <div>
+                                            <p key={exercise.difficulty}>difficulty: {exercise.difficulty.replace(/_/g, " ")}</p>
+                                            <p key={exercise.equipment}>equipment: {exercise.equipment.replace(/_/g, " ")}</p>
+                                        </div>
+                                    </div>
+                                    <Accordion defaultExpanded={false} square={true} sx={{ marginBottom: '16px' }}>
+                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                                            <Typography>Instructions</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <Typography key={exercise.instructions} className="exercise-details-secondary">{exercise.instructions}</Typography>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                </Card>
+                            }
+                            return null
+                        })}
+                </div>
+                <div>
+                        {imageOfMuscle &&
+                            <DataDialogs muscle={imageOfMuscle} />
+                        }
+                        {exerciseToVideo &&
+                            <Video exerciseToVideo={exerciseToVideo} />
+                        }
+                </div>
+            </div>
+
+        </div >
     )
 }

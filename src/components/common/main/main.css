@@ -38,124 +38,128 @@
     display: flex;
     flex-direction: row;
     color: white;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
     margin-top: 10px;
+    margin-right: 115px;
     text-transform: capitalize;
+    height: 35px;
 }
 
-.select-lists-options > p{
+.select-lists-options>p {
     font-size: 22px;
+    margin-right: 20px;
 }
 
-.level-select, .type-select {
+.type-select {
     text-transform: capitalize;
-    width: 210px;
+    width: 215px;
     background-color: white;
     height: 35px;
     font-size: 20px;
-}
-
-.level-select-div > label,  .type-select-div > label {
-    margin-right: 10px;
-    font-size: 20px;
+    margin-right: 20px;
 }
 
 .exercise-main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 4fr 6fr;
+    margin: 0px 100px;
 }
 
 .exercise-card {
-    width: 300px;
-    height: 320px;
+    width: 320px;
+    height: 310px;
     margin: 10px;
+    padding: 0px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-@media all and (min-width: 1500px) {
-    /* .body-parts-main {
-        overflow-y: auto;
-        padding-top: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        justify-items: center;
-    }
-
-    .bodyParts>.css-s18byi {
-        margin: 15px;
-        height: 200px;
-        width: 220px;
-        text-transform: capitalize;
-        text-align: center;
-        border-radius: 10px;
-        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    } */
-
+.exercise-card>h1, h2, h3 {
+    text-transform: capitalize;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-@media all and (max-width: 1500px) {
-    /* .body-parts-main {
-        overflow-y: auto;
-        padding-top: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: center;
-        margin: 15px;
-    }
-
-    .bodyParts>.css-s18byi {
-        margin: 15px;
-        height: 200px;
-        width: 220px;
-        text-transform: capitalize;
-        text-align: center;
-        border-radius: 10px;
-        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    } */
-
+.exercise-card>h1 {
+    font-size: 20px;
 }
 
-@media all and (max-width: 1210px) {
-    /* .body-parts-main {
-        overflow-y: auto;
-        padding-top: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: center;
-        margin: 15px;
-    }
-
-    .bodyParts>.css-s18byi {
-        margin: 15px;
-        height: 200px;
-        width: 220px;
-        text-transform: capitalize;
-        text-align: center;
-        border-radius: 10px;
-        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    } */
+.exercise-card>h2 {
+    font-size: 18px;
 }
 
-@media all and (max-width: 900px) {
-    /* .body-parts-main {
-        overflow-y: auto;
-        padding-top: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        margin: 15px;
-    }
-
-    .bodyParts>.css-s18byi {
-        margin: 15px;
-        width: 150px;
-        height: 200px;
-        text-transform: capitalize;
-        text-align: center;
-        border-radius: 10px;
-        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    } */
+.exercise-card>h3 {
+    font-size: 16px;
 }
+
+.exercise-card>p {
+    margin: 8px 0px;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.notify-exercises {
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    font-size: 30px;
+    margin-top: 150px;
+}
+
+.exercise-name-list {
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.exercise-name-list > h1 {
+    margin-bottom: 8px;
+}
+
+.exercise-details {
+    text-align: center;
+    padding: 0px 15px;
+    margin-top: 30px;
+}
+
+.css-ij0a56-MuiPaper-root-MuiAccordion-root.Mui-expanded:last-of-type {
+    margin-bottom: 10px !important;
+}
+
+.name-list-item {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.exercise-details-main {
+    text-transform: capitalize;
+}
+
+.exercise-details-main>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.muscle-button {
+    margin-left: 10px !important;
+}
+
+@media all and (min-width: 1500px) {}
+
+@media all and (max-width: 1500px) {}
+
+@media all and (max-width: 1210px) {}
+
+@media all and (max-width: 900px) {}
 
 @media all and (max-width: 600px) {
 
@@ -163,21 +167,4 @@
         margin-bottom: 0px;
     }
 
-    /* .body-parts-main {
-        overflow-y: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        margin: 0px 15px;
-    }
-
-    .bodyParts>.css-s18byi {
-        margin: 15px;
-        width: 150px;
-        height: 200px;
-        text-transform: capitalize;
-        text-align: center;
-        border-radius: 10px;
-        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
-    } */
 }
