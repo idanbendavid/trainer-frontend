@@ -31,7 +31,7 @@ function UsersListAdmin() {
     ]
 
     async function getAllUsers() {
-        const response = await adminService.getAllUserForAdmin();
+        const response = await adminService.getAllUsersForAdmin();
         setTableData(response)
     }
 
