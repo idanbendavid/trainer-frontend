@@ -127,7 +127,7 @@ export const mediaSlice = createSlice({
                 state.video = action.payload
             })
             .addCase(getWorkoutVideo.rejected, (state, action) => {
-                state.message = "failed getting vidoe";
+                state.message = "failed getting video";
             })
             // -----------------------------------------------------
             .addCase(deleteFileFromServer.fulfilled, (state, action: PayloadAction<{}>) => {

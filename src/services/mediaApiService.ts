@@ -58,7 +58,7 @@ async function getWorkoutVideo(muscleToVideo: string) {
         return response.data.items[0]
     }
     catch (error) {
-        toast.error("selected muscle video is not available at the moment, try agian later");
+        toast.error("selected exercise video is not available at the moment, try agian later");
         console.log(error);
     }
 }
