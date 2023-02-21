@@ -1,4 +1,4 @@
-export interface IApiNinjas {
+export interface IExercise {
     name: string;
     type: string;
     muscle: string;

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { IApiNinjas } from "../models/IApiNinjas";
+import { IExercise } from "../models/IExercise";
 
 async function getExercises(type: string) {
     try {
-        let response = await axios.get<IApiNinjas[]>('https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises', {
+        let response = await axios.get<IExercise[]>('https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises', {
             headers: {
                 'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
                 'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com'

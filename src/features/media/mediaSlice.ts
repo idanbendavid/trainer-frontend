@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
-import { IApiNinjas } from '../../models/IApiNinjas';
+import { IExercise } from '../../models/IExercise';
 import mediaApiService from '../../services/mediaApiService';
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
     isError: false,
     isSuccess: false,
     gallery: [],
-    exercises: [] as IApiNinjas[],
+    exercises: [] as IExercise[],
     image: "" || undefined,
     exercisesNameArray: [] as string[],
     video: {

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Button, Card, CssBaseline, Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import { getExercisesFromApi, resetExerciseNamesArray } from "../../../features/media/mediaSlice";
-import { IApiNinjas } from "../../../models/IApiNinjas";
+import { IExercise } from "../../../models/IExercise";
 import { AppDispatch, useAppSelector } from "../../../store";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DataDialogs from "../dataDialogs/dataDialog";
@@ -80,7 +80,7 @@ export default function Main() {
                 }
                 <div>
                     {exercises.filter((obj, index) => exercises.findIndex((item) => item.name === obj.name) === index)
-                        .map((exercise: IApiNinjas, index: number) => {
+                        .map((exercise: IExercise, index: number) => {
                             if (exercise.name === exerciseToDisplayByName) {
                                 return <Card key={index} className="exercise-details">
                                     <div className="exercise-details-main">
