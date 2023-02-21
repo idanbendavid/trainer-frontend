@@ -122,12 +122,13 @@
 
 .exercise-name-list > h1 {
     margin-bottom: 8px;
+    text-decoration: underline;
 }
 
 .exercise-details {
     text-align: center;
     padding: 0px 15px;
-    margin-top: 30px;
+    margin-top: 65px;
 }
 
 .css-ij0a56-MuiPaper-root-MuiAccordion-root.Mui-expanded:last-of-type {
@@ -137,20 +138,29 @@
 .name-list-item {
     padding-left: 20px;
     list-style-type: none;
+    font-weight: 600;
 }
 
 .exercise-details-main {
     text-transform: capitalize;
 }
 
-.exercise-details-main>div {
+.exercise-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin: 15px 0px;
 }
 
-.muscle-button {
-    margin-left: 10px !important;
+.exercise-options-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.exercise-details-secondary{
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 @media all and (min-width: 1500px) {}

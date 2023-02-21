@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Card, CssBaseline, Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { toast } from "react-toastify";
@@ -26,9 +26,6 @@ export default function Main() {
         setType(event.target.value);
     };
 
-    // useEffect(() => {
-    // }, [exercisesNameArray, exercises])
-
     function getExercies(): void {
         if (!type) {
             toast.error("select the type of your next workout");
@@ -40,12 +37,10 @@ export default function Main() {
         setExerciseToDisplayByName("");
     }
 
-
-
     return (
         <div className="main">
             <div className="main-heading">
-                <h1>Core2Fitness</h1>
+                <h1>Care2Fitness</h1>
                 <p>your goals our mission</p>
             </div>
             <div className="select-lists-options">
@@ -78,7 +73,7 @@ export default function Main() {
                             return exercisesNameArray.indexOf(name) === index
                         }).map((exerciseName: string, index: number) => {
                             return <ul key={index} className="name-list-item">
-                                <li key={exerciseName} onClick={() => { setExerciseToDisplayByName(exerciseName); setExerciseToVideo(exerciseName) }}>{exerciseName}</li>
+                                <li key={exerciseName} onClick={() => {setExerciseToDisplayByName(exerciseName); setExerciseToVideo("");}}>{exerciseName}</li>
                             </ul>
                         })}
                     </div>
@@ -90,21 +85,22 @@ export default function Main() {
                                 return <Card key={index} className="exercise-details">
                                     <div className="exercise-details-main">
                                         <h1 key={exercise.name}>{exercise.name.replace(/_/g, " ")} - {exercise.type.replace(/_/g, " ")} workout</h1>
-                                        <h3 key={exercise.muscle}>designated muscle: {exercise.muscle.replace(/_/g, " ")}
-                                            <Button color="primary" variant="contained" title="View Muscle" className="muscle-button" onClick={() => { setImageOfMuscle(exercise.muscle) }}>
-                                                View Muscle</Button>
-                                        </h3>
-                                        <div>
-                                            <p key={exercise.difficulty}>difficulty: {exercise.difficulty.replace(/_/g, " ")}</p>
-                                            <p key={exercise.equipment}>equipment: {exercise.equipment.replace(/_/g, " ")}</p>
+                                        <div className="exercise-options-div">
+                                            <h3 key={exercise.muscle}>designated muscle: {exercise.muscle.replace(/_/g, " ")}</h3>
+                                            <h3 key={exercise.difficulty}>difficulty: {exercise.difficulty.replace(/_/g, " ")}</h3>
+                                            <h3 key={exercise.equipment}>equipment: {exercise.equipment.replace(/_/g, " ")}</h3>
+                                        </div>
+                                        <div className="exercise-buttons">
+                                            <Button color="primary" variant="contained" title="View Muscle" className="muscle-button" onClick={() => { setImageOfMuscle(exercise.muscle) }}>View Muscle</Button>
+                                            <Button color="success" variant="contained" title="video example" className="video-button" onClick={() => { setExerciseToVideo(exercise.name) }}>Example Video</Button>
                                         </div>
                                     </div>
                                     <Accordion defaultExpanded={false} square={true} sx={{ marginBottom: '16px' }}>
                                         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                                             <Typography>Instructions</Typography>
                                         </AccordionSummary>
-                                        <AccordionDetails>
-                                            <Typography key={exercise.instructions} className="exercise-details-secondary">{exercise.instructions}</Typography>
+                                        <AccordionDetails className="exercise-details-secondary">
+                                            <Typography key={exercise.instructions}>{exercise.instructions}</Typography>
                                         </AccordionDetails>
                                     </Accordion>
                                 </Card>
@@ -113,12 +109,12 @@ export default function Main() {
                         })}
                 </div>
                 <div>
-                        {imageOfMuscle &&
-                            <DataDialogs muscle={imageOfMuscle} />
-                        }
-                        {exerciseToVideo &&
-                            <Video exerciseToVideo={exerciseToVideo} />
-                        }
+                    {imageOfMuscle &&
+                        <DataDialogs muscle={imageOfMuscle} />
+                    }
+                    {exerciseToVideo !== "" &&
+                        <Video exerciseToVideo={exerciseToVideo} />
+                    }
                 </div>
             </div>
 
