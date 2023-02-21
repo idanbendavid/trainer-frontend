@@ -4,6 +4,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { getImageOfMuscle, resetImage } from '../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
 import "./dataDialog.css";
@@ -14,20 +15,25 @@ function DataDialogs(props) {
   const dispatch = useDispatch<AppDispatch>();
 
   let image = useAppSelector((state) => state.media.image);
+  let isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
   let muscle = props.muscle;
 
   useEffect(() => {
-    if (muscle !== undefined) {
-      dispatch(getImageOfMuscle(muscle));
+    if(isLoggedIn){
+      if (muscle !== "") {
+        dispatch(getImageOfMuscle(muscle));
+      }
+    }
+    else{
+      toast.info("must be logged in to view asked content");
+      return
     }
 
     if (image) {
       setOpenImageModal(true);
     }
-
-
-  }, [dispatch, muscle, image])
+  }, [dispatch, muscle, image, isLoggedIn])
 
   const handleClose = () => {
     dispatch(resetImage());
@@ -36,7 +42,7 @@ function DataDialogs(props) {
 
   return (
     <div className='data-dialogs'>
-      {openImageModal &&
+      {isLoggedIn && openImageModal &&
         <Dialog open={openImageModal} className='common-dialog'>
           <DialogTitle className='common-dialog-titles'>
             <div className='close-dialog'>
