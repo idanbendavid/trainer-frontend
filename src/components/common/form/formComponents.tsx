@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import InputUnstyled from '@mui/base/InputUnstyled';
 import regexes from "../../../helpers/regex";
 import { IComplaint } from "../../../models/IComplaint";
-import publicComplatinsService from "../../../services/publicComplaintsService";
+import adminService from "../../../services/adminService";
 import { useAppSelector } from "../../../store";
 
 function FormComponents() {
@@ -25,7 +25,7 @@ function FormComponents() {
 
         let formValidation = complaintFormValidation(userComplaint);
         if (formValidation) {
-            const response = await publicComplatinsService.newComplaint(userComplaint)
+            const response = await adminService.newComplaint(userComplaint)
             if (response) {
                 toast.info("your complaint has been recieved")
                 reset();
@@ -78,6 +78,7 @@ function FormComponents() {
         }
         return true;
     }
+    
     return (
         <div>
             <Box>

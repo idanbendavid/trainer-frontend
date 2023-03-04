@@ -33,12 +33,36 @@ async function deleteTask(task: string) {
 }
 
 
+async function getAllComplaints() {
+    const response = await axios.get(`http://localhost:3001/complaint`)
+
+    return response.data
+}
+
+async function newComplaint(userComplaint: object) {
+    const response = await axios.post(`http://localhost:3001/complaint`, userComplaint)
+
+    return response.data
+}
+
+
+async function deleteComplaint(complaintId: number): Promise<number> {
+    const response = await axios.delete(`http://localhost:3001/complaint/${complaintId}`)
+    if(response.data){
+        return complaintId;
+    }
+}
+
+
 const adminService = {
     deleteUser,
     getAllUsersForAdmin,
     getAdminTasks,
     addNewTask,
-    deleteTask
+    deleteTask,
+    getAllComplaints,
+    newComplaint,
+    deleteComplaint
 }
 
 export default adminService

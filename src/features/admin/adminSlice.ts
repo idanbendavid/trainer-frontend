@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 import { IComplaint } from '../../models/IComplaint';
 import adminService from '../../services/adminService'
-import publicComplatinsService from '../../services/publicComplaintsService';
 
 const initialState = {
     message: "",
@@ -36,7 +35,7 @@ export const deleteUser = createAsyncThunk("users/delete", async (userToDelete: 
 
 export const getAllComplaints = createAsyncThunk("admin/getComplaints", async () => {
     try {
-        const response = await publicComplatinsService.getAllComplaints();
+        const response = await adminService.getAllComplaints();
         return response;
     }
     catch (error) {
@@ -47,7 +46,7 @@ export const getAllComplaints = createAsyncThunk("admin/getComplaints", async ()
 
 export const deleteUserComplaint = createAsyncThunk("admin/deleteComplaint", async (complaintId: number, thunkAPI) => {
     try {
-        const response = await publicComplatinsService.deleteComplaint(complaintId);
+        const response = await adminService.deleteComplaint(complaintId);
         return response;
     }
     catch (error) {
