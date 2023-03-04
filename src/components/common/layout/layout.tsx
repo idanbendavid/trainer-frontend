@@ -14,12 +14,13 @@ import ContactUs from '../contactUs/contactUs';
 import FileUpload from '../fileUpload/fileUpload';
 import Gallery from '../gallery/gallery';
 import LandingPage from '../landingPage/landingPage';
-import { remainConnceted } from '../../../features/auth/authSlice';
+import { remainConnceted } from '../../../features/user/auth/authSlice';
 import { useAppSelector, AppDispatch } from '../../../store';
 import AdminDashbord from '../../admin/adminDashbord';
 import LoginPage from '../../users/auth/login/login';
 import Register from '../../users/auth/register/register';
 import UserPage from '../../users/userPage';
+import Contest from '../contest/contest';
 
 
 function Layout() {
@@ -73,6 +74,7 @@ function Layout() {
           <Route path="/register" element={<Register />} />
           <Route path="/welcome" element={<LandingPage />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/contest" element={<Contest />} />
           <Route path="/*" element={<ContactUs />} />
           <Route path="/uploadImages" element={<FileUpload />} />
           <Route path="/gallery" element={<Gallery />} />

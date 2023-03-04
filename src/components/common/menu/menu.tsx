@@ -2,7 +2,7 @@ import { Button, MenuItem } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, useAppSelector } from '../../../store';
-import { logout as logoutFromServer } from '../../../features/auth/authSlice';
+import { logout as logoutFromServer } from '../../../features/user/auth/authSlice';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import { Home } from '@mui/icons-material';
@@ -66,11 +66,16 @@ export default function Menu(props) {
             </ul>
           </>
         }
+        <h4>contest</h4>
+        <ul>
+          <MenuItem onClick={() => { navigate("/contest"); props.closeMenu() }}>
+            <span className='contest-span'>standings</span>
+          </MenuItem>
+        </ul>
         <h4>gallery</h4>
         <ul className='gallery'>
           <MenuItem onClick={() => { navigate("/gallery"); props.closeMenu() }}>gallery</MenuItem>
         </ul>
-
         <h4>need help?</h4>
         <ul>
           <MenuItem onClick={() => { navigate("/*"); props.closeMenu() }}>contact us</MenuItem>
