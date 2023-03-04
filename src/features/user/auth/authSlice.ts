@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
-import { ILogin } from '../../models/ILogin'
-import { IUser } from '../../models/IUser'
-import { UserRole } from '../../models/role'
-import authService from '../../services/authService'
-import userDataService from '../../services/userDataService'
+import { ILogin } from '../../../models/ILogin'
+import { IUser } from '../../../models/IUser'
+import { UserRole } from '../../../models/role'
+import authService from '../../../services/authService'
+import userDataService from '../../../services/userDataService'
 
 
 const initialState = {
