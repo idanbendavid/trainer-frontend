@@ -1,11 +1,66 @@
-.common-dialog-titles{
+.common-dialog-titles {
     display: grid;
     grid-template-columns: 11fr 1fr;
     justify-items: start;
 }
 
-.common-dialog-titles > span{
+.common-dialog-titles>span {
     text-transform: capitalize;
     text-decoration: underline;
     font-weight: bold;
+}
+
+.exercise-dialog-titles {
+    display: grid;
+    grid-template-columns: 11fr 1fr;
+    justify-items: start;
+}
+
+.exercise-name-dialog-title>h1 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.exercise-sets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.exercise-repats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.exercise-notes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exercise-notes>textarea {
+    resize: none;
+    padding-left: 5px;
+}
+
+.dialog-exercise-button {
+    display: flex;
+    justify-content: center;
+}
+
+#setsInput, #repeatsInput {
+    height: 30px;
+    width: 50px;
+    text-align: center;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    display: none !important;
 }

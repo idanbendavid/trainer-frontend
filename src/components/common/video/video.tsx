@@ -1,40 +1,40 @@
 import { Button } from '@mui/material';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
 import { getWorkoutVideo } from '../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
+import DataDialogs from '../dataDialogs/dataDialog';
 import "./video.css";
 
 function Video(props) {
 
+    const [showDialog, setShowDialog] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
-    let exerciseToVideo = `${props.exerciseToVideo} workout`;
 
     let videoToShow = useAppSelector((state) => state.media.video);
-    let isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
     useEffect(() => {
-        if (isLoggedIn) {
-            if (props.exerciseToVideo !== "") {
-                dispatch(getWorkoutVideo(exerciseToVideo));
-            }
+        if (props.exerciseToVideo !== null) {
+            dispatch(getWorkoutVideo(`${props.exerciseToVideo} workout`));
         }
-        else {
-            toast.info("must be logged in to view asked content");
-            return;
-        }
-    }, [exerciseToVideo, dispatch, isLoggedIn, props])
+    }, [props, dispatch])
+
+    function resetOpenDialogProps(){
+        setShowDialog(false);
+    }
 
     return (
         <div className='video-component'>
-            {isLoggedIn && videoToShow &&
+            {videoToShow.url &&
                 <>
-                    <iframe className='iframe-video' src={videoToShow.url.replace('watch?v=', 'embed/')} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    <iframe className='iframe-video' src={videoToShow.url.replace('watch?v=', 'embed/').replace('youtube', 'youtube-nocookie')} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                     <div className='enter-contest-div'>
-                        <Button color='error' variant='contained'>Enter Contest</Button>
+                        <Button color='error' variant='contained' onClick={() => setShowDialog(true)}>Done this Exercise?</Button>
                     </div>
                 </>
+            }
+            {showDialog && 
+                <DataDialogs exerciseName={props.exerciseToVideo} resetOpenDialogProps={resetOpenDialogProps}/> 
             }
         </div>
     )
