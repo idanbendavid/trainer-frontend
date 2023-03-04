@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IUserExerciseDetails } from "../models/IUserExerciseDetails";
 
 async function getUserDetails(){
     const response = await axios.get("http://localhost:3001/users/specificUser");
@@ -20,11 +21,18 @@ async function changePassword(newPassword: string, email: string) {
     return response.data;
 }
 
+async function saveUserExerciseDetails(userExerciseDetails: IUserExerciseDetails) {
+    const response = await axios.post('http://localhost:3001/TEMP', userExerciseDetails );
+    console.log(response.data);
+    return response.data;
+}
+
 
 const userDataService = {
     getUserDetails,
     checkEmail,
-    changePassword
+    changePassword,
+    saveUserExerciseDetails
 }
 
 export default userDataService

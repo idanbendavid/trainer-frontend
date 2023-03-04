@@ -96,7 +96,7 @@ export const mediaSlice = createSlice({
     reducers: {
         reset: (state) => state = initialState,
         resetImage: (state) => state.image = initialState.image,
-        resetExerciseNamesArray: (state) => { state.exercisesNameArray = initialState.exercisesNameArray }
+        resetExerciseNamesArray: (state) => { state.exercisesNameArray = initialState.exercisesNameArray },
         // ---------------------------------------------------------------
     },
     extraReducers: (builder) => {
@@ -125,6 +125,9 @@ export const mediaSlice = createSlice({
             // -----------------------------------------------------
             .addCase(getWorkoutVideo.fulfilled, (state, action) => {
                 state.video = action.payload
+            })
+            .addCase(getWorkoutVideo.pending, (state, action) => {
+                state.video = initialState.video
             })
             .addCase(getWorkoutVideo.rejected, (state, action) => {
                 state.message = "failed getting video";
