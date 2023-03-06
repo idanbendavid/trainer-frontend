@@ -14,7 +14,7 @@ function LandingPage() {
       <img src={workout} alt="workout" className="landing-page-image" />
       <Button variant="contained" color="primary" className="login-navigation" onClick={() => navigate("/login")}>Sign In</Button >
       <div className="brand">
-        <h1>Core2Fitness</h1>
+        <h1>Care2Fitness</h1>
         <p>your goals our mission</p>
       </div>
       <h2 className="mind-playing">

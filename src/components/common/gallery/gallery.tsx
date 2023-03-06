@@ -5,7 +5,7 @@ import { Slide } from 'react-slideshow-image';
 import FileUpload from '../fileUpload/fileUpload';
 import { Button, Container, CssBaseline } from '@mui/material';
 import { toast } from 'react-toastify';
-import FormComponents from '../form/formComponents';
+import ComplaintFormComponent from '../forms/complaintForm/complaintFormComponent';
 import { getFilesFromServer, deleteFileFromServer } from '../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
 
@@ -62,7 +62,7 @@ function Gallery() {
     return (
         <>
             <div className="main-heading">
-                <h1>Core2Fitness</h1>
+                <h1>Care2Fitness</h1>
                 <p>your goals our mission</p>
             </div>
             <div className='gallery-heading'>
@@ -107,7 +107,7 @@ function Gallery() {
                         <CssBaseline />
                         <h3>Dissatisfied with an image? write to us and we will solve your problem</h3>
                         <div>
-                            <FormComponents />
+                            <ComplaintFormComponent />
                         </div>
                     </Container>
                 </div>

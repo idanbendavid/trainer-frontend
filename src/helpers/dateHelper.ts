@@ -1,4 +1,4 @@
-export function dateHepler(mutableDate: Date) {
+export function dateHelper(mutableDate: Date) {
 
     let date = mutableDate.getDate();
     let month = mutableDate.getMonth() + 1;

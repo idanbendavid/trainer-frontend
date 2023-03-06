@@ -1,6 +1,6 @@
 import { Container, CssBaseline, Box } from "@mui/material";
 import "./contactUs.css";
-import FormComponents from "../form/formComponents";
+import ComplaintFormComponents from "../forms/complaintForm/complaintFormComponent";
 
 
 function ContactUs() {
@@ -8,7 +8,7 @@ function ContactUs() {
   return (
     <>
       <div className="main-heading">
-        <h1>Core2Fitness</h1>
+        <h1>Care2Fitness</h1>
         <p>your goals our mission</p>
       </div>
       <div className="contact-us-page">
@@ -17,7 +17,7 @@ function ContactUs() {
           <Box sx={{ marginTop: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'white' }}>
             <h1 id="helpHeading">need help? having a problem?</h1>
             <h3 id="helpSecondHeading">please provide us a full description and our team will help you overcome it</h3>
-            <FormComponents />
+            <ComplaintFormComponents />
           </Box>
         </Container>
       </div></>

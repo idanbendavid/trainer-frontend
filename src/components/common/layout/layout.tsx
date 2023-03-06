@@ -16,7 +16,7 @@ import Gallery from '../gallery/gallery';
 import LandingPage from '../landingPage/landingPage';
 import { remainConnceted } from '../../../features/user/auth/authSlice';
 import { useAppSelector, AppDispatch } from '../../../store';
-import AdminDashbord from '../../admin/adminDashbord';
+import AdminDashboard from '../../admin/adminDashboard';
 import LoginPage from '../../users/auth/login/login';
 import Register from '../../users/auth/register/register';
 import UserPage from '../../users/userPage';
@@ -81,7 +81,7 @@ function Layout() {
 
           {isLoggedIn && userRole.toLowerCase() === 'admin' &&
             <>
-              <Route path="/admin" element={<AdminDashbord />} />
+              <Route path="/admin" element={<AdminDashboard />} />
             </>
           }
 

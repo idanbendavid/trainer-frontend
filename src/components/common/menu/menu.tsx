@@ -26,7 +26,7 @@ export default function Menu(props) {
   return (
     <div className='menu' >
       <div className='main-heading-menu'>
-        <h1>Core2Fitness</h1>
+        <h1>Care2Fitness</h1>
         <p>your goals our mission</p>
       </div>
       <div className='user-actions-in-menu'>
@@ -53,7 +53,7 @@ export default function Menu(props) {
           <div className='admin-menu-options'>
             <h4>Admin</h4>
             <ul>
-              <MenuItem onClick={() => { navigate("/admin"); props.closeMenu() }}>dashbord</MenuItem>
+              <MenuItem onClick={() => { navigate("/admin"); props.closeMenu() }}>dashboard</MenuItem>
             </ul>
           </div>
         }
