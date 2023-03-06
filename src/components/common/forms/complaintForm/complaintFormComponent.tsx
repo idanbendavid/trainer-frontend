@@ -2,12 +2,12 @@ import { Box, InputLabel, Button } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 import InputUnstyled from '@mui/base/InputUnstyled';
-import regexes from "../../../helpers/regex";
-import { IComplaint } from "../../../models/IComplaint";
-import adminService from "../../../services/adminService";
-import { useAppSelector } from "../../../store";
+import regexes from "../../../../helpers/regex";
+import { IComplaint } from "../../../../models/IComplaint";
+import adminService from "../../../../services/adminService";
+import { useAppSelector } from "../../../../store";
 
-function FormComponents() {
+function ComplaintFormComponent() {
 
     let userDetails = useAppSelector((state) => state.auth.connectedUser);
 
@@ -91,7 +91,6 @@ function FormComponents() {
                     <InputLabel id='labelLastName'>Last Name</InputLabel>
                     <InputUnstyled type="text" placeholder='Last Name' id="inputUnstyled" {...register("lastName")}></InputUnstyled>
                     {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.lastName.message}</p>}
-
                 </div>
                 <div className='image-problem-email'>
                     <InputLabel id='labelEmail'>Email</InputLabel>
@@ -121,4 +120,4 @@ function FormComponents() {
     )
 }
 
-export default FormComponents
+export default ComplaintFormComponent
