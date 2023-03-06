@@ -34,7 +34,7 @@ function Video(props) {
                 </>
             }
             {showDialog && 
-                <DataDialogs exerciseName={props.exerciseToVideo} resetOpenDialogProps={resetOpenDialogProps}/> 
+                <DataDialogs exerciseName={props.exerciseToVideo} type={props.type} resetOpenDialogProps={resetOpenDialogProps}/> 
             }
         </div>
     )

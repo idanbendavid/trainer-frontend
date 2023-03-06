@@ -50,6 +50,14 @@
     padding-left: 5px;
 }
 
+.exercise-duration {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 .dialog-exercise-button {
     display: flex;
     justify-content: center;
@@ -59,8 +67,4 @@
     height: 30px;
     width: 50px;
     text-align: center;
-}
-
-.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-    display: none !important;
 }

@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DataDialogs from "../dataDialogs/dataDialog";
 import Video from "../video/video";
 import "./main.css";
+import FreeWorkoutForm from "../forms/freeWorkoutForm/freeWorkoutForm";
 
 export default function Main() {
 
@@ -18,6 +19,7 @@ export default function Main() {
     const [imageOfMuscle, setImageOfMuscle] = useState(String || null);
     const [exerciseToVideo, setExerciseToVideo] = useState(String || null);
     const [exerciseToDisplayByName, setExerciseToDisplayByName] = useState('');
+    const [showFreeWOrkoutForm, setShowFreeWorkoutForm] = useState(false);
 
     let exercises = useAppSelector((state) => state.media.exercises);
     let exercisesNameArray = useAppSelector((state) => state.media.exercisesNameArray);
@@ -31,6 +33,15 @@ export default function Main() {
         if (!type) {
             toast.error("select the type of your next workout");
             return;
+        }
+
+        if (type.toLowerCase() === "free workout") {
+            if(isLoggedIn){
+                setShowFreeWorkoutForm(true);
+            }
+            else{
+                toast.info("must be connected to add workout");
+            }
         }
 
         dispatch(resetExerciseNamesArray());
@@ -73,6 +84,7 @@ export default function Main() {
                 <div className="type-select-div">
                     <select className="type-select" defaultValue="default" onChange={handleTypeChange}>
                         <option disabled value="default" defaultChecked>select type</option>
+                        <option value="Free Workout">Free Workout</option>
                         <option value="cardio">cardio</option>
                         <option value="olympic_weightlifting">olympic weightlifting</option>
                         <option value="plyometrics">plyometrics</option>
@@ -87,8 +99,11 @@ export default function Main() {
                 </div>
             </div>
             <CssBaseline />
-            {exercises.length < 1 &&
+            {(exercises.length < 1 && !showFreeWOrkoutForm) &&
                 <h1 className="notify-exercises">to enter the contest choose the type of exercise you want to perform</h1>
+            }
+            {showFreeWOrkoutForm &&
+                <FreeWorkoutForm />
             }
             <div className="exercise-main">
                 {exercises.length > 1 &&
@@ -138,7 +153,7 @@ export default function Main() {
                         <DataDialogs muscle={imageOfMuscle} />
                     }
                     {isLoggedIn && (exerciseToVideo !== null && exerciseToVideo !== "") &&
-                        <Video exerciseToVideo={exerciseToVideo} resetProp={resetProp} />
+                        <Video exerciseToVideo={exerciseToVideo} type={type} resetProp={resetProp} />
                     }
                 </div>
             </div>
