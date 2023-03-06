@@ -1,0 +1,35 @@
+.admin-tasks {
+    width: 50%;
+    margin: auto;
+    padding: 10px 10px;
+    background-color: #ffd814;
+    font-size: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.admin-tasks>.css-sghohy-MuiButtonBase-root-MuiButton-root {
+    margin-top: 10px;
+}
+
+.task-list-header {
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-align: center;
+    margin: 20px 0px;
+    font-size: 30px;
+    color: white;
+}
+
+.task-item {
+    text-transform: capitalize;
+}
+
+#newTasks {
+    margin-right: 15px;
+}
+
+.delete-task-icon {
+    cursor: pointer;
+    margin-right: 5px;
+}

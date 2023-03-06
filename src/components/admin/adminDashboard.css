@@ -1,9 +1,9 @@
-.admin-dashbord-introduction>h1 {
+/* .admin-dashboard-introduction>h1 {
     text-align: center;
     position: relative;
 }
 
-.admin-dashbord-introduction>h1 {
+.admin-dashboard-introduction>h1 {
     font-size: 30px;
     text-decoration: underline;
     text-transform: capitalize;
@@ -16,7 +16,7 @@
     margin-bottom: 30px;
 }
 
-.admin-dashbord {
+.admin-dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: max-content;
@@ -100,7 +100,7 @@
 }
 
 @media all and (max-width: 1500px) {
-    .admin-dashbord {
+    .admin-dashboard {
         display: grid;
         grid-template-columns: 1fr;
     }
@@ -131,7 +131,7 @@
 }
 
 @media all and (max-width: 1100px) {
-    .admin-dashbord {
+    .admin-dashboard {
         display: grid;
         grid-template-columns: 1fr;
     }
@@ -169,7 +169,7 @@
 }
 
 @media all and (max-width: 900px) {
-    .admin-dashbord {
+    .admin-dashboard {
         display: grid;
         grid-template-columns: 1fr;
     }
@@ -206,7 +206,7 @@
 }
 
 @media all and (max-width: 700px) {
-    .admin-dashbord {
+    .admin-dashboard {
         display: grid;
         grid-template-columns: 1fr;
     }
@@ -259,4 +259,15 @@
         grid-template-columns: 1fr;
         justify-items: center;
     }
+} */
+
+.admin-navbar-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+}
+
+.admin-navbar > button {
+    margin-right: 20px;
 }

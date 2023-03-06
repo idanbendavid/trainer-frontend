@@ -5,10 +5,12 @@
 }
 
 .public-complaints>h1 {
-    margin-top: 10px;
-    font-size: 25px;
+    margin: 20px 0px;
+    font-size: 30px;
     text-decoration: underline;
     text-transform: capitalize;
+    color: white;
+    text-align: center;
 }
 
 .complaint-notes {
@@ -51,7 +53,7 @@
 
 .complaints-grid-split-note-side {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
 }
 
