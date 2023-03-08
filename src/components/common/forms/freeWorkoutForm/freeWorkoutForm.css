@@ -1,0 +1,38 @@
+.free-workout-form {
+    margin-top: 70px;
+}
+
+.free-workout-form>h1 {
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.save-workout-button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.free-workout-group1, .free-workout-group2 {
+    margin-right: 20px;
+}
+
+#nameLabel, #typeLabel, #setsLabel, #repeatsLabel, #notesLabel, #durationLabel, #dateLabel {
+    color: white;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+.free-workout-type>select {
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.free-workout-notes>textarea {
+    width: 250px;
+    height: 95px;
+    resize: none;
+}

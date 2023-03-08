@@ -102,7 +102,7 @@ export default function Main() {
             {(exercises.length < 1 && !showFreeWOrkoutForm) &&
                 <h1 className="notify-exercises">to enter the contest choose the type of exercise you want to perform</h1>
             }
-            {showFreeWOrkoutForm &&
+            {showFreeWOrkoutForm && exercises.length < 1 &&
                 <FreeWorkoutForm />
             }
             <div className="exercise-main">
