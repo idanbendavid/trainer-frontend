@@ -40,7 +40,7 @@ export const exerciseSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        reset: (state) => state = initialState
+        resetUserExercise: (state) => {state.userExercises = initialState.userExercises},
     },
     extraReducers: (builder) => {
         builder
@@ -62,5 +62,5 @@ export const exerciseSlice = createSlice({
     }
 })
 
-export const { reset } = exerciseSlice.actions
+export const { resetUserExercise } = exerciseSlice.actions
 export default exerciseSlice.reducer

@@ -19,7 +19,7 @@ const initialState = {
         email: "",
         password: "" || undefined,
         birthDate: "",
-        userRole: UserRole.Visitor,
+        userRole: UserRole.Athlete,
     } as IUser,
     token: ""
 }
@@ -146,7 +146,7 @@ export const authSlice = createSlice({
                     email: "",
                     password: "" || undefined,
                     birthDate: undefined,
-                    userRole: UserRole.Visitor,
+                    userRole: UserRole.Athlete,
                             } as IUser;
                 state.message = action.payload;
                 state.token = "";
@@ -168,7 +168,7 @@ export const authSlice = createSlice({
                     email: "",
                     password: "" || undefined,
                     birthDate: undefined,
-                    userRole: UserRole.Visitor,
+                    userRole: UserRole.Athlete,
                             } as IUser;
                 state.message = action.payload;
                 state.isError = true;
@@ -189,7 +189,7 @@ export const authSlice = createSlice({
                     email: "",
                     password: "" || undefined,
                     birthDate: undefined,
-                    userRole: UserRole.Visitor,
+                    userRole: UserRole.Athlete,
                             } as IUser;
                 state.token = "";
             })

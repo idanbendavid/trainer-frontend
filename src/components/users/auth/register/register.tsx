@@ -7,7 +7,7 @@ import './register.css';
 import { toast } from "react-toastify"
 import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { register as serverRegistration } from '../../../../features/auth/authSlice';
+import { register as serverRegistration } from '../../../../features/user/auth/authSlice';
 import { AppDispatch, useAppSelector } from '../../../../store';
 import regexes from '../../../../helpers/regex';
 
@@ -68,13 +68,6 @@ export default function Register() {
       }, 2000);
       return false;
     }
-    if (!registeredUser.userRole) {
-      setError("userRole", { type: "required", message: "Field Is Required" })
-      setTimeout(() => {
-        clearErrors("userRole");
-      }, 2000);
-      return false;
-    }
     if (!registeredUser.email) {
       setError("email", { type: "required", message: "Field Is Required" })
       setTimeout(() => {
@@ -116,7 +109,7 @@ export default function Register() {
   return (
     <div className="register">
       <div className="main-heading main-heading-auth">
-        <h1>Core2Fitness</h1>
+        <h1>Care2Fitness</h1>
         <p>your goals our mission</p>
       </div>
       <Container component="main" maxWidth="xs">
@@ -136,12 +129,6 @@ export default function Register() {
             <InputLabel sx={{color: 'white'}}>Birth Date</InputLabel>
             <Input fullWidth type="date" {...register("birthDate")} />
             {errors.birthDate && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.birthDate.message}</p>}
-            <br /><br />
-            <label className='role-label' htmlFor="select">Role</label>
-            <select {...register("userRole")}>
-              <option value={UserRole.Athlete} >{UserRole.Athlete}</option>
-            </select>
-            {errors.userRole && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.userRole.message}</p>}
             <br /><br />
             <InputLabel sx={{color: 'white'}}>Email</InputLabel>
             <Input fullWidth type="email" {...register("email")} />

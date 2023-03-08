@@ -9,11 +9,11 @@ import Button from "@mui/material/Button/Button";
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../../../../features/auth/authSlice";
+import { login } from "../../../../features/user/auth/authSlice";
 import { AppDispatch, useAppSelector } from "../../../../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { UserRole } from "../../../../models/role";
-import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../../features/auth/authSlice";
+import { changeUserPassword, checkEmailBeforePasswordChange, resetUserData } from "../../../../features/user/auth/authSlice";
 import regexes from "../../../../helpers/regex";
 
 export default function LoginPage() {
@@ -132,7 +132,7 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <div className="main-heading main-heading-auth">
-        <h1>Core2Fitness</h1>
+        <h1>Care2Fitness</h1>
         <p>your goals our mission</p>
       </div>
       <CssBaseline />
