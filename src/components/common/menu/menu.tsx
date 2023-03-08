@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, useAppSelector } from '../../../store';
 import { logout as logoutFromServer } from '../../../features/user/auth/authSlice';
+import { resetUserExercise } from '../../../features/user/exercises/exerciseSlice';
+import { resetExerciseNamesArray } from '../../../features/media/mediaSlice';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import { Home } from '@mui/icons-material';
@@ -19,6 +21,8 @@ export default function Menu(props) {
 
   function logout() {
     dispatch(logoutFromServer());
+    dispatch(resetUserExercise());
+    dispatch(resetExerciseNamesArray());
     props.closeMenu();
     navigate("/welcome")
   }
@@ -58,7 +62,7 @@ export default function Menu(props) {
           </div>
         }
         {
-          isLoggedIn && user.userRole !== UserRole.Admin && user.userRole !== UserRole.Visitor &&
+          isLoggedIn && user.userRole !== UserRole.Admin && 
           <>
             <h4>user</h4>
             <ul>

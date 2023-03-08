@@ -40,7 +40,7 @@ export default function Main() {
                 setShowFreeWorkoutForm(true);
             }
             else{
-                toast.info("must be connected to add workout");
+                toast.info("must be connected to add free workout");
             }
         }
 
@@ -99,14 +99,14 @@ export default function Main() {
                 </div>
             </div>
             <CssBaseline />
-            {(exercises.length < 1 && !showFreeWOrkoutForm) &&
+            {((exercises.length < 1 && !showFreeWOrkoutForm) || !isLoggedIn) &&
                 <h1 className="notify-exercises">to enter the contest choose the type of exercise you want to perform</h1>
             }
             {showFreeWOrkoutForm && exercises.length < 1 &&
                 <FreeWorkoutForm />
             }
             <div className="exercise-main">
-                {exercises.length > 1 &&
+                {exercises.length > 1 && isLoggedIn &&
                     <div className="exercise-name-list">
                         <h1>Exercises</h1>
                         {exercisesNameArray.filter((name, index) => {
