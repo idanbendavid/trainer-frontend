@@ -2,22 +2,22 @@ import { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Card, CssBaseline, Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { toast } from "react-toastify";
-import { getExercisesFromApi, resetExerciseNamesArray, resetImage } from "../../../features/media/mediaSlice";
+import { getExercisesFromApi, resetExerciseNamesArray } from "../../../features/media/mediaSlice";
 import { IExercise } from "../../../models/IExercise";
 import { AppDispatch, useAppSelector } from "../../../store";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DataDialogs from "../dataDialogs/dataDialog";
-import Video from "../video/video";
-import "./main.css";
 import FreeWorkoutForm from "../forms/freeWorkoutForm/freeWorkoutForm";
+import MuscleImage from "../apiDataResults/muscleImageResults/muscleImage";
+import Video from "../apiDataResults/video/video";
+import "./main.css";
 
 export default function Main() {
 
     const dispatch = useDispatch<AppDispatch>();
 
     const [type, setType] = useState('');
-    const [imageOfMuscle, setImageOfMuscle] = useState(String || null);
-    const [exerciseToVideo, setExerciseToVideo] = useState(String || null);
+    const [imageOfMuscle, setImageOfMuscle] = useState("");
+    const [exerciseToVideo, setExerciseToVideo] = useState("");
     const [exerciseToDisplayByName, setExerciseToDisplayByName] = useState('');
     const [showFreeWOrkoutForm, setShowFreeWorkoutForm] = useState(false);
 
@@ -35,6 +35,17 @@ export default function Main() {
             return;
         }
 
+        showFreeWorkout();
+
+        dispatch(resetExerciseNamesArray());
+        dispatch(getExercisesFromApi(type));
+        setExerciseToDisplayByName("");
+        setExerciseToVideo("");
+        setImageOfMuscle("");
+    }
+
+
+    function showFreeWorkout(){
         if (type.toLowerCase() === "free workout") {
             if(isLoggedIn){
                 setShowFreeWorkoutForm(true);
@@ -43,34 +54,6 @@ export default function Main() {
                 toast.info("must be connected to add free workout");
             }
         }
-
-        dispatch(resetExerciseNamesArray());
-        dispatch(getExercisesFromApi(type));
-        setExerciseToDisplayByName("");
-        setExerciseToVideo(null);
-        setImageOfMuscle(null);
-    }
-
-    function videoAndImageState(muscle: string | null, name: string | null): void {
-        if (!isLoggedIn) {
-            toast.info("must be connected to view asked content");
-        }
-        else {
-            if (muscle !== null) {
-                setImageOfMuscle(muscle);
-                setExerciseToVideo(null);
-            }
-
-            if (name !== null) {
-                setImageOfMuscle(null);
-                setExerciseToVideo(name);
-                resetImage();
-            }
-        }
-    }
-
-    function resetProp() {
-        setExerciseToVideo(null)
     }
 
     return (
@@ -113,7 +96,7 @@ export default function Main() {
                             return exercisesNameArray.indexOf(name) === index
                         }).map((exerciseName: string, index: number) => {
                             return <ul key={index} className="name-list-item">
-                                <li key={exerciseName} onClick={() => { setExerciseToDisplayByName(exerciseName); setExerciseToVideo(null); }}>{exerciseName}</li>
+                                <li key={exerciseName} onClick={() => { setExerciseToDisplayByName(exerciseName); setExerciseToVideo(""); }}>{exerciseName}</li>
                             </ul>
                         })}
                     </div>
@@ -131,8 +114,8 @@ export default function Main() {
                                             <h3 key={exercise.equipment}>equipment: {exercise.equipment.replace(/_/g, " ")}</h3>
                                         </div>
                                         <div className="exercise-buttons">
-                                            <Button color="primary" variant="contained" title="View Muscle" className="muscle-button" onClick={() => { videoAndImageState(exercise.muscle, null); }}>View Muscle</Button>
-                                            <Button color="success" variant="contained" title="video example" className="video-button" onClick={() => { videoAndImageState(null, exercise.name); }}>Workout Video</Button>
+                                            <Button color="primary" variant="contained" title="View Muscle" className="muscle-button" onClick={() => { setImageOfMuscle(exercise.muscle); }}>View Muscle</Button>
+                                            <Button color="success" variant="contained" title="video example" className="video-button" onClick={() => { setExerciseToVideo(exercise.name); }}>Workout Video</Button>
                                         </div>
                                     </div>
                                     <Accordion defaultExpanded={false} square={true} sx={{ marginBottom: '16px' }}>
@@ -149,11 +132,11 @@ export default function Main() {
                         })}
                 </div>
                 <div>
-                    {isLoggedIn && (imageOfMuscle !== null && imageOfMuscle !== "") &&
-                        <DataDialogs muscle={imageOfMuscle} />
+                    {isLoggedIn && imageOfMuscle &&
+                        <MuscleImage muscle={imageOfMuscle} />
                     }
-                    {isLoggedIn && (exerciseToVideo !== null && exerciseToVideo !== "") &&
-                        <Video exerciseToVideo={exerciseToVideo} type={type} resetProp={resetProp} />
+                    {isLoggedIn && exerciseToVideo &&
+                        <Video exerciseToVideo={exerciseToVideo} type={type}/>
                     }
                 </div>
             </div>

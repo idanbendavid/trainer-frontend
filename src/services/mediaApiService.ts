@@ -55,7 +55,7 @@ async function getWorkoutVideo(muscleToVideo: string) {
                 'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
             }
         })
-        return response.data.items[0]
+        return response.data
     }
     catch (error) {
         toast.error("selected exercise video is not available at the moment, try agian later");

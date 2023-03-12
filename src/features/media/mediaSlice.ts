@@ -19,7 +19,7 @@ const initialState = {
         duration: "",
         id: "",
         isLive: false,
-        isUpcoming:false,
+        isUpcoming: false,
         thumbnails: [],
         title: "",
         type: "video",
@@ -27,7 +27,8 @@ const initialState = {
         uploadedAt: "",
         url: "",
         views: 0
-    }
+    },
+    originalQuery: ""
 }
 
 export const getExercisesFromApi = createAsyncThunk("exercises/apiNinja", async (type: string) => {
@@ -97,6 +98,7 @@ export const mediaSlice = createSlice({
         reset: (state) => state = initialState,
         resetImage: (state) => state.image = initialState.image,
         resetExerciseNamesArray: (state) => { state.exercisesNameArray = initialState.exercisesNameArray },
+        resetVideo: (state) => {state.video = initialState.video}
         // ---------------------------------------------------------------
     },
     extraReducers: (builder) => {
@@ -124,7 +126,8 @@ export const mediaSlice = createSlice({
             })
             // -----------------------------------------------------
             .addCase(getWorkoutVideo.fulfilled, (state, action) => {
-                state.video = action.payload
+                state.video = action.payload.items[0];
+                state.originalQuery = action.payload.originalQuery;
             })
             .addCase(getWorkoutVideo.pending, (state, action) => {
                 state.video = initialState.video
@@ -142,5 +145,5 @@ export const mediaSlice = createSlice({
     }
 })
 
-export const { reset, resetImage, resetExerciseNamesArray } = mediaSlice.actions
+export const { reset, resetImage, resetExerciseNamesArray,resetVideo } = mediaSlice.actions
 export default mediaSlice.reducer
