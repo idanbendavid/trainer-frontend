@@ -23,7 +23,7 @@ export default function Menu(props) {
     dispatch(logoutFromServer());
     dispatch(resetUserExercise());
     dispatch(resetExerciseNamesArray());
-    props.closeMenu();
+    props.setIsMenuOpen(false);
     navigate("/welcome")
   }
 
@@ -37,7 +37,7 @@ export default function Menu(props) {
         <p>
           <span className='hello-span'>hello {user.firstName}</span>
           {!isLoggedIn &&
-            <Button onClick={() => { navigate("/login"); props.closeMenu() }}>
+            <Button onClick={() => { navigate("/login"); props.setIsMenuOpen(false) }}>
               Login<LoginIcon fontSize='large' />
             </Button>
           }
@@ -47,7 +47,7 @@ export default function Menu(props) {
             </Button>
           }
         </p>
-        <MenuItem onClick={() => { navigate("/main"); props.closeMenu() }}>
+        <MenuItem onClick={() => { navigate("/main"); props.setIsMenuOpen(false) }}>
           <Home fontSize='large' />
           <span className='home-span'>home</span>
         </MenuItem>
@@ -57,7 +57,7 @@ export default function Menu(props) {
           <div className='admin-menu-options'>
             <h4>Admin</h4>
             <ul>
-              <MenuItem onClick={() => { navigate("/admin"); props.closeMenu() }}>dashboard</MenuItem>
+              <MenuItem onClick={() => { navigate("/admin"); props.setIsMenuOpen(false) }}>dashboard</MenuItem>
             </ul>
           </div>
         }
@@ -66,29 +66,29 @@ export default function Menu(props) {
           <>
             <h4>user</h4>
             <ul>
-              <MenuItem onClick={() => { navigate("/users"); props.closeMenu() }}>{user.firstName}'s profile</MenuItem>
+              <MenuItem onClick={() => { navigate("/users"); props.setIsMenuOpen(false) }}>{user.firstName}'s profile</MenuItem>
             </ul>
           </>
         }
         <h4>contest</h4>
         <ul>
-          <MenuItem onClick={() => { navigate("/contest"); props.closeMenu() }}>
+          <MenuItem onClick={() => { navigate("/contest"); props.setIsMenuOpen(false) }}>
             <span className='contest-span'>standings</span>
           </MenuItem>
         </ul>
         <h4>gallery</h4>
         <ul className='gallery'>
-          <MenuItem onClick={() => { navigate("/gallery"); props.closeMenu() }}>gallery</MenuItem>
+          <MenuItem onClick={() => { navigate("/gallery"); props.setIsMenuOpen(false) }}>gallery</MenuItem>
         </ul>
         <h4>need help?</h4>
         <ul>
-          <MenuItem onClick={() => { navigate("/*"); props.closeMenu() }}>contact us</MenuItem>
+          <MenuItem onClick={() => { navigate("/*"); props.setIsMenuOpen(false) }}>contact us</MenuItem>
         </ul>
         {!isLoggedIn &&
           <>
             <h4>Sign Up</h4>
             <ul>
-              <MenuItem onClick={() => { navigate("/register"); props.closeMenu(); }}>register</MenuItem>
+              <MenuItem onClick={() => { navigate("/register"); props.setIsMenuOpen(false); }}>register</MenuItem>
             </ul></>
         }
       </div>

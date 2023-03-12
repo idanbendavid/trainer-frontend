@@ -28,7 +28,7 @@ function Layout() {
   const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
   const userRole = useAppSelector((state) => state.auth.connectedUser.userRole)
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -46,25 +46,22 @@ function Layout() {
     }
   }, [dispatch, token]);
 
-  function closeMenu() {
-    setIsOpen(false)
-  }
 
   return (
     <div className="layout container-fluid">
       <>
         {
-          <nav style={{ display: isOpen ? 'block' : 'none' }} >
-            <Menu closeMenu={closeMenu} />
+          <nav style={{ display: isMenuOpen ? 'block' : 'none' }} >
+            <Menu setIsMenuOpen={setIsMenuOpen} />
           </nav>
         }
       </>
       <section>
-        <Button onClick={() => setIsOpen(!isOpen)} id="menuButton">
-          {!isOpen &&
+        <Button onClick={() => setIsMenuOpen(!isMenuOpen)} id="menuButton">
+          {!isMenuOpen &&
             <MenuIcon fontSize='large' id="menuIcon" />
           }
-          {isOpen &&
+          {isMenuOpen &&
             <CloseIcon fontSize='large' id="closeMenuIcon" />
           }
         </Button>
