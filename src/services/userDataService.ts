@@ -21,7 +21,7 @@ async function changePassword(newPassword: string, email: string) {
 }
 
 async function getExerciseOfUser() {
-    const response = await axios.get('http://localhost:3001/usersExercises/exercisesOfUser' );
+    const response = await axios.get<IUserExerciseDetails[]>('http://localhost:3001/usersExercises/exercisesOfUser');
     return response.data;
 }
 

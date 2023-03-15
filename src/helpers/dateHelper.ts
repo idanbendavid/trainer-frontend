@@ -6,7 +6,7 @@ export function dateHelper(mutableDate: Date) {
 
     let fixedDate: string;
 
-    if (month < 10) {
+    if (month <= 9) {
         let fixedMonth = `0${month}`
         fixedDate = year + "-" + fixedMonth + "-" + date;
 

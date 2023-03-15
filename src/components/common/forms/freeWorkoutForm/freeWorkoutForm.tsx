@@ -71,7 +71,7 @@ function FreeWorkoutForm() {
                     </div>
                     <div className='free-workout-notes'>
                         <InputLabel id='notesLabel'>notes</InputLabel>
-                        <textarea id="inputUnstyled" cols={25} rows={5} placeholder="write comments about your workout" {...register("notes")}></textarea>
+                        <textarea id="inputUnstyled" cols={25} rows={5} maxLength={50} placeholder="short description of your workout" {...register("notes")}></textarea>
                     </div>
                 </div>
 

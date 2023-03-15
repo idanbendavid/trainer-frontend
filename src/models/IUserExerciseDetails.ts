@@ -1,4 +1,5 @@
 export interface IUserExerciseDetails{
+    id?: number,
     exerciseName: string,
     type: string,
     numberOfSets: number,

@@ -40,15 +40,16 @@ export const exerciseSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        resetUserExercise: (state) => {state.userExercises = initialState.userExercises},
+        resetUserExercise: (state) => { state.userExercises = initialState.userExercises },
     },
     extraReducers: (builder) => {
         builder
             .addCase(getExerciseOfUser.fulfilled, (state, action: PayloadAction<IUserExerciseDetails[]>) => {
                 state.userExercises = action.payload;
+                state.userExercises.sort((a, b) => { return a.exerciseDate > b.exerciseDate ? 1 : -1 })
             })
             .addCase(getExerciseOfUser.rejected, (state, action: PayloadAction<unknown>) => {
-                    // state.message = ''
+                state.message = ''
             })
             //-----------------------------------------------------------------
             .addCase(saveUserExerciseDetails.fulfilled, (state, action: PayloadAction<{}>) => {
@@ -57,7 +58,7 @@ export const exerciseSlice = createSlice({
                 }
             })
             .addCase(saveUserExerciseDetails.rejected, (state, action: PayloadAction<{}>) => {
-                    
+
             })
     }
 })
