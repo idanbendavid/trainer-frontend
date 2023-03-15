@@ -1,53 +1,8 @@
-.user-profile-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.user-profile-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.user-profile-details-part1, .user-profile-details-part2 {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.user-profile-first-name, .user-profile-email,
-.user-profile-status, .user-profile-last-name, .user-profile-birth-date>label.MuiInputLabel-root.MuiInputLabel-animated.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
-    text-align: initial;
-    margin-left: 30px;
+.user-profile{
+    color: white;
 }
 
 #userProfileLabels{
-    color: whitesmoke;
-    font-size: 20px;
-}
-
-
-.user-profile-details-part2 {
-    margin-left: 20px;
-}
-
-.user-profile-user-name-display {
+    color: white;
     text-transform: capitalize;
-    text-decoration: underline;
-    margin-bottom: 30px;
-    text-align: center;
-    color: whitesmoke;
-}
-
-.css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
-    text-transform: capitalize;
-    text-align: center;
-}
-
-.css-1z10yd4-MuiFormControl-root-MuiTextField-root {
-    text-transform: unset;
-}
-
-#closeModalButton {
-    display: flex;
 }

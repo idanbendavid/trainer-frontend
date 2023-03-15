@@ -1,113 +1,90 @@
-import { Button, Card, Dialog, DialogContent, DialogTitle, Pagination, Stack } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Box, Button, Collapse, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, Typography } from '@mui/material';
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getExercisesOfUser, deleteExerciseOfUser } from '../../../features/exercises/exerciseSlice';
+import { getExerciseOfUser } from '../../../features/user/exercises/exerciseSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import './userExercises.css';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import React from 'react';
 
-import "./userExercises.css"
-import { useNavigate } from 'react-router-dom';
-
-function UserExercise() {
-
-  const navigate = useNavigate();
+function UserExercises() {
 
   const dispatch = useDispatch<AppDispatch>();
-  const [checkStatusModal, setCheckStatusModal] = useState(Boolean);
-  const [exerciseToDelete, setExerciseToDelete] = useState(null);
 
-  let userExercises = useAppSelector((state) => state.exercises.userExercises);
-  let firstName = useAppSelector((state) => state.auth.connectedUser.firstName);
+  let userExercises = useAppSelector((state) => state.exercise.userExercises);
 
   useEffect(() => {
 
-    dispatch(getExercisesOfUser())
+    dispatch(getExerciseOfUser())
+
   }, [dispatch])
 
-  function checkExerciseStatus(exerciseOfUser) {
-    setCheckStatusModal(true);
-    setExerciseToDelete(exerciseOfUser)
-  }
+  function Row(props) {
+    const [open, setOpen] = useState(false);
 
-  function deleteExerciseFromUserSchedule() {
-    let exerciseId = exerciseToDelete.exercise_id
-
-    dispatch(deleteExerciseOfUser(exerciseId));
-    setCheckStatusModal(false);
-  }
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const exercisesOfUserPerPage: number = 8;
-
-  const indexOfLastUserExercise: number = currentPage * exercisesOfUserPerPage;
-
-  const indexOfFirstUserExercise: number = indexOfLastUserExercise - exercisesOfUserPerPage;
-
-  const currentUserExercises = userExercises.slice(indexOfFirstUserExercise, indexOfLastUserExercise)
-
-  const paginate = (event, value) => {
-    setCurrentPage(value);
+    return (
+      <React.Fragment>
+        <TableRow>
+          <TableCell>{props.singleExercise.exerciseName}</TableCell>
+          <TableCell>{props.singleExercise.type}</TableCell>
+          <TableCell>{props.singleExercise.exerciseDate}</TableCell>
+          <TableCell>
+            <IconButton aria-label="expand row"
+              size="small" onClick={() => setOpen(!open)}> {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </IconButton>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <Collapse in={open} unmountOnExit>
+            <Box>
+              <Typography variant="h6" gutterBottom component="div">
+                Details
+              </Typography>
+              <TableRow>
+                <TableCell>Sets</TableCell>
+                <TableCell>Repeats</TableCell>
+                <TableCell>notes</TableCell>
+                <TableCell>Duration (minutes)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>{props.singleExercise.numberOfSets}</TableCell>
+                <TableCell>{props.singleExercise.numberOfRepeats}</TableCell>
+                <TableCell>{props.singleExercise.notes}</TableCell>
+                <TableCell>{props.singleExercise.duration}</TableCell>
+              </TableRow>
+            </Box>
+          </Collapse>
+        </TableRow>
+      </React.Fragment>
+    );
   }
 
   return (
-    <div className='user-exercise'>
-      <div className='user-exercise-grid-split'>
-        <h1 className='exercise-header'>{firstName}'s exercises</h1>
-          {!currentUserExercises.length &&
-            <div className='no-workout-for-user'>
-              <h1>you need to workout!</h1>
-              <Button variant='contained' color='info' onClick={() => navigate("/main")}>select exercises</Button>
-            </div>
-          }
-        <div className='single-exercise-detailed'>
-          {currentUserExercises.map((exerciseOfUser: any, index: number) => {
-            return <Card className="user-exercise-display" key={index}>
-              <LazyLoadImage src={exerciseOfUser.gifUrl} alt="exercise" />
-              <div>
-                <p className='user-exercises-exercise-name'>{exerciseOfUser.name}</p>
-                <p>{exerciseOfUser.target}</p>
-              </div>
-              <div>
-                <p>{exerciseOfUser.bodyPart}</p>
-                <p>{exerciseOfUser.equipment}</p>
-                <p>{exerciseOfUser.exerciseDate}</p>
-              </div>
-              <div className='actions-new-button'>
-                <Button variant='contained' onClick={() => checkExerciseStatus(exerciseOfUser)}>Was it done?</Button>
-              </div>
-            </Card>
-          })}
+    <div className='user-exercises'>
+      <Container maxWidth='lg'>
+        <div className='enter-contest-button'>
+          <Button color='inherit' variant='contained'>Enter Contest</Button>
         </div>
-        <Stack display={'flex'} alignItems={'center'} >
-          {userExercises.length > exercisesOfUserPerPage &&
-            < Pagination color='secondary' sx={{ bgcolor: 'white' }}
-              shape='circular'
-              count={Math.ceil(userExercises.length / exercisesOfUserPerPage)}
-              page={currentPage}
-              onChange={paginate}
-              size="medium"
-            />
-          }
-        </Stack>
-      </div>
-      {checkStatusModal &&
-        <div >
-          <Dialog open={checkStatusModal} onClose={(reason: "backdropClick" | "escapeKeyDown") => setCheckStatusModal(false)} maxWidth='xs'>
-            <DialogTitle>
-              have you completed this exercise?
-            </DialogTitle>
-            <DialogContent>
-              <div className='check-exercise-status-dialog'>
-                <Button variant='contained' color='success' onClick={deleteExerciseFromUserSchedule}>Yes</Button>
-                <Button variant='contained' color='error' onClick={() => setCheckStatusModal(false)}>No</Button>
-              </div>
-              <h3>*By clicking Yes the exercise you selected will be deleted from your schdule</h3>
-            </DialogContent>
-          </Dialog>
-        </div>
-      }
+        <TableContainer component={Paper} style={{ overflowY: 'auto', maxHeight: 500}}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Exercise</TableCell>
+                <TableCell>Type</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Details</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {userExercises.map((singleExercise, index) => {
+                return <Row key={index} singleExercise={singleExercise} />
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     </div>
   )
 }
 
-export default UserExercise
+export default UserExercises

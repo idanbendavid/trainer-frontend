@@ -25,43 +25,36 @@ function UserProfile() {
         <div className="user-profile">
             {user &&
                 <Container component="main" maxWidth="sm">
-                    <Box sx={{
-                        marginTop: 10, marginBottom: 2 }}>
+                    <Box sx={{ marginTop: 10, marginBottom: 2 }}>
                         <CssBaseline />
                         <h2 className='user-profile-user-name-display'>{user.firstName}'s prfolie</h2>
 
                         <div className='user-profile-details'>
-                            <div className='user-profile-details-part1'>
-                                <div className='user-profile-first-name'>
-                                    <InputLabel id='userProfileLabels'>First Name</InputLabel>
-                                    <Input type="text" readOnly={true} value={user.firstName} />
-                                </div>
-                                <br />
-                                <div className='user-profile-email'>
-                                    <InputLabel id='userProfileLabels'>Email</InputLabel>
-                                    <Input type="email" readOnly={true} value={user.email} />
-                                </div>
-                                <br />
-                                <div className='user-profile-status'>
-                                    <InputLabel id='userProfileLabels'>status</InputLabel>
-                                    <Input type="text" readOnly={true} value={user.userRole} />
-                                </div>
+                            <div className='user-profile-first-name'>
+                                <InputLabel id='userProfileLabels'>First Name</InputLabel>
+                                <Input type="text" readOnly={true} value={user.firstName} />
                             </div>
-
-                            <div className='user-profile-details-part2'>
-                                <div className='user-profile-last-name'>
-                                    <InputLabel id='userProfileLabels'>Last Name</InputLabel>
-                                    <Input type="text" readOnly={true} value={user.lastName} />
-                                </div>
-                                <br />
-                                <div className='user-profile-birth-date'>
-                                    <InputLabel id='userProfileLabels'>Birth Date</InputLabel>
-                                    <Input type="date" readOnly={true} value={user.birthDate} />
-                                </div>
-                                <br />
+                            <br />
+                            <div className='user-profile-last-name'>
+                                <InputLabel id='userProfileLabels'>Last Name</InputLabel>
+                                <Input type="text" readOnly={true} value={user.lastName} />
+                            </div>
+                            <br />
+                            <div className='user-profile-status'>
+                                <InputLabel id='userProfileLabels'>status</InputLabel>
+                                <Input type="text" readOnly={true} value={user.userRole} />
+                            </div>
+                            <br />
+                            <div className='user-profile-email'>
+                                <InputLabel id='userProfileLabels'>Email</InputLabel>
+                                <Input type="email" readOnly={true} value={user.email} />
+                            </div>
+                            <br />
+                            <div className='user-profile-birth-date'>
+                                <InputLabel id='userProfileLabels'>Birth Date</InputLabel>
+                                <Input type="date" readOnly={true} value={user.birthDate} />
                             </div>
                         </div>
-                        <br />
                     </Box>
                 </Container>
             }

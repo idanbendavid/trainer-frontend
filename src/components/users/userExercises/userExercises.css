@@ -1,104 +1,14 @@
-.user-exercise {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.user-exercise-grid-split {
-    margin-right: 30px;
-}
-
-.exercise-header{
-    text-transform: capitalize;
-    text-align: center;
-    text-decoration: underline;
-    color: white;
-    font-size: 30px;
-}
-
-.single-exercise-detailed {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    height: 90%;
-}
-
-.user-exercise-display {
-    border: 1px solid black;
+.enter-contest-button {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    word-break: break-word;
-    margin: 5px;
-    height: 150px;
-    position: relative;
+    justify-content: flex-end;
+    margin: 15px 0px;
 }
 
-.user-exercise-display>img {
-    display: block;
-    height: 150px;
-    width: 100px;
-}
-
-.actions-new-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.user-exercises-exercise-name {
-    width: 160px;
-}
-
-.check-exercise-status-dialog {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: baseline;
-}
-
-.need-to-workout{
-    text-transform: capitalize;
-    text-align: center;
-    text-decoration: underline;
-    font-size: 25px;
+.enter-contest-button > button{
     font-weight: bold;
 }
 
-.no-workout-for-user{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-transform: capitalize;
-}
-
-.no-workout-for-user > h1 {
-    font-size: 45px;
-}
-
-@media all and (max-width: 900){
-    .user-exercise-grid-split {
-        margin-top: 30px;
-    }
-    
-    .user-exercise-display {
-        border: 1px solid black;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        word-break: break-word;
-        margin: 5px;
-        height: 150px;
-    }
-
-    .no-workout-for-user > h1{
-        font-size: 25px;
-        word-break: break-word;
-    }
-
+.css-1ex1afd-MuiTableCell-root, .css-1ygcj2i-MuiTableCell-root {
+    padding: 8px !important;
 }
