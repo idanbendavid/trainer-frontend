@@ -45,7 +45,7 @@ export default function Main() {
     }
 
 
-    function showFreeWorkout(){
+    function showFreeWorkout(): void{
         if (type.toLowerCase() === "free workout") {
             if(isLoggedIn){
                 setShowFreeWorkoutForm(true);

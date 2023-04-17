@@ -19,7 +19,7 @@ export default function Menu(props) {
   let user = useAppSelector((state) => state.auth.connectedUser);
   let isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
-  function logout() {
+  function logout(): void {
     dispatch(logoutFromServer());
     dispatch(resetUserExercise());
     dispatch(resetExerciseNamesArray());

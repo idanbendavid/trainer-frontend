@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
-import { ILogin } from '../../../models/ILogin'
+import { LoginDetails } from '../../../models/LoginDetails'
 import { IUser } from '../../../models/IUser'
 import { UserRole } from '../../../models/role'
 import authService from '../../../services/authService'
@@ -35,7 +35,7 @@ export const register = createAsyncThunk('auth/register', async (registeredUser:
     }
 })
 
-export const login = createAsyncThunk('auth/login', async (loggedInDetails: ILogin, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (loggedInDetails: LoginDetails, thunkAPI) => {
     try {
         return await authService.login(loggedInDetails)
     }

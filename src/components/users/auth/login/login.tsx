@@ -1,5 +1,5 @@
 import "./login.css";
-import { ILogin } from "../../../../models/ILogin"
+import { LoginDetails } from "../../../../models/LoginDetails"
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Avatar, Container, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -31,14 +31,14 @@ export default function LoginPage() {
   let { connectedUser, message, isLoggedIn, isError, isSuccess } = useAppSelector((state) => state.auth)
   let checkEmailResult: string = useAppSelector((state) => state.auth.connectedUser.email);
 
-  const { control, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<ILogin>({
+  const { control, handleSubmit, setError, formState: { errors }, clearErrors } = useForm<LoginDetails>({
     defaultValues: {
       email: "",
       password: ""
     }
   });
 
-  const onSubmit: SubmitHandler<ILogin> = (loginData: ILogin) => {
+  const onSubmit: SubmitHandler<LoginDetails> = (loginData: LoginDetails) => {
 
     let loginValidation = loginFormValidation(loginData);
 
@@ -47,7 +47,7 @@ export default function LoginPage() {
     }
   };
 
-  function loginFormValidation(loginData: ILogin): boolean {
+  function loginFormValidation(loginData: LoginDetails): boolean {
     if (!loginData.email) {
       setError("email", { type: "required", message: "Field Is Required" })
       setTimeout(() => {

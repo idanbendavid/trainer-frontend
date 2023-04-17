@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ILogin } from "../models/ILogin";
+import { LoginDetails } from "../models/LoginDetails";
 import { IUser } from "../models/IUser";
 
 
@@ -17,7 +17,7 @@ async function register(registerUser: IUser): Promise<IUser> {
     return response.data;
 }
 
-async function login(loggedInDetails: ILogin): Promise<IUser> {
+async function login(loggedInDetails: LoginDetails): Promise<IUser> {
     const response = await axios.post('http://localhost:3001/users/login', loggedInDetails);
 
     if (response.data) {
