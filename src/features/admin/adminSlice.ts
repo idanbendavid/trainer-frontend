@@ -18,7 +18,6 @@ const initialState = {
         complaintDate: ""
     } as IComplaint,
     publicComplaints: [] as IComplaint[],
-    adminTasks: []
 }
 
 
@@ -47,42 +46,6 @@ export const getAllComplaints = createAsyncThunk("admin/getComplaints", async ()
 export const deleteUserComplaint = createAsyncThunk("admin/deleteComplaint", async (complaintId: number, thunkAPI) => {
     try {
         const response = await adminService.deleteComplaint(complaintId);
-        return response;
-    }
-    catch (error) {
-        const message: string = error.response.data.error;
-        toast.info(message)
-        return thunkAPI.rejectWithValue(message)
-    }
-})
-
-export const getAdminTasks = createAsyncThunk("admin/getAdminTasks", async () => {
-    try {
-        const response = await adminService.getAdminTasks();
-        return response;
-    }
-    catch (error) {
-        const message: string = error.response.data.error;
-        toast.info(message)
-        return message;
-    }
-})
-
-export const newAdminTasks = createAsyncThunk("admin/newAdminTasks", async (newTask: string, thunkAPI) => {
-    try {
-        const response = await adminService.addNewTask(newTask);
-        return response;
-    }
-    catch (error) {
-        const message: string = error.response.data.error;
-        toast.info(message)
-        return thunkAPI.rejectWithValue(message)
-    }
-})
-
-export const deleteTask = createAsyncThunk("admin/deleteAminTasks", async (task: string, thunkAPI) => {
-    try {
-        const response = await adminService.deleteTask(task);
         return response;
     }
     catch (error) {
@@ -132,30 +95,6 @@ export const adminSlice = createSlice({
                 state.message = action.payload;
             })
             // ------------------------------------------------------------------------------------
-            .addCase(getAdminTasks.fulfilled, (state, action) => {
-                state.adminTasks = action.payload;
-            })
-            .addCase(getAdminTasks.rejected, (state, action: PayloadAction<any>) => {
-                state.message = action.payload;
-            })
-            // // ------------------------------------------------------------------------------------
-            .addCase(newAdminTasks.fulfilled, (state, action) => {
-                let addedTask: any = {
-                    taskId: state.adminTasks.length + 1,
-                    task: action.payload
-                }
-                state.adminTasks.push(addedTask);
-            })
-            .addCase(newAdminTasks.rejected, (state, action: PayloadAction<any>) => {
-                state.message = action.payload;
-            })
-            // // ------------------------------------------------------------------------------------
-            .addCase(deleteTask.fulfilled, (state, action) => {
-                state.adminTasks = state.adminTasks.filter((task) => task.task !== action.payload);
-            })
-            .addCase(deleteTask.rejected, (state, action: PayloadAction<any>) => {
-                state.message = action.payload;
-            })
     }
 })
 

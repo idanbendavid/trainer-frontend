@@ -13,26 +13,6 @@ async function getAllUsersForAdmin() {
     return response.data
 }
 
-async function getAdminTasks() {
-    const response = await axios.get("http://localhost:3001/adminTasks/")
-    return response.data
-}
-
-async function addNewTask(newTask: string) {
-    const response = await axios.post("http://localhost:3001/adminTasks/", { newTask })
-    if (response.data) {
-        return newTask
-    }
-}
-
-async function deleteTask(task: string) {
-    const response = await axios.delete(`http://localhost:3001/adminTasks/${task}`);
-    if (response.data) {
-        return task
-    }
-}
-
-
 async function getAllComplaints() {
     const response = await axios.get(`http://localhost:3001/complaint`)
 
@@ -57,9 +37,6 @@ async function deleteComplaint(complaintId: number): Promise<number> {
 const adminService = {
     deleteUser,
     getAllUsersForAdmin,
-    getAdminTasks,
-    addNewTask,
-    deleteTask,
     getAllComplaints,
     newComplaint,
     deleteComplaint
