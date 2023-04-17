@@ -18,19 +18,24 @@ function PublicComplaints() {
     let publicComplaints = useAppSelector(state => state.admin.publicComplaints)
 
     function changeBanckgroundColor(category: string): string {
-        if (category.toLocaleLowerCase() === 'other') {
-            return 'lightgrey'
+        switch (category) {
+            case 'profile':
+                category = 'lightgreen'
+                break;
+            case 'exercises':
+                category = '#ff4747'
+                break;
+            case 'image':
+                category = '#970afc'
+                break;
+            case 'other':
+                category = 'lightgrey'
+                break;
+            default:
+                category = '#bd7100'
+                break;
         }
-        if (category.toLocaleLowerCase() === 'profile') {
-            return 'lightgreen'
-        }
-        if (category.toLocaleLowerCase() === 'exercises') {
-            return '#ff4747'
-        }
-        if (category.toLocaleLowerCase() === 'image') {
-            return '#970afc'
-        }
-        return '#bd7100'
+        return category;
     }
 
 
