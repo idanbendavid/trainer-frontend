@@ -1,16 +1,8 @@
 import axios from "axios";
 import { IUserExerciseDetails } from "../models/IUserExerciseDetails";
 
-async function getUserDetails(){
-    const response = await axios.get("http://localhost:3001/users/specificUser");
-    console.log(response.data);
-
-    return response.data
-}
-
-
 async function checkEmail(checkEmail: string) {
-    const response = await axios.get(`http://localhost:3001/users/checkEmail/${checkEmail}`);
+    const response = await axios.patch(`http://localhost:3001/users/checkEmail`, { checkEmail });
 
     return response.data;
 }
@@ -30,9 +22,7 @@ async function saveUserExerciseDetails(userExerciseDetails: IUserExerciseDetails
     return response.data;
 }
 
-
 const userDataService = {
-    getUserDetails,
     checkEmail,
     changePassword,
     getExerciseOfUser,
