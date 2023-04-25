@@ -1,26 +1,27 @@
 import './layout.css';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Button } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch } from 'react-redux';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Main from '../main/main';
 import Menu from '../menu/menu';
 import ContactUs from '../contactUs/contactUs';
 import FileUpload from '../fileUpload/fileUpload';
-import Gallery from '../gallery/gallery';
 import LandingPage from '../landingPage/landingPage';
-import { remainConnceted } from '../../../features/user/auth/authSlice';
-import { useAppSelector, AppDispatch } from '../../../store';
 import AdminDashboard from '../../admin/adminDashboard';
 import LoginPage from '../../users/auth/login/login';
 import Register from '../../users/auth/register/register';
 import UserPage from '../../users/userPage';
 import Contest from '../contest/contest';
+import { useAppSelector, AppDispatch } from '../../../store';
+import { remainConnceted } from '../../../features/user/auth/authSlice';
+import { UserRole as role } from '../../../models/role'
+const Gallery = lazy(() => import('../gallery/gallery'));
 
 
 function Layout() {
@@ -74,15 +75,17 @@ function Layout() {
           <Route path="/contest" element={<Contest />} />
           <Route path="/*" element={<ContactUs />} />
           <Route path="/uploadImages" element={<FileUpload />} />
-          <Route path="/gallery" element={<Gallery />} />
-
-          {isLoggedIn && userRole.toLowerCase() === 'admin' &&
+          <Route path="/gallery" element={
+            <Suspense fallback={<div>...loading</div>}>
+              <Gallery />
+            </Suspense>
+          } />
+          {isLoggedIn && userRole === role.Admin &&
             <>
               <Route path="/admin" element={<AdminDashboard />} />
             </>
           }
-
-          {isLoggedIn && userRole.toLowerCase() !== 'admin' &&
+          {isLoggedIn && userRole === role.Athlete &&
             <>
               <Route path="/users" element={<UserPage />} />
             </>
