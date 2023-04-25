@@ -1,7 +1,8 @@
 import "./landingPage.css";
-import workout from "../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
+import workout from "../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg"; 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import React from "react";
 
 
 function LandingPage() {

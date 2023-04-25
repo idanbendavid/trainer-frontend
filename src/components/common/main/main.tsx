@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Card, CssBaseline, Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { toast } from "react-toastify";
@@ -82,9 +82,7 @@ export default function Main() {
                 </div>
             </div>
             <CssBaseline />
-            {((exercises.length < 1 && !showFreeWOrkoutForm) || !isLoggedIn) &&
-                <h1 className="notify-exercises">to enter the contest choose the type of exercise you want to perform</h1>
-            }
+           
             {showFreeWOrkoutForm && exercises.length < 1 &&
                 <FreeWorkoutForm />
             }

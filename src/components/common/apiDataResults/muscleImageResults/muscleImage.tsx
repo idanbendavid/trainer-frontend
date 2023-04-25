@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getImageOfMuscle } from '../../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../../store';
 import "./muscleImage.css";
+import React from 'react';
 
 function MuscleImage(props) {
 
@@ -17,12 +18,10 @@ function MuscleImage(props) {
 
   useEffect(() => {     
     if (muscle) {
-      console.log('send request')
       dispatch(getImageOfMuscle(muscle));
     }
     
     if (image) {
-      console.log('render image')
       setShowMuscleImage(true);
     }
   }, [dispatch, muscle, image])

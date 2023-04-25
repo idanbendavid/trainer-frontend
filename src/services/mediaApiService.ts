@@ -4,10 +4,10 @@ import { IExercise } from "../models/IExercise";
 
 async function getExercises(type: string) {
     try {
-        let response = await axios.get<IExercise[]>(`${process.env.REACT_APP_EXERCISES_API_NINJA_URL}`, {
+        let response = await axios.get<IExercise[]>(`${import.meta.env.VITE_EXERCISES_API_NINJA_URL}`, {
             headers: {
-                "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API_KEY}`,
-                "X-RapidAPI-Host": `${process.env.REACT_APP_EXERCISES_API_NINJA_HOST}`
+                "X-RapidAPI-Key": `${import.meta.env.VITE_RAPID_API_KEY}`,
+                "X-RapidAPI-Host": `${import.meta.env.VITE_EXERCISES_API_NINJA_HOST}`
             },
             params: { type }
         })
@@ -22,14 +22,14 @@ async function getExercises(type: string) {
 
 async function getMuscleImage(muscle: string) {
     try {
-        let response = await axios.get(`${process.env.REACT_APP_MUSCLE_IMAGES_API_URL}`, {
+        let response = await axios.get(`${import.meta.env.VITE_MUSCLE_IMAGES_API_URL}`, {
             params: {
                 muscleGroups: muscle,
                 color: '200,100,80'
             },
             headers: {
-                'X-RapidAPI-Key': `${process.env.REACT_APP_RAPID_API_KEY}`,
-                'X-RapidAPI-Host': `${process.env.REACT_APP_MUSCLE_IMAGES_API_HOST}`
+                'X-RapidAPI-Key': `${import.meta.env.VITE_RAPID_API_KEY}`,
+                'X-RapidAPI-Host': `${import.meta.env.VITE_MUSCLE_IMAGES_API_HOST}`
             },
             responseType: "arraybuffer"
         })
@@ -46,13 +46,13 @@ async function getMuscleImage(muscle: string) {
 
 async function getWorkoutVideo(muscleToVideo: string) {
     try {
-        let response = await axios.get(`${process.env.REACT_APP_YOUTUBE_VIDEOS_URL}`, {
+        let response = await axios.get(`${import.meta.env.VITE_YOUTUBE_VIDEOS_URL}`, {
             params: {
                 q: muscleToVideo
             },
             headers: {
-                'X-RapidAPI-Key': `${process.env.REACT_APP_RAPID_API_KEY}` ,
-                'X-RapidAPI-Host': `${process.env.REACT_APP_YOUTUBE_VIDEOS_HOST}`
+                'X-RapidAPI-Key': `${import.meta.env.VITE_RAPID_API_KEY}` ,
+                'X-RapidAPI-Host': `${import.meta.env.VITE_YOUTUBE_VIDEOS_HOST}`
             }
         })
         return response.data
@@ -63,7 +63,7 @@ async function getWorkoutVideo(muscleToVideo: string) {
     }
 }
 
-async function uploadFilesToServer(formData) {
+async function uploadFilesToServer(formData: any) {
     try {
         let response = await axios.post(`http://localhost:3001/files/`, formData);
         if (response) {

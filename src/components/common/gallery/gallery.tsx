@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import ComplaintFormComponent from '../forms/complaintForm/complaintFormComponent';
 import { getFilesFromServer, deleteFileFromServer } from '../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
+import React from 'react';
 
 
 function Gallery() {

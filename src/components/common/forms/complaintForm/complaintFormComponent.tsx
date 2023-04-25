@@ -6,6 +6,7 @@ import regexes from "../../../../helpers/regex";
 import { IComplaint } from "../../../../models/IComplaint";
 import adminService from "../../../../services/adminService";
 import { useAppSelector } from "../../../../store";
+import React from "react";
 
 function ComplaintFormComponent() {
 

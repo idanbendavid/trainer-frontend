@@ -17,10 +17,10 @@ import AdminDashboard from '../../admin/adminDashboard';
 import LoginPage from '../../users/auth/login/login';
 import Register from '../../users/auth/register/register';
 import UserPage from '../../users/userPage';
-import Contest from '../contest/contest';
 import { useAppSelector, AppDispatch } from '../../../store';
 import { remainConnceted } from '../../../features/user/auth/authSlice';
 import { UserRole as role } from '../../../models/role'
+import React from 'react';
 const Gallery = lazy(() => import('../gallery/gallery'));
 
 
@@ -72,7 +72,6 @@ function Layout() {
           <Route path="/register" element={<Register />} />
           <Route path="/welcome" element={<LandingPage />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/contest" element={<Contest />} />
           <Route path="/*" element={<ContactUs />} />
           <Route path="/uploadImages" element={<FileUpload />} />
           <Route path="/gallery" element={

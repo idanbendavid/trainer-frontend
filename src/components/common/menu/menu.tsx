@@ -10,6 +10,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import { Home } from '@mui/icons-material';
 import './menu.css';
 import { UserRole } from '../../../models/role';
+import React from 'react';
 
 export default function Menu(props) {
 
@@ -70,12 +71,6 @@ export default function Menu(props) {
             </ul>
           </>
         }
-        <h4>contest</h4>
-        <ul>
-          <MenuItem onClick={() => { navigate("/contest"); props.setIsMenuOpen(false) }}>
-            <span className='contest-span'>standings</span>
-          </MenuItem>
-        </ul>
         <h4>gallery</h4>
         <ul className='gallery'>
           <MenuItem onClick={() => { navigate("/gallery"); props.setIsMenuOpen(false) }}>gallery</MenuItem>

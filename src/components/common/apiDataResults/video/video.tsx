@@ -5,6 +5,7 @@ import { getWorkoutVideo } from '../../../../features/media/mediaSlice';
 import { AppDispatch, useAppSelector } from '../../../../store';
 import SaveExerciseForm from '../../forms/saveExercisesForm/saveExerciseForm';
 import "./video.css";
+import React from 'react';
 
 function Video(props) {
 
@@ -18,11 +19,9 @@ function Video(props) {
     const fetchWorkoutVideo = useCallback(() => {
         if (props.exerciseToVideo !== "") {
             if (queryWithoutWorkout.includes(props.exerciseToVideo)) {
-                console.log('render2')
                 return;
             }
             else {
-                console.log('render3')
                 dispatch(getWorkoutVideo(`${props.exerciseToVideo} workout`));
             }
         }
@@ -37,7 +36,7 @@ function Video(props) {
             {videoToShow.url &&
                 <>
                     <iframe className='iframe-video' src={videoToShow.url.replace('watch?v=', 'embed/').replace('youtube', 'youtube-nocookie')} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                    <div className='enter-contest-div'>
+                    <div className='save-exercise-div'>
                         <Button color='error' variant='contained' onClick={() => setShowDialog(true)}>Done this Exercise?</Button>
                     </div>
                 </>

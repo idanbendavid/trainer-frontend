@@ -1,12 +1,11 @@
 import { Box, Button, Collapse, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getExerciseOfUser } from '../../../features/user/exercises/exerciseSlice';
 import { AppDispatch, useAppSelector } from '../../../store';
 import './userExercises.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function UserExercises() {
@@ -66,13 +65,10 @@ function UserExercises() {
     <div className='user-exercises'>
       <Container maxWidth='lg'>
         {!userExercises.length &&
-          <h1 className='no-user-exercises'>you did not complete any exercises<br/>once complete you can view it here and <br/> compete in our monthly contest</h1>
+          <h1 className='no-user-exercises'>you did not complete any exercises<br/>trust us is worth your time</h1>
         }
         {userExercises.length > 0 &&
           <>
-            <div className='enter-contest-button'>
-              <Button color='inherit' variant='contained' onClick={() => navigate('/contest')}>View Contest</Button>
-            </div>
             <TableContainer component={Paper} style={{ overflowY: 'auto', maxHeight: 500 }}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

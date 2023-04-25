@@ -1,18 +1,19 @@
 import { Container } from '@mui/material';
 import { useState } from 'react'
 import mediaApiService from '../../../services/mediaApiService';
+import React from 'react';
 
 function FileUpload() {
 
-    const [file, setFile] = useState();
+    const [file, setFile] = useState<any>();
     const [fileName, setFileName] = useState("");
 
-    const saveFile = (event) => {
+    const saveFile = (event: any) => {
         setFile(event.target.files[0]);
         setFileName(event.target.files[0].name);
     };
 
-    const uploadFile = async (event) => {
+    const uploadFile = async (event: any) => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("fileName", fileName);

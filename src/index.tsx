@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './components/common/layout/layout';
+import React from 'react';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);

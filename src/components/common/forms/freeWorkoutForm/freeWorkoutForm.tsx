@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { IUserExerciseDetails } from '../../../../models/IUserExerciseDetails';
 import userDataService from '../../../../services/userDataService';
 import "./freeWorkoutForm.css";
+import React from 'react';
 
 function FreeWorkoutForm() {
 
