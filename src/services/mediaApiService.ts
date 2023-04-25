@@ -4,32 +4,32 @@ import { IExercise } from "../models/IExercise";
 
 async function getExercises(type: string) {
     try {
-        let response = await axios.get<IExercise[]>('https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises', {
+        let response = await axios.get<IExercise[]>(`${process.env.REACT_APP_EXERCISES_API_NINJA_URL}`, {
             headers: {
-                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
-                'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com'
+                "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API_KEY}`,
+                "X-RapidAPI-Host": `${process.env.REACT_APP_EXERCISES_API_NINJA_HOST}`
             },
             params: { type }
         })
         return response.data
     }
     catch (error) {
-        console.log(error)
-        toast.error(error);
+        console.log(error.message)
+        toast.error("selected exercises are not available at the moment, try agian later");
     }
 }
 
 
 async function getMuscleImage(muscle: string) {
     try {
-        let response = await axios.get('https://muscle-group-image-generator.p.rapidapi.com/getImage', {
+        let response = await axios.get(`${process.env.REACT_APP_MUSCLE_IMAGES_API_URL}`, {
             params: {
                 muscleGroups: muscle,
                 color: '200,100,80'
             },
             headers: {
-                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
-                'X-RapidAPI-Host': 'muscle-group-image-generator.p.rapidapi.com'
+                'X-RapidAPI-Key': `${process.env.REACT_APP_RAPID_API_KEY}`,
+                'X-RapidAPI-Host': `${process.env.REACT_APP_MUSCLE_IMAGES_API_HOST}`
             },
             responseType: "arraybuffer"
         })
@@ -46,13 +46,13 @@ async function getMuscleImage(muscle: string) {
 
 async function getWorkoutVideo(muscleToVideo: string) {
     try {
-        let response = await axios.get('https://youtube-search-results.p.rapidapi.com/youtube-search/', {
+        let response = await axios.get(`${process.env.REACT_APP_YOUTUBE_VIDEOS_URL}`, {
             params: {
                 q: muscleToVideo
             },
             headers: {
-                'X-RapidAPI-Key': '81c0c45b69msh9f164b5b4ed305cp1441eejsn833407ae1c5a',
-                'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+                'X-RapidAPI-Key': `${process.env.REACT_APP_RAPID_API_KEY}` ,
+                'X-RapidAPI-Host': `${process.env.REACT_APP_YOUTUBE_VIDEOS_HOST}`
             }
         })
         return response.data
