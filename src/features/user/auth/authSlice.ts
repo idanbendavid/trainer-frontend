@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
-import { LoginDetails } from '../../../models/LoginDetails'
-import { IUser } from '../../../models/IUser'
+import { LoginDetails } from '../../../models/User'
+import { IUser } from '../../../models/User'
 import { UserRole } from '../../../models/role'
 import authService from '../../../services/authService'
 import userDataService from '../../../services/userDataService'
@@ -13,15 +13,15 @@ const initialState = {
     isError: false,
     isSuccess: false,
     connectedUser: {
-        userId: 0,
+        id: 0,
         firstName: "Guest",
         lastName: "",
         email: "",
         password: "" || undefined,
         birthDate: "",
-        userRole: UserRole.Athlete,
+        userRole: UserRole.Visitor,
+        token: ""
     } as IUser,
-    token: ""
 }
 
 export const register = createAsyncThunk('auth/register', async (registeredUser: IUser, thunkAPI) => {
@@ -67,20 +67,6 @@ export const remainConnceted = createAsyncThunk('auth/surviveRefresh', async (th
     }
 })
 
-
-export const getUserDetails = createAsyncThunk('user/getDetails', async () => {
-    try {
-        const response = await userDataService.getUserDetails();
-        return response
-    }
-    catch (error: any) {
-        const message: string = error.response.data.error;
-        toast.error(message)
-        return message
-    }
-})
-
-
 export const checkEmailBeforePasswordChange = createAsyncThunk('user/checkEmail', async (checkEmail: string, thunkAPI) => {
     try {
         const response = await userDataService.checkEmail(checkEmail);
@@ -93,10 +79,10 @@ export const checkEmailBeforePasswordChange = createAsyncThunk('user/checkEmail'
     }
 })
 
-export const changeUserPassword = (async (newPassword: string, email: string ) => {
+export const changeUserPassword = (async (newPassword: string, email: string) => {
     try {
         const response = await userDataService.changePassword(newPassword, email)
-        if(response){
+        if (response) {
             toast.info("password changed successfuly")
             return response
         }
@@ -120,61 +106,44 @@ export const authSlice = createSlice({
                 state.isSuccess = true;
                 state.message = "thanks for registaring to our service";
                 state.connectedUser = {
-                    userId: action.payload.registerUser.insertId,
-                    firstName: action.payload.newUser.firstName,
-                    lastName: action.payload.newUser.lastName,
-                    email: action.payload.newUser.email,
-                    password: undefined,
-                    birthDate: action.payload.newUser.birthDate,
-                    userRole: action.payload.newUser.userRole,
-                    registerUser: {},
-                    newUser: {},
-                    loginDetails: {},
-                    token: ""
+                    id: action.payload.id,
+                    firstName: action.payload.firstName,
+                    lastName: action.payload.lastName,
+                    email: action.payload.email,
+                    birthDate: action.payload.birthDate,
+                    userRole: action.payload.userRole,
+                    token: action.payload.token
                 }
-                state.token = action.payload.token
-
             })
             .addCase(register.rejected, (state, action: PayloadAction<any>) => {
                 state.isError = true;
                 state.isLoggedIn = false;
                 state.isSuccess = false;
-                state.connectedUser = {
-                    userId: 0,
-                    firstName: "Guest",
-                    lastName: "",
-                    email: "",
-                    password: "" || undefined,
-                    birthDate: undefined,
-                    userRole: UserRole.Athlete,
-                            } as IUser;
+                state.connectedUser = initialState.connectedUser;
                 state.message = action.payload;
-                state.token = "";
             })
             // ---------------------------------------------------------------------
             .addCase(login.fulfilled, (state, action: PayloadAction<IUser>) => {
                 state.isLoggedIn = true;
                 state.isSuccess = true;
                 state.isError = false;
-                state.connectedUser = action.payload.loginDetails;
+                state.connectedUser = {
+                    id: action.payload.id,
+                    firstName: action.payload.firstName,
+                    lastName: action.payload.lastName,
+                    email: action.payload.email,
+                    birthDate: action.payload.birthDate,
+                    userRole: action.payload.userRole,
+                    token: action.payload.token
+                }
                 state.message = "successful login";
-                state.token = action.payload.token
             })
             .addCase(login.rejected, (state, action: PayloadAction<any>) => {
-                state.connectedUser = {
-                    userId: 0,
-                    firstName: "Guest",
-                    lastName: "",
-                    email: "",
-                    password: "" || undefined,
-                    birthDate: undefined,
-                    userRole: UserRole.Athlete,
-                            } as IUser;
+                state.connectedUser = initialState.connectedUser;
                 state.message = action.payload;
                 state.isError = true;
                 state.isLoggedIn = false;
                 state.isSuccess = false;
-                state.token = "";
             })
             // ----------------------------------------------------------------------
             .addCase(logout.fulfilled, (state) => {
@@ -182,16 +151,8 @@ export const authSlice = createSlice({
                 state.isError = false
                 state.isLoggedIn = false
                 state.isSuccess = false
-                state.connectedUser = {
-                    userId: 0,
-                    firstName: "Guest",
-                    lastName: "",
-                    email: "",
-                    password: "" || undefined,
-                    birthDate: undefined,
-                    userRole: UserRole.Athlete,
-                            } as IUser;
-                state.token = "";
+                state.connectedUser = initialState.connectedUser;
+
             })
             // ----------------------------------------------------------------------
             .addCase(remainConnceted.fulfilled, (state, action: PayloadAction<any>) => {
@@ -200,15 +161,13 @@ export const authSlice = createSlice({
                 state.isError = false
                 state.isSuccess = true
                 state.message = "connected"
-                state.token = action.payload.config.headers.Authorization
             })
             .addCase(remainConnceted.rejected, (state, action: PayloadAction<any>) => {
                 state.isLoggedIn = false;
-                state.connectedUser = {} as IUser
+                state.connectedUser = initialState.connectedUser;
                 state.isError = true
                 state.isSuccess = false
                 state.message = "not connected"
-                state.token = ""
             })
             // -----------------------------------------------------------------------------------
             .addCase(checkEmailBeforePasswordChange.fulfilled, (state, action: PayloadAction<string>) => {

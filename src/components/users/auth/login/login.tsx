@@ -1,5 +1,5 @@
 import "./login.css";
-import { LoginDetails } from "../../../../models/LoginDetails"
+import { LoginDetails } from "../../../../models/User"
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Avatar, Container, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";

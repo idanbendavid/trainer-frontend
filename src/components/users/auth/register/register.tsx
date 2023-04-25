@@ -1,10 +1,7 @@
-import { useEffect } from 'react';
-import { IUser } from '../../../../models/IUser';
-import { UserRole } from '../../../../models/role';
+import { IUser } from '../../../../models/User';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './register.css';
-import { toast } from "react-toastify"
 import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { register as serverRegistration } from '../../../../features/user/auth/authSlice';
@@ -18,12 +15,11 @@ export default function Register() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, setError, clearErrors, formState: { errors } } = useForm<IUser>({
+  const { register, handleSubmit, setError, clearErrors, formState: { errors }, resetField } = useForm<IUser>({
     defaultValues: {
       firstName: "",
       lastName: "",
       birthDate: "",
-      userRole: UserRole.Athlete,
       email: "",
       password: ""
     }
@@ -37,9 +33,9 @@ export default function Register() {
 
     if (formValidation) {
 
-      await dispatch(serverRegistration(registeredUser));
+      let registerRes = await dispatch(serverRegistration(registeredUser))
 
-      if (connectedUser) {
+      if (typeof registerRes.payload !== 'string') {
         navigate("/users");
       }
     }
@@ -70,6 +66,7 @@ export default function Register() {
     }
     if (!registeredUser.email) {
       setError("email", { type: "required", message: "Field Is Required" })
+      resetField("email");
       setTimeout(() => {
         clearErrors("email");
       }, 2000);
@@ -99,13 +96,6 @@ export default function Register() {
     return true;
   }
 
-  useEffect(() => {
-    if (isError) {
-      toast.error(message)
-    }
-
-  }, [connectedUser, message, isError, isLoggedIn, isSuccess, dispatch, navigate])
-
   return (
     <div className="register">
       <div className="main-heading main-heading-auth">
@@ -118,23 +108,23 @@ export default function Register() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
           <Typography component="h1" variant="h5" sx={{ marginBottom: 1 }}>Sign up</Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <InputLabel sx={{color: 'white'}}>First Name</InputLabel>
+            <InputLabel sx={{ color: 'white' }}>First Name</InputLabel>
             <Input fullWidth type="text" {...register("firstName")} />
             {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.firstName.message}</p>}
             <br /><br />
-            <InputLabel sx={{color: 'white'}}>Last Name</InputLabel>
+            <InputLabel sx={{ color: 'white' }}>Last Name</InputLabel>
             <Input fullWidth type="text" {...register("lastName")} />
             {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.lastName.message}</p>}
             <br /><br />
-            <InputLabel sx={{color: 'white'}}>Birth Date</InputLabel>
+            <InputLabel sx={{ color: 'white' }}>Birth Date</InputLabel>
             <Input fullWidth type="date" {...register("birthDate")} />
             {errors.birthDate && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.birthDate.message}</p>}
             <br /><br />
-            <InputLabel sx={{color: 'white'}}>Email</InputLabel>
+            <InputLabel sx={{ color: 'white' }}>Email</InputLabel>
             <Input fullWidth type="email" {...register("email")} />
             {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.email.message}</p>}
             <br /><br />
-            <InputLabel sx={{color: 'white'}}>Password</InputLabel>
+            <InputLabel sx={{ color: 'white' }}>Password</InputLabel>
             <Input fullWidth type="password" {...register("password")} />
             {errors.password && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{errors.password.message}</p>}
             <div className='regsiter-button'>
