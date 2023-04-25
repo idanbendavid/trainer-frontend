@@ -12,3 +12,10 @@
 .css-1ex1afd-MuiTableCell-root, .css-1ygcj2i-MuiTableCell-root {
     padding: 8px !important;
 }
+
+.no-user-exercises{
+    color: white;
+    text-transform: capitalize;
+    text-align: center;
+    margin-top: 200px;
+}

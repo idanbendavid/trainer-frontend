@@ -1,4 +1,4 @@
-import { Box, Button, Collapse, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Collapse, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getExerciseOfUser } from '../../../features/user/exercises/exerciseSlice';
@@ -7,10 +7,12 @@ import './userExercises.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function UserExercises() {
 
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   let userExercises = useAppSelector((state) => state.exercise.userExercises);
 
@@ -59,29 +61,37 @@ function UserExercises() {
     );
   }
 
+
   return (
     <div className='user-exercises'>
       <Container maxWidth='lg'>
-        <div className='enter-contest-button'>
-          <Button color='inherit' variant='contained'>Enter Contest</Button>
-        </div>
-        <TableContainer component={Paper} style={{ overflowY: 'auto', maxHeight: 500}}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Exercise</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Details</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {userExercises.map((singleExercise, index) => {
-                return <Row key={index} singleExercise={singleExercise} />
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        {!userExercises.length &&
+          <h1 className='no-user-exercises'>you did not complete any exercises<br/>once complete you can view it here and <br/> compete in our monthly contest</h1>
+        }
+        {userExercises.length > 0 &&
+          <>
+            <div className='enter-contest-button'>
+              <Button color='inherit' variant='contained' onClick={() => navigate('/contest')}>View Contest</Button>
+            </div>
+            <TableContainer component={Paper} style={{ overflowY: 'auto', maxHeight: 500 }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Exercise</TableCell>
+                    <TableCell>Type</TableCell>
+                    <TableCell>Date</TableCell>
+                    <TableCell>Details</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {userExercises.map((singleExercise, index) => {
+                    return <Row key={index} singleExercise={singleExercise} />;
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </>
+        }
       </Container>
     </div>
   )
