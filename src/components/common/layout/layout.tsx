@@ -67,10 +67,12 @@ function Layout() {
           }
         </Button>
         <Routes>
+          {!isLoggedIn &&
+            <Route path="/welcome" element={<LandingPage />} />
+          }
           <Route path="/" element={<Navigate to="/main" replace={true} />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/welcome" element={<LandingPage />} />
           <Route path="/main" element={<Main />} />
           <Route path="/*" element={<ContactUs />} />
           <Route path="/uploadImages" element={<FileUpload />} />

@@ -45,7 +45,9 @@ export default function LoginPage() {
 
     if (loginValidation) {
       dispatch(login(loginData))
+      return true;
     }
+    return false;
   };
 
   function loginFormValidation(loginData: LoginDetails): boolean {
@@ -157,7 +159,7 @@ export default function LoginPage() {
           <br />
           <div className="login-page-bottom-section">
             <Button variant="contained" color="error" id="forgotPassword" onClick={() => setForgotPasswordModal(true)}>Forgot Password</Button>
-            <Button variant="contained" color="success" id="signUpLink" onClick={()=> navigate("/register")}>Sign up now</Button>
+            <Button variant="contained" color="success" id="signUpLink" onClick={()=> navigate("/register")}>Sign up</Button>
           </div>
         </Box>
       </Container>

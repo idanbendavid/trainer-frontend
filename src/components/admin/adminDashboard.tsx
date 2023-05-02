@@ -19,8 +19,8 @@ function AdminDashboard() {
                 </div>
                 <div className='admin-navbar-div'>
                     <nav className='admin-navbar'>
-                        <Button color='info' variant='contained' onClick={() => { setShowUsers(true); setShowComplaint(false); }}>View Users</Button>
-                        <Button color='error' variant='contained' onClick={() => { setShowComplaint(true); setShowUsers(false) }}>View Complaints</Button>
+                        <Button color='info' variant='contained' onClick={() => { setShowUsers(true); setShowComplaint(false); }}>Users</Button>
+                        <Button color='error' variant='contained' onClick={() => { setShowComplaint(true); setShowUsers(false) }}>Complaints</Button>
                     </nav>
                 </div>
                 <div className='admin-data'>
