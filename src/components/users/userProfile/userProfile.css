@@ -6,3 +6,8 @@
     color: white;
     text-transform: capitalize;
 }
+
+.user-profile-user-name-display{
+    text-transform: capitalize;
+    text-decoration: underline;
+}

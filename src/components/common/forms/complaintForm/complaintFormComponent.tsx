@@ -7,6 +7,7 @@ import { IComplaint } from "../../../../models/IComplaint";
 import adminService from "../../../../services/adminService";
 import { useAppSelector } from "../../../../store";
 import React from "react";
+import "./complaintFormComponent.css";
 
 function ComplaintFormComponent() {
 
@@ -82,35 +83,36 @@ function ComplaintFormComponent() {
     
     return (
         <div>
-            <Box>
-                <div className='image-problem-first-name'>
+            <Box style={{ display: 'flex', flexDirection: 'column'}}>
+                <div className='complaint-form-first-name'>
                     <InputLabel id='labelFirstName'>First Name</InputLabel>
                     <InputUnstyled type="text" placeholder='First Name' id="inputUnstyled" {...register("firstName")}></InputUnstyled>
                     {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold',fontSize:'20px' }}>{errors.firstName.message}</p>}
                 </div>
-                <div className='image-problem-last-name'>
+                <div className='complaint-form-last-name'>
                     <InputLabel id='labelLastName'>Last Name</InputLabel>
                     <InputUnstyled type="text" placeholder='Last Name' id="inputUnstyled" {...register("lastName")}></InputUnstyled>
                     {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.lastName.message}</p>}
                 </div>
-                <div className='image-problem-email'>
+                <div className='complaint-form-email'>
                     <InputLabel id='labelEmail'>Email</InputLabel>
-                    <InputUnstyled type="email" placeholder='Email'id="inputUnstyled" {...register("email")}></InputUnstyled>
+                    <InputUnstyled type="email" placeholder='Email' id="inputUnstyled" {...register("email")}></InputUnstyled>
                     {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.email.message}</p>}
                 </div>
-                <div className='image-problem-category'>
+                <div className='complaint-form-category'>
                     <InputLabel id='labelCategory'>Category</InputLabel>
-                    <select className='gallery-select' id="inputUnstyled" {...register("complaintCategory")}>
-                        <option>gallery</option>
-                        <option>profile</option>
-                        <option>exercises</option>
-                        <option>other</option>
+                    <select className='complaint-select' {...register("complaintCategory")}>
+                        <option value="" defaultChecked disabled>select category</option>
+                        <option value="gallery">gallery</option>
+                        <option value="profile">profile</option>
+                        <option value="exercises">exercises</option>
+                        <option value="other">other</option>
                     </select>
                     {errors.complaintCategory && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.complaintCategory.message}</p>}
                 </div>
                 <br />
-                <div className='image-problem-description'>
-                    <textarea className='problem-with-image' id="inputUnstyled" placeholder="Please explain your problem" {...register("description")}></textarea>
+                <div className='complaint-form-description'>
+                    <textarea placeholder="Please explain your problem" {...register("description")}></textarea>
                     {errors.description && <p style={{ color: 'red', textTransform: 'capitalize', fontSize: '20px', fontWeight: 'bold' }}>{errors.description.message}</p>}
                 </div>
                 <div>

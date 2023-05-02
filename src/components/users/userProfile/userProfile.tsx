@@ -25,7 +25,7 @@ function UserProfile() {
     return (
         <div className="user-profile">
             {user &&
-                <Container component="main" maxWidth="sm">
+                <Container component="main">
                     <Box sx={{ marginTop: 10, marginBottom: 2 }}>
                         <CssBaseline />
                         <h2 className='user-profile-user-name-display'>{user.firstName}'s prfolie</h2>

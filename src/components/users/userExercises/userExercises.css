@@ -8,3 +8,29 @@
     text-align: center;
     margin-top: 200px;
 }
+
+.user-exercise-heading{
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+    text-transform: uppercase;   
+}
+
+@media all and (max-width:650px) {
+    .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+        overflow-x: auto;
+        margin: auto;
+    }
+
+    .css-1oqqzyl-MuiContainer-root {
+        padding: 0px;
+    }
+
+    #dateHeadCell {
+        display: none;
+    }
+
+    #dateRowCell {
+        display: none;
+    }
+}

@@ -30,6 +30,11 @@ export default function Main() {
     };
 
     function getExercies(): void {
+        if (!isLoggedIn) {
+            toast.error("please connect to your account to view possible exercise");
+            return;
+        }
+
         if (!type) {
             toast.error("select the type of your next workout");
             return;
@@ -63,7 +68,7 @@ export default function Main() {
                 <p>your goals our mission</p>
             </div>
             <div className="select-lists-options">
-                <p>Select type of training</p>
+                <p className="intro">Select type of training</p>
                 <div className="type-select-div">
                     <select className="type-select" defaultValue="default" onChange={handleTypeChange}>
                         <option disabled value="default" defaultChecked>select type</option>
@@ -78,11 +83,10 @@ export default function Main() {
                     </select>
                 </div>
                 <div>
-                    <Button variant="contained" color="primary" onClick={getExercies}>get exercises</Button>
+                    <Button variant="contained" id='getExerciseButton' color="primary" onClick={getExercies}>get exercises</Button>
                 </div>
             </div>
             <CssBaseline />
-           
             {showFreeWOrkoutForm && exercises.length < 1 &&
                 <FreeWorkoutForm />
             }
@@ -134,7 +138,7 @@ export default function Main() {
                         <MuscleImage muscle={imageOfMuscle} />
                     }
                     {isLoggedIn && exerciseToVideo &&
-                        <Video exerciseToVideo={exerciseToVideo} type={type}/>
+                        <Video exerciseToVideo={exerciseToVideo} type={type} />
                     }
                 </div>
             </div>

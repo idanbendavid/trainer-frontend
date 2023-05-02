@@ -66,29 +66,31 @@
     margin-right: 155px;
     position: relative;
     color: whitesmoke;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #labelLastName {
     margin-right: 155px;
     position: relative;
     color: whitesmoke;
-    font-size: 20px;
+    font-size: 15px;
+    margin-top: 5px;
 }
 
 #labelEmail {
     margin-right: 195px;
     position: relative;
     color: whitesmoke;
-    font-size: 20px;
-
+    font-size: 15px;
+    margin-top: 5px;
 }
 
 #labelCategory {
     margin-right: 170px;
     position: relative;
     color: whitesmoke;
-    font-size: 20px;
+    font-size: 15px;
+    margin-top: 5px;
 }
 
 .file-upload-in-gallery {
@@ -98,14 +100,15 @@
     margin: 0px 5px;
 }
 
-.file-upload-in-gallery > label {
+.file-upload-in-gallery>label {
     font-weight: 700;
     font-size: 20px;
 }
 
-.file-upload-in-gallery > input {
+.file-upload-in-gallery>input {
     font-size: 20px;
 }
+
 .gallery-aside-form {
     color: whitesmoke;
 }
@@ -129,7 +132,17 @@
     }
 }
 
+@media all and(max-width:1200px) {
+    .slide-container {
+        margin-top: 50px;
+    }
+}
+
 @media all and (max-width: 900px) {
+    .slide-container {
+        margin-top: 50px;
+    }
+
     .gallery-aside-form {
         display: none;
     }
@@ -140,7 +153,6 @@
 
     .react-slideshow-container {
         display: inline-block;
-        margin-top: 100px;
         width: 75%;
     }
 
@@ -149,8 +161,10 @@
         text-align: center;
         margin-top: 0px;
     }
+}
 
+@media all and (max-width:550px) {
     .slide-container {
-        margin-top: 50px;
+        margin-top: 70px;
     }
 }

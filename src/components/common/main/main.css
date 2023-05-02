@@ -66,37 +66,6 @@
     margin: 0px 100px;
 }
 
-.exercise-card {
-    width: 320px;
-    height: 310px;
-    margin: 10px;
-    padding: 0px 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.exercise-card>h1, h2, h3 {
-    text-transform: capitalize;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.exercise-card>h1 {
-    font-size: 20px;
-}
-
-.exercise-card>h2 {
-    font-size: 18px;
-}
-
-.exercise-card>h3 {
-    font-size: 16px;
-}
-
-.exercise-card>p {
-    margin: 8px 0px;
-}
 
 .card-buttons {
     display: flex;
@@ -120,7 +89,7 @@
     font-size: 18px;
 }
 
-.exercise-name-list > h1 {
+.exercise-name-list>h1 {
     margin-bottom: 8px;
     text-decoration: underline;
 }
@@ -152,29 +121,91 @@
     margin: 15px 0px;
 }
 
-.exercise-options-div{
+.exercise-options-div {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.exercise-details-secondary{
+.exercise-details-secondary {
     overflow-y: auto;
     max-height: 300px;
 }
 
-@media all and (min-width: 1500px) {}
 
-@media all and (max-width: 1500px) {}
+@media all and (max-width: 1400px) {
+    .select-lists-options {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+        margin-right: 0px;
+        text-transform: capitalize;
+        height: 30px;
+    }
 
-@media all and (max-width: 1210px) {}
+    .exercise-name-list {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+    }
 
-@media all and (max-width: 900px) {}
+    .exercise-name-list>h1 {
+        display: none;
+    }
 
-@media all and (max-width: 600px) {
+    .exercise-main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin: 0px 50px;
+    }
+
+    .exercise-name-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin: auto;
+    }
+
+    .exercise-details {
+        margin-top: 0px;
+    }
+}
+
+@media all and (max-width: 650px) {
 
     .second-heading>h1 {
         margin-bottom: 0px;
     }
 
+    .select-lists-options>p {
+        display: none;
+    }
+
+    .type-select {
+        font-size: 20px;
+    }
+
+    #getExerciseButton {
+        font-size: 12px;
+    }
+
+    .exercise-name-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        margin: auto;
+    }
+
+    .video-component {
+        margin-top: 20px;
+    }
+
+    .iframe-video {
+        height: 300px;
+        width: 400px;
+        margin: auto;
+    }
 }

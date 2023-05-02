@@ -29,7 +29,7 @@ function UserExercises() {
         <TableRow>
           <TableCell>{props.singleExercise.exerciseName}</TableCell>
           <TableCell>{props.singleExercise.type}</TableCell>
-          <TableCell>{props.singleExercise.exerciseDate}</TableCell>
+          <TableCell id='dateRowCell'>{props.singleExercise.exerciseDate}</TableCell>
           <TableCell>
             <IconButton aria-label="expand row"
               size="small" onClick={() => setOpen(!open)}> {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </IconButton>
@@ -69,13 +69,14 @@ function UserExercises() {
         }
         {userExercises.length > 0 &&
           <>
-            <TableContainer component={Paper} style={{ overflowY: 'auto', maxHeight: 500 }}>
+          <h1 className='user-exercise-heading'>Previously Done Exercises</h1>
+            <TableContainer component={Paper} style={{ overflowY: 'auto', maxHeight: 500,}}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Exercise</TableCell>
                     <TableCell>Type</TableCell>
-                    <TableCell>Date</TableCell>
+                    <TableCell id='dateHeadCell'>Date</TableCell>
                     <TableCell>Details</TableCell>
                   </TableRow>
                 </TableHead>

@@ -1,11 +1,10 @@
 import UserProfile from "./userProfile/userProfile";
 import "./userPage.css";
 import UserExercises from "./userExercises/userExercises";
-import { Container } from "@mui/material";
-import React from "react";
+import { Button, Container } from "@mui/material";
+import React, { useState } from "react";
 
 function UserPage() {
-
 
   return (
     <>
@@ -14,10 +13,10 @@ function UserPage() {
         <p>your goals our mission</p>
       </div>
       <Container maxWidth='xl'>
-        <div className="user-page-component">
-          <UserProfile />
-          <UserExercises />
-        </div>
+          <div className="user-page-component big-screen">
+            <UserProfile />
+            <UserExercises />
+          </div>
       </Container>
     </>
   )

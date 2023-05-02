@@ -1,0 +1,23 @@
+#labelFirstName,#labelLastName,#labelEmail,#labelCategory {
+    color: white;
+    font-size: 16px;
+}
+
+#inputUnstyled {
+    color: black;
+}
+
+.complaint-select {
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
+    text-transform: capitalize;   
+}
+
+.complaint-form-description > textarea{
+    font-size: 18;
+    width: 250px;
+    height: 150px;
+    resize: none;
+    overflow-y: auto;
+}

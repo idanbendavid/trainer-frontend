@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import "./gallery.css";
 import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 import FileUpload from '../fileUpload/fileUpload';
 import { Button, Container, CssBaseline } from '@mui/material';
 import { toast } from 'react-toastify';
@@ -104,13 +105,15 @@ function Gallery() {
                     </Slide>
                 </div>
                 <div className='gallery-aside-form'>
-                    <Container>
-                        <CssBaseline />
-                        <h3>Dissatisfied with an image? write to us and we will solve your problem</h3>
-                        <div>
-                            <ComplaintFormComponent />
-                        </div>
-                    </Container>
+                    {admin.toLocaleLowerCase() !== 'admin' &&
+                        <Container>
+                            <CssBaseline />
+                            <h3>Dissatisfied with an image? write to us and we will solve your problem</h3>
+                            <div>
+                                <ComplaintFormComponent />
+                            </div>
+                        </Container>
+                    }
                 </div>
             </div>
         </>
