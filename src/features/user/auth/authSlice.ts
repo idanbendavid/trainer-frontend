@@ -158,6 +158,9 @@ export const authSlice = createSlice({
             .addCase(remainConnceted.fulfilled, (state, action: PayloadAction<any>) => {
                 state.isLoggedIn = true;
                 state.connectedUser = action.payload.data
+                if(!state.connectedUser.token){
+                    state.connectedUser.token = localStorage.getItem("token");
+                }
                 state.isError = false
                 state.isSuccess = true
                 state.message = "connected"
