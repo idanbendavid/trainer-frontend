@@ -1,7 +1,7 @@
 import { Box, InputLabel, Button } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
-import InputUnstyled from '@mui/base/InputUnstyled';
+import InputUnstyled from '@mui/core/InputUnstyled';
 import regexes from "../../../../helpers/regex";
 import { IComplaint } from "../../../../models/IComplaint";
 import adminService from "../../../../services/adminService";

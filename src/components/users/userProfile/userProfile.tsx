@@ -11,16 +11,6 @@ function UserProfile() {
     const dispatch = useDispatch<AppDispatch>();
 
     let user = useAppSelector((state) => state.auth.connectedUser);
-    // let token = useAppSelector((state) => state.auth.token);
-
-    // function socketConnection(newEmail: string) {
-    //     const socket = io("http://localhost:8000", { query: { token } }).connect();
-
-    //     socket.on('connection', () => {
-    //         // socket.emit('send_data', newEmail)
-    //     })
-    //     socket.emit("send_data", newEmail)
-    // }
 
     return (
         <div className="user-profile">
