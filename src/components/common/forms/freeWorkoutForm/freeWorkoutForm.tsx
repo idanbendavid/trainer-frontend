@@ -1,5 +1,4 @@
-import InputUnstyled from '@mui/core/InputUnstyled';
-import { Box, Button, InputLabel } from '@mui/material';
+import { Box, Button, InputLabel, Input } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { IUserExerciseDetails } from '../../../../models/IUserExerciseDetails';
@@ -75,7 +74,7 @@ function FreeWorkoutForm() {
                     <div className='free-workout-group1'>
                         <div className='free-workout-name'>
                             <InputLabel id='nameLabel'>Workout Name</InputLabel>
-                            <InputUnstyled type="text" placeholder='Name' id="inputUnstyled" {...register("exerciseName")}></InputUnstyled>
+                            <Input type="text" placeholder='Name' id="inputUnstyled" {...register("exerciseName")}></Input>
                             {errors.exerciseName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.exerciseName.message}</p>}
                         </div>
                         <div className='free-workout-type'>
@@ -98,21 +97,21 @@ function FreeWorkoutForm() {
                         </div>
                         <div className='free-workout-sets'>
                             <InputLabel id='setsLabel'>number of sets</InputLabel>
-                            <InputUnstyled type="number" placeholder='Sets' id="inputUnstyled" {...register("numberOfSets")}></InputUnstyled>
+                            <Input type="number" placeholder='Sets' id="inputUnstyled" {...register("numberOfSets")}></Input>
                         </div>
                     </div>
                     <div className='free-workout-group2'>
                         <div className='free-workout-repeats'>
                             <InputLabel id='repeatsLabel'>number of Repeats</InputLabel>
-                            <InputUnstyled type="number" placeholder='Repeats' id="inputUnstyled" {...register("numberOfRepeats")}></InputUnstyled>
+                            <Input type="number" placeholder='Repeats' id="inputUnstyled" {...register("numberOfRepeats")}></Input>
                         </div>
                         <div className='free-workout-duration'>
                             <InputLabel id='durationLabel'>Duration (In Minutes)</InputLabel>
-                            <InputUnstyled type="number" placeholder='Duration' id="inputUnstyled" {...register("duration")}></InputUnstyled>
+                            <Input type="number" placeholder='Duration' id="inputUnstyled" {...register("duration")}></Input>
                         </div>
                         <div className='free-workout-date'>
                             <InputLabel id='dateLabel'>Date</InputLabel>
-                            <InputUnstyled type="date" id="inputUnstyled" {...register("exerciseDate")} ></InputUnstyled>
+                            <Input type="date" id="inputUnstyled" {...register("exerciseDate")} ></Input>
                             {errors.exerciseDate && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.exerciseDate.message}</p>}
                         </div>
                     </div>

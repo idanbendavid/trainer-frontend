@@ -1,7 +1,6 @@
-import { Box, InputLabel, Button } from "@mui/material";
+import { Box, InputLabel, Button, Input } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
-import InputUnstyled from '@mui/core/InputUnstyled';
 import regexes from "../../../../helpers/regex";
 import { IComplaint } from "../../../../models/IComplaint";
 import adminService from "../../../../services/adminService";
@@ -86,17 +85,17 @@ function ComplaintFormComponent() {
             <Box style={{ display: 'flex', flexDirection: 'column'}}>
                 <div className='complaint-form-first-name'>
                     <InputLabel id='labelFirstName'>First Name</InputLabel>
-                    <InputUnstyled type="text" placeholder='First Name' id="inputUnstyled" {...register("firstName")}></InputUnstyled>
+                    <Input type="text" placeholder='First Name' id="inputUnstyled" {...register("firstName")}></Input>
                     {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold',fontSize:'20px' }}>{errors.firstName.message}</p>}
                 </div>
                 <div className='complaint-form-last-name'>
                     <InputLabel id='labelLastName'>Last Name</InputLabel>
-                    <InputUnstyled type="text" placeholder='Last Name' id="inputUnstyled" {...register("lastName")}></InputUnstyled>
+                    <Input type="text" placeholder='Last Name' id="inputUnstyled" {...register("lastName")}></Input>
                     {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.lastName.message}</p>}
                 </div>
                 <div className='complaint-form-email'>
                     <InputLabel id='labelEmail'>Email</InputLabel>
-                    <InputUnstyled type="email" placeholder='Email' id="inputUnstyled" {...register("email")}></InputUnstyled>
+                    <Input type="email" placeholder='Email' id="inputUnstyled" {...register("email")}></Input>
                     {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.email.message}</p>}
                 </div>
                 <div className='complaint-form-category'>
