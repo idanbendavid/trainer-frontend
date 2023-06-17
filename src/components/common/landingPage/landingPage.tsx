@@ -1,5 +1,4 @@
 import "./landingPage.css";
-import workout from "../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg"; 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import React from "react";
@@ -12,7 +11,6 @@ function LandingPage() {
 
   return (
     <div className="landing-page container-fluid">
-      <img src={workout} alt="workout" className="landing-page-image" />
       <Button variant="contained" color="primary" className="login-navigation" onClick={() => navigate("/login")}>Sign In</Button >
       <div className="brand">
         <h1>Care2Fitness</h1>
