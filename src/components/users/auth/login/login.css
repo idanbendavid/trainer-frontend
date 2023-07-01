@@ -2,7 +2,7 @@
     margin-top: 10px;
 }
 
-.login-form > label {
+.login-form>label {
     position: relative;
     color: white;
     font-size: 20px;
@@ -24,12 +24,17 @@
     z-index: 999;
 }
 
-.login-page-bottom-section{
+.login-page-bottom-section {
     display: flex;
     justify-content: center;
 }
-#forgotPassword{
+
+#forgotPassword {
     margin-right: 50px;
+}
+
+.forgot-password-email-input > input {
+    color: black;
 }
 
 .css-bdhsul-MuiTypography-root-MuiDialogTitle-root>.forgot-password-modal-title {
@@ -38,6 +43,6 @@
     align-items: center
 }
 
-.forgot-password-modal-title > .css-1sszw6i-MuiButtonBase-root-MuiButton-root{
+.forgot-password-modal-title>.css-1sszw6i-MuiButtonBase-root-MuiButton-root {
     margin-left: 80px;
 }
