@@ -2,23 +2,25 @@ import axios from "axios";
 import { IUserExerciseDetails } from "../models/IUserExerciseDetails";
 
 async function checkEmail(checkEmail: string) {
-    const response = await axios.patch(`http://localhost:3001/users/checkEmail`, { checkEmail });
+    const response = await axios.patch(`https://traininglogserver.onrender.com/
+
+users/checkEmail`, { checkEmail });
 
     return response.data;
 }
 
 async function changePassword(newPassword: string, email: string) {
-    const response = await axios.put('http://localhost:3001/users/', { newPassword, email });
+    const response = await axios.put('https://traininglogserver.onrender.com/users/', { newPassword, email });
     return response.data;
 }
 
 async function getExerciseOfUser() {
-    const response = await axios.get<IUserExerciseDetails[]>('http://localhost:3001/usersExercises/exercisesOfUser');
+    const response = await axios.get<IUserExerciseDetails[]>('https://traininglogserver.onrender.com/usersExercises/exercisesOfUser');
     return response.data;
 }
 
 async function saveUserExerciseDetails(userExerciseDetails: IUserExerciseDetails) {
-    const response = await axios.post('http://localhost:3001/usersExercises/addExercise', userExerciseDetails );
+    const response = await axios.post('https://traininglogserver.onrender.com/usersExercises/addExercise', userExerciseDetails );
     return response.data;
 }
 
