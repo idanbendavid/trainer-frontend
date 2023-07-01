@@ -2,7 +2,6 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
 
 export default defineConfig(() => {
   return {
@@ -12,12 +11,7 @@ export default defineConfig(() => {
     build: {
       outDir: 'build',
     },
-    plugins: [viteCommonjs(), react()],
-    optimizeDeps: {
-      esbuildOptions: {
-        plugins: [esbuildCommonjs(['react-s3'])],
-      },
-    }
+    plugins: [react()],
   }
 })
 
