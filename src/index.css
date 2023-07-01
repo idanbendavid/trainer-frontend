@@ -7,11 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: auto;
   overflow-x: hidden;
-  background-image: url("public\anastase-maragos-YVz1LxVJqoA-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  position: relative;
 }
 
 code {
