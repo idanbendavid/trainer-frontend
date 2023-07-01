@@ -35,7 +35,7 @@ function Video(props) {
         <div className='video-component'>
             {videoToShow.url &&
                 <>
-                    <iframe className='iframe-video' src={videoToShow.url.replace('watch?v=', 'embed/').replace('youtube', 'youtube-nocookie')} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    <iframe className='iframe-video' src={videoToShow.url.replace('watch?v=', 'embed/')} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                     <div className='save-exercise-div'>
                         <Button color='error' variant='contained' onClick={() => setShowDialog(true)}>Done this Exercise?</Button>
                     </div>
