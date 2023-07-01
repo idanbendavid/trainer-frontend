@@ -22,7 +22,7 @@ import { remainConnceted } from '../../../features/user/auth/authSlice';
 import { UserRole as role } from '../../../models/role'
 import React from 'react';
 const Gallery = lazy(() => import('../gallery/gallery'));
-import workoutImage from "../../../../public/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
+import workoutImage from "../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
 
 
 function Layout() {
