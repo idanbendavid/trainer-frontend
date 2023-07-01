@@ -6,6 +6,8 @@ import { store } from './store';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './components/common/layout/layout';
 import React from 'react';
+import workoutImage from "../../../../public/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
+
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
