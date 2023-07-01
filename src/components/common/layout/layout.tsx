@@ -22,6 +22,8 @@ import { remainConnceted } from '../../../features/user/auth/authSlice';
 import { UserRole as role } from '../../../models/role'
 import React from 'react';
 const Gallery = lazy(() => import('../gallery/gallery'));
+import workoutImage from "../../../../public/anastase-maragos-YVz1LxVJqoA-unsplash.jpg";
+
 
 function Layout() {
 
@@ -49,6 +51,7 @@ function Layout() {
 
   return (
     <div className="layout container-fluid">
+      <img src={workoutImage} alt="workoutImage" className='background-image-all-app' />
       <>
         {
           <nav style={{ display: isMenuOpen ? 'block' : 'none' }} >

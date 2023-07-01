@@ -16,8 +16,7 @@ section {
     z-index: 4;
 }
 
-.layout {
-    background-image: url("../../../../public/anastase-maragos-YVz1LxVJqoA-unsplash.jpg");
+.background-image-all-app {
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
