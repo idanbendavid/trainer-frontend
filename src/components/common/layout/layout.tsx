@@ -76,7 +76,7 @@ function Layout() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/*" element={<ContactUs />} />
+          <Route path="/404" element={<ContactUs />} />
           <Route path="/uploadImages" element={<FileUpload />} />
           <Route path="/gallery" element={
             <Suspense fallback={<div>...loading</div>}>
