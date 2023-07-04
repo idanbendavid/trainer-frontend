@@ -37,15 +37,17 @@ function Layout() {
   let token = localStorage.getItem("token")
 
   useEffect(() => {
-    if (token) {
-      console.log("refreshed")
-      axios.defaults.headers.common['Authorization'] = token;
-      dispatch(remainConnceted())
-    }
-    else {
-      console.log("no token");
-      navigate("/welcome")
-    }
+    (async () => {
+      if (token) {
+        console.log("refreshed")
+        axios.defaults.headers.common['Authorization'] = token;
+        await dispatch(remainConnceted())
+      }
+      else {
+        console.log("no token");
+        navigate("/welcome")
+      }
+    })
   }, [dispatch, token]);
 
 
