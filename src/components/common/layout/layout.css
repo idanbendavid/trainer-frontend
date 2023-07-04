@@ -17,16 +17,11 @@ section {
 }
 
 .background-image-all-app {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     background-image: url("../../../assets/images/anastase-maragos-YVz1LxVJqoA-unsplash.jpg");
-    /* background-size: 100% 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%; */
+    height: 100%;
 }
