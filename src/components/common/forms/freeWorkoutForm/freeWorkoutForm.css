@@ -27,7 +27,7 @@
     text-transform: capitalize;
 }
 
-.free-workout-notes{
+.free-workout-notes {
     text-align: center;
 }
 
@@ -57,10 +57,18 @@
     margin-left: 50px;
 }
 
-@media all and (max-width: 650px){
+@media all and (max-width: 650px) {
     .form-gruops-container {
         display: grid;
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .free-workout-group1 {
+        margin-right: 0px;
+    }
+
+    .free-workout-group2 {
+        margin-left: 0px;
     }
 }
