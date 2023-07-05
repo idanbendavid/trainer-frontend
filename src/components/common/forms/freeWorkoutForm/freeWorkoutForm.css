@@ -63,12 +63,14 @@
         grid-template-columns: 1fr;
         text-align: center;
     }
-
+    
     .free-workout-group1 {
+        align-items: center;
         margin-right: 0px;
     }
-
+    
     .free-workout-group2 {
+        align-items: center;
         margin-left: 0px;
     }
 }
