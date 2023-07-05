@@ -36,18 +36,16 @@ function Layout() {
   let token = localStorage.getItem("token")
 
   useEffect(() => {
-    (async () => {
-      if (token) {
-        console.log("refreshed")
-        axios.defaults.headers.common['Authorization'] = token;
-        await dispatch(remainConnceted())
-        navigate("/main")
-      }
-      else {
-        console.log("no token");
-        navigate("/welcome")
-      }
-    })
+    if (token) {
+      console.log("refreshed")
+      axios.defaults.headers.common['Authorization'] = token;
+      dispatch(remainConnceted())
+      navigate("/main")
+    }
+    else {
+      console.log("no access");
+      navigate("/welcome")
+    }
   }, [dispatch, token]);
 
 
@@ -63,7 +61,7 @@ function Layout() {
       <section>
         <Button onClick={() => setIsMenuOpen(!isMenuOpen)} id="menuButton">
           {!isMenuOpen &&
-            <MenuIcon fontSize='large' id="menuIcon" style={{ color: 'white' }}  />
+            <MenuIcon fontSize='large' id="menuIcon" style={{ color: 'white' }} />
           }
           {isMenuOpen &&
             <CloseIcon fontSize='large' id="closeMenuIcon" />
