@@ -77,7 +77,7 @@ export default function Menu(props) {
         </ul>
         <h4>need help?</h4>
         <ul>
-          <MenuItem onClick={() => { navigate("/*"); props.setIsMenuOpen(false) }}>contact us</MenuItem>
+          <MenuItem onClick={() => { navigate("/contactUs"); props.setIsMenuOpen(false) }}>contact us</MenuItem>
         </ul>
         {!isLoggedIn &&
           <>

@@ -131,7 +131,7 @@ export default function Register() {
             </div>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link to='/login'> Already have an account? Sign in now </Link>
+                <Link to='/login' style={{color:'blue'}}> Already have an account? Sign in now </Link>
               </Grid>
             </Grid>
           </form>
