@@ -33,4 +33,8 @@
     #dateRowCell {
         display: none;
     }
+
+    #typeHeadCell{
+        word-break: 'break-word';
+    }
 }

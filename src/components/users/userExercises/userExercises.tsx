@@ -75,7 +75,7 @@ function UserExercises() {
                 <TableHead>
                   <TableRow>
                     <TableCell>Exercise</TableCell>
-                    <TableCell>Type</TableCell>
+                    <TableCell id='typeHeadCell'>Type</TableCell>
                     <TableCell id='dateHeadCell'>Date</TableCell>
                     <TableCell>Details</TableCell>
                   </TableRow>

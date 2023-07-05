@@ -18,7 +18,8 @@ function FileUpload() {
         formData.append("file", file);
         formData.append("fileName", fileName);
         try {
-            await mediaApiService.uploadFilesToServer(formData);
+            let uploadFile = await mediaApiService.uploadFilesToServer(formData);
+            console.log(uploadFile)
         } catch (error) {
             console.log(error);
         }

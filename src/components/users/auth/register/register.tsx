@@ -5,7 +5,7 @@ import './register.css';
 import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { register as serverRegistration } from '../../../../features/user/auth/authSlice';
-import { AppDispatch, useAppSelector } from '../../../../store';
+import { AppDispatch } from '../../../../store';
 import regexes from '../../../../helpers/regex';
 import React from 'react';
 
@@ -25,8 +25,6 @@ export default function Register() {
       password: ""
     }
   });
-
-  let { connectedUser, message, isLoggedIn, isError, isSuccess } = useAppSelector((state) => state.auth)
 
   const onSubmit: SubmitHandler<IUser> = async (registeredUser: IUser) => {
 

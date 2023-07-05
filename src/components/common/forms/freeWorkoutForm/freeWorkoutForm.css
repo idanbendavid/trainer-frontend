@@ -56,3 +56,11 @@
     align-items: flex-start;
     margin-left: 50px;
 }
+
+@media all and (max-width: 650px){
+    .form-gruops-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}

@@ -159,7 +159,6 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        margin: 0px 50px;
     }
 
     .exercise-name-list {
