@@ -39,7 +39,7 @@ export default function Menu(props) {
           <span className='hello-span'>hello {user.firstName}</span>
           {!isLoggedIn &&
             <Button onClick={() => { navigate("/login"); props.setIsMenuOpen(false) }}>
-              Login<LoginIcon fontSize='large' />
+              Login<LoginIcon fontSize='large'/>
             </Button>
           }
           {isLoggedIn &&

@@ -41,6 +41,7 @@ function Layout() {
         console.log("refreshed")
         axios.defaults.headers.common['Authorization'] = token;
         await dispatch(remainConnceted())
+        navigate("/main")
       }
       else {
         console.log("no token");
@@ -62,10 +63,10 @@ function Layout() {
       <section>
         <Button onClick={() => setIsMenuOpen(!isMenuOpen)} id="menuButton">
           {!isMenuOpen &&
-            <MenuIcon fontSize='large' id="menuIcon" />
+            <MenuIcon fontSize='large' id="menuIcon" style={{ color: 'white' }}  />
           }
           {isMenuOpen &&
-            <CloseIcon fontSize='large' id="closeMenuIcon" />
+            <CloseIcon fontSize='large' id="closeMenuIcon"  style={{ color: 'white' }} />
           }
         </Button>
         <Routes>

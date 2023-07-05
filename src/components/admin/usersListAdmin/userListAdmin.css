@@ -10,8 +10,11 @@
     padding: 0px;
     margin-bottom: 15px;
     position: relative;
-    background-color: white !important;
+}
+
+.css-6islxc{
     border: 1px solid black;
+    background-color: white !important;
 }
 
 .users-admin-actions {
