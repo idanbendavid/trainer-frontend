@@ -66,7 +66,7 @@ function Layout() {
             <MenuIcon fontSize='large' id="menuIcon" style={{ color: 'white' }}  />
           }
           {isMenuOpen &&
-            <CloseIcon fontSize='large' id="closeMenuIcon"  style={{ color: 'white' }} />
+            <CloseIcon fontSize='large' id="closeMenuIcon" />
           }
         </Button>
         <Routes>
