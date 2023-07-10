@@ -28,7 +28,7 @@ function UserExercises() {
       <React.Fragment>
         <TableRow>
           <TableCell>{props.singleExercise.exerciseName}</TableCell>
-          <TableCell>{props.singleExercise.type}</TableCell>
+          <TableCell>{props.singleExercise.type.replace("_", " ")}</TableCell>
           <TableCell id='dateRowCell'>{props.singleExercise.exerciseDate}</TableCell>
           <TableCell>
             <IconButton aria-label="expand row"

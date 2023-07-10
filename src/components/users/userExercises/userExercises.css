@@ -20,6 +20,7 @@
     .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
         overflow-x: auto;
         margin: auto;
+        word-break: 'break-word';
     }
 
     .css-1oqqzyl-MuiContainer-root {
