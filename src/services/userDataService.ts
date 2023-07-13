@@ -2,23 +2,25 @@ import axios from "axios";
 import { IUserExerciseDetails } from "../models/IUserExerciseDetails";
 
 async function checkEmail(checkEmail: string) {
-    const response = await axios.patch(`${import.meta.env.VITE_SERVER_REQUESTS}/users/checkEmail`, { checkEmail });
+    const response = await axios.patch(`https://traininglogserver.onrender.com/
+
+users/checkEmail`, { checkEmail });
 
     return response.data;
 }
 
 async function changePassword(newPassword: string, email: string) {
-    const response = await axios.put(`${import.meta.env.VITE_SERVER_REQUESTS}/users/`, { newPassword, email });
+    const response = await axios.put('https://traininglogserver.onrender.com/users/', { newPassword, email });
     return response.data;
 }
 
 async function getExerciseOfUser() {
-    const response = await axios.get<IUserExerciseDetails[]>(`${import.meta.env.VITE_SERVER_REQUESTS}/usersExercises/exercisesOfUser`);
+    const response = await axios.get<IUserExerciseDetails[]>('https://traininglogserver.onrender.com/usersExercises/exercisesOfUser');
     return response.data;
 }
 
 async function saveUserExerciseDetails(userExerciseDetails: IUserExerciseDetails) {
-    const response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/usersExercises/addExercise`, userExerciseDetails);
+    const response = await axios.post('https://traininglogserver.onrender.com/usersExercises/addExercise', userExerciseDetails );
     return response.data;
 }
 

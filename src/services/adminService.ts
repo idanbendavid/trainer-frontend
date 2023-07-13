@@ -2,32 +2,32 @@ import axios from "axios";
 
 
 async function deleteUser(userToDelete: number) {
-    const response = await axios.delete(`${import.meta.env.VITE_SERVER_REQUESTS}/users/${userToDelete}`)
+    const response = await axios.delete(`https://traininglogserver.onrender.com/users/${userToDelete}`)
 
     return response.data
 }
 
 async function getAllUsersForAdmin() {
-    const response = await axios.get(`${import.meta.env.VITE_SERVER_REQUESTS}/users/allUsers`)
+    const response = await axios.get("https://traininglogserver.onrender.com/users/allUsers")
 
     return response.data
 }
 
 async function getAllComplaints() {
-    const response = await axios.get(`${import.meta.env.VITE_SERVER_REQUESTS}/complaint`)
+    const response = await axios.get(`https://traininglogserver.onrender.com/complaint`)
 
     return response.data
 }
 
 async function newComplaint(userComplaint: object) {
-    const response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/complaint`, userComplaint)
+    const response = await axios.post(`https://traininglogserver.onrender.com/complaint`, userComplaint)
 
     return response.data
 }
 
 
 async function deleteComplaint(complaintId: number): Promise<number> {
-    const response = await axios.delete(`${import.meta.env.VITE_SERVER_REQUESTS}/complaint/${complaintId}`)
+    const response = await axios.delete(`https://traininglogserver.onrender.com/complaint/${complaintId}`)
     if(response.data){
         return complaintId;
     }
