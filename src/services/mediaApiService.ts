@@ -72,7 +72,7 @@ async function uploadFilesToServer(formData: any) {
         return response;
     }
     catch (error) {
-        toast.error("no file was selected");
+        toast.error("error while uploading file, try again later");
         console.log(error);
     }
 }
