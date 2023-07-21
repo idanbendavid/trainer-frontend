@@ -7,6 +7,7 @@ const initialState = {
     message: "",
     isError: false,
     isSuccess: false,
+    serverImages: [],
     gallery: [],
     exercises: [] as IExercise[],
     image: "" || undefined,
@@ -98,7 +99,7 @@ export const mediaSlice = createSlice({
         reset: (state) => state = initialState,
         resetImage: (state) => state.image = initialState.image,
         resetExerciseNamesArray: (state) => { state.exercisesNameArray = initialState.exercisesNameArray },
-        resetVideo: (state) => {state.video = initialState.video}
+        resetVideo: (state) => { state.video = initialState.video }
         // ---------------------------------------------------------------
     },
     extraReducers: (builder) => {
@@ -119,7 +120,12 @@ export const mediaSlice = createSlice({
             })
             // -----------------------------------------------------
             .addCase(getFilesFromServer.fulfilled, (state, action: PayloadAction<[]>) => {
-                state.gallery = action.payload;
+                state.serverImages = action.payload;
+                for (let i = 0; i < state.gallery.length; i++) {
+                    const image = new Blob([state.gallery[i].file_path]);
+                    const imageUrl = URL.createObjectURL(image);
+                    state.gallery.push(imageUrl);
+                }
             })
             .addCase(getFilesFromServer.rejected, (state, action: PayloadAction<{}>) => {
                 state.message = "failed loading images";
@@ -145,5 +151,5 @@ export const mediaSlice = createSlice({
     }
 })
 
-export const { reset, resetImage, resetExerciseNamesArray,resetVideo } = mediaSlice.actions
+export const { reset, resetImage, resetExerciseNamesArray, resetVideo } = mediaSlice.actions
 export default mediaSlice.reducer

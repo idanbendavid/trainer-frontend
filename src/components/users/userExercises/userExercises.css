@@ -21,6 +21,7 @@
         overflow-x: auto;
         margin: auto;
         word-break: 'break-word';
+        align-self: center;
     }
 
     .css-1oqqzyl-MuiContainer-root {
@@ -39,7 +40,7 @@
         word-break: 'break-word';
     }
 
-    .css-13xy2my{
-        width: 80% !important;
+    .css-c4sutr{
+        width: 85% !important;
     }
 }
