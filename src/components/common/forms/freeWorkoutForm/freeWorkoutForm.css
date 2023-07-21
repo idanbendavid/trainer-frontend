@@ -57,6 +57,10 @@
     margin-left: 50px;
 }
 
+#freeWorkoutInputUnstyled{
+    color: white;
+}
+
 @media all and (max-width: 650px) {
     .form-gruops-container {
         display: grid;

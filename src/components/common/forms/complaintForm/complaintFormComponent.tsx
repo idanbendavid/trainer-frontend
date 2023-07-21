@@ -85,17 +85,17 @@ function ComplaintFormComponent() {
             <Box style={{ display: 'flex', flexDirection: 'column'}}>
                 <div className='complaint-form-first-name'>
                     <InputLabel id='labelFirstName'>First Name</InputLabel>
-                    <Input type="text" placeholder='First Name' id="inputUnstyled" {...register("firstName")}></Input>
+                    <Input type="text" placeholder='First Name' id="complaintInputUnstyled" {...register("firstName")}></Input>
                     {errors.firstName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold',fontSize:'20px' }}>{errors.firstName.message}</p>}
                 </div>
                 <div className='complaint-form-last-name'>
                     <InputLabel id='labelLastName'>Last Name</InputLabel>
-                    <Input type="text" placeholder='Last Name' id="inputUnstyled" {...register("lastName")}></Input>
+                    <Input type="text" placeholder='Last Name' id="complaintInputUnstyled" {...register("lastName")}></Input>
                     {errors.lastName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.lastName.message}</p>}
                 </div>
                 <div className='complaint-form-email'>
                     <InputLabel id='labelEmail'>Email</InputLabel>
-                    <Input type="email" placeholder='Email' id="inputUnstyled" {...register("email")}></Input>
+                    <Input type="email" placeholder='Email' id="complaintInputUnstyled" {...register("email")}></Input>
                     {errors.email && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.email.message}</p>}
                 </div>
                 <div className='complaint-form-category'>

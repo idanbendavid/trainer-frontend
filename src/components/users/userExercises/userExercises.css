@@ -38,4 +38,8 @@
     #typeHeadCell{
         word-break: 'break-word';
     }
+
+    .css-13xy2my{
+        width: 80% !important;
+    }
 }

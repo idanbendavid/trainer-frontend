@@ -74,7 +74,7 @@ function FreeWorkoutForm() {
                     <div className='free-workout-group1'>
                         <div className='free-workout-name'>
                             <InputLabel id='nameLabel'>Workout Name</InputLabel>
-                            <Input type="text" placeholder='Name' id="inputUnstyled" {...register("exerciseName")}></Input>
+                            <Input type="text" placeholder='Name' id="freeWorkoutInputUnstyled" {...register("exerciseName")}></Input>
                             {errors.exerciseName && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.exerciseName.message}</p>}
                         </div>
                         <div className='free-workout-type'>
@@ -97,28 +97,28 @@ function FreeWorkoutForm() {
                         </div>
                         <div className='free-workout-sets'>
                             <InputLabel id='setsLabel'>number of sets</InputLabel>
-                            <Input type="number" placeholder='Sets' id="inputUnstyled" {...register("numberOfSets")}></Input>
+                            <Input type="number" placeholder='Sets' id="freeWorkoutInputUnstyled" {...register("numberOfSets")}></Input>
                         </div>
                     </div>
                     <div className='free-workout-group2'>
                         <div className='free-workout-repeats'>
                             <InputLabel id='repeatsLabel'>number of Repeats</InputLabel>
-                            <Input type="number" placeholder='Repeats' id="inputUnstyled" {...register("numberOfRepeats")}></Input>
+                            <Input type="number" placeholder='Repeats' id="freeWorkoutInputUnstyled" {...register("numberOfRepeats")}></Input>
                         </div>
                         <div className='free-workout-duration'>
                             <InputLabel id='durationLabel'>Duration (In Minutes)</InputLabel>
-                            <Input type="number" placeholder='Duration' id="inputUnstyled" {...register("duration")}></Input>
+                            <Input type="number" placeholder='Duration' id="freeWorkoutInputUnstyled" {...register("duration")}></Input>
                         </div>
                         <div className='free-workout-date'>
                             <InputLabel id='dateLabel'>Date</InputLabel>
-                            <Input type="date" id="inputUnstyled" {...register("exerciseDate")} ></Input>
+                            <Input type="date" id="freeWorkoutInputUnstyled" {...register("exerciseDate")} ></Input>
                             {errors.exerciseDate && <p style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold', fontSize: '20px' }}>{errors.exerciseDate.message}</p>}
                         </div>
                     </div>
                 </div>
                 <div className='free-workout-notes'>
                     <InputLabel id='notesLabel'>notes</InputLabel>
-                    <textarea id="inputUnstyled" cols={25} rows={5} maxLength={150} placeholder="description of your workout" {...register("notes")}></textarea>
+                    <textarea id="freeWorkoutInputUnstyled" cols={25} rows={5} maxLength={150} placeholder="description of your workout" {...register("notes")}></textarea>
                 </div>
                 <div className='save-workout-button'>
                     <Button variant='contained' color='primary' onClick={handleSubmit(onFreeWorkoutSumbit)}>Save Workout</Button>
