@@ -2,9 +2,7 @@ import axios from "axios";
 import { IUserExerciseDetails } from "../models/IUserExerciseDetails";
 
 async function checkEmail(checkEmail: string) {
-    const response = await axios.patch(`https://traininglogserver.onrender.com/
-
-users/checkEmail`, { checkEmail });
+    const response = await axios.patch(`https://traininglogserver.onrender.com/users/checkEmail`, { checkEmail });
 
     return response.data;
 }

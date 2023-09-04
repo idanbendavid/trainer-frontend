@@ -12,20 +12,15 @@ const initialState = {
     image: "" || undefined,
     exercisesNameArray: [] as string[],
     video: {
-        author: {},
-        badges: [],
-        bestThumbnail: {},
-        description: null || "",
-        duration: "",
+        channel: {},
+        description: "",
+        duration: 0,
+        durationString: "",
         id: "",
-        isLive: false,
-        isUpcoming: false,
-        thumbnails: [],
+        link: "",
+        thumbnail: "",
         title: "",
-        type: "video",
-        upcoming: "" || null,
-        uploadedAt: "",
-        url: "",
+        uploaded: "",
         views: 0
     },
     originalQuery: ""
@@ -98,7 +93,7 @@ export const mediaSlice = createSlice({
         reset: (state) => state = initialState,
         resetImage: (state) => state.image = initialState.image,
         resetExerciseNamesArray: (state) => { state.exercisesNameArray = initialState.exercisesNameArray },
-        resetVideo: (state) => {state.video = initialState.video}
+        resetVideo: (state) => { state.video = initialState.video }
         // ---------------------------------------------------------------
     },
     extraReducers: (builder) => {
@@ -126,7 +121,7 @@ export const mediaSlice = createSlice({
             })
             // -----------------------------------------------------
             .addCase(getWorkoutVideo.fulfilled, (state, action) => {
-                state.video = action.payload.items[0];
+                state.video = action.payload.videos[0];
                 state.originalQuery = action.payload.originalQuery;
             })
             .addCase(getWorkoutVideo.pending, (state, action) => {
@@ -145,5 +140,5 @@ export const mediaSlice = createSlice({
     }
 })
 
-export const { reset, resetImage, resetExerciseNamesArray,resetVideo } = mediaSlice.actions
+export const { reset, resetImage, resetExerciseNamesArray, resetVideo } = mediaSlice.actions
 export default mediaSlice.reducer

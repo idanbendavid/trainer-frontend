@@ -13,18 +13,9 @@ function Video(props) {
     const dispatch = useDispatch<AppDispatch>();
 
     let videoToShow = useAppSelector((state) => state.media.video);
-    let query = useAppSelector((state) => state.media.originalQuery);
-    const queryWithoutWorkout = query.replace("workout", "");
 
     const fetchWorkoutVideo = useCallback(() => {
-        if (props.exerciseToVideo !== "") {
-            if (queryWithoutWorkout.includes(props.exerciseToVideo)) {
-                return;
-            }
-            else {
-                dispatch(getWorkoutVideo(`${props.exerciseToVideo} workout`));
-            }
-        }
+        dispatch(getWorkoutVideo(`${props.exerciseToVideo} workout`));
     }, [dispatch, props]);
 
     useEffect(() => {
@@ -33,9 +24,9 @@ function Video(props) {
 
     return (
         <div className='video-component'>
-            {videoToShow.url &&
+            {videoToShow &&
                 <>
-                    <iframe className='iframe-video' src={videoToShow.url.replace('watch?v=', 'embed/')} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    <iframe className='iframe-video' src={`https://www.youtube.com/embed/${videoToShow.id}`} title={videoToShow.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                     <div className='save-exercise-div'>
                         <Button color='error' variant='contained' onClick={() => setShowDialog(true)}>Done this Exercise?</Button>
                     </div>
