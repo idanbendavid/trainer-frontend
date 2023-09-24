@@ -65,7 +65,7 @@ async function getWorkoutVideo(muscleToVideo: string) {
 
 async function uploadFilesToServer(formData: any) {
     try {
-        let response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/`, formData);
+        let response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/files`, formData);
         if (response) {
             toast.info("file uploaded successfully")
         }
