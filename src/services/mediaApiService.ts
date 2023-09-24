@@ -79,7 +79,7 @@ async function uploadFilesToServer(formData: any) {
 
 async function getFilesFromServer() {
     try {
-        let response = await axios.get(`${import.meta.env.VITE_SERVER_REQUESTS}/`);
+        let response = await axios.get(`${import.meta.env.VITE_SERVER_REQUESTS}/files`);
         return response.data;
     }
     catch (error) {
