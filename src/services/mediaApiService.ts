@@ -65,7 +65,7 @@ async function getWorkoutVideo(muscleToVideo: string) {
 
 async function uploadFilesToServer(formData: any) {
     try {
-        let response = await axios.post(`https://traininglogserver.onrender.com/files/`, formData);
+        let response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/`, formData);
         if (response) {
             toast.info("file uploaded successfully")
         }
@@ -79,7 +79,7 @@ async function uploadFilesToServer(formData: any) {
 
 async function getFilesFromServer() {
     try {
-        let response = await axios.get(`https://traininglogserver.onrender.com/files/`);
+        let response = await axios.get(`${import.meta.env.VITE_SERVER_REQUESTS}/`);
         return response.data;
     }
     catch (error) {
@@ -90,7 +90,7 @@ async function getFilesFromServer() {
 
 async function deleteFileFromServer(fileName: string) {
     try {
-        let response = await axios.delete(`https://traininglogserver.onrender.com/files/${fileName}`);
+        let response = await axios.delete(`${import.meta.env.VITE_SERVER_REQUESTS}/files/${fileName}`);
 
         if (response.data) {
             return fileName;

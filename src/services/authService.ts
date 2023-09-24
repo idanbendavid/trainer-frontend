@@ -3,7 +3,7 @@ import { IUser, LoginDetails } from "../models/User";
 
 
 async function register(registerUser: IUser): Promise<IUser> {
-    const response = await axios.post('https://traininglogserver.onrender.com/users/register', registerUser);
+    const response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/users/register`, registerUser);
 
     if (response.data) {
         localStorage.setItem("token", response.data.token);
@@ -17,7 +17,7 @@ async function register(registerUser: IUser): Promise<IUser> {
 }
 
 async function login(loggedInDetails: LoginDetails): Promise<IUser> {
-    const response = await axios.post('https://traininglogserver.onrender.com/users/login', loggedInDetails);
+    const response = await axios.post(`${import.meta.env.VITE_SERVER_REQUESTS}/users/login`, loggedInDetails);
 
     if (response.data) {
         localStorage.setItem("token", response.data.token);
@@ -39,7 +39,7 @@ function logout() {
 
 
 async function surviveRefresh() {
-    const response = await axios.get('https://traininglogserver.onrender.com/users/verify_token');
+    const response = await axios.get(`${import.meta.env.VITE_SERVER_REQUESTS}/users/verify_token`);
 
     return response
 }
