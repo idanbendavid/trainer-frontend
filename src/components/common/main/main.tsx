@@ -40,17 +40,16 @@ export default function Main() {
             return;
         }
 
-        showFreeWorkout();
+        showWorkout();
 
         dispatch(resetExerciseNamesArray());
-        dispatch(getExercisesFromApi(type));
         setExerciseToDisplayByName("");
         setExerciseToVideo("");
         setImageOfMuscle("");
     }
 
 
-    function showFreeWorkout(): void{
+    function showWorkout(): void{
         if (type.toLowerCase() === "free workout") {
             if(isLoggedIn){
                 setShowFreeWorkoutForm(true);
@@ -58,6 +57,9 @@ export default function Main() {
             else{
                 toast.info("must be connected to add free workout");
             }
+        }
+        else{
+            dispatch(getExercisesFromApi(type));
         }
     }
 
