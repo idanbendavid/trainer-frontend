@@ -2,7 +2,7 @@ import { IUser } from '../../../../models/User';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './register.css';
-import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import { Container, CssBaseline, Box, Avatar, Typography, Button, Grid, Input, InputLabel, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { register as serverRegistration } from '../../../../features/user/auth/authSlice';
 import { AppDispatch } from '../../../../store';
@@ -105,7 +105,7 @@ export default function Register() {
       {openExerciseModal &&
         <Dialog open={openExerciseModal}>
           <DialogTitle className='warning-dialog-titles'>
-              <h1>Warning!</h1>
+            <h1>Warning!</h1>
             <div className='close-dialog'>
               <Button onClick={() => setOpenExerciseModal(false)} variant='contained' color='error'>X</Button>
             </div>
@@ -160,6 +160,5 @@ export default function Register() {
         </Container>
       </div >
     </>
-
   )
 }
