@@ -30,7 +30,7 @@ function MuscleImage(props) {
     <>
       {showMuscleImage &&
         <div className='muscle-image-div'>
-          <LazyLoadImage src={image} alt="muscle" className='muscle-image' />
+          <LazyLoadImage src={image} alt="muscles" className='muscle-image' />
         </div>
       }
     </>
