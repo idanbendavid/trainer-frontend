@@ -13,6 +13,7 @@ export default defineConfig(() => {
     },
     plugins: [react()],
     base: './',
+    PATH:"/opt/render/project/poetry/bin:$PATH"
   }
 })
 
