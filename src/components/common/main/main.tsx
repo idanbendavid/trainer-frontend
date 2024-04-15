@@ -88,7 +88,7 @@ export default function Main() {
                 <FreeWorkoutForm />
             }
             <div className="exercise-main">
-                {exercises.length > 1 && isLoggedIn &&
+                {exercises.length > 1 &&
                     <div className="exercise-name-list">
                         <h1>Exercises</h1>
                         {exercisesNameArray.filter((name, index) => {
