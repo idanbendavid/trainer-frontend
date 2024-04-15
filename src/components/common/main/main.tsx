@@ -30,11 +30,6 @@ export default function Main() {
     };
 
     function getExercies(): void {
-        if (!isLoggedIn) {
-            toast.error("please connect to your account to view possible exercise");
-            return;
-        }
-
         if (!type) {
             toast.error("select the type of your next workout");
             return;
