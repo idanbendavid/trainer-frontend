@@ -131,10 +131,10 @@ export default function Main() {
                         })}
                 </div>
                 <div>
-                    {isLoggedIn && imageOfMuscle &&
+                    {imageOfMuscle &&
                         <MuscleImage muscle={imageOfMuscle} />
                     }
-                    {isLoggedIn && exerciseToVideo &&
+                    {exerciseToVideo &&
                         <Video exerciseToVideo={exerciseToVideo} type={type} />
                     }
                 </div>
